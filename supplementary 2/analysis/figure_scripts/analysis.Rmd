@@ -1,0 +1,736 @@
+---
+title: "VLAT Survey analysis"
+output:
+  pdf_document: default
+  html_notebook: default
+---
+```{r echo = FALSE}
+require(tidyverse)
+library(tidyverse)
+library(ggplot2)
+library(car)
+library(lme4)
+library(emmeans)
+library(pwr)
+library(patchwork)
+library(rstatix)
+library(effectsize)
+library(GPArotation)
+library(gridExtra) 
+```
+
+Load Data
+
+```{r}
+dfRaw <- read.csv("tidy.csv")
+
+# trust in data is the column: bar-data_6
+# trust in vis is the column: bar-vis_6
+```
+
+## Data Cleaning / Types
+
+```{r}
+
+df_acc <- dfRaw %>% 
+  filter(measure=="accuracy") 
+
+df_acc$value = as.numeric( as.character(df_acc$value ))
+
+
+df_acc
+```
+
+
+```{r}
+
+
+# Example data
+# df <- dfRaw(category = sample(c("A", "B", "C", "D"), 100, replace = TRUE))
+
+df$category <- factor(df$category, levels = c("C", "A", "B", "D"))
+
+
+# Plot
+p <- ggplot(dfRaw, aes(x = visLiteracy)) +
+  geom_bar() +
+  labs(title = "Distribution of Visualization Literacy",
+       x = "Visualization Literacy",
+       y = "Count")
+
+print(p)
+
+
+```
+
+
+
+```{r fig.height=6, fig.width=4}
+
+p<- dfRaw %>% 
+  filter(measure == "accuracy" & !is.na(value)) %>%
+  mutate(value = as.numeric(as.character(value))) %>%
+  ggplot(aes(x = questionId, y = value)) + 
+    stat_summary(fun.data = "mean_cl_boot", colour = "#DB5C00", size = 0.5, position = position_nudge(x=0.25, y=0), alpha=0.5) +
+    facet_wrap(~ chart, scales = "free_x", ncol = 4) +
+
+    theme(axis.text.x = element_text(angle = 45, hjust = 1)) 
+
+print (p)
+ggsave("task_accuracy_summary.pdf") # Change the file extension for different formats
+
+```
+
+```{r fig.height=5.5, fig.width=5}
+
+theme_set(theme_gray(base_size = 16))  # Change 16 to your desired base font size
+
+# Calculate mean accuracy for each chart
+task_order <- dfRaw %>%
+  filter(measure == "accuracy" & !is.na(value)) %>%
+  mutate(value = as.numeric(as.character(value))) %>%
+  group_by(questionId) %>%
+  summarize(mean_accuracy = mean(value, na.rm = TRUE)) %>%
+  arrange(mean_accuracy) %>%
+  pull(questionId)
+
+# Mutate original dataframe to create ordered factor
+df <- dfRaw %>%
+  mutate(questionId = factor(questionId, levels = task_order))
+
+# Create a color mapping for tasks
+# color_mapping <- scale_color_brewer(palette = "Dark2")$palette(max(nlevels(df$task), 0))
+
+
+# Plot
+p <- df %>%
+  filter(measure == "accuracy" & !is.na(value)) %>%
+  mutate(value = as.numeric(as.character(value))) %>%
+  ggplot(aes(x = value, y = questionId, color = task)) + 
+    stat_summary(fun.data = "mean_cl_boot", size = 0.5) +
+    facet_wrap(~ chart, ncol = 2, scales = "free_y") +
+    scale_color_brewer(palette = "Dark2") + # Optional: use a color palette
+   theme(
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      axis.ticks.x = element_line(),
+      # axis.text.y = element_text(color = color_mapping[df$task]),
+      legend.position = "bottom"  # Move legend to bottom
+      # legend.position = c(-0.1, -0.1),
+       # legend.justification = c(0, 0)
+    ) +
+    guides(color = guide_legend(direction = "horizontal")) + # Make legend horizontal
+    scale_x_continuous(limits = c(0, 1))
+
+# Adjust chart background to be a lighter grey
+p <- p +
+    theme(
+      panel.background = element_rect(fill = "#f7f7f7"),  # Change to your desired grey color
+      # ... Your other theme settings ...
+    )
+
+print(p)
+# ggsave("task_accuracy.pdf") # 
+
+
+```
+
+```{r fig.height=2, fig.width=9}
+
+theme_set(theme_gray(base_size = 16))  # Change 16 to your desired base font size
+
+chart_colors <- c("Bar Chart" = "#D32F2F", "Line Chart" = "#1976D2", "Pie Chart" = "#388E3C", "Histogram" = "#FBC02D", "Histogram 2" = "#8E24AA", 
+                  "Area" = "#0288D1", "Scatter Plot" = "#7B1FA2", "Choropleth Chart" = "#C2185B", "Map" = "#0097A7", "Bubble" = "#C2185B", 
+                  "Treemap" = "#00796B", "Stacked Bar 100" = "#E64A19")
+
+
+
+# Calculate mean accuracy for each task
+task_order <- dfRaw %>%
+  filter(measure == "accuracy" & !is.na(value)) %>%
+  mutate(value = as.numeric(as.character(value))) %>%
+  group_by(task) %>%
+  summarize(mean_accuracy = mean(value, na.rm = TRUE)) %>%
+  arrange(mean_accuracy) %>%
+  pull(task)
+
+# Mutate original dataframe to create ordered factor
+df <- dfRaw %>%
+  mutate(task = factor(task, levels = task_order))
+
+# Plot
+p <- df %>%
+  # filter(measure == "accuracy" & !is.na(value)) %>%
+    filter(measure == "accuracy" & !is.na(value) & task != "identify the hierarchical structure") %>%  # Filtering out the specific task
+  mutate(value = as.numeric(as.character(value))) %>%
+  ggplot(aes(x = value, color = '#DB5C00')) +
+    stat_summary(aes(y = chart), fun.data = "mean_cl_boot", size = 0.5) +
+    facet_wrap(~ task, nrow = 1) +  # Use facet_wrap with 2 columns
+      # scale_color_manual(values = chart_colors) +  # Set colors manually here
+
+    # scale_color_brewer(palette = "Dark2") + # Optional: use a color palette
+    theme(
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      axis.ticks.x = element_line(),
+      legend.position = "none"  # Move legend to bottom
+    ) +
+    guides(color = guide_legend(direction = "horizontal")) + # Make legend horizontal
+  scale_x_continuous(limits = c(0, 1),name = "Accuracy")+
+  labs(y = NULL)
+
+
+
+
+print(p)
+
+# Adjust chart background to be a lighter grey
+p <- p +
+    theme(
+      panel.background = element_rect(fill = "#f7f7f7")  # Change to your desired grey color
+    )
+
+print(p)
+
+
+ggsave("task_accuracy_taxonomy3.pdf") # 
+
+
+```
+
+
+#create mean accuracy and time panels
+```{r fig.height=2.5, fig.width=5}
+library(ggplot2)
+library(dplyr)
+library(gridExtra)  # for grid.arrange
+library(cowplot)
+
+# Calculate mean accuracy for each chart as before
+chart_order <- dfRaw %>%
+  filter(measure == "accuracy" & !is.na(value)) %>%
+  mutate(value = as.numeric(as.character(value))) %>%
+  group_by(chart) %>%
+  summarize(mean_accuracy = mean(value, na.rm = TRUE)) %>%
+  arrange(mean_accuracy) %>%
+  pull(chart)
+
+# Mutate original dataframe to create ordered factors based on accuracy order
+df <- dfRaw %>%
+  mutate(chart_factor = factor(chart, levels = chart_order))
+
+# Extract data from the `stat_summary` layer for accuracy
+accuracy_summary <- df %>% 
+  filter(measure == "accuracy" & !is.na(value)) %>%
+  mutate(value = as.numeric(as.character(value))) %>%
+  group_by(chart_factor) %>%
+  summarize(mean = mean(value, na.rm = TRUE),
+            ymin = mean - sd(value, na.rm = TRUE) * 1.96/sqrt(n()), # CI lower limit
+            ymax = mean + sd(value, na.rm = TRUE) * 1.96/sqrt(n())) # CI upper limit
+
+# Extract data from the `stat_summary` layer for time
+time_summary <- df %>% 
+  filter(measure == "time" & !is.na(value)) %>%
+  mutate(value = as.numeric(as.character(value))) %>%
+  group_by(chart_factor) %>%
+  summarize(mean = mean(value, na.rm = TRUE),
+            ymin = mean - sd(value, na.rm = TRUE) * 1.96/sqrt(n()), # CI lower limit
+            ymax = mean + sd(value, na.rm = TRUE) * 1.96/sqrt(n())) # CI upper limit
+
+# ... [Your previous code]
+
+# Plot for accuracy (adjusted theme)
+p1 <- df %>% 
+  filter(measure == "accuracy" & !is.na(value)) %>%
+  mutate(value = as.numeric(as.character(value))) %>%
+  ggplot(aes(x = value, y = chart_factor)) + 
+  stat_summary(aes(group = task), fun.data = "mean_cl_boot", colour = "grey", size = 0.5, alpha = 0.5) + 
+  stat_summary(aes(group = chart), fun.data = "mean_cl_boot", colour = "#DB5C00", size = 0.5) + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.margin = margin(5.5, 5.5, 5.5, 5.5, "pt")) +
+  scale_x_continuous(limits = c(0, 1),name = "Accuracy")+  
+  labs(y = NULL)
+
+# Plot for time (adjusted theme)
+p2 <- df %>%
+  filter(measure == "time" & !is.na(value)) %>%
+  mutate(value = as.numeric(as.character(value))) %>%
+  ggplot(aes(x = value, y = chart_factor)) + 
+    stat_summary(aes(group = task), fun.data = "mean_cl_boot", colour = "grey", size = 0.5, alpha = 0.5) +
+  stat_summary(fun.data = "mean_cl_boot", colour = "#DB5C00", size = 0.5) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        axis.title.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        plot.margin = margin(5.5, 5.5, 5.5, 0, "pt"))+ # remove left margin+
+ scale_x_continuous(limits = c(0, 100),name = "Time (Seconds)")
+
+
+# Filter out any non-finite values before adding to the plots
+accuracy_summary <- accuracy_summary %>% filter(is.finite(mean) & is.finite(ymin) & is.finite(ymax))
+time_summary <- time_summary %>% filter(is.finite(mean) & is.finite(ymin) & is.finite(ymax))
+
+# Adjust x positions if needed, but here I'm making a guess. You might need to tweak them based on your plot
+xpos_acc <- max(accuracy_summary$ymax, na.rm = TRUE) - 0.8  # A negative offset
+
+xpos_time <- max(time_summary$ymax, na.rm = TRUE) + 10 # adjust the 5 as necessary for spacing
+
+# Add labels to your plots
+p1 <- p1 + geom_text(data = accuracy_summary, 
+                     aes(y = chart_factor, x = xpos_acc, 
+                         label = sprintf(" %.2f, [%.2f, %.2f]", mean, ymin, ymax)), 
+                     size = 3.5, hjust = "right",colour = "#626160", vjust = -0.3)
+
+p2 <- p2 + geom_text(data = time_summary, 
+                     aes(y = chart_factor, x = xpos_time, 
+                         label = sprintf("%.2f [%.2f, %.2f]", mean, ymin, ymax)), 
+                     size = 3.5, hjust = "right",colour = "#626160", vjust = -0.3)
+
+
+# Adjust chart background to be a lighter grey
+p2 <- p2 +
+    theme(
+      panel.background = element_rect(fill = "#f7f7f7"),  # Change to your desired grey color
+      # ... Your other theme settings ...
+    )
+
+p1 <- p1 +
+    theme(
+      panel.background = element_rect(fill = "#f7f7f7"),  # Change to your desired grey color
+      # ... Your other theme settings ...
+    )
+
+# Combine the two plots side by side with adjusted widths
+# grid.arrange(p1, p2, ncol = 2, rel_widths = c(1.2, 1)) # Adjust rel_widths values as needed
+
+combined_plot <- plot_grid(p1, p2, ncol=2, rel_widths = c(1.8, 1))
+print(combined_plot)
+ggsave("mean_accuracy_and_time.pdf", combined_plot)
+
+# ggsave("mean_accuracy_and_time.pdf", arrangeGrob(p1, p2, ncol = 2, rel_widths = c(1.2, 1)))
+
+```
+
+#Create Latex Table
+```{r}
+
+# Calculate mean accuracy for each task within each chart
+mean_accuracy <- dfRaw %>%
+  filter(!is.na(value)) %>%
+  mutate(value = as.numeric(as.character(value))) %>%
+  group_by(chart, questionId) %>%
+  summarise(mean_acc = mean(value, na.rm = TRUE)) %>%
+  arrange(chart, -mean_acc)
+
+# Merge the mean accuracy data back to the main dataframe
+df <- dfRaw %>%
+  left_join(mean_accuracy, by = c("chart", "questionId")) %>%
+  arrange(chart, -mean_acc, questionId) %>%
+  group_by(chart, questionId) %>%
+  summarise(taskPrompt = first(questionId),
+            task = first(task)) %>%
+  ungroup() %>%
+  group_by(chart) %>%
+  mutate(rowCount = n())
+
+latex_rows <- list()
+
+for(i in 1:nrow(df)) {
+    chart_name <- df$chart[i]
+    
+    # First row for each chart
+    if(df$questionId[i] == min(df$questionId[df$chart == chart_name])) {
+      latex_rows <- append(latex_rows, 
+                           paste0("\\multirow{", df$rowCount[i], "}{*}{", chart_name, "} & ",
+                                  df$questionId[i], " & ",
+                                  df$task[i], " & ",
+                                  " & ",
+                                  "\\multirow{", df$rowCount[i], "}{*}{\\vspace*{-5pt}\\includegraphics[width=0.25\\textwidth]{figs/result_charts/chart_", 
+                                  chart_name, ".png}} \\\\"))
+    } else {
+      # Subsequent rows for each unique task for the chart
+      latex_rows <- append(latex_rows, 
+                           paste0("& ", df$questionId[i], 
+                                  " & ", df$task[i], " && \\\\"))
+    }
+
+    # Check if this is the last row for the current chart group
+    if(i == nrow(df) || df$chart[i] != df$chart[i+1]) {
+      latex_rows <- append(latex_rows, "\\cline{1-5}")
+    }
+}
+
+latex_code <- paste(latex_rows, collapse = " \n")
+
+cat("\\label{sec:quant_results}
+\\begin{table}
+\\centering
+\\begin{tabularx}{\\textwidth}{cllcp{0.25\\textwidth}}  % Note the change in column spec
+Visualization & Task ID & Vis Task & Accuracy & Visual Summary \\\\
+\\cline{1-5}
+", latex_code, "
+\\end{tabularx}
+\\caption{Visualization, Task, Visual Task, and Accuracy Table}
+\\end{table}")
+
+
+
+
+```
+
+```{r fig.height=5.5, fig.width=5}
+
+# theme_set(theme_gray(base_size = 16))  # Change 16 to your desired base font size
+
+# Calculate mean accuracy for each chart
+task_order <- dfRaw %>%
+  filter(measure == "accuracy" & !is.na(value)) %>%
+  mutate(value = as.numeric(as.character(value))) %>%
+  group_by(questionId) %>%
+  summarize(mean_accuracy = mean(value, na.rm = TRUE)) %>%
+  arrange(mean_accuracy) %>%
+  pull(questionId)
+
+# Mutate original dataframe to create ordered factor
+df <- dfRaw %>%
+  mutate(questionId = factor(questionId, levels = task_order))
+
+df <- df %>%
+mutate(value = as.numeric(as.character(value)))
+
+
+# theme_set(theme_gray(base_size = 16))
+
+# ... [Your previous data manipulations] ...
+
+# Extract unique charts
+unique_charts <- unique(df$chart)
+
+# Create a named color vector for all tasks based on the Brewer palette
+all_tasks <- unique(df$task)
+task_colors <- RColorBrewer::brewer.pal(length(all_tasks), "Dark2")
+names(task_colors) <- all_tasks
+
+base_height <- .5  # Change this to your desired height for each task
+for (chart in unique(df$chart)) {
+  
+  chart_data <- df %>%
+    filter(chart == !!chart, measure == "accuracy", !is.na(value))
+  
+  # Pre-calculate the mean for each task
+  summarized_data <- chart_data %>%
+    group_by(questionId) %>%
+    summarize(mean_value = mean(value, na.rm = TRUE))
+  
+  num_tasks <- length(unique(chart_data$questionId))
+  
+  p <- chart_data %>%
+    ggplot(aes(x = value, y = questionId, color = task)) + 
+      stat_summary(fun.data = "mean_cl_boot", size = 1.5) +
+      # geom_text(data = summarized_data, 
+      #           aes(x = mean_value - 0.05, y = questionId, label = sprintf("%.2f", mean_value)), 
+      #           hjust = 1, vjust = -0.5, color = "#5F5F5F") +  # Adjusted here
+      scale_color_manual(values = task_colors) +
+      theme_bw(base_size = 16) +
+      theme(
+        axis.title = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.text.y = element_blank(),
+        legend.position = "none",
+        panel.border = element_blank(),
+        panel.background = element_rect(fill = "#f7f7f7"),
+        plot.margin = margin(0, 0, 0, 0)
+      ) +
+      labs(title = NULL, subtitle = NULL, caption = NULL, tag = NULL) +
+      scale_x_continuous(limits = c(0, 1))
+  
+  ggsave(paste0("chart_", chart, ".png"), height = num_tasks * base_height, width = 5)
+}
+
+
+
+
+
+
+```
+
+
+
+```{r fig.height=5.5, fig.width=5}
+
+theme_set(theme_gray(base_size = 16))  # Change 16 to your desired base font size
+
+
+# Calculate counts for each category within each chart and task
+# category_counts <- df %>%
+#    filter(measure == "qualCode" & !is.na(value)) %>%
+#   group_by(chart, task, value) %>%
+#   tally()
+
+category_counts <- df %>%
+   filter(measure == "qualCode" & !is.na(value)) %>%
+  group_by(chart, task, value) %>%
+  summarize(n = n(), codeType = first(codeType))
+
+# Define the desired order for 'value'
+desired_order <- c("T1","T2","E1","E2","E3","E4","D1","D2","D3","M1")  # Replace ... with your desired order
+color_mapping <- c("Translation" = "#FCCAA6", "Encoding" = "#CAB0ED", "Decoding" = "#A1C693", "Aux Codes" = 'grey')
+
+category_counts <- category_counts %>%
+  mutate(value = factor(value, levels = desired_order))
+
+
+# # Mutate original dataframe to create ordered factor based on previous task order
+# category_counts <- category_counts %>%
+#   mutate(task = factor(task, levels = task_order))
+
+# Plot
+
+# Plot with colors based on 'color_column'
+p <- category_counts %>%
+  ggplot(aes(x = value, y = n, fill = codeType)) +  # Updated the aes()
+    geom_col() +
+    facet_wrap(~ chart, ncol = 2) +
+   scale_fill_manual(values = color_mapping) +
+   coord_cartesian(ylim = c(0,160))+
+  
+   # scale_y_log10(breaks = c(1, 10, 100, 500))+
+
+    # scale_fill_brewer(palette = "Pastel") + 
+    theme(
+            legend.position = "bottom"  # Move legend to bottom
+
+      # ... [your theme settings]
+    )
+
+# Adjust chart background to be a lighter grey
+p <- p +
+    theme(
+      panel.background = element_rect(fill = "#f7f7f7"),  # Change to your desired grey color
+      # ... Your other theme settings ...
+    )
+
+print(p)
+ggsave("qualCodes.pdf") # Change the file extension for different formats
+
+
+```
+
+
+
+#compute mean values
+``` {r}
+# dfRaw$time <- as.numeric(as.character(dfRaw$time))
+
+# Now, try calculating the mean again
+mean_times <- dfRaw %>%
+     filter(measure == "accuracy" & !is.na(value)) %>%
+    mutate(value = as.numeric(as.character(value))) %>%
+  group_by(questionId) %>%
+  summarize(mean_time = mean(value, na.rm = TRUE))
+# %>%
+#     mutate(mean_time = round(mean_time))
+
+
+print(mean_times)
+write.table(mean_times, file = "mean_acc.txt", row.names = FALSE, sep = "\t", quote = FALSE)
+
+
+``` 
+
+```{r fig.height=5.5, fig.width=5}
+
+theme_set(theme_gray(base_size = 16))  # Change 16 to your desired base font size
+
+darken_hex <- function(hex_color, factor = 0.8) {
+  # Ensure the hex color starts with #
+  if (substr(hex_color, 1, 1) != "#") {
+    hex_color <- paste0("#", hex_color)
+  }
+  
+  # Convert hex to RGB
+  rgb <- col2rgb(hex_color)
+  
+  # Check if it's a 3x1 matrix (a single color)
+  if (ncol(rgb) == 1) {
+    darkened_rgb <- pmax(0, pmin(255, factor * as.integer(rgb)))
+  } else {
+    # Darken the color
+    darkened_rgb <- pmax(0, pmin(255, factor * rgb))
+  }
+  
+  # Convert RGB back to hex
+  return(rgb(darkened_rgb[1], darkened_rgb[2], darkened_rgb[3], maxColorValue = 255))
+}
+
+# Your color definitions and mapping
+T <- '#FCCAA6'
+E <- '#CAB0ED'
+D <- '#A1C693' 
+
+color_mapping <- c(
+  "T1" = T, 
+  "T2" = darken_hex(T, 0.9), 
+  "E1" = E, 
+  "E2" = darken_hex(E, 0.9), 
+  "E3" = darken_hex(E, 0.8), 
+  "E4" = darken_hex(E, 0.7), 
+  "D1" = D, 
+  "D2" = darken_hex(D, 0.9), 
+  "D3" = darken_hex(D, 0.8)
+)
+
+
+# 
+# 
+# category_counts <- df %>%
+#    filter(measure == "qualCode" & value != 'M1' & value != 'T3' & !is.na(value)) %>%
+#   group_by(chart, task, value) %>%
+#   summarize(n = n(), codeType = first(codeType))
+# 
+# 
+# category_counts <- category_counts %>%
+#   group_by(chart, task) %>%
+#   mutate(percentage = n/sum(n)) %>%
+#   ungroup()
+# 
+# 
+# # Sort the charts alphabetically
+# category_counts$chart <- factor(category_counts$chart, levels = sort(unique(as.character(category_counts$chart))))
+# 
+# # 2. Plot
+# p <- ggplot(category_counts, aes(x = chart, y = percentage, fill = value)) +
+#   geom_bar(stat = "identity", position = "fill", width = 0.8) + 
+#   scale_fill_manual(values = color_mapping) +
+#   labs(y = "Percentage") +
+#   coord_cartesian(ylim = c(0,1)) +
+#   theme(
+#       legend.position = "bottom",
+#       panel.background = element_rect(fill = "white"),  # Set panel background to white
+#       axis.text.x = element_text(angle = 45, hjust = 1)
+#   )+
+# coord_flip()
+# #     facet_wrap(~ task, ncol = 2)  # This line adds the faceting by task
+# 
+# 
+# print(p)
+
+
+# Compute label positions
+category_counts <- category_counts %>%
+  arrange(chart, task, desc(percentage)) %>%
+  group_by(chart, task) %>%
+  mutate(label_position = cumsum(percentage) - 0.5 * percentage)
+
+# Plot
+p <- ggplot(category_counts, aes(x = chart, y = percentage, fill = value)) +
+  geom_bar(stat = "identity", position = "fill", width = 0.8) + 
+  geom_text(aes(y = label_position, label = scales::percent(percentage, accuracy = 1)), 
+            position = position_fill(vjust = 0.5), size = 3) + 
+  scale_fill_manual(values = color_mapping) +
+  labs(y = "Percentage") +
+  coord_cartesian(ylim = c(0, 1)) +
+  theme(
+      legend.position = "bottom",
+      panel.background = element_rect(fill = "white"),  # Set panel background to white
+      axis.text.x = element_text(angle = 45, hjust = 1)
+  ) +
+  coord_flip()
+
+print(p)
+
+
+# # Adjust chart background to be a lighter grey
+# p <- p +
+#     theme(
+#       panel.background = element_rect(fill = "#f7f7f7"),  # Change to your desired grey color
+#       # ... Your other theme settings ...
+#     )
+# 
+# print(p)
+ggsave("qualCodes.pdf") # Change the file extension for different formats
+
+
+```
+
+
+
+```{r fig.height=4, fig.width=4}
+
+p <- df %>% 
+  filter(measure == "accuracy" & !is.na(value)) %>%
+  mutate(value = as.numeric(as.character(value))) %>%
+  ggplot(aes(x = value, y = questionId)) + 
+    stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5) +
+    #facet_wrap(~chart, scales = "free_y", nrow = length(unique(df$chart))) +
+    facet_wrap(~chart, scales = "free_y", nrow = 5) +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+print (p) 
+
+ggsave("plot_name.pdf") # Change the file extension for different formats
+
+
+```
+
+```{r fig.height=1.5, fig.width=4}
+
+# Calculate mean accuracy for each chart
+chart_order <- df %>%
+  filter(measure == "accuracy" & !is.na(value)) %>%
+  mutate(value = as.numeric(as.character(value))) %>%
+  group_by(chart) %>%
+  summarize(mean_accuracy = mean(value, na.rm = TRUE)) %>%
+  arrange(mean_accuracy) %>%
+  pull(chart)
+
+# Mutate original dataframe to create ordered factor
+df <- df %>%
+  mutate(chart = factor(chart, levels = chart_order))
+
+
+# Plot
+p <- df %>% 
+  filter(measure == "accuracy" & !is.na(value)) %>%
+  mutate(value = as.numeric(as.character(value))) %>%
+  ggplot(aes(x = value, y = chart)) + 
+    stat_summary(aes(group = task), fun.data = "mean_cl_boot", colour = "grey", size = 0.5, alpha = 0.5) + 
+      stat_summary(aes(group = chart), fun.data = "mean_cl_boot", colour = "#DB5C00", size = 0.5) + 
+
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+p <- p + scale_x_continuous(limits = c(0, 1))
+
+
+# 
+# # Plot
+# p <- df %>% 
+#   filter(measure == "accuracy" & !is.na(value)) %>%
+#   mutate(value = as.numeric(as.character(value))) %>%
+#   ggplot(aes(x = value, y = chart)) + 
+#     stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5) +
+#     theme(axis.text.x = element_text(angle = 45, hjust = 1))
+# 
+# p <- p + scale_x_continuous(limits = c(0, 1))
+
+
+print (p)
+ggsave("mean_accuracy.pdf") # Change the file extension for different formats
+
+
+```
+
+
+
+
+```{r}
+filtered_df <- df %>% filter(measure == "accuracy")
+ggplot(filtered_df, aes(x=value)) + 
+  geom_histogram(binwidth=10, fill="blue", color="black", alpha=0.7) + 
+  labs(title="Histogram of Values", x="Value", y="Frequency") + 
+  theme_minimal()
+```
+
+```{r}
+ggplot(filtered_df, aes(x='Value')) +
+  geom_bar()
+```

@@ -1,0 +1,322 @@
+{
+ "SBQ1": {
+  "question": "What percentage of the room service cost in Copenhagen comes from the sandwich?",
+  "answer_cols": [
+   "SBQ1"
+  ]
+ },
+ "SBQ2": {
+  "question": "In which city is the cost of soda the highest?",
+  "answer_cols": [
+   "SBQ2"
+  ]
+ },
+ "SBQ3": {
+  "question": "The cost of vodka in Helsinki is higher than that of Toronto.",
+  "answer_cols": [
+   "SBQ3"
+  ]
+ },
+ "SBQ4": {
+  "question": "The ratio of the cost of Soda to the cost of Water is higher in N.Y.C than in Stockholm. True or False?",
+  "answer_cols": [
+   "SBQ4"
+  ]
+ },
+ "SBQ5": {
+  "question": "What is the cost of peanuts in room service in Seoul?",
+  "answer_cols": [
+   "SBQ5"
+  ]
+ },
+ "SAQ1": {
+  "question": "What was the number of girls named 'Isla' in 2010 in the UK?",
+  "answer_cols": [
+   "SAQ1"
+  ]
+ },
+ "SAQ2": {
+  "question": "Over the course of years between 2009 and 2014, the number of girls named 'Isla' was always more than 'Amelia'. True or False?",
+  "answer_cols": [
+   "SAQ2"
+  ]
+ },
+ "SAQ3": {
+  "question": "Over the course of years between 2009 and 2014, when was the number of girls named 'Isla' at the maximum?",
+  "answer_cols": [
+   "SAQ3"
+  ]
+ },
+ "SAQ4": {
+  "question": "The number of girls named 'Olivia' was __________ from 2009 to 2012.",
+  "answer_cols": [
+   "SAQ4"
+  ]
+ },
+ "SAQ5": {
+  "question": "In the UK, the number of girls named \u2018Isla\u2019 in 2014 was more than it was in 2013.",
+  "answer_cols": [
+   "SAQ5"
+  ]
+ },
+ "SPQ1": {
+  "question": "What is the weight for the person who is 161 cm tall?",
+  "answer_cols": [
+   "SPQ1"
+  ]
+ },
+ "SPQ2": {
+  "question": "What is the height for the tallest person among the 85 individuals?'",
+  "answer_cols": [
+   "SPQ2"
+  ]
+ },
+ "SPQ3": {
+  "question": "What is the range in weight for the 85 individuals?",
+  "answer_cols": [
+   "SPQ3_1",
+   "SPQ3_2"
+  ]
+ },
+ "SPQ4": {
+  "question": "There is a group of individuals centered at the height of 176 cm and the weight of 55 kg. True or False?",
+  "answer_cols": [
+   "SPQ4"
+  ]
+ },
+ "SPQ5": {
+  "question": "There is a negative linear relationship between the height and the weight of the 85 individuals. True or False?",
+  "answer_cols": [
+   "SPQ5"
+  ]
+ },
+ "SPQ6": {
+  "question": "What is the height of the most prominent outlier in the data?",
+  "answer_cols": [
+   "SPQ6"
+  ]
+ },
+ "LCQ1": {
+  "question": "What was the price of a barrel of oil in February 2020?",
+  "answer_cols": [
+   "LCQ1"
+  ]
+ },
+ "LCQ2": {
+  "question": "In which month was the price of a barrel of oil the lowest in 2020?",
+  "answer_cols": [
+   "LCQ2"
+  ]
+ },
+ "LCQ3": {
+  "question": "What was the price range of a barrel of oil in 2020?",
+  "answer_cols": [
+   "LCQ3_1",
+   "LCQ3_2"
+  ]
+ },
+ "LCQ4": {
+  "question": "Over the course of the first quarter of 2020, the price of a barrel of oil was ______.",
+  "answer_cols": [
+   "LCQ4"
+  ]
+ },
+ "LCQ5": {
+  "question": "About how much did the price of a barrel of oil rise from April to August in 2020?",
+  "answer_cols": [
+   "LCQ5"
+  ]
+ },
+ "BuCQ2": {
+  "question": "What is the range of metro system lengths  in the data shown in this chart?",
+  "answer_cols": [
+   "BuCQ2_4",
+   "BuCQ2_5"
+  ]
+ },
+ "BuCQ3": {
+  "question": "Tokyo has a bigger ridership than Guangzhow. True or False?",
+  "answer_cols": [
+   "BuCQ3"
+  ]
+ },
+ "BuCQ4": {
+  "question": "In general, the ridership of the metro system increases as the number of stations increases. True or False?",
+  "answer_cols": [
+   "BuCQ4"
+  ]
+ },
+ "BuCQ5": {
+  "question": "The average metro system in this chart has approximately 300 stations 200km in length",
+  "answer_cols": [
+   "BuCQ5"
+  ]
+ },
+ "BuCQ6": {
+  "question": "Which city's metro system has the largest number of stations?",
+  "answer_cols": [
+   "BuCQ6"
+  ]
+ },
+ "ACQ1": {
+  "question": "What was the price of a pound of coffee beans in June 2019?",
+  "answer_cols": [
+   "ACQ1"
+  ]
+ },
+ "ACQ2": {
+  "question": "When was the price of a pound of coffee beans at a minimum?",
+  "answer_cols": [
+   "ACQ2",
+   "ACQ2_1_TEXT"
+  ]
+ },
+ "ACQ3": {
+  "question": "What was the range of the price of a pound of coffee beans between January 2018 and January 2020?",
+  "answer_cols": [
+   "ACQ3_1",
+   "ACQ3_2"
+  ]
+ },
+ "ACQ4": {
+  "question": "Over the first 6 months of 2018, the price of a pound of coffee beans was roughly ____________.'",
+  "answer_cols": [
+   "ACQ4"
+  ]
+ },
+ "AC2Q1": {
+  "question": "What was the price of a pound of coffee beans in May 2019?",
+  "answer_cols": [
+   "AC2Q1"
+  ]
+ },
+ "AC2Q2": {
+  "question": "When was the price of a pound of coffee beans at a minimum?",
+  "answer_cols": [
+   "AC2Q2",
+   "AC2Q2_1_TEXT"
+  ]
+ },
+ "AC2Q3": {
+  "question": "What was the range of the price of a pound of coffee beans between January 2018 and January 2020?",
+  "answer_cols": [
+   "AC2Q3_1",
+   "AC2Q3_2"
+  ]
+ },
+ "AC2Q4": {
+  "question": "Over the first 6 months of 2019, the price of a pound of coffee beans was roughly ____________.'",
+  "answer_cols": [
+   "AC2Q4"
+  ]
+ },
+ "CCQ1": {
+  "question": "In which state was the unemployment rate the highest?",
+  "answer_cols": [
+   "CCQ1"
+  ]
+ },
+ "CCQ2": {
+  "question": "What was the unemployment rate for Indiana (IN) in 2020?",
+  "answer_cols": [
+   "CCQ2"
+  ]
+ },
+ "HCQ1": {
+  "question": "How many people have traveled a distance between 20km and 40km?",
+  "answer_cols": [
+   "HCQ1"
+  ]
+ },
+ "HCQ2": {
+  "question": "More people have traveled the distance between 10 and 20 km than between 40 and 50 km. True or False?",
+  "answer_cols": [
+   "HCQ2"
+  ]
+ },
+ "HCQ3": {
+  "question": "What is the most common distance customers have travelled?",
+  "answer_cols": [
+   "HCQ3"
+  ]
+ },
+ "HC2Q1": {
+  "question": "How many people have traveled a distance between 20km and 40km?",
+  "answer_cols": [
+   "HC2Q1"
+  ]
+ },
+ "HC2Q2": {
+  "question": "More people have traveled the distance between 10 and 20 km than between 40 and 50 km. True or False?",
+  "answer_cols": [
+   "HC2Q2"
+  ]
+ },
+ "HC2Q3": {
+  "question": "What is the most common distance customers have travelled?",
+  "answer_cols": [
+   "HC2Q3"
+  ]
+ },
+ "TMQ1": {
+  "question": "For which website was the number of unique visitors the largest in 2020?",
+  "answer_cols": [
+   "TMQ1"
+  ]
+ },
+ "TMQ2": {
+  "question": "The number of unique visitors for Amazon was more than that of Yahoo in 2020. True or False?",
+  "answer_cols": [
+   "TMQ2"
+  ]
+ },
+ "TMQ3": {
+  "question": "In which category is eBay nested?",
+  "answer_cols": [
+   "TMQ3"
+  ]
+ },
+ "PCQ1": {
+  "question": "What is the approximate global smartphone market share (in %) of Samsung?",
+  "answer_cols": [
+   "PCQ1"
+  ]
+ },
+ "PCQ2": {
+  "question": "Which company has the largest global market share for smart phones?",
+  "answer_cols": [
+   "PCQ2"
+  ]
+ },
+ "SB100Q1": {
+  "question": "What percentage of Japan's Olympic medals are Bronze?",
+  "answer_cols": [
+   "SB100Q1"
+  ]
+ },
+ "SB100Q2": {
+  "question": "Who has the bigger percentage of Silver medals, Japan or Great Britain?",
+  "answer_cols": [
+   "SB100Q2"
+  ]
+ },
+ "SB100Q3": {
+  "question": "Which country has the highest number (absolute number, not %)  of Bronze medals?",
+  "answer_cols": [
+   "SB100Q3"
+  ]
+ },
+ "BCQ3": {
+  "question": "What is the range of the global internet speed?",
+  "answer_cols": [
+   "BCQ3_1",
+   "BCQ3_2"
+  ]
+ },
+ "BCQ4": {
+  "question": "In how many countries  is the internet speed slower than Japan?",
+  "answer_cols": [
+   "BCQ4"
+  ]
+ }
+}
