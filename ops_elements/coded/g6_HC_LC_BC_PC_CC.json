@@ -1,0 +1,3174 @@
+{
+ "LCQ1": {
+  "qid": "LCQ1",
+  "chart": "LC",
+  "task": "retrieve_value",
+  "question": "What was the price of a barrel of oil in February 2020?",
+  "reference_chain": "FIND(xtick[Feb]) → FIND(pt[Feb]) → PROJ(pt[Feb] → yaxis) → READ(pt[Feb], y)≈50.5 → ANSWER(≈50.5)",
+  "notes": "Only one (incorrect) trial in this group. The participant's sketch shows a textbook x-tick→point→y-axis projection landing at ~51, yet the submitted 29 matches the March point, suggesting a response-entry slip or neighbour-point confusion rather than a reading-strategy failure.",
+  "new_symbols": {
+   "ANSWER(v)": "the final response the participant submitted (used to show mismatch with read value)"
+  },
+  "strategies": [
+   {
+    "chain": "FIND(xtick[Feb]) → FIND(pt[Feb]) → PROJ(pt → yaxis) → READ(y)≈51 → ANSWER(29) ?wrong:entry-slip/neighbour-point",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "Firstly I found the month and than the blue dot which was above of it.",
+    "trial_ids": [
+     "LCQ1_R_2BgNvVo1U4htyBO"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "LCQ1_R_2BgNvVo1U4htyBO",
+    "accuracy": 0.0,
+    "answer": {
+     "LCQ1": "29"
+    },
+    "chain": "FIND(xtick[Feb]) → FIND(pt[Feb] | above xtick) → PROJ(pt[Feb] → yaxis) → READ(pt[Feb], y)≈51 → ANSWER(29) ?wrong:entry-slip(29=Mar value; self-reports 51)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "READ"
+    ],
+    "elements_text": [
+     "xtick[Feb]",
+     "pt[Feb]",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "xtick[Feb]",
+     "pt[Feb]",
+     "yaxis",
+     "ytick[50]"
+    ],
+    "sketch_gesture": "vertical arrow from Feb tick up to Feb point, horizontal line from point to y-axis at ~51; scribbles near 50-55",
+    "source": "both"
+   }
+  ]
+ },
+ "LCQ3": {
+  "qid": "LCQ3",
+  "chart": "LC",
+  "task": "determine_range",
+  "question": "What was the price range of a barrel of oil in 2020?",
+  "reference_chain": "SCAN({pt[*]}) → MIN(y)=pt[Apr] → READ(y)≈16.5 → MAX(y)=pt[Jan] → READ(y)≈57.5 → RANGE(16.5, 57.5)",
+  "notes": "All four trials are wrong, mostly not because of the extremum search (three of four correctly find Jan and Apr) but because of reading/entry: the max is under-read (52), rounded up to the axis top (60) or misread (67.5), and the answer fields seem to have been filled max-first. One participant circled the endpoints (Jan, Dec) instead of the min, confusing 'range' with start-to-end values.",
+  "new_symbols": {
+   "ANSWER(v)": "final submitted response"
+  },
+  "strategies": [
+   {
+    "chain": "MIN({pt},y) → MAX({pt},y) → READ(max)?wrong → READ(min) → ANSWER(max/min)",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "Lowest point and highest point",
+    "trial_ids": [
+     "LCQ3_R_32Q56m6gcri89NR",
+     "LCQ3_R_3HRhA2l19nQiHDq"
+    ]
+   },
+   {
+    "chain": "MAX → MIN → PROJ(pt[Apr] → yaxis) → READ(ytick) rounded ?wrong:rounded-to-ticks → ANSWER(60/15)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "the left sided numbers",
+    "trial_ids": [
+     "LCQ3_R_DHVf3ZBb8NKIn9n"
+    ]
+   },
+   {
+    "chain": "LOOK(pt[Jan]) → LOOK(pt[Dec]) → CONFUSED(scope) → READ(endpoints) ?wrong:endpoints-not-extrema",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "got confused with whether the lower was for the whole year or quaterly",
+    "trial_ids": [
+     "LCQ3_R_3DwMwbbvKGck1j8"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "LCQ3_R_32Q56m6gcri89NR",
+    "accuracy": 0.0,
+    "answer": {
+     "LCQ3_1": "52",
+     "LCQ3_2": "16"
+    },
+    "chain": "MIN({pt[*]}, y)=pt[Apr] → MAX({pt[*]}, y)=pt[Jan] → READ(pt[Jan], y)≈52 ?wrong:max-underread → READ(pt[Apr], y)≈16 → ANSWER(52/16) ?wrong:order-swapped(max in first field)",
+    "ops": [
+     "MIN",
+     "MAX",
+     "READ",
+     "READ"
+    ],
+    "elements_text": [
+     "pt[min]",
+     "pt[max]"
+    ],
+    "elements_sketch": [
+     "pt[Jan]",
+     "pt[Apr]"
+    ],
+    "sketch_gesture": "'OH' written by Jan point, 'OL' by Apr point (labels high/low)",
+    "source": "both"
+   },
+   {
+    "trial_id": "LCQ3_R_DHVf3ZBb8NKIn9n",
+    "accuracy": 0.0,
+    "answer": {
+     "LCQ3_1": "60",
+     "LCQ3_2": "15"
+    },
+    "chain": "MAX({pt[*]}, y)=pt[Jan] → MIN({pt[*]}, y)=pt[Apr] → PROJ(pt[Apr] → yaxis) → READ(yaxis ticks) → READ(pt[Jan], y)=60 ?wrong:rounded-to-top-tick → READ(pt[Apr], y)=15 ?wrong:rounded-to-tick → ANSWER(60/15)",
+    "ops": [
+     "MAX",
+     "MIN",
+     "PROJ",
+     "READ",
+     "READ",
+     "READ"
+    ],
+    "elements_text": [
+     "ytick"
+    ],
+    "elements_sketch": [
+     "pt[Jan]",
+     "pt[Apr]",
+     "yaxis"
+    ],
+    "sketch_gesture": "circles on Jan and Apr points, horizontal arrow from Apr point to y-axis at ~16",
+    "source": "both"
+   },
+   {
+    "trial_id": "LCQ3_R_3HRhA2l19nQiHDq",
+    "accuracy": 0.0,
+    "answer": {
+     "LCQ3_1": "67.5",
+     "LCQ3_2": "16"
+    },
+    "chain": "MIN({pt[*]}, y)=pt[Apr] → MAX({pt[*]}, y)=pt[Jan] → READ(pt[Jan], y)=67.5 ?wrong:misread-max → READ(pt[Apr], y)≈16 → ANSWER(67.5/16)",
+    "ops": [
+     "MIN",
+     "MAX",
+     "READ",
+     "READ"
+    ],
+    "elements_text": [
+     "pt[min]",
+     "pt[max]"
+    ],
+    "elements_sketch": [
+     "pt[Jan]",
+     "pt[Apr]"
+    ],
+    "sketch_gesture": "filled circles over Jan and Apr points",
+    "source": "both"
+   },
+   {
+    "trial_id": "LCQ3_R_3DwMwbbvKGck1j8",
+    "accuracy": 0.0,
+    "answer": {
+     "LCQ3_1": "58",
+     "LCQ3_2": "47"
+    },
+    "chain": "LOOK(pt[Jan]) → LOOK(pt[Dec]) → CONFUSED(scope: whole year vs quarter) → READ(pt[Jan], y)≈58 → READ(pt[Dec], y)≈47 ?wrong:endpoints-not-min(Apr ignored) → ANSWER(58/47)",
+    "ops": [
+     "LOOK",
+     "LOOK",
+     "CONFUSED",
+     "READ",
+     "READ"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "pt[Jan]",
+     "pt[Dec]"
+    ],
+    "sketch_gesture": "circles on Jan and Dec points (first and last)",
+    "source": "both"
+   }
+  ]
+ },
+ "LCQ4": {
+  "qid": "LCQ4",
+  "chart": "LC",
+  "task": "characterize_trend",
+  "question": "Over the course of the first quarter of 2020, the price of a barrel of oil was ______.",
+  "reference_chain": "FIND(xtick[Jan..Mar]) → SCAN(line[Jan..Mar]) → TREND(line, Q1)=↓ → ANSWER(falling)",
+  "notes": "All three trials fail on the temporal scope 'first quarter', not on trend perception: one considered the whole year (flat later, falling earlier), one traced Jan–Jun so the V-shape read as 'unstable', and one correctly isolated a falling segment but reports a misclick. Mapping 'first quarter' to Jan–Mar ticks is the pivotal step.",
+  "new_symbols": {
+   "ANSWER(v)": "final submitted response"
+  },
+  "strategies": [
+   {
+    "chain": "SCAN(line[whole year]) → TREND(late)=→, TREND(early)=↓ → DOUBT ?wrong:scope-not-Q1",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "I think it was constant in the late months but had a severe decrease in price in the earlier ones",
+    "trial_ids": [
+     "LCQ4_R_bBYquHiBklKfmAF"
+    ]
+   },
+   {
+    "chain": "SCAN(line[Jan..Jun]) ?wrong:scope-extended → TREND=~ ('unstable')",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "It wasn't rising nor was it falling , it was unstable.",
+    "trial_ids": [
+     "LCQ4_R_1rjN4TGyxMk2oDq"
+    ]
+   },
+   {
+    "chain": "FIND(line[Feb..Apr]) → TREND=↓ → ANSWER(impossible) ?wrong:misclick",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "i think i miss clicked ,the price was falling",
+    "trial_ids": [
+     "LCQ4_R_3DwMwbbvKGck1j8"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "LCQ4_R_bBYquHiBklKfmAF",
+    "accuracy": 0.0,
+    "answer": {
+     "LCQ4": "I'm not sure"
+    },
+    "chain": "SCAN(line[Jan..Dec]) → TREND(line, late months)=→ → TREND(line, early months)=↓ → DOUBT(which period) ?wrong:did-not-restrict-to-Q1 → ANSWER(not sure)",
+    "ops": [
+     "SCAN",
+     "TREND",
+     "TREND",
+     "DOUBT"
+    ],
+    "elements_text": [
+     "line[late months]",
+     "line[early months]"
+    ],
+    "elements_sketch": [
+     "grid[y=40]",
+     "line"
+    ],
+    "sketch_gesture": "horizontal line across whole chart at y≈40",
+    "source": "both"
+   },
+   {
+    "trial_id": "LCQ4_R_3DwMwbbvKGck1j8",
+    "accuracy": 0.0,
+    "answer": {
+     "LCQ4": "Impossible to answer with this visualization."
+    },
+    "chain": "FIND(line[Feb..Apr]) → TREND(line, Q1)=↓ → ANSWER(impossible) ?wrong:misclick",
+    "ops": [
+     "FIND",
+     "TREND"
+    ],
+    "elements_text": [
+     "line"
+    ],
+    "elements_sketch": [
+     "line[Feb..Apr]",
+     "pt[Mar]",
+     "pt[Apr]"
+    ],
+    "sketch_gesture": "loop enclosing the Feb–Apr descending segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "LCQ4_R_1rjN4TGyxMk2oDq",
+    "accuracy": 0.0,
+    "answer": {
+     "LCQ4": "Impossible to answer with this visualization."
+    },
+    "chain": "SCAN(line[Jan..Jun]) ?wrong:period-extended-beyond-Q1 → TREND(line)=~ (down then up, 'unstable') → ANSWER(impossible)",
+    "ops": [
+     "SCAN",
+     "TREND"
+    ],
+    "elements_text": [
+     "line"
+    ],
+    "elements_sketch": [
+     "line[Jan..Jun]"
+    ],
+    "sketch_gesture": "traced line from Jan down to Apr and back up to Jun",
+    "source": "both"
+   }
+  ]
+ },
+ "LCQ5": {
+  "qid": "LCQ5",
+  "chart": "LC",
+  "task": "compute_derived_value",
+  "question": "About how much did the price of a barrel of oil rise from April to August in 2020?",
+  "reference_chain": "FIND(pt[Apr]) → PROJ(→ yaxis) → READ(y)≈16.5 → FIND(pt[Aug]) → PROJ(→ yaxis) → READ(y)≈42.3 → DIFF(42.3,16.5)≈25.8",
+  "notes": "Every trial is incorrect, yet most sketches show the correct double projection of the Apr and Aug points onto the y-axis (≈16 and ≈42); failures are arithmetic or entry slips (31, 1666, 30) that several participants self-report. Distinct errors include using the Dec point instead of Aug, ending the interval at Jul, and reporting the Aug level (41) instead of the rise. The y-axis projection of the two endpoints is the pivotal step; the subtraction is where it breaks.",
+  "new_symbols": {
+   "ANSWER(v)": "final submitted response"
+  },
+  "strategies": [
+   {
+    "chain": "PROJ(pt[Apr] → yaxis) → READ≈16 → PROJ(pt[Aug] → yaxis) → READ≈42 → DIFF ?wrong:arithmetic",
+    "n": 3,
+    "n_correct": 0,
+    "n_incorrect": 3,
+    "quote": "Counted wrong. Should have been 26.",
+    "trial_ids": [
+     "LCQ5_R_2vY85VrJ5kA63mo",
+     "LCQ5_R_eKlhx6ye2Un8NkR",
+     "LCQ5_R_3Rwr5F6bciAzuf4"
+    ]
+   },
+   {
+    "chain": "READ(pt[Apr]) → READ(pt[Aug]) → DIFF ?wrong:value-or-entry",
+    "n": 3,
+    "n_correct": 0,
+    "n_incorrect": 3,
+    "quote": "dolar amount of Aug - dolar amount of Apr",
+    "trial_ids": [
+     "LCQ5_R_ve3Zl5hskrLWzdf",
+     "LCQ5_R_3iO6HqnDwQk14cZ",
+     "LCQ5_R_1rjN4TGyxMk2oDq"
+    ]
+   },
+   {
+    "chain": "PROJ(pt[Apr]) → PROJ(pt[Dec]) ?wrong:wrong-endpoint → DIFF(46,16)=30",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "It increased 30 just by substracting 16 to 46",
+    "trial_ids": [
+     "LCQ5_R_bBYquHiBklKfmAF"
+    ]
+   },
+   {
+    "chain": "FIND(pt[Apr]) → SCAN(line) → FIND(pt[Aug]) → SUM ?wrong:addition",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "i just did a quick addition than i came to that answer",
+    "trial_ids": [
+     "LCQ5_R_3DwMwbbvKGck1j8"
+    ]
+   },
+   {
+    "chain": "LOOK(line[Apr..Jul]) ?wrong:end-at-Jul → GUESS",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "look closely at the graph",
+    "trial_ids": [
+     "LCQ5_R_qJcU4U0KnWs6Lnz"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "LCQ5_R_ve3Zl5hskrLWzdf",
+    "accuracy": 0.0,
+    "answer": {
+     "LCQ5": "41"
+    },
+    "chain": "READ(pt[Aug], y)=v? → READ(pt[Apr], y)=v? → DIFF(Aug, Apr) → ANSWER(41) ?wrong:read-Aug-absolute-value-not-difference",
+    "ops": [
+     "READ",
+     "READ",
+     "DIFF"
+    ],
+    "elements_text": [
+     "pt[Aug]",
+     "pt[Apr]"
+    ],
+    "elements_sketch": [
+     "pt[Apr]",
+     "pt[Aug]"
+    ],
+    "sketch_gesture": "horizontal line from Apr point to Aug, vertical line up to Aug point (rise triangle)",
+    "source": "both"
+   },
+   {
+    "trial_id": "LCQ5_R_3iO6HqnDwQk14cZ",
+    "accuracy": 0.0,
+    "answer": {
+     "LCQ5": "1666"
+    },
+    "chain": "FIND(xtick[Apr..Aug]) → READ(pt[Apr], y)≈16.66 → READ(pt[Aug], y)≈42.5 → DIFF(42.5, 16.66)≈25.84 → ANSWER(1666) ?wrong:entry-slip(typed Apr value)",
+    "ops": [
+     "FIND",
+     "READ",
+     "READ",
+     "DIFF"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "xaxis[Apr..Aug]",
+     "pt[Apr]",
+     "pt[Aug]"
+    ],
+    "sketch_gesture": "underline along x-axis Apr–Aug; dots on Apr and Aug points with written ≈16,66 and ≈42,5",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "LCQ5_R_2vY85VrJ5kA63mo",
+    "accuracy": 0.0,
+    "answer": {
+     "LCQ5": "31"
+    },
+    "chain": "PROJ(pt[Apr] → yaxis) → READ(y)=16 → PROJ(pt[Aug] → yaxis) → READ(y)=42 → DIFF(42,16) ?wrong:arithmetic-slip(31; self-corrects to 26)",
+    "ops": [
+     "PROJ",
+     "READ",
+     "PROJ",
+     "READ",
+     "DIFF"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "pt[Apr]",
+     "pt[Aug]",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal lines from Apr and Aug points to y-axis, labelled 16 and 42",
+    "source": "both"
+   },
+   {
+    "trial_id": "LCQ5_R_bBYquHiBklKfmAF",
+    "accuracy": 0.0,
+    "answer": {
+     "LCQ5": "30"
+    },
+    "chain": "PROJ(pt[Apr] → yaxis) → READ(y)=16 → PROJ(pt[Dec] → yaxis) ?wrong:used-Dec-not-Aug → READ(y)=46 → DIFF(46,16)=30",
+    "ops": [
+     "PROJ",
+     "READ",
+     "PROJ",
+     "READ",
+     "DIFF"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "pt[Apr]",
+     "pt[Dec]",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal lines to y-axis at ~16 (Apr) and ~46 (Dec), diagonal from Apr to Dec",
+    "source": "both"
+   },
+   {
+    "trial_id": "LCQ5_R_3DwMwbbvKGck1j8",
+    "accuracy": 0.0,
+    "answer": {
+     "LCQ5": "36"
+    },
+    "chain": "FIND(pt[Apr]) → SCAN(line[Apr..Aug]) → FIND(pt[Aug]) → SUM(?) ?wrong:'addition'/unclear-arithmetic → ANSWER(36)",
+    "ops": [
+     "FIND",
+     "SCAN",
+     "FIND",
+     "SUM"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "pt[Apr]",
+     "line[Apr..Aug]",
+     "pt[Aug]"
+    ],
+    "sketch_gesture": "boxes on Apr and Aug points connected by traced line",
+    "source": "both"
+   },
+   {
+    "trial_id": "LCQ5_R_qJcU4U0KnWs6Lnz",
+    "accuracy": 0.0,
+    "answer": {
+     "LCQ5": "30"
+    },
+    "chain": "LOOK(line[Apr..Jul]) ?wrong:end-at-Jul → GUESS → ANSWER(30)",
+    "ops": [
+     "LOOK",
+     "GUESS"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "line[Apr..Jul]"
+    ],
+    "sketch_gesture": "loop enclosing the rising segment Apr to Jul",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "LCQ5_R_1rjN4TGyxMk2oDq",
+    "accuracy": 0.0,
+    "answer": {
+     "LCQ5": "22"
+    },
+    "chain": "SCAN(line[Apr..Aug]) → READ(pt[Apr], y)=v? → READ(pt[Aug], y)=v? → DIFF ?wrong:misread/miscalc(22)",
+    "ops": [
+     "SCAN",
+     "READ",
+     "READ",
+     "DIFF"
+    ],
+    "elements_text": [
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "line[Apr..Aug]"
+    ],
+    "sketch_gesture": "traced line from Apr up to Aug, slightly below the data line",
+    "source": "both"
+   },
+   {
+    "trial_id": "LCQ5_R_eKlhx6ye2Un8NkR",
+    "accuracy": 0.0,
+    "answer": {
+     "LCQ5": "31"
+    },
+    "chain": "FIND(xtick[Apr]) → PROJ(pt[Apr] → yaxis) → READ(y)≈16 → FIND(xtick[Aug]) → PROJ(pt[Aug] → yaxis) → READ(y)≈42 → DIFF(Aug, Apr) ?wrong:arithmetic(31)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "READ",
+     "FIND",
+     "PROJ",
+     "READ",
+     "DIFF"
+    ],
+    "elements_text": [
+     "yaxis",
+     "xaxis",
+     "pt[Apr]",
+     "pt[Aug]"
+    ],
+    "elements_sketch": [
+     "xtick[Apr]",
+     "xtick[Aug]",
+     "pt[Apr]",
+     "pt[Aug]",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical lines from Apr and Aug ticks up to points, then horizontal lines to y-axis at ~16 and ~42",
+    "source": "both"
+   },
+   {
+    "trial_id": "LCQ5_R_3Rwr5F6bciAzuf4",
+    "accuracy": 0.0,
+    "answer": {
+     "LCQ5": "30"
+    },
+    "chain": "PROJ(pt[Apr] → yaxis) → PROJ(pt[Aug] → yaxis) → DIFF ?wrong:30 → DOUBT(answer)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "DIFF",
+     "DOUBT"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "pt[Apr]",
+     "pt[Aug]",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal lines from Apr (~16.5) and Aug (~42) points to y-axis",
+    "source": "both"
+   }
+  ]
+ },
+ "CCQ2": {
+  "qid": "CCQ2",
+  "chart": "CC",
+  "task": "retrieve_value",
+  "question": "What was the unemployment rate for Indiana (IN) in 2020?",
+  "reference_chain": "FIND(region[IN] | label) → READ(color) → FIND(colorscale swatch matching color) → MAP(swatch → bin between labels 6% and 8%) → ANSWER(6-8%)",
+  "notes": "All five participants matched Indiana to the correct (3rd) legend swatch, as their circles/X marks/lines show, but then mis-assigned the bin: the legend labels sit at swatch boundaries, so the swatch can be read as '4-6' or '6-8'. Two answered 4-6, two explicitly declared it undecidable, one answered 8-10. The pivotal element is the colorscale label alignment, not the colour match itself.",
+  "new_symbols": {
+   "colorscale[swatch]": "one discrete swatch of a binned colour legend",
+   "ANSWER(v)": "final submitted response"
+  },
+  "strategies": [
+   {
+    "chain": "FIND(region[IN]) → READ(color) → FIND/PROJ(→ colorscale swatch) → MAP(swatch → 4-6%) ?wrong:label-misalignment",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "By looking at the color I chose the closet one from the bar on the bottom",
+    "trial_ids": [
+     "CCQ2_R_2qa33uKUNjCuE0q",
+     "CCQ2_R_2vY85VrJ5kA63mo"
+    ]
+   },
+   {
+    "chain": "FIND(region[IN]) → MAP(swatch → 4-6|6-8) → CONFUSED(bin labels) → ANSWER(impossible/not sure)",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "I could not determine from the drop-down list whether it is between 4-6% or 6-8%.",
+    "trial_ids": [
+     "CCQ2_R_2dSKNTMDrpOIGb1",
+     "CCQ2_R_VI12BPzRmJrIXVn"
+    ]
+   },
+   {
+    "chain": "SCAN(chart)×3 → FIND(region[IN]) → FIND(swatch) → MAP ?wrong:8-10",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "had to search whole map three times and then missed the color",
+    "trial_ids": [
+     "CCQ2_R_1ILTvcjG8il5ivT"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "CCQ2_R_1ILTvcjG8il5ivT",
+    "accuracy": 0.0,
+    "answer": {
+     "CCQ2": "8-10%"
+    },
+    "chain": "SCAN(chart) ×3 → FIND(region[IN]) → READ(region[IN], color) → FIND(colorscale swatch[3rd]) → MAP(swatch → %) ?wrong:missed-color/label-misalignment(answered 8-10)",
+    "ops": [
+     "SCAN",
+     "FIND",
+     "READ",
+     "FIND",
+     "MAP"
+    ],
+    "elements_text": [
+     "region[IN]",
+     "color"
+    ],
+    "elements_sketch": [
+     "region[IN]",
+     "colorscale[6-8 swatch]"
+    ],
+    "sketch_gesture": "loop around Indiana and circle on the 3rd legend swatch (between 6% and 8% labels)",
+    "source": "both"
+   },
+   {
+    "trial_id": "CCQ2_R_2qa33uKUNjCuE0q",
+    "accuracy": 0.0,
+    "answer": {
+     "CCQ2": "4-6%"
+    },
+    "chain": "FIND(region[IN]) → READ(region[IN], color) → CMP(color ≈ colorscale swatch) → FIND(colorscale swatch[3rd]) → MAP(swatch → 4-6%) ?wrong:label-misalignment(swatch lies between 6% and 8% ticks)",
+    "ops": [
+     "FIND",
+     "READ",
+     "CMP",
+     "FIND",
+     "MAP"
+    ],
+    "elements_text": [
+     "color",
+     "colorscale"
+    ],
+    "elements_sketch": [
+     "region[IN]",
+     "colorscale[6-8 swatch]"
+    ],
+    "sketch_gesture": "circle on IN and circle on the 3rd legend swatch",
+    "source": "both"
+   },
+   {
+    "trial_id": "CCQ2_R_2dSKNTMDrpOIGb1",
+    "accuracy": 0.0,
+    "answer": {
+     "CCQ2": "I'm not sure"
+    },
+    "chain": "FIND(region[IN]) → READ(region[IN], color) → MAP(color → 4-6 or 6-8) → CONFUSED(colorscale: 'not a gradient', bin boundaries) → ANSWER(not sure)",
+    "ops": [
+     "FIND",
+     "READ",
+     "MAP",
+     "CONFUSED"
+    ],
+    "elements_text": [
+     "color",
+     "colorscale"
+    ],
+    "elements_sketch": [
+     "region[IL]",
+     "region[IN]"
+    ],
+    "sketch_gesture": "loop around Illinois and Indiana",
+    "source": "both"
+   },
+   {
+    "trial_id": "CCQ2_R_VI12BPzRmJrIXVn",
+    "accuracy": 0.0,
+    "answer": {
+     "CCQ2": "Impossible to answer with this visualization"
+    },
+    "chain": "FIND(region[IN]) → FIND(colorscale swatch[3rd]) → MAP(swatch → 4-6 or 6-8) → CONFUSED(bin-label alignment) → ANSWER(impossible)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "MAP",
+     "CONFUSED"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "region[IN]",
+     "colorscale[6-8 swatch]"
+    ],
+    "sketch_gesture": "X on Indiana and X on the 3rd legend swatch",
+    "source": "both"
+   },
+   {
+    "trial_id": "CCQ2_R_2vY85VrJ5kA63mo",
+    "accuracy": 0.0,
+    "answer": {
+     "CCQ2": "4-6%"
+    },
+    "chain": "FIND(region[IN]) → READ(region[IN], color) → PROJ(region[IN] → colorscale) → MAP(color → 4-6%) ?wrong:label-misalignment",
+    "ops": [
+     "FIND",
+     "READ",
+     "PROJ",
+     "MAP"
+    ],
+    "elements_text": [
+     "color",
+     "colorscale"
+    ],
+    "elements_sketch": [
+     "region[IN]",
+     "colorscale[6% boundary]"
+    ],
+    "sketch_gesture": "long line from Indiana down to the legend near the 6% label / 3rd swatch",
+    "source": "both"
+   }
+  ]
+ },
+ "HCQ1": {
+  "qid": "HCQ1",
+  "chart": "HC",
+  "task": "compute_derived_value",
+  "question": "How many people have traveled a distance between 20km and 40km?",
+  "reference_chain": "FIND({bin[20-30],bin[30-40]} | xtick 20..40) → PROJ(top → yaxis) → READ(y)≈215 → PROJ(top → yaxis) → READ(y)≈247 → SUM≈462",
+  "notes": "All 8 wrong. The dominant error (3/8, answer 635) is a bin-to-tick mismatch: with ticks at bin edges, participants took '20, 30 and 40' as three bars and added the 10-20 bin too. Others picked the right two bins but under/over-estimated the tops (440, 475), substituted the 10-20 bin (407), read only the tallest bin (250), or confused the axes entirely (80). Edge-labelled x ticks are the pivotal element.",
+  "new_symbols": {
+   "ANSWER(v)": "final submitted response"
+  },
+  "strategies": [
+   {
+    "chain": "FIND(3 bins @ xticks 20,30,40) ?wrong:included-10-20 → PROJ(top → yaxis)×3 → READ×3 → SUM=635",
+    "n": 3,
+    "n_correct": 0,
+    "n_incorrect": 3,
+    "quote": "I just added the number of people in 20, 30 and 40kms range",
+    "trial_ids": [
+     "HCQ1_R_1NlwFmOuUVBaeea",
+     "HCQ1_R_3D8wKq4NHSwZu4i",
+     "HCQ1_R_2ZCWA6Wf2jsOGIb"
+    ]
+   },
+   {
+    "chain": "FIND({bin[20-30],bin[30-40]}) → READ(top)×2 → SUM ?wrong:estimation",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "added the two numbers tof=gether",
+    "trial_ids": [
+     "HCQ1_R_2zbWL29UVPi0v1e",
+     "HCQ1_R_3R7JWvNDOwOuGrj"
+    ]
+   },
+   {
+    "chain": "PROJ(top(bin[10-20])) ?wrong:wrong-bin → PROJ(top(bin[30-40])) → SUM",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "Look closely at the graph to see the number of passengers",
+    "trial_ids": [
+     "HCQ1_R_qJcU4U0KnWs6Lnz"
+    ]
+   },
+   {
+    "chain": "FIND(bin[30-40]) → PROJ(top → yaxis) → READ≈250 ?wrong:single-bin",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "it was so easy to find this one.",
+    "trial_ids": [
+     "HCQ1_R_3hokieevT5vHr8Y"
+    ]
+   },
+   {
+    "chain": "FIND(xtick[80]) → PROJ(→ ytick[40]) ?wrong:axis-confusion",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "THE GRAPHIC IS CLEAR WITH COLORS IT WAS CLEAR",
+    "trial_ids": [
+     "HCQ1_R_1kGflyCImAFfv3L"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "HCQ1_R_1NlwFmOuUVBaeea",
+    "accuracy": 0.0,
+    "answer": {
+     "HCQ1": "635"
+    },
+    "chain": "FIND({bin[10-20],bin[20-30],bin[30-40]}) ?wrong:included-10-20-bin(bins under ticks 20,30,40) → PROJ(top(bin[*]) → yaxis)×3 → READ(y)≈176,215,247 → SUM(3 values)=635",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "READ",
+     "SUM"
+    ],
+    "elements_text": [
+     "bin[*]"
+    ],
+    "elements_sketch": [
+     "bin[10-20]",
+     "bin[20-30]",
+     "bin[30-40]",
+     "yaxis"
+    ],
+    "sketch_gesture": "three horizontal lines from y-axis to tops of 10-20, 20-30, 30-40 bars (~176, ~215, ~247)",
+    "source": "both"
+   },
+   {
+    "trial_id": "HCQ1_R_2zbWL29UVPi0v1e",
+    "accuracy": 0.0,
+    "answer": {
+     "HCQ1": "475"
+    },
+    "chain": "FIND({bin[20-30],bin[30-40]} | xtick 20..40) → READ(top(bin), y)≈v? ×2 → SUM ?wrong:estimation/arithmetic(475) → DOUBT(mental sum, exact values between gridlines)",
+    "ops": [
+     "FIND",
+     "READ",
+     "SUM",
+     "DOUBT"
+    ],
+    "elements_text": [
+     "bin",
+     "grid"
+    ],
+    "elements_sketch": [
+     "bin[20-30]",
+     "bin[30-40]"
+    ],
+    "sketch_gesture": "loop enclosing the 20-30 and 30-40 bars",
+    "source": "both"
+   },
+   {
+    "trial_id": "HCQ1_R_3R7JWvNDOwOuGrj",
+    "accuracy": 0.0,
+    "answer": {
+     "HCQ1": "440"
+    },
+    "chain": "FIND({bin[20-30],bin[30-40]}) → READ(top(bin[20-30]), y)=v? → READ(top(bin[30-40]), y)=v? → SUM(2 values) ?wrong:underestimate(440)",
+    "ops": [
+     "FIND",
+     "READ",
+     "READ",
+     "SUM"
+    ],
+    "elements_text": [
+     "bin"
+    ],
+    "elements_sketch": [
+     "top(bin[20-30])",
+     "top(bin[30-40])"
+    ],
+    "sketch_gesture": "ovals on tops of 20-30 and 30-40 bars with a plus sign between",
+    "source": "both"
+   },
+   {
+    "trial_id": "HCQ1_R_1kGflyCImAFfv3L",
+    "accuracy": 0.0,
+    "answer": {
+     "HCQ1": "80"
+    },
+    "chain": "FIND(xtick[80]) → PROJ(xtick[80] → ytick[40]) ?wrong:axis-confusion(mixed km values 20-40 with axes) → ANSWER(80)",
+    "ops": [
+     "FIND",
+     "PROJ"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "xtick[80]",
+     "ytick[40]",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line up from x=80 then horizontal line left to y-axis at 40",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "HCQ1_R_3D8wKq4NHSwZu4i",
+    "accuracy": 0.0,
+    "answer": {
+     "HCQ1": "635"
+    },
+    "chain": "FIND({bin[10-20],bin[20-30],bin[30-40]}) ?wrong:included-10-20-bin → SCAN(top(bin[*])) → READ(y)×3 → SUM=635",
+    "ops": [
+     "FIND",
+     "SCAN",
+     "READ",
+     "SUM"
+    ],
+    "elements_text": [
+     "bin[20..40]"
+    ],
+    "elements_sketch": [
+     "top(bin[10-20])",
+     "top(bin[20-30])",
+     "top(bin[30-40])"
+    ],
+    "sketch_gesture": "staircase traced along tops of 10-20, 20-30, 30-40 bars",
+    "source": "both"
+   },
+   {
+    "trial_id": "HCQ1_R_qJcU4U0KnWs6Lnz",
+    "accuracy": 0.0,
+    "answer": {
+     "HCQ1": "407"
+    },
+    "chain": "PROJ(top(bin[10-20]) → yaxis) ?wrong:wrong-bin(10-20 instead of 20-30) → READ(y)≈175 → PROJ(top(bin[30-40]) → yaxis) → READ(y)≈240 → SUM≈407",
+    "ops": [
+     "PROJ",
+     "READ",
+     "PROJ",
+     "READ",
+     "SUM"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "bin[10-20]",
+     "bin[30-40]",
+     "ytick[180]",
+     "ytick[240]"
+    ],
+    "sketch_gesture": "elongated ovals from y-axis to tops of 10-20 bar (~175) and 30-40 bar (~245)",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "HCQ1_R_2ZCWA6Wf2jsOGIb",
+    "accuracy": 0.0,
+    "answer": {
+     "HCQ1": "635"
+    },
+    "chain": "FIND({bin @ xtick 20, 30, 40}) ?wrong:bins-mapped-to-right-edge-ticks(included 10-20) → PROJ(top(bin[*]) → yaxis)×3 → READ(y)≈175,215,245 → SUM=635",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "READ",
+     "SUM"
+    ],
+    "elements_text": [
+     "xtick[20]",
+     "xtick[30]",
+     "xtick[40]"
+    ],
+    "elements_sketch": [
+     "bin[10-20]",
+     "bin[20-30]",
+     "bin[30-40]",
+     "yaxis"
+    ],
+    "sketch_gesture": "three horizontal lines from y-axis to tops of 10-20, 20-30, 30-40 bars",
+    "source": "both"
+   },
+   {
+    "trial_id": "HCQ1_R_3hokieevT5vHr8Y",
+    "accuracy": 0.0,
+    "answer": {
+     "HCQ1": "250"
+    },
+    "chain": "FIND(bin[30-40]) → PROJ(top(bin[30-40]) → yaxis) → READ(y)≈250 → ANSWER(250) ?wrong:single-bin-no-sum",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "READ"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(bin[30-40])",
+     "yaxis"
+    ],
+    "sketch_gesture": "arrow from top of 30-40 bar left to y-axis at ~248",
+    "source": "sketch"
+   }
+  ]
+ },
+ "HCQ2": {
+  "qid": "HCQ2",
+  "chart": "HC",
+  "task": "make_comparison",
+  "question": "More people have traveled the distance between 10 and 20 km than between 40 and 50 km. True or False?",
+  "reference_chain": "FIND(bin[10-20]) → FIND(bin[40-50]) → PROJ(top(bin[10-20]) → bin[40-50]) → CMPvis(height(bin[40-50]) > height(bin[10-20])) → ANSWER(False)",
+  "notes": "The bars differ by only ~3 customers, so the dominant correct strategy (shown by sketches) is a horizontal reference line from one bar top to the other, often along the 180 gridline. Errors come from bin localisation with edge-labelled ticks (using 20-30 or 0-10 for '10-20') and from judging the bars 'the same' then answering True. Several correct answers rest on wrong bins (30-40, 50-60), so accuracy overstates the reading.",
+  "new_symbols": {
+   "PROJ(a ↔ b)": "horizontal reference line drawn between two mark tops for direct comparison",
+   "ANSWER(v)": "final submitted response"
+  },
+  "strategies": [
+   {
+    "chain": "FIND(bin[10-20]) → FIND(bin[40-50]) → PROJ(top ↔ top) reference line → CMPvis(40-50 > 10-20) → False",
+    "n": 10,
+    "n_correct": 10,
+    "n_incorrect": 0,
+    "quote": "By drawing a line we can tell that 40 and 50 km is slightly larger than 10 and 20 km.",
+    "trial_ids": [
+     "HCQ2_R_6JTMV49ouv1ou0p",
+     "HCQ2_R_vHJZLdwKhmAzoLn",
+     "HCQ2_R_3R7JWvNDOwOuGrj",
+     "HCQ2_R_DSmeZLcUwsRPTe9",
+     "HCQ2_R_2QGUeAYb1lmdcHL",
+     "HCQ2_R_1P1APSbf9y0uGtL",
+     "HCQ2_R_2ZCWA6Wf2jsOGIb",
+     "HCQ2_R_1E7h0Cr6gK7k9Zg",
+     "HCQ2_R_2zbWL29UVPi0v1e",
+     "HCQ2_R_2BgNvVo1U4htyBO"
+    ]
+   },
+   {
+    "chain": "LOOK(top(bin[10-20])) → LOOK(top(bin[40-50])) → CMPvis (marks/gridline gap) → False",
+    "n": 3,
+    "n_correct": 3,
+    "n_incorrect": 0,
+    "quote": "The 40-50km is taller, because it needs less to reach 180",
+    "trial_ids": [
+     "HCQ2_R_6QEHFq0jT9asAJH",
+     "HCQ2_R_3iO6HqnDwQk14cZ",
+     "HCQ2_R_qJcU4U0KnWs6Lnz"
+    ]
+   },
+   {
+    "chain": "PROJ(top ↔ top) → CMP(≈ same) → ANSWER(False | True)",
+    "n": 2,
+    "n_correct": 1,
+    "n_incorrect": 1,
+    "quote": "the numbers confused me, therefore i messed up my answer and later realized that its the same",
+    "trial_ids": [
+     "HCQ2_R_1FtyDyJ5x9l9fws",
+     "HCQ2_R_2E7bKzEVRvQoxPT"
+    ]
+   },
+   {
+    "chain": "FIND(bin[20-30]) ?wrong:wrong-bin → READ/PROJ(top) → CMP(> bin[40-50]) → True",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "the 20 to 30 has around 217 costumers and the 40 to 50 has around 179 costumers",
+    "trial_ids": [
+     "HCQ2_R_vYxQQ6kbWuIPPSV",
+     "HCQ2_R_3hokieevT5vHr8Y"
+    ]
+   },
+   {
+    "chain": "FIND(bin[0-10]) ?wrong:tick-bin-misalignment → CONFUSED(xaxis) → True",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "The x-axis are confusing!",
+    "trial_ids": [
+     "HCQ2_R_1NlwFmOuUVBaeea"
+    ]
+   },
+   {
+    "chain": "PROJ(top(bin[30-40])) ?wrong:wrong-bin → PROJ(top(bin[10-20])) → ARGMAX → False",
+    "n": 1,
+    "n_correct": 1,
+    "n_incorrect": 0,
+    "quote": "According to the graph, the comparison shows that 30 to 40 km is most popular.",
+    "trial_ids": [
+     "HCQ2_R_3D8wKq4NHSwZu4i"
+    ]
+   },
+   {
+    "chain": "FIND(xtick[50]) → PROJ(→ yaxis)≈100 ?wrong:wrong-bin → False",
+    "n": 1,
+    "n_correct": 1,
+    "n_incorrect": 0,
+    "quote": "THE GRAPHIC IS CLEAR WITH COLORS IT WAS CLEAR",
+    "trial_ids": [
+     "HCQ2_R_1kGflyCImAFfv3L"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "HCQ2_R_6JTMV49ouv1ou0p",
+    "accuracy": 1.0,
+    "answer": {
+     "HCQ2": "False"
+    },
+    "chain": "FIND(bin[10-20]) → FIND(bin[40-50]) → PROJ(top(bin[10-20]) ↔ top(bin[40-50])) (horizontal reference line) → CMPvis(height(bin[40-50]) > height(bin[10-20])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "CMPvis"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(bin[10-20])",
+     "top(bin[40-50])",
+     "grid[y=180]"
+    ],
+    "sketch_gesture": "horizontal line at ~178 from 10-20 bar top across to 40-50 bar top",
+    "source": "both"
+   },
+   {
+    "trial_id": "HCQ2_R_6QEHFq0jT9asAJH",
+    "accuracy": 1.0,
+    "answer": {
+     "HCQ2": "False"
+    },
+    "chain": "LOOK(top(bin[10-20])) → LOOK(top(bin[40-50])) → CMPvis(height(bin[40-50]) > height(bin[10-20])) → ANSWER(False)",
+    "ops": [
+     "LOOK",
+     "LOOK",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bin"
+    ],
+    "elements_sketch": [
+     "top(bin[10-20])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "short tick marks on tops of 10-20 and 40-50 bars",
+    "source": "both"
+   },
+   {
+    "trial_id": "HCQ2_R_1NlwFmOuUVBaeea",
+    "accuracy": 0.0,
+    "answer": {
+     "HCQ2": "True"
+    },
+    "chain": "FIND(xtick[10]) → FIND(bin[0-10]) ?wrong:tick-bin-misalignment → LOOK(bin[10-20]) → CONFUSED(xaxis edge ticks) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "LOOK",
+     "CONFUSED"
+    ],
+    "elements_text": [
+     "xaxis"
+    ],
+    "elements_sketch": [
+     "bin[0-10]",
+     "xtick[10]",
+     "top(bin[10-20])"
+    ],
+    "sketch_gesture": "loop around 0-10 bar and tick 10 with arrow curving up to top of 10-20 bar",
+    "source": "both"
+   },
+   {
+    "trial_id": "HCQ2_R_2E7bKzEVRvQoxPT",
+    "accuracy": 0.0,
+    "answer": {
+     "HCQ2": "True"
+    },
+    "chain": "PROJ(top(bin[10-20]) ↔ top(bin[40-50])) → CMP(≈ 'the same') → CONFUSED(numbers) → ANSWER(True) ?wrong:equal-judged-as-more",
+    "ops": [
+     "PROJ",
+     "CMP",
+     "CONFUSED"
+    ],
+    "elements_text": [
+     "xtick"
+    ],
+    "elements_sketch": [
+     "top(bin[10-20])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "slightly arched horizontal line at ~180 from 10-20 to 40-50 bar",
+    "source": "both"
+   },
+   {
+    "trial_id": "HCQ2_R_1E7h0Cr6gK7k9Zg",
+    "accuracy": 1.0,
+    "answer": {
+     "HCQ2": "False"
+    },
+    "chain": "PROJ(yaxis[180] → top(bin[40-50])) (dotted reference line) → CMPvis(height(bin[40-50]) > height(bin[10-20])) 'slightly' → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bin[40-50]"
+    ],
+    "elements_sketch": [
+     "grid[y=180]",
+     "top(bin[10-20])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "dotted horizontal line along y=180 from y-axis to 40-50 bar",
+    "source": "both"
+   },
+   {
+    "trial_id": "HCQ2_R_2zbWL29UVPi0v1e",
+    "accuracy": 1.0,
+    "answer": {
+     "HCQ2": "False"
+    },
+    "chain": "PROJ(yaxis → top(bin[10-20])) → PROJ(yaxis → top(bin[40-50])) → LOOK(grid) → CMPvis(height(bin[40-50]) > height(bin[10-20])) → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "LOOK",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "height(bin)",
+     "grid"
+    ],
+    "elements_sketch": [
+     "yaxis",
+     "top(bin[10-20])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "two arrows from y-axis: short one to 10-20 bar top, longer one at ~180 to 40-50 bar top",
+    "source": "both"
+   },
+   {
+    "trial_id": "HCQ2_R_vHJZLdwKhmAzoLn",
+    "accuracy": 1.0,
+    "answer": {
+     "HCQ2": "False"
+    },
+    "chain": "FIND(bin[10-20]) → FIND(bin[40-50]) → PROJ(top(bin[10-20]) ↔ top(bin[40-50])) (horizontal reference line) → CMPvis(height(bin[40-50]) > height(bin[10-20])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bin[40-50]",
+     "bin[10-20]"
+    ],
+    "elements_sketch": [
+     "top(bin[10-20])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "wavy horizontal line at ~178 linking 10-20 and 40-50 bar tops",
+    "source": "both"
+   },
+   {
+    "trial_id": "HCQ2_R_3R7JWvNDOwOuGrj",
+    "accuracy": 1.0,
+    "answer": {
+     "HCQ2": "False"
+    },
+    "chain": "FIND(bin[10-20]) → FIND(bin[40-50]) → PROJ(top(bin[10-20]) ↔ top(bin[40-50])) (horizontal reference line) → CMPvis(height(bin[40-50]) > height(bin[10-20])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bin[40-50]"
+    ],
+    "elements_sketch": [
+     "top(bin[10-20])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "horizontal line from 10-20 bar top across to 40-50 bar top",
+    "source": "both"
+   },
+   {
+    "trial_id": "HCQ2_R_vYxQQ6kbWuIPPSV",
+    "accuracy": 0.0,
+    "answer": {
+     "HCQ2": "True"
+    },
+    "chain": "FIND(bin[20-30]) ?wrong:wrong-bin(20-30 for 10-20) → READ(top(bin[20-30]), y)≈217 → FIND(bin[40-50]) → READ(top(bin[40-50]), y)≈179 → CMP(217 > 179) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "READ",
+     "FIND",
+     "READ",
+     "CMP"
+    ],
+    "elements_text": [
+     "bin[20-30]",
+     "bin[40-50]"
+    ],
+    "elements_sketch": [
+     "top(bin[20-30])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "arrows pointing at tops of 20-30 and 40-50 bars",
+    "source": "both"
+   },
+   {
+    "trial_id": "HCQ2_R_DSmeZLcUwsRPTe9",
+    "accuracy": 1.0,
+    "answer": {
+     "HCQ2": "False"
+    },
+    "chain": "FIND(bin[10-20]) → FIND(bin[40-50]) → PROJ(top(bin[10-20]) ↔ top(bin[40-50])) (horizontal reference line) → CMPvis(height(bin[40-50]) > height(bin[10-20])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bin[40-50]",
+     "bin[10-20]"
+    ],
+    "elements_sketch": [
+     "top(bin[10-20])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "horizontal line at ~174 from 10-20 bar top to 40-50 bar",
+    "source": "both"
+   },
+   {
+    "trial_id": "HCQ2_R_3iO6HqnDwQk14cZ",
+    "accuracy": 1.0,
+    "answer": {
+     "HCQ2": "False"
+    },
+    "chain": "LOOK(top(bin[10-20])) → LOOK(top(bin[40-50])) → CMP(gap to grid[y=180]) → CMPvis(height(bin[40-50]) > height(bin[10-20])) → ANSWER(False)",
+    "ops": [
+     "LOOK",
+     "LOOK",
+     "CMP",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bin[40-50]",
+     "grid[y=180]"
+    ],
+    "elements_sketch": [
+     "top(bin[10-20])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "small marks at top-left corner of 10-20 bar and top-right of 40-50 bar near 180",
+    "source": "both"
+   },
+   {
+    "trial_id": "HCQ2_R_2QGUeAYb1lmdcHL",
+    "accuracy": 1.0,
+    "answer": {
+     "HCQ2": "False"
+    },
+    "chain": "FIND(xtick[10],xtick[20],xtick[40],xtick[50]) → FIND(bin[10-20], bin[40-50]) → PROJ(top(bin[10-20]) → bin[40-50]) → CMPvis(height(bin[40-50]) > height(bin[10-20])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bin[40-50]",
+     "bin[10-20]"
+    ],
+    "elements_sketch": [
+     "xtick[10]",
+     "xtick[20]",
+     "xtick[40]",
+     "xtick[50]",
+     "top(bin[10-20])",
+     "yaxis"
+    ],
+    "sketch_gesture": "circles on x ticks 10, 20, 40, 50; horizontal line from y-axis along 10-20 bar top to 40-50 bar",
+    "source": "both"
+   },
+   {
+    "trial_id": "HCQ2_R_1P1APSbf9y0uGtL",
+    "accuracy": 1.0,
+    "answer": {
+     "HCQ2": "False"
+    },
+    "chain": "FIND(bin[10-20]) → FIND(bin[40-50]) → PROJ(top(bin[10-20]) ↔ top(bin[40-50])) (horizontal reference line) → CMPvis(height(bin[40-50]) > height(bin[10-20])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bin[40-50]",
+     "bin[10-20]"
+    ],
+    "elements_sketch": [
+     "top(bin[10-20])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "horizontal line at ~175 from 10-20 bar top to past 40-50 bar",
+    "source": "both"
+   },
+   {
+    "trial_id": "HCQ2_R_1kGflyCImAFfv3L",
+    "accuracy": 1.0,
+    "answer": {
+     "HCQ2": "False"
+    },
+    "chain": "FIND(xtick[50]) → PROJ(xtick[50] → yaxis) at y≈100 ?wrong:projected-50-60-bin → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "xtick[50]",
+     "top(bin[50-60])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line up from x=50 to ~100 then horizontal to y-axis at 100",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "HCQ2_R_3D8wKq4NHSwZu4i",
+    "accuracy": 1.0,
+    "answer": {
+     "HCQ2": "False"
+    },
+    "chain": "PROJ(top(bin[30-40]) → yaxis) ?wrong:compared-30-40-not-40-50 → PROJ(top(bin[10-20]) → yaxis) → ARGMAX → GIST('30 to 40 km is most popular') → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "ARGMAX",
+     "GIST"
+    ],
+    "elements_text": [
+     "bin[30-40]"
+    ],
+    "elements_sketch": [
+     "top(bin[30-40])",
+     "top(bin[10-20])",
+     "yaxis"
+    ],
+    "sketch_gesture": "arrows from tops of 30-40 (~245) and 10-20 (~175) bars to y-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "HCQ2_R_2BgNvVo1U4htyBO",
+    "accuracy": 1.0,
+    "answer": {
+     "HCQ2": "False"
+    },
+    "chain": "PROJ(top(bin[10-20]) → yaxis) → PROJ(top(bin[40-50]) → 20-40 region) → CMPvis(height(bin[40-50]) > height(bin[10-20])) → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "height(bin[40-50])"
+    ],
+    "elements_sketch": [
+     "top(bin[10-20])",
+     "top(bin[40-50])",
+     "yaxis"
+    ],
+    "sketch_gesture": "line from y-axis to 10-20 bar top; two short parallel lines at ~180 and ~175 over 20-40 bars",
+    "source": "both"
+   },
+   {
+    "trial_id": "HCQ2_R_qJcU4U0KnWs6Lnz",
+    "accuracy": 1.0,
+    "answer": {
+     "HCQ2": "False"
+    },
+    "chain": "LOOK({bin[0-10],bin[10-20]}) → LOOK({bin[30-40],bin[40-50]}) → CMPvis → ANSWER(False)",
+    "ops": [
+     "LOOK",
+     "LOOK",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "bin[0-10]",
+     "bin[10-20]",
+     "bin[30-40]",
+     "bin[40-50]"
+    ],
+    "sketch_gesture": "loops around 0-20 bars and around 30-50 bars",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "HCQ2_R_2ZCWA6Wf2jsOGIb",
+    "accuracy": 1.0,
+    "answer": {
+     "HCQ2": "False"
+    },
+    "chain": "FIND(bin[10-20]) → FIND(bin[40-50]) → PROJ(top(bin[10-20]) ↔ top(bin[40-50])) (horizontal reference line) → CMPvis(height(bin[40-50]) > height(bin[10-20])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "yaxis",
+     "top(bin[10-20])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at ~178 across to 40-50 bar top",
+    "source": "both"
+   },
+   {
+    "trial_id": "HCQ2_R_3hokieevT5vHr8Y",
+    "accuracy": 0.0,
+    "answer": {
+     "HCQ2": "True"
+    },
+    "chain": "FIND(bin[20-30]) ?wrong:wrong-bin(10-20 read as bar right of tick 20) → PROJ(top(bin[20-30]) → yaxis) → READ(y)≈220-240 → CMP(> bin[40-50]) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "READ",
+     "CMP"
+    ],
+    "elements_text": [
+     "xtick[10]",
+     "xtick[20]",
+     "xtick[40]",
+     "xtick[50]"
+    ],
+    "elements_sketch": [
+     "top(bin[20-30])",
+     "yaxis"
+    ],
+    "sketch_gesture": "line from 20-30 bar top up-left to y-axis near 220-240 with arrowheads",
+    "source": "both"
+   },
+   {
+    "trial_id": "HCQ2_R_1FtyDyJ5x9l9fws",
+    "accuracy": 1.0,
+    "answer": {
+     "HCQ2": "False"
+    },
+    "chain": "FIND(xtick[10]) → FIND(xtick[50]) → PROJ(top(bin[10-20]) ↔ top(bin[40-50])) → PROJ(→ yaxis) → CMP(≈ 'same figure') → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "CMP"
+    ],
+    "elements_text": [
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "xtick[10]",
+     "xtick[50]",
+     "top(bin[10-20])",
+     "top(bin[40-50])",
+     "yaxis"
+    ],
+    "sketch_gesture": "verticals up from x=10 and x≈48, joined by horizontal line at ~175 extending to y-axis",
+    "source": "both"
+   }
+  ]
+ },
+ "HCQ3": {
+  "qid": "HCQ3",
+  "chart": "HC",
+  "task": "find_extremum",
+  "question": "What is the most common distance customers have travelled?",
+  "reference_chain": "SCAN({bin[*]}) → ARGMAX({bin[*]}, h)=bin[30-40] → FIND(xtick[30], xtick[40]) → ANSWER(30-40 km)",
+  "notes": "All three trials are wrong and none performs the ARGMAX: one equates 'most common distance' with the largest x value (110), one reasons that the common distance is the one everybody covered and takes the lowest bar (ARGMIN), and one projects a mid-height bar. The question wording ('most common distance') and the edge-labelled x axis are the pivotal stumbling blocks.",
+  "new_symbols": {
+   "ANSWER(v)": "final submitted response"
+  },
+  "strategies": [
+   {
+    "chain": "KNOW(misread 'most common') → SCAN({bin}) → ARGMIN(h) ?wrong:argmin-not-argmax",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "It had to be the lowest distance for all of them to have covered",
+    "trial_ids": [
+     "HCQ3_R_1FtyDyJ5x9l9fws"
+    ]
+   },
+   {
+    "chain": "FIND(xtick[max]) ?wrong:MAP(largest x → most common)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "I used the graph to find my answer.",
+    "trial_ids": [
+     "HCQ3_R_3hokieevT5vHr8Y"
+    ]
+   },
+   {
+    "chain": "FIND(xtick[70]) → PROJ(top(bin[60-70]) → yaxis) ?wrong:non-max-bin",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "THE GRAPHIC IS CLEAR WITH COLORS IT WAS CLEAR",
+    "trial_ids": [
+     "HCQ3_R_1kGflyCImAFfv3L"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "HCQ3_R_1kGflyCImAFfv3L",
+    "accuracy": 0.0,
+    "answer": {
+     "HCQ3": "70 - 80 Km"
+    },
+    "chain": "FIND(xtick[70]) → PROJ(top(bin[60-70]) → yaxis)≈118 ?wrong:not-argmax(picked a local bar) → ANSWER(70-80) ?wrong:tick-bin-misalignment",
+    "ops": [
+     "FIND",
+     "PROJ"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "xtick[70]",
+     "top(bin[60-70])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line up from x=70 to ~118 and horizontal line to y-axis",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "HCQ3_R_3hokieevT5vHr8Y",
+    "accuracy": 0.0,
+    "answer": {
+     "HCQ3": "100 - 110 Km"
+    },
+    "chain": "FIND(xtick[110]) ?wrong:MAP(max x value → most common) → ANSWER(100-110)",
+    "ops": [
+     "FIND",
+     "MAP"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "xtick[110]"
+    ],
+    "sketch_gesture": "check mark / circle on the 110 x tick",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "HCQ3_R_1FtyDyJ5x9l9fws",
+    "accuracy": 0.0,
+    "answer": {
+     "HCQ3": "90 - 100 Km"
+    },
+    "chain": "KNOW('lowest distance all of them covered') ?wrong:interpreted-as-min-common-threshold → SCAN({bin[*]}) along low line → ARGMIN({bin[*]}, h)=bin[90-100] → ANSWER(90-100) ?wrong:argmin-not-argmax",
+    "ops": [
+     "KNOW",
+     "SCAN",
+     "ARGMIN"
+    ],
+    "elements_text": [
+     "bin[lowest]"
+    ],
+    "elements_sketch": [
+     "{bin[*]}",
+     "top(bin[90-100])"
+    ],
+    "sketch_gesture": "wavy horizontal line from y≈60 across all bars ending at 90-100 bar top (~50)",
+    "source": "both"
+   }
+  ]
+ },
+ "HC2Q1": {
+  "qid": "HC2Q1",
+  "chart": "HC2",
+  "task": "compute_derived_value",
+  "question": "How many people have traveled a distance between 20km and 40km?",
+  "reference_chain": "FIND({bin[20-30],bin[30-40]} | xtick labels) → PROJ(top → yaxis) → READ≈215 → PROJ(top → yaxis) → READ≈247 → SUM≈462",
+  "notes": "With range-labelled ticks almost everyone picked the right two bins (contrast HCQ1), so errors move to reading and arithmetic: underestimated tops (420, 453), odd sums (269), or no sum at all (260, 230). One participant explicitly believed bins might be cumulative and averaged instead of adding; another still added 10-20. Precise reading of tops between 20-unit gridlines is the pivotal step.",
+  "new_symbols": {
+   "ANSWER(v)": "final submitted response"
+  },
+  "strategies": [
+   {
+    "chain": "FIND({bin[20-30],bin[30-40]}) → READ/PROJ(top)×2 → SUM ?wrong:read-or-arithmetic",
+    "n": 3,
+    "n_correct": 0,
+    "n_incorrect": 3,
+    "quote": "I just markeked the highest Distance between  20-40 Kn and at the highs",
+    "trial_ids": [
+     "HC2Q1_R_3HjF7OuUrwLsqvT",
+     "HC2Q1_R_2WNi2HH78I5OZOO",
+     "HC2Q1_R_2AQYp4GVL23l9aY"
+    ]
+   },
+   {
+    "chain": "FIND(xtick labels) → PROJ(→ yaxis) → READ(range 200-240) ?wrong:no-sum",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "Took the two bars that correspond to this and estimated volume from left hand axis",
+    "trial_ids": [
+     "HC2Q1_R_2YFI0HJHbxlYEle"
+    ]
+   },
+   {
+    "chain": "FIND(2 bins) → MAP(bins cumulative) ?wrong → AVG ?wrong:no-sum",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "maybe the people of the 20-30 bar are included in the 30-40 bar",
+    "trial_ids": [
+     "HC2Q1_R_21b7may8A1p29mG"
+    ]
+   },
+   {
+    "chain": "FIND(3 bins incl. 10-20) ?wrong → READ×3 → SUM → CONFUSED(boundaries)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "a little confusing wheter i should add the people who walked a little less or a little more",
+    "trial_ids": [
+     "HC2Q1_R_3qlo0gTj7qX5NaV"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "HC2Q1_R_3HjF7OuUrwLsqvT",
+    "accuracy": 0.0,
+    "answer": {
+     "HC2Q1": "269"
+    },
+    "chain": "FIND({bin[20-30],bin[30-40]}) → READ(top, y)×2 → SUM ?wrong:arithmetic/reading(269)",
+    "ops": [
+     "FIND",
+     "READ",
+     "SUM"
+    ],
+    "elements_text": [
+     "bin[20-30]",
+     "bin[30-40]"
+    ],
+    "elements_sketch": [
+     "bin[20-30]",
+     "bin[30-40]"
+    ],
+    "sketch_gesture": "bracket drawn over the 20-30 and 30-40 bars",
+    "source": "both"
+   },
+   {
+    "trial_id": "HC2Q1_R_2YFI0HJHbxlYEle",
+    "accuracy": 0.0,
+    "answer": {
+     "HC2Q1": "260"
+    },
+    "chain": "FIND({xtick[20-30],xtick[30-40]}) → PROJ(→ yaxis) → READ(yaxis[200..240]) → ANSWER(260) ?wrong:no-sum(read single axis level/range)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "READ"
+    ],
+    "elements_text": [
+     "bin",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "xtick[20-30]",
+     "xtick[30-40]",
+     "ytick[200..240]"
+    ],
+    "sketch_gesture": "box around 20-30 and 30-40 labels, line to a box around y-axis ticks 200-240",
+    "source": "both"
+   },
+   {
+    "trial_id": "HC2Q1_R_2WNi2HH78I5OZOO",
+    "accuracy": 0.0,
+    "answer": {
+     "HC2Q1": "453"
+    },
+    "chain": "FIND({xtick[20-30],xtick[30-40]}) → LOOK(top(bin[20-30])) → LOOK(top(bin[30-40])) → SUM(x + x) → READ ?wrong:imprecise-read-between-gridlines(453) → DOUBT(tick interval)",
+    "ops": [
+     "FIND",
+     "LOOK",
+     "LOOK",
+     "SUM",
+     "READ",
+     "DOUBT"
+    ],
+    "elements_text": [
+     "ytick"
+    ],
+    "elements_sketch": [
+     "xtick[20-30]",
+     "xtick[30-40]",
+     "top(bin[20-30])",
+     "top(bin[30-40])"
+    ],
+    "sketch_gesture": "circle around 20-30 and 30-40 labels; X marks on the two bar tops; 'x + x =' written",
+    "source": "both"
+   },
+   {
+    "trial_id": "HC2Q1_R_3qlo0gTj7qX5NaV",
+    "accuracy": 0.0,
+    "answer": {
+     "HC2Q1": "800"
+    },
+    "chain": "FIND({bin[10-20],bin[20-30],bin[30-40]}) ?wrong:included-10-20 → READ(top)×3 → SUM ?wrong:overestimate(800) → CONFUSED(bin boundaries 'a little less or a little more')",
+    "ops": [
+     "FIND",
+     "READ",
+     "SUM",
+     "CONFUSED"
+    ],
+    "elements_text": [
+     "bin[20..40]"
+    ],
+    "elements_sketch": [
+     "top(bin[10-20])",
+     "top(bin[20-30])",
+     "top(bin[30-40])"
+    ],
+    "sketch_gesture": "short marks on tops of 10-20, 20-30 and 30-40 bars",
+    "source": "both"
+   },
+   {
+    "trial_id": "HC2Q1_R_21b7may8A1p29mG",
+    "accuracy": 0.0,
+    "answer": {
+     "HC2Q1": "230"
+    },
+    "chain": "FIND({bin[20-30],bin[30-40]}) → MAP(bins cumulative/overlapping) ?wrong:assumed-30-40-includes-20-30 → AVG/PCT(bin[20-30], bin[30-40])≈230 ?wrong:no-sum",
+    "ops": [
+     "FIND",
+     "MAP",
+     "AVG"
+    ],
+    "elements_text": [
+     "bin[20-30]",
+     "bin[30-40]"
+    ],
+    "elements_sketch": [
+     "bin[20-30]",
+     "bin[30-40]",
+     "xtick[20-30]",
+     "xtick[30-40]"
+    ],
+    "sketch_gesture": "bracket between tops of 20-30 and 30-40 at ~228, and brace under their labels",
+    "source": "both"
+   },
+   {
+    "trial_id": "HC2Q1_R_2AQYp4GVL23l9aY",
+    "accuracy": 0.0,
+    "answer": {
+     "HC2Q1": "420"
+    },
+    "chain": "FIND({bin[20-30],bin[30-40]}) → PROJ(top(bin[20-30]) → yaxis)≈210 → PROJ(top(bin[30-40]) → yaxis)≈245 → SUM ?wrong:underestimate(420)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "SUM"
+    ],
+    "elements_text": [
+     "bin[20..40]",
+     "top(bin)"
+    ],
+    "elements_sketch": [
+     "top(bin[20-30])",
+     "top(bin[30-40])",
+     "yaxis"
+    ],
+    "sketch_gesture": "lines from y-axis to tops of 20-30 (~210) and 30-40 (~245) bars",
+    "source": "both"
+   }
+  ]
+ },
+ "HC2Q2": {
+  "qid": "HC2Q2",
+  "chart": "HC2",
+  "task": "make_comparison",
+  "question": "More people have traveled the distance between 10 and 20 km than between 40 and 50 km. True or False?",
+  "reference_chain": "FIND(bin[10-20] | xtick label) → FIND(bin[40-50] | xtick label) → PROJ(top(bin[10-20]) → bin[40-50]) → CMPvis(height(bin[40-50]) > height(bin[10-20])) → ANSWER(False)",
+  "notes": "20/21 correct. With range labels the bins are found easily, and the near-tie (~176 vs ~179) is settled mostly by drawing a horizontal reference line from one bar top to the other or to the 180 gridline. A minority just marked both tops and compared. The only error came from marking the 20-30 bar instead of 10-20, and one correct answer was hedged as 'equal or slightly less'.",
+  "new_symbols": {
+   "PROJ(a ↔ b)": "horizontal reference line drawn between two mark tops for direct comparison",
+   "ANSWER(v)": "final submitted response"
+  },
+  "strategies": [
+   {
+    "chain": "FIND(bin[10-20]) → FIND(bin[40-50]) → PROJ(top ↔ top / to y-axis 180) reference line → CMPvis(40-50 > 10-20) → False",
+    "n": 15,
+    "n_correct": 15,
+    "n_incorrect": 0,
+    "quote": "I just drew a line across from the highest of 10-20Km to 40-50Kn to see if it higher or lower",
+    "trial_ids": [
+     "HC2Q2_R_3HjF7OuUrwLsqvT",
+     "HC2Q2_R_2UXCZ9C5l64SSxM",
+     "HC2Q2_R_2WNi2HH78I5OZOO",
+     "HC2Q2_R_s7KjkTnbS1R4AEN",
+     "HC2Q2_R_1ruyP2fs01EBume",
+     "HC2Q2_R_2XnbILPqlz7EVfh",
+     "HC2Q2_R_dmzzLQciMejEAQF",
+     "HC2Q2_R_1Sz5EK9PgAFUldT",
+     "HC2Q2_R_21b7may8A1p29mG",
+     "HC2Q2_R_2ARVdxy7i72DYgW",
+     "HC2Q2_R_pH3jYPUuhsiruJr",
+     "HC2Q2_R_1mg5BeiiV66yolL",
+     "HC2Q2_R_2AQYp4GVL23l9aY",
+     "HC2Q2_R_3Rwr5F6bciAzuf4",
+     "HC2Q2_R_1NeORuwehcuKOMn"
+    ]
+   },
+   {
+    "chain": "LOOK(top(bin[10-20])) → LOOK(top(bin[40-50])) (marks/boxes/arrows) → CMPvis → False",
+    "n": 4,
+    "n_correct": 4,
+    "n_incorrect": 0,
+    "quote": "40-50 bar appears to be closer to the 180 line than the 10-20 bar",
+    "trial_ids": [
+     "HC2Q2_R_12JUTlzcehwtUdN",
+     "HC2Q2_R_2YFI0HJHbxlYEle",
+     "HC2Q2_R_25RyReDyqsW6Mru",
+     "HC2Q2_R_3nP07ToNj9d03FE"
+    ]
+   },
+   {
+    "chain": "PROJ(top ↔ top) → CMP(≈) → DOUBT → False",
+    "n": 1,
+    "n_correct": 1,
+    "n_incorrect": 0,
+    "quote": "It is equal or slightly less. hard to tell",
+    "trial_ids": [
+     "HC2Q2_R_2qa33uKUNjCuE0q"
+    ]
+   },
+   {
+    "chain": "FIND(bin[20-30]) ?wrong:wrong-bin → LOOK(tops) → CMP(212 > 175) → True",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "find the mark on each statement, see which was higher",
+    "trial_ids": [
+     "HC2Q2_R_3qlo0gTj7qX5NaV"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "HC2Q2_R_3HjF7OuUrwLsqvT",
+    "accuracy": 1.0,
+    "answer": {
+     "HC2Q2": "False"
+    },
+    "chain": "FIND(bin[10-20]) → FIND(bin[40-50]) → PROJ(top(bin[10-20]) ↔ top(bin[40-50])) (reference line) → CMPvis(height(bin[40-50]) > height(bin[10-20])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bin[40-50]"
+    ],
+    "elements_sketch": [
+     "top(bin[10-20])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "horizontal line at ~174 from 10-20 bar top to past the 40-50 bar edge",
+    "source": "both"
+   },
+   {
+    "trial_id": "HC2Q2_R_2UXCZ9C5l64SSxM",
+    "accuracy": 1.0,
+    "answer": {
+     "HC2Q2": "False"
+    },
+    "chain": "FIND(bin[10-20]) → FIND(bin[40-50]) → PROJ(top(bin[10-20]) ↔ top(bin[40-50])) (reference line) → CMPvis(height(bin[40-50]) > height(bin[10-20])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bin[40-50]"
+    ],
+    "elements_sketch": [
+     "top(bin[10-20])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "wavy horizontal line at ~179 across from 10-20 to 40-50 bar top",
+    "source": "both"
+   },
+   {
+    "trial_id": "HC2Q2_R_12JUTlzcehwtUdN",
+    "accuracy": 1.0,
+    "answer": {
+     "HC2Q2": "False"
+    },
+    "chain": "LOOK(top(bin[10-20])) → LOOK(top(bin[40-50])) → CMPvis(height(bin[40-50]) > height(bin[10-20])) → ANSWER(False)",
+    "ops": [
+     "LOOK",
+     "LOOK",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bin[40-50]"
+    ],
+    "elements_sketch": [
+     "top(bin[10-20])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "arrows pointing down at tops of 10-20 and 40-50 bars",
+    "source": "both"
+   },
+   {
+    "trial_id": "HC2Q2_R_2YFI0HJHbxlYEle",
+    "accuracy": 1.0,
+    "answer": {
+     "HC2Q2": "False"
+    },
+    "chain": "LOOK(top(bin[10-20])) → LOOK(top(bin[40-50])) → CMP(distance to grid[y=180]) → CMPvis(height(bin[40-50]) > height(bin[10-20])) → ANSWER(False)",
+    "ops": [
+     "LOOK",
+     "LOOK",
+     "CMP",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bin[40-50]",
+     "bin[10-20]",
+     "grid[y=180]"
+    ],
+    "elements_sketch": [
+     "top(bin[10-20])",
+     "top(bin[40-50])",
+     "grid[y=180]"
+    ],
+    "sketch_gesture": "boxes around the tops of 10-20 and 40-50 bars spanning the 180 gridline",
+    "source": "both"
+   },
+   {
+    "trial_id": "HC2Q2_R_2WNi2HH78I5OZOO",
+    "accuracy": 1.0,
+    "answer": {
+     "HC2Q2": "False"
+    },
+    "chain": "FIND(bin[10-20]) → FIND(bin[40-50]) → PROJ(top(bin[10-20]) ↔ top(bin[40-50])) (reference line) → CMPvis(height(bin[40-50]) > height(bin[10-20])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bin[40-50]"
+    ],
+    "elements_sketch": [
+     "yaxis",
+     "top(bin[10-20])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "near-horizontal line from y-axis at ~181 to 40-50 bar top",
+    "source": "both"
+   },
+   {
+    "trial_id": "HC2Q2_R_3qlo0gTj7qX5NaV",
+    "accuracy": 0.0,
+    "answer": {
+     "HC2Q2": "True"
+    },
+    "chain": "FIND(bin[20-30]) ?wrong:wrong-bin(marked 20-30 for 10-20) → LOOK(top(bin[20-30]))≈212 → LOOK(top(bin[40-50]))≈175 → CMP(212 > 175) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "LOOK",
+     "LOOK",
+     "CMP"
+    ],
+    "elements_text": [
+     "annot[statement]"
+    ],
+    "elements_sketch": [
+     "top(bin[20-30])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "short horizontal marks on tops of 20-30 and 40-50 bars",
+    "source": "both"
+   },
+   {
+    "trial_id": "HC2Q2_R_2qa33uKUNjCuE0q",
+    "accuracy": 1.0,
+    "answer": {
+     "HC2Q2": "False"
+    },
+    "chain": "PROJ(top(bin[10-20]) ↔ top(bin[40-50])) → CMP(≈ 'equal or slightly less') → DOUBT('hard to tell') → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "CMP",
+     "DOUBT"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(bin[10-20])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "horizontal line at ~175 from 10-20 bar to 40-50 bar",
+    "source": "both"
+   },
+   {
+    "trial_id": "HC2Q2_R_s7KjkTnbS1R4AEN",
+    "accuracy": 1.0,
+    "answer": {
+     "HC2Q2": "False"
+    },
+    "chain": "FIND(xtick[10-20], xtick[40-50]) → FIND(bin[10-20]) → FIND(bin[40-50]) → PROJ(top(bin[10-20]) ↔ top(bin[40-50])) (reference line) → CMPvis(height(bin[40-50]) > height(bin[10-20])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "FIND",
+     "PROJ",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bin[10-20]",
+     "bin[40-50]"
+    ],
+    "elements_sketch": [
+     "xtick[10-20]",
+     "xtick[40-50]",
+     "yaxis",
+     "top(bin[10-20])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "underlines below 10-20 and 40-50 labels; horizontal line from y-axis at ~173 across to 40-50 bar",
+    "source": "both"
+   },
+   {
+    "trial_id": "HC2Q2_R_1ruyP2fs01EBume",
+    "accuracy": 1.0,
+    "answer": {
+     "HC2Q2": "False"
+    },
+    "chain": "FIND(bin[10-20]) → FIND(bin[40-50]) → PROJ(top(bin[10-20]) ↔ top(bin[40-50])) (reference line) → CMPvis(height(bin[40-50]) > height(bin[10-20])) → ANSWER(False) (adjacency helps)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bin[40-50]"
+    ],
+    "elements_sketch": [
+     "yaxis",
+     "top(bin[10-20])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "wavy horizontal line from y-axis ~176 to 40-50 bar top",
+    "source": "both"
+   },
+   {
+    "trial_id": "HC2Q2_R_2XnbILPqlz7EVfh",
+    "accuracy": 1.0,
+    "answer": {
+     "HC2Q2": "False"
+    },
+    "chain": "PROJ(yaxis[180] → top(bin[10-20]) → bin[30-40]) → CMPvis(bin[40-50] > bin[10-20]) 'slightly' → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bin[40-50]"
+    ],
+    "elements_sketch": [
+     "yaxis",
+     "top(bin[10-20])"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at ~177 over 10-20 bar to the 30-40 bar",
+    "source": "both"
+   },
+   {
+    "trial_id": "HC2Q2_R_dmzzLQciMejEAQF",
+    "accuracy": 1.0,
+    "answer": {
+     "HC2Q2": "False"
+    },
+    "chain": "FIND(top(bin[40-50])) → PROJ(top(bin[40-50]) → top(bin[10-20])) → CMPvis(height(bin[40-50]) > height(bin[10-20])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bin[40-50]",
+     "bin[10-20]"
+    ],
+    "elements_sketch": [
+     "top(bin[10-20])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "oval on 40-50 bar top with arrow leftward to 10-20 bar top",
+    "source": "both"
+   },
+   {
+    "trial_id": "HC2Q2_R_1Sz5EK9PgAFUldT",
+    "accuracy": 1.0,
+    "answer": {
+     "HC2Q2": "False"
+    },
+    "chain": "FIND(bin[10-20]) → FIND(bin[40-50]) → PROJ(top(bin[10-20]) ↔ top(bin[40-50])) (reference line) → CMPvis(height(bin[40-50]) > height(bin[10-20])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bin[40-50]",
+     "bin[10-20]"
+    ],
+    "elements_sketch": [
+     "yaxis",
+     "ytick[180]",
+     "top(bin[10-20])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "loop at y-axis 180 and horizontal line along 180 to 40-50 bar top",
+    "source": "both"
+   },
+   {
+    "trial_id": "HC2Q2_R_25RyReDyqsW6Mru",
+    "accuracy": 1.0,
+    "answer": {
+     "HC2Q2": "False"
+    },
+    "chain": "FIND(xtick[10-20]) → FIND(xtick[40-50]) → LOOK(top(bin[10-20])) → LOOK(top(bin[40-50])) → CMPvis(height diff 'space difference') → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "LOOK",
+     "LOOK",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "xtick[10-20]",
+     "xtick[40-50]"
+    ],
+    "elements_sketch": [
+     "xtick[10-20]",
+     "xtick[40-50]",
+     "top(bin[10-20])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "circles on 10-20 and 40-50 labels and boxes around the two bar tops",
+    "source": "both"
+   },
+   {
+    "trial_id": "HC2Q2_R_21b7may8A1p29mG",
+    "accuracy": 1.0,
+    "answer": {
+     "HC2Q2": "False"
+    },
+    "chain": "FIND(bin[10-20]) → FIND(bin[40-50]) → PROJ(top(bin[10-20]) ↔ top(bin[40-50])) (reference line) → CMPvis(height(bin[40-50]) > height(bin[10-20])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bin"
+    ],
+    "elements_sketch": [
+     "top(bin[10-20])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "horizontal line at ~176 from 10-20 bar to past 40-50 bar",
+    "source": "both"
+   },
+   {
+    "trial_id": "HC2Q2_R_2ARVdxy7i72DYgW",
+    "accuracy": 1.0,
+    "answer": {
+     "HC2Q2": "False"
+    },
+    "chain": "FIND(bin[10-20]) → FIND(bin[40-50]) → PROJ(yaxis → top(bin[10-20]) → top(bin[40-50])) → CMPvis → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "bin[10-20]",
+     "bin[40-50]",
+     "yaxis",
+     "top(bin[10-20])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "vertical strokes inside 10-20 and 40-50 bars, horizontal lines from y-axis at ~180 with ovals on both bar tops",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "HC2Q2_R_pH3jYPUuhsiruJr",
+    "accuracy": 1.0,
+    "answer": {
+     "HC2Q2": "False"
+    },
+    "chain": "FIND(bin[10-20]) → FIND(bin[40-50]) → PROJ(top(bin[10-20]) ↔ top(bin[40-50])) (reference line) → CMPvis(height(bin[40-50]) > height(bin[10-20])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bin[40-50]",
+     "bin[10-20]",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "yaxis",
+     "top(bin[10-20])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "loop at y-axis 180 and wavy line across to 40-50 bar top with end tick",
+    "source": "both"
+   },
+   {
+    "trial_id": "HC2Q2_R_1mg5BeiiV66yolL",
+    "accuracy": 1.0,
+    "answer": {
+     "HC2Q2": "False"
+    },
+    "chain": "PROJ(yaxis[180] → bin[40-50] edge) → FIND(xtick[40-50]) → CMPvis(top(bin[40-50]) higher 'by a few millimeters') → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "line"
+    ],
+    "elements_sketch": [
+     "yaxis",
+     "top(bin[10-20])",
+     "bin[40-50]",
+     "xtick[40-50]"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at ~178 over 10-20 bar to 40-50 left edge; vertical line down to 40-50 label",
+    "source": "both"
+   },
+   {
+    "trial_id": "HC2Q2_R_3nP07ToNj9d03FE",
+    "accuracy": 1.0,
+    "answer": {
+     "HC2Q2": "False"
+    },
+    "chain": "LOOK(top(bin[10-20])) → LOOK(top(bin[40-50])) → CMPvis(height(bin[40-50]) > height(bin[10-20])) → ANSWER(False)",
+    "ops": [
+     "LOOK",
+     "LOOK",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bin[10-20]",
+     "bin[40-50]"
+    ],
+    "elements_sketch": [
+     "top(bin[10-20])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "down arrows and thick marks on tops of 10-20 and 40-50 bars",
+    "source": "both"
+   },
+   {
+    "trial_id": "HC2Q2_R_2AQYp4GVL23l9aY",
+    "accuracy": 1.0,
+    "answer": {
+     "HC2Q2": "False"
+    },
+    "chain": "FIND(bin[10-20]) → FIND(bin[40-50]) → PROJ(top(bin[10-20]) ↔ top(bin[40-50])) (reference line) → CMPvis(height(bin[40-50]) > height(bin[10-20])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "top(bin[10-20])",
+     "bin[40-50]"
+    ],
+    "elements_sketch": [
+     "yaxis",
+     "top(bin[10-20])",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at ~175 through 10-20 top to past 40-50 bar",
+    "source": "both"
+   },
+   {
+    "trial_id": "HC2Q2_R_3Rwr5F6bciAzuf4",
+    "accuracy": 1.0,
+    "answer": {
+     "HC2Q2": "False"
+    },
+    "chain": "PROJ(yaxis → top(bin[10-20])) → PROJ(yaxis[180] → bin[30-40]) → READ(ytick)=v? → CMP → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "READ",
+     "CMP"
+    ],
+    "elements_text": [
+     "ytick"
+    ],
+    "elements_sketch": [
+     "yaxis",
+     "ytick[180]",
+     "top(bin[10-20])"
+    ],
+    "sketch_gesture": "two horizontal lines from y-axis: one at ~175 to 10-20 bar, one at ~180 to 30-40 bar",
+    "source": "both"
+   },
+   {
+    "trial_id": "HC2Q2_R_1NeORuwehcuKOMn",
+    "accuracy": 1.0,
+    "answer": {
+     "HC2Q2": "False"
+    },
+    "chain": "LOOK(bin[10-20]) → LOOK(bin[40-50]) → PROJ(top(bin[40-50]) → yaxis) → CMPvis → ANSWER(False)",
+    "ops": [
+     "LOOK",
+     "LOOK",
+     "PROJ",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bin"
+    ],
+    "elements_sketch": [
+     "bin[10-20]",
+     "bin[40-50]",
+     "yaxis",
+     "top(bin[40-50])"
+    ],
+    "sketch_gesture": "vertical strokes inside 10-20 and 40-50 bars; arrow from 40-50 top leftward to y-axis at ~180",
+    "source": "both"
+   }
+  ]
+ },
+ "HC2Q3": {
+  "qid": "HC2Q3",
+  "chart": "HC2",
+  "task": "find_extremum",
+  "question": "What is the most common distance customers have travelled?",
+  "reference_chain": "SCAN({bin[*]}) → ARGMAX({bin[*]}, h)=bin[30-40] → READ(xtick label)=30-40 → ANSWER(30-40 km)",
+  "notes": "Both trials fail before any extremum search: one reads the axis as a sequence starting from zero and answers the first bin, the other draws a question mark over the tallest bars and declares it unanswerable. The interpretation of 'most common distance' as 'tallest bin' is the missing link.",
+  "new_symbols": {
+   "ANSWER(v)": "final submitted response"
+  },
+  "strategies": [
+   {
+    "chain": "FIND(xtick[0-10]) → SCAN(xaxis) → MAP(first bin) ?wrong:not-argmax",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "You start moving from Zero to high",
+    "trial_ids": [
+     "HC2Q3_R_2AQYp4GVL23l9aY"
+    ]
+   },
+   {
+    "chain": "LOOK(tallest bins) → CONFUSED(task) → impossible",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "Not sure how to answer",
+    "trial_ids": [
+     "HC2Q3_R_3Rwr5F6bciAzuf4"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "HC2Q3_R_2AQYp4GVL23l9aY",
+    "accuracy": 0.0,
+    "answer": {
+     "HC2Q3": "0 - 10 Km"
+    },
+    "chain": "FIND(xtick[0-10]) → SCAN(xaxis left→right) → MAP(first bin → answer) ?wrong:start-at-zero-not-argmax → ANSWER(0-10)",
+    "ops": [
+     "FIND",
+     "SCAN",
+     "MAP"
+    ],
+    "elements_text": [
+     "xaxis"
+    ],
+    "elements_sketch": [
+     "xtick[0-10]",
+     "xaxis"
+    ],
+    "sketch_gesture": "loop around 0-10 label with an arrow along x-axis labels to the right",
+    "source": "both"
+   },
+   {
+    "trial_id": "HC2Q3_R_3Rwr5F6bciAzuf4",
+    "accuracy": 0.0,
+    "answer": {
+     "HC2Q3": "Impossible to answer with this visualization."
+    },
+    "chain": "LOOK({bin[30-40],bin[40-50]}) → CONFUSED(task) → ANSWER(impossible)",
+    "ops": [
+     "LOOK",
+     "CONFUSED"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bin[30-40]",
+     "bin[40-50]"
+    ],
+    "sketch_gesture": "large question mark drawn over 30-40 and 40-50 bars",
+    "source": "both"
+   }
+  ]
+ },
+ "PCQ1": {
+  "qid": "PCQ1",
+  "chart": "PC",
+  "task": "retrieve_value",
+  "question": "What is the approximate global smartphone market share (in %) of Samsung?",
+  "reference_chain": "FIND(slice[Samsung]) → READ(angle(slice[Samsung]))≈90° → RATIO(90°/360°) → PCT ≈25%",
+  "notes": "All six trials are wrong, yet nearly every sketch correctly isolates Samsung as a right-angle quarter. The errors are in the angle-to-percent conversion: 90° reported as 90%, a right angle read as 50%, 'quarter' tangled with 45 degrees (44), or a half-of-half estimate (23) entered as 48. Pie chart failures here are conceptual (degrees vs. percent), not perceptual.",
+  "new_symbols": {
+   "ANSWER(v)": "final submitted response"
+  },
+  "strategies": [
+   {
+    "chain": "FIND(slice[Samsung]) → READ(angle)=90° → MAP(angle → %) ?wrong:degree/percent-confusion",
+    "n": 3,
+    "n_correct": 0,
+    "n_incorrect": 3,
+    "quote": "Which is 90% on the pie chart of the 360",
+    "trial_ids": [
+     "PCQ1_R_2ZCWA6Wf2jsOGIb",
+     "PCQ1_R_Uyc5ozKwAykkAiR",
+     "PCQ1_R_2Ed9wQrWEbHKZvv"
+    ]
+   },
+   {
+    "chain": "FIND(slice[Samsung]) → LOOK/GIST(traced slice) → ANSWER(estimate) ?wrong",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "Look closely at the graph to see what the percentage is.",
+    "trial_ids": [
+     "PCQ1_R_3G94sLKEDU4CAIr",
+     "PCQ1_R_qJcU4U0KnWs6Lnz"
+    ]
+   },
+   {
+    "chain": "PROJ(diameter → halves 50%) → GROUP(Samsung+Others)=50% → RATIO(/2)≈23 → ANSWER(48) ?wrong:entry-slip",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "The line in the middle represent 50% on each side and when we devide the half that sunmsung and others share we can see we have more or less 23%",
+    "trial_ids": [
+     "PCQ1_R_2AQYp4GVL23l9aY"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "PCQ1_R_2Ed9wQrWEbHKZvv",
+    "accuracy": 0.0,
+    "answer": {
+     "PCQ1": "44"
+    },
+    "chain": "FIND(slice[Samsung]) → PROJ(edge(slice[Samsung]) as radii) → READ(angle(slice[Samsung]))≈90° → MAP(quarter → 45 degrees) ?wrong:angle-percent-confusion → ANSWER(44)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "READ",
+     "MAP"
+    ],
+    "elements_text": [
+     "chart",
+     "angle(slice[Samsung])"
+    ],
+    "elements_sketch": [
+     "edge(slice[Samsung])",
+     "center(chart)"
+    ],
+    "sketch_gesture": "traced the two radii bounding Samsung (vertical and horizontal) forming a right angle",
+    "source": "both"
+   },
+   {
+    "trial_id": "PCQ1_R_3G94sLKEDU4CAIr",
+    "accuracy": 0.0,
+    "answer": {
+     "PCQ1": "80"
+    },
+    "chain": "FIND(slice[Samsung]) → LOOK(slice[Samsung]) traced → MAP(angle 90° → %) ?wrong:degrees-or-misread(80) → ANSWER(80)",
+    "ops": [
+     "FIND",
+     "LOOK",
+     "MAP"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "slice[Samsung]"
+    ],
+    "sketch_gesture": "outline traced around the Samsung quarter slice",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "PCQ1_R_qJcU4U0KnWs6Lnz",
+    "accuracy": 0.0,
+    "answer": {
+     "PCQ1": "30"
+    },
+    "chain": "FIND(slice[Samsung]) → GIST(slice[Samsung]) ?wrong:overestimate(30) → ANSWER(30)",
+    "ops": [
+     "FIND",
+     "GIST"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "slice[Samsung]"
+    ],
+    "sketch_gesture": "loop enclosing the Samsung slice",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "PCQ1_R_Uyc5ozKwAykkAiR",
+    "accuracy": 0.0,
+    "answer": {
+     "PCQ1": "50"
+    },
+    "chain": "FIND(slice[Samsung]) → READ(angle(slice[Samsung]))=90° (right angle) → MAP(right angle → 50%) ?wrong:quarter-read-as-half → ANSWER(50)",
+    "ops": [
+     "FIND",
+     "READ",
+     "MAP"
+    ],
+    "elements_text": [
+     "angle(slice[Samsung])"
+    ],
+    "elements_sketch": [
+     "angle(slice[Samsung])",
+     "center(chart)"
+    ],
+    "sketch_gesture": "small right-angle mark at the pie center inside Samsung",
+    "source": "both"
+   },
+   {
+    "trial_id": "PCQ1_R_2ZCWA6Wf2jsOGIb",
+    "accuracy": 0.0,
+    "answer": {
+     "PCQ1": "90"
+    },
+    "chain": "FIND(slice[Samsung]) → READ(angle(slice[Samsung]))=90° → MAP(90° of 360 → 90%) ?wrong:degrees-reported-as-percent → ANSWER(90)",
+    "ops": [
+     "FIND",
+     "READ",
+     "MAP"
+    ],
+    "elements_text": [
+     "slice[Samsung]",
+     "angle"
+    ],
+    "elements_sketch": [
+     "slice[Samsung]"
+    ],
+    "sketch_gesture": "outline traced around the Samsung quarter slice",
+    "source": "both"
+   },
+   {
+    "trial_id": "PCQ1_R_2AQYp4GVL23l9aY",
+    "accuracy": 0.0,
+    "answer": {
+     "PCQ1": "48"
+    },
+    "chain": "PROJ(diameter vertical → halves=50% each) → PROJ(radius horizontal) → GROUP({slice[Samsung],slice[Others]}) = 50% → RATIO(half/2)≈23% for Samsung → ANSWER(48) ?wrong:entry-slip(self-reports 23)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "GROUP",
+     "RATIO"
+    ],
+    "elements_text": [
+     "line[middle]",
+     "slice[Samsung]",
+     "slice[Others]"
+    ],
+    "elements_sketch": [
+     "chart",
+     "edge(slice[Samsung])",
+     "slice[Others]"
+    ],
+    "sketch_gesture": "vertical diameter through pie and horizontal radius separating Samsung from Others",
+    "source": "both"
+   }
+  ]
+ },
+ "PCQ2": {
+  "qid": "PCQ2",
+  "chart": "PC",
+  "task": "find_extremum",
+  "question": "Which company has the largest global market share for smart phones?",
+  "reference_chain": "SCAN({slice[*]}) → ARGMAX({slice[company]}, angle) excluding slice[Others] → CMPvis(angle(Samsung) > angle(Others) or KNOW(Others ≠ company)) → ANSWER(Samsung)",
+  "notes": "Both trials draw the same boundaries (vertical diameter plus Samsung/Others radius) and conclude the two quarters are visually tied. Neither uses the fact that 'Others' is not a company; one answers Others, the other gives up. The pivotal elements are the near-equal Samsung and Others slices and the semantic status of the Others label.",
+  "new_symbols": {
+   "ANSWER(v)": "final submitted response"
+  },
+  "strategies": [
+   {
+    "chain": "FIND(Samsung) → FIND(Others) → PROJ(edges) → CMPvis(≈) → DOUBT/CONFUSED ?wrong:near-tie,ignored-Others-semantics",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "Samsung and others kinda share the same, visualization is not great",
+    "trial_ids": [
+     "PCQ2_R_yDE3uwv04ZnHOpP",
+     "PCQ2_R_1DSSJM8uwjonRFh"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "PCQ2_R_yDE3uwv04ZnHOpP",
+    "accuracy": 0.0,
+    "answer": {
+     "PCQ2": "I'm not sure"
+    },
+    "chain": "FIND(slice[Samsung]) → FIND(slice[Others]) → PROJ(edges as diameter/radius) → CMPvis(size(slice[Samsung]) ≈ size(slice[Others])) → DOUBT → ANSWER(not sure)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "CMPvis",
+     "DOUBT"
+    ],
+    "elements_text": [
+     "slice[Samsung]",
+     "slice[Others]"
+    ],
+    "elements_sketch": [
+     "edge(slice[Samsung])",
+     "edge(slice[Others])"
+    ],
+    "sketch_gesture": "traced vertical diameter and horizontal radius bounding Samsung and Others",
+    "source": "both"
+   },
+   {
+    "trial_id": "PCQ2_R_1DSSJM8uwjonRFh",
+    "accuracy": 0.0,
+    "answer": {
+     "PCQ2": "Others"
+    },
+    "chain": "FIND(slice[Samsung]) → FIND(slice[Others]) → PROJ(edges) → CMPvis(size(slice[Samsung]) ≈ size(slice[Others])) → CONFUSED → ANSWER(Others) ?wrong:'Others'-is-not-a-company/near-tie",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "CMPvis",
+     "CONFUSED"
+    ],
+    "elements_text": [
+     "slice[Samsung]",
+     "slice[Others]",
+     "area"
+    ],
+    "elements_sketch": [
+     "edge(slice[Samsung])",
+     "edge(slice[Others])"
+    ],
+    "sketch_gesture": "traced vertical diameter and horizontal radius bounding Samsung and Others",
+    "source": "both"
+   }
+  ]
+ },
+ "BCQ3": {
+  "qid": "BCQ3",
+  "chart": "BC",
+  "task": "determine_range",
+  "question": "What is the range of the global internet speed?",
+  "reference_chain": "SCAN({bar[*]}) → MIN(h)=bar[Sri Lanka] → PROJ(top → yaxis) → READ≈12.6 → MAX(h)=bar[South Korea] → PROJ(top → yaxis) → READ≈98.9 → RANGE(12.6, 98.9)",
+  "notes": "Most participants (6/9) answered with the y-axis extent (10/0 to 100) rather than the data range; circles on the 100 and 10 tick labels are the signature gesture. Only two actually found the shortest and tallest bars, and one of those rounded to ticks; one drew a 'typical' band (20-50). One trial gave the near-correct 12/99 but was still scored incorrect, possibly due to field order. The ambiguous term 'range' is pivotal.",
+  "new_symbols": {
+   "ANSWER(v)": "final submitted response"
+  },
+  "strategies": [
+   {
+    "chain": "FIND(ytick[min], ytick[max]) → READ(axis extent) ?wrong:axis-extent-not-data-range",
+    "n": 6,
+    "n_correct": 0,
+    "n_incorrect": 6,
+    "quote": "the internet speed axis has a range of 0 and 100",
+    "trial_ids": [
+     "BCQ3_R_1CfNOq4BP1ODnXy",
+     "BCQ3_R_1mIBohkOmIdsgF5",
+     "BCQ3_R_vYxQQ6kbWuIPPSV",
+     "BCQ3_R_31TW6MZyafbLjOs",
+     "BCQ3_R_2ARVdxy7i72DYgW",
+     "BCQ3_R_1GH7NAokHW4iM4G"
+    ]
+   },
+   {
+    "chain": "MAX(bar) → PROJ(→ yaxis) → MIN(bar) → PROJ(→ yaxis) → RANGE",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "I found highest and lowest bar",
+    "trial_ids": [
+     "BCQ3_R_6AyfcLIRg3E9Cvf",
+     "BCQ3_R_1kGflyCImAFfv3L"
+    ]
+   },
+   {
+    "chain": "SCAN(bars) → GROUP/AVG(typical band) ?wrong:not-extrema",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "just check how many  country averaging on that number.",
+    "trial_ids": [
+     "BCQ3_R_5dKmq0Uur1nbAxX"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "BCQ3_R_6AyfcLIRg3E9Cvf",
+    "accuracy": 0.0,
+    "answer": {
+     "BCQ3_1": "12",
+     "BCQ3_2": "99"
+    },
+    "chain": "SCAN({bar[*]}) → MAX(bar[*], h)=bar[South Korea] → PROJ(top → yaxis)≈99 → MIN(bar[*], h)=bar[Sri Lanka] → PROJ(top → yaxis)≈12 → RANGE(12, 99) ?wrong:unclear(values match reference; possibly field order/grading)",
+    "ops": [
+     "SCAN",
+     "MAX",
+     "PROJ",
+     "MIN",
+     "PROJ",
+     "RANGE"
+    ],
+    "elements_text": [
+     "bar[max]",
+     "bar[min]"
+    ],
+    "elements_sketch": [
+     "top(bar[South Korea])",
+     "top(bar[Sri Lanka])",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal lines from y-axis to tops of South Korea (~99) and Sri Lanka (~12) bars",
+    "source": "both"
+   },
+   {
+    "trial_id": "BCQ3_R_1CfNOq4BP1ODnXy",
+    "accuracy": 0.0,
+    "answer": {
+     "BCQ3_1": "10",
+     "BCQ3_2": "100"
+    },
+    "chain": "LOOK(yaxis) → READ(ytick[lowest visible])=10 → READ(ytick[top])=100 → ANSWER(10/100) ?wrong:axis-extent-not-data-range → FIX(10→0) ?wrong:still-axis-extent",
+    "ops": [
+     "LOOK",
+     "READ",
+     "READ",
+     "FIX"
+    ],
+    "elements_text": [
+     "ytick[10]",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "yaxis",
+     "annot[0 written below axis]"
+    ],
+    "sketch_gesture": "bracket along whole y-axis from 100 to bottom with '0' written at origin",
+    "source": "both"
+   },
+   {
+    "trial_id": "BCQ3_R_1mIBohkOmIdsgF5",
+    "accuracy": 0.0,
+    "answer": {
+     "BCQ3_1": "100",
+     "BCQ3_2": "10"
+    },
+    "chain": "KNOW(range = between two numbers) → FIND(ytick[min], ytick[max]) → READ(yaxis extent)=10..100 → ANSWER(axis range) ?wrong:axis-extent-not-data-range",
+    "ops": [
+     "KNOW",
+     "FIND",
+     "READ"
+    ],
+    "elements_text": [
+     "ytick[10]",
+     "ytick[100]"
+    ],
+    "elements_sketch": [
+     "ytick[100]",
+     "ytick[10]"
+    ],
+    "sketch_gesture": "circles on the 100 and 10 y-axis tick labels",
+    "source": "both"
+   },
+   {
+    "trial_id": "BCQ3_R_vYxQQ6kbWuIPPSV",
+    "accuracy": 0.0,
+    "answer": {
+     "BCQ3_1": "100",
+     "BCQ3_2": "0"
+    },
+    "chain": "LOOK(yaxis) → READ(yaxis extent)=0..100 → ANSWER(100/0) ?wrong:axis-extent-not-data-range",
+    "ops": [
+     "LOOK",
+     "READ"
+    ],
+    "elements_text": [
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "ytick[100]",
+     "yaxis[bottom]"
+    ],
+    "sketch_gesture": "arrows pointing at the 100 tick and the bottom of the y-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "BCQ3_R_31TW6MZyafbLjOs",
+    "accuracy": 0.0,
+    "answer": {
+     "BCQ3_1": "100",
+     "BCQ3_2": "10"
+    },
+    "chain": "FIND(ytick[min], ytick[max]) → READ(yaxis extent)=10..100 → ANSWER(axis range) ?wrong:axis-extent-not-data-range",
+    "ops": [
+     "FIND",
+     "READ"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "ytick[100]",
+     "ytick[10]"
+    ],
+    "sketch_gesture": "circles on 100 and 10 y-axis tick labels",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "BCQ3_R_1kGflyCImAFfv3L",
+    "accuracy": 0.0,
+    "answer": {
+     "BCQ3_1": "100",
+     "BCQ3_2": "10"
+    },
+    "chain": "MAX(bar[*])=bar[South Korea] → PROJ(top → yaxis) → MIN(bar[*])=bar[Sri Lanka] → PROJ(top → yaxis) → READ(ytick rounded)=100,10 ?wrong:rounded-to-nearest-ticks → ANSWER(100/10)",
+    "ops": [
+     "MAX",
+     "PROJ",
+     "MIN",
+     "PROJ",
+     "READ"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "bar[South Korea]",
+     "bar[Sri Lanka]",
+     "yaxis"
+    ],
+    "sketch_gesture": "lines from South Korea bar up and across to y-axis ~100 and from Sri Lanka bar to y-axis ~11",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "BCQ3_R_2ARVdxy7i72DYgW",
+    "accuracy": 0.0,
+    "answer": {
+     "BCQ3_1": "100",
+     "BCQ3_2": "10"
+    },
+    "chain": "CONFUSED(question) → PROJ(ytick[100] → bar[South Korea]) → PROJ(ytick[10] → bars) → MAP(range of chart = axis 10..100) ?wrong:axis-extent-not-data-range → ANSWER(100/10)",
+    "ops": [
+     "CONFUSED",
+     "PROJ",
+     "PROJ",
+     "MAP"
+    ],
+    "elements_text": [
+     "chart",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "ytick[100]",
+     "top(bar[South Korea])",
+     "ytick[10]"
+    ],
+    "sketch_gesture": "curved line from 100 tick to South Korea top with loop; loop at 10 tick with line across bars",
+    "source": "both"
+   },
+   {
+    "trial_id": "BCQ3_R_1GH7NAokHW4iM4G",
+    "accuracy": 0.0,
+    "answer": {
+     "BCQ3_1": "100",
+     "BCQ3_2": "10"
+    },
+    "chain": "FIND(ytick[min], ytick[max]) → READ(yaxis extent)=10..100 → ANSWER(axis range) ?wrong:axis-extent-not-data-range",
+    "ops": [
+     "FIND",
+     "READ"
+    ],
+    "elements_text": [
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "ytick[100]",
+     "ytick[10]"
+    ],
+    "sketch_gesture": "small marks on the 100 and 10 tick labels",
+    "source": "both"
+   },
+   {
+    "trial_id": "BCQ3_R_5dKmq0Uur1nbAxX",
+    "accuracy": 0.0,
+    "answer": {
+     "BCQ3_1": "50",
+     "BCQ3_2": "20"
+    },
+    "chain": "SCAN({bar[*]}) → GROUP(bars around typical level) → AVG?(where countries cluster) ?wrong:typical-band-not-min-max → READ(grid[y=50], grid[y=20]) → ANSWER(50/20)",
+    "ops": [
+     "SCAN",
+     "GROUP",
+     "AVG",
+     "READ"
+    ],
+    "elements_text": [
+     "bar[*]"
+    ],
+    "elements_sketch": [
+     "grid[y=50]",
+     "grid[y=20]"
+    ],
+    "sketch_gesture": "two horizontal lines across the whole chart at ~50 and ~19",
+    "source": "both"
+   }
+  ]
+ },
+ "BCQ4": {
+  "qid": "BCQ4",
+  "chart": "BC",
+  "task": "count",
+  "question": "In how many countries  is the internet speed slower than Japan?",
+  "reference_chain": "FIND(bar[Japan] | xtick) → PROJ(top(bar[Japan]) → threshold line) → COUNT({bar[*]} | h < Japan)=6",
+  "notes": "Both trials are wrong despite sound strategies: one drew a threshold line through Japan's top but miscounted (4), the other circled exactly the six shorter bars but submitted 13, having initially ignored 'Japan' and counted all other countries. A drawn threshold line at Japan's height is the natural aid; the errors are in counting and task reading.",
+  "new_symbols": {
+   "ANSWER(v)": "final submitted response"
+  },
+  "strategies": [
+   {
+    "chain": "FIND(bar[Japan]) → PROJ(threshold line) → COUNT(below) ?wrong:miscount",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "number of countries below the line, although i said its mistake.",
+    "trial_ids": [
+     "BCQ4_R_5dKmq0Uur1nbAxX"
+    ]
+   },
+   {
+    "chain": "FIND(bar[Japan]) → CMP(each < Japan) → COUNT=6 marked → ANSWER(13) ?wrong:misread-question",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "I made a mistake with counting because I missed the word Japan.",
+    "trial_ids": [
+     "BCQ4_R_1qalWvDa8z4HLfs"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "BCQ4_R_5dKmq0Uur1nbAxX",
+    "accuracy": 0.0,
+    "answer": {
+     "BCQ4": "4"
+    },
+    "chain": "FIND(bar[Japan]) → PROJ(top(bar[Japan]) → across chart) threshold line ≈40 → COUNT({bar[*]} | below line) ?wrong:miscount(4 vs 6)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "COUNT"
+    ],
+    "elements_text": [
+     "line"
+    ],
+    "elements_sketch": [
+     "top(bar[Japan])",
+     "{bar[*]}"
+    ],
+    "sketch_gesture": "wavy horizontal line at ~40 across all bars through Japan's top",
+    "source": "both"
+   },
+   {
+    "trial_id": "BCQ4_R_1qalWvDa8z4HLfs",
+    "accuracy": 0.0,
+    "answer": {
+     "BCQ4": "13"
+    },
+    "chain": "FIND(bar[Japan]) → CMP(each bar < bar[Japan]) → COUNT({bar: h < Japan})=6 (marked) → ANSWER(13) ?wrong:ignored-'Japan'(counted all other countries)",
+    "ops": [
+     "FIND",
+     "CMP",
+     "COUNT"
+    ],
+    "elements_text": [
+     "bar[Japan]",
+     "bar[*]"
+    ],
+    "elements_sketch": [
+     "top(bar[India])",
+     "top(bar[Indonesia])",
+     "top(bar[Malaysia])",
+     "top(bar[Sri Lanka])",
+     "top(bar[Thailand])",
+     "top(bar[Vietnam])"
+    ],
+    "sketch_gesture": "circles on tops of the six bars shorter than Japan",
+    "source": "both"
+   }
+  ]
+ }
+}

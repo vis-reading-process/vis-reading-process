@@ -1,0 +1,2859 @@
+{
+ "SPQ1": {
+  "qid": "SPQ1",
+  "chart": "SP",
+  "task": "retrieve_value",
+  "question": "What is the weight for the person who is 161 cm tall?",
+  "reference_chain": "FIND(xtick[161]) → PROJ(xtick[161] → pt[161cm]) → FIND(pt[161cm]) → PROJ(pt → yaxis) → INTERP(y | ticks 40,45) → READ(pt, y)≈44.4 → ANSWER(≈44)",
+  "notes": "Only one trial in this group. The participant used the right approach (find 161 on the x-axis, go up to the point, read its weight) but anchored on the 166 cm column, which is next to the sparse lower-left points, and read about 58 kg. They noticed the slip themselves afterwards. What matters on this item is the lone bottom-left point at (161, 44) and placing 161 between the 160 and 165 ticks.",
+  "new_symbols": {},
+  "strategies": [
+   {
+    "chain": "FIND(xtick[161]) ?wrong:picked-neighbouring-tick-166 → PROJ(xtick → pt) → READ(pt, y) → ANSWER",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "n_unknown": 0,
+    "quote": "I looked for 161cm on the x-axis and then found the data point that fits. I'm only realizing now that I picked 166cm by mistake.",
+    "trial_ids": [
+     "SPQ1_R_1g6nV97j3m0UrXN"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "SPQ1_R_1g6nV97j3m0UrXN",
+    "accuracy": 0.0,
+    "answer": "58",
+    "chain": "FIND(xtick[161]) ?wrong:picked-166 → PROJ(xaxis[166] → pt) → FIND(pt[166cm]) → READ(pt, y)≈58 → ANSWER(58) → FIX(noticed 166≠161)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "FIND",
+     "READ",
+     "FIX"
+    ],
+    "elements_text": [
+     "xaxis",
+     "xtick[161]",
+     "pt[161cm]"
+    ],
+    "elements_sketch": [
+     "xtick[166]",
+     "pt[166cm]"
+    ],
+    "sketch_gesture": "dashed vertical line from x-axis at ~166 up to ~58 kg points; scribbled digits",
+    "source": "both"
+   }
+  ]
+ },
+ "SPQ2": {
+  "qid": "SPQ2",
+  "chart": "SP",
+  "task": "find_extremum",
+  "question": "What is the height for the tallest person among the 85 individuals?'",
+  "reference_chain": "MAP(height → xaxis) → SCAN({pt[*]}) → ARGMAX({pt[*]}, x) = pt[182.4cm,63.5kg] → PROJ(pt → xaxis) → INTERP(x | ticks 180,185) → READ(x)≈182.4 → ANSWER(≈182)",
+  "notes": "All four trials are wrong, each for a different reason. One read 'tallest' as the highest point on the weight axis. One found the right point but misread the 5-unit tick spacing (185 instead of about 182). One gave the right height in metres (1.82). One picked the low-right outlier and gave its weight. The x-axis maximum (182.4 cm, 63.5 kg) and the nearly-as-tall outlier at (181.6, 45.8) compete as the 'tallest' point.",
+  "new_symbols": {},
+  "strategies": [
+   {
+    "chain": "ARGMAX({pt[*]}, y) ?wrong:'tallest'=highest-on-y → PROJ(pt → xaxis) → READ(pt, x) → ANSWER",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "n_unknown": 0,
+    "quote": "Nothing was confusing",
+    "trial_ids": [
+     "SPQ2_R_2t5U2hVrti4y8IC"
+    ]
+   },
+   {
+    "chain": "MAP(height → xaxis) → ARGMAX({pt[*]}, x) → PROJ(pt → xaxis) → INTERP(x | ticks) ?wrong:misread-tick-increment → READ(x) → ANSWER",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "n_unknown": 0,
+    "quote": "So here, it's just asking for the height so you can ignore the weight. I thought that the numbers indicated where on increments of 10s, s...",
+    "trial_ids": [
+     "SPQ2_R_1P1APSbf9y0uGtL"
+    ]
+   },
+   {
+    "chain": "FIND(pt[rightmost]) → READ(pt, x) → ANSWER ?wrong:unit-converted-cm-to-m",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "n_unknown": 0,
+    "quote": "everything was clear",
+    "trial_ids": [
+     "SPQ2_R_339oxKJvqasU1as"
+    ]
+   },
+   {
+    "chain": "FIND(pt[low-right, near-max x]) → PROJ(pt → yaxis) → READ(pt, y) ?wrong:reported-weight-not-height → ANSWER",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "n_unknown": 0,
+    "quote": "look for the tallest person in the chart.",
+    "trial_ids": [
+     "SPQ2_R_5dKmq0Uur1nbAxX"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "SPQ2_R_339oxKJvqasU1as",
+    "accuracy": 0.0,
+    "answer": "1.82",
+    "chain": "FIND(pt[rightmost]) → READ(pt, x)≈182? → ANSWER(1.82) ?wrong:converted-cm-to-m",
+    "ops": [
+     "FIND",
+     "READ"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "pt[181.6cm,45.8kg]"
+    ],
+    "sketch_gesture": "small tick mark on low-right point at ~(181.6,46)",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SPQ2_R_2t5U2hVrti4y8IC",
+    "accuracy": 0.0,
+    "answer": "176",
+    "chain": "ARGMAX({pt[*]}, y) ?wrong:tallest-read-as-highest-on-y-axis → FIND(pt[74kg]) → PROJ(pt → yaxis) → PROJ(pt → xaxis) → READ(pt, x)≈176 → ANSWER(176)",
+    "ops": [
+     "ARGMAX",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "pt[176.8cm,74kg]",
+     "yaxis",
+     "xaxis"
+    ],
+    "sketch_gesture": "circle on topmost point (~177,74) with horizontal line to y-axis and vertical line down to x-axis at ~176",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SPQ2_R_1P1APSbf9y0uGtL",
+    "accuracy": 0.0,
+    "answer": "185",
+    "chain": "MAP(height → xaxis) → ARGMAX({pt[*]}, x) → FIND(pt[182.4cm]) → PROJ(pt → xaxis) → INTERP(x | ticks 180,185) ?wrong:misread-tick-increment → READ(pt, x)=185 ?wrong → ANSWER(185) → FIX(meant ≈183)",
+    "ops": [
+     "MAP",
+     "ARGMAX",
+     "FIND",
+     "PROJ",
+     "INTERP",
+     "READ",
+     "FIX"
+    ],
+    "elements_text": [
+     "xaxis",
+     "xtick"
+    ],
+    "elements_sketch": [
+     "pt[182.4cm,63.5kg]",
+     "xaxis"
+    ],
+    "sketch_gesture": "box around rightmost point (~182,63.5) with vertical line down to x-axis at ~182",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ2_R_5dKmq0Uur1nbAxX",
+    "accuracy": 0.0,
+    "answer": "46",
+    "chain": "FIND(pt[tallest]) → FIND(pt[181.6cm,45.8kg]) → PROJ(pt → yaxis) → PROJ(pt → xaxis) → READ(pt, y)≈46 ?wrong:reported-weight-not-height → ANSWER(46)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ"
+    ],
+    "elements_text": [
+     "pt[tallest]"
+    ],
+    "elements_sketch": [
+     "pt[181.6cm,45.8kg]",
+     "yaxis",
+     "xaxis"
+    ],
+    "sketch_gesture": "horizontal line at ~46 from y-axis to low-right point (~182,46), then short vertical line down to x-axis",
+    "source": "both"
+   }
+  ]
+ },
+ "SPQ3": {
+  "qid": "SPQ3",
+  "chart": "SP",
+  "task": "determine_range",
+  "question": "What is the range in weight for the 85 individuals?",
+  "reference_chain": "MAP(weight → yaxis) → ARGMIN({pt[*]}, y)=pt[161cm,44.4kg] → ARGMAX({pt[*]}, y)=pt[176.8cm,74kg] → PROJ(both → yaxis) → READ(y)≈44.4, ≈74 → RANGE(44,74)",
+  "notes": "The main split is between data extent and axis extent. Six of the 13 trials used extent-of-data (horizontal projections from the lowest and highest points to the weight axis, giving 44 to 74). Four circled or traced the axis end ticks (40 and 75). One switched to the height variable (161 to 182). The recorded accuracy is 0 for every scored trial, even those answering 44/74, which matches the stated correct range. This looks like a scoring artifact, so n_correct is low for that reason and not because of reasoning errors. The isolated extreme points (161,44) and (177,74) are the pivotal elements.",
+  "new_symbols": {
+   "pt[max-weight 74kg] / pt[min-weight 44kg]": "a point identified by its role as the extreme on a channel (descriptive pt detail)"
+  },
+  "strategies": [
+   {
+    "chain": "ARGMIN({pt[*]}, y) → ARGMAX({pt[*]}, y) → PROJ(pt[min], pt[max] → yaxis) → READ(y)×2 → RANGE(min,max)",
+    "n": 6,
+    "n_correct": 0,
+    "n_incorrect": 5,
+    "n_unknown": 1,
+    "quote": "I found the highest and lowest weight by looking at the weight axis, these dots stood out to me also",
+    "trial_ids": [
+     "SPQ3_R_1DI6FoXNtxFt08R",
+     "SPQ3_R_yDE3uwv04ZnHOpP",
+     "SPQ3_R_VI12BPzRmJrIXVn",
+     "SPQ3_R_3Ecgvll7yCxiSfq",
+     "SPQ3_R_2t5U2hVrti4y8IC",
+     "SPQ3_R_3EiHZeDwJysMONb"
+    ]
+   },
+   {
+    "chain": "READ(ytick[min]) → READ(ytick[max]) → RANGE(40,75) ?wrong:axis-extent-not-data-extent",
+    "n": 4,
+    "n_correct": 0,
+    "n_incorrect": 4,
+    "n_unknown": 0,
+    "quote": "Range refers to the measurement between two numbers. Therefore the range is between 40 to 75 kg",
+    "trial_ids": [
+     "SPQ3_R_2YFI0HJHbxlYEle",
+     "SPQ3_R_1mIBohkOmIdsgF5",
+     "SPQ3_R_3fp1jUHNcaoySeC",
+     "SPQ3_R_3hokieevT5vHr8Y"
+    ]
+   },
+   {
+    "chain": "ARGMIN({pt[*]}, y) → ARGMAX({pt[*]}, y) → READ(pt, y)×2 → RANGE(min,max)  [extremes circled, no projection]",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "n_unknown": 0,
+    "quote": "Looked at lowest and highest point",
+    "trial_ids": [
+     "SPQ3_R_1NlwFmOuUVBaeea"
+    ]
+   },
+   {
+    "chain": "MAP(range → height) ?wrong:used-height-not-weight → ARGMIN/ARGMAX({pt[*]}, x) → PROJ(pts → xaxis) → READ(x)×2 → RANGE",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "n_unknown": 0,
+    "quote": "The dots are visible and show the range in height clearly",
+    "trial_ids": [
+     "SPQ3_R_2ARVdxy7i72DYgW"
+    ]
+   },
+   {
+    "chain": "SCAN(yaxis) → READ(ytick[75]) → ANSWER(75,-75) ?wrong:axis-extent+nonsense-bound → DOUBT",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "n_unknown": 0,
+    "quote": "yes, i dont have the data for this question.",
+    "trial_ids": [
+     "SPQ3_R_5dKmq0Uur1nbAxX"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "SPQ3_R_1DI6FoXNtxFt08R",
+    "accuracy": null,
+    "answer": "43 / 74",
+    "chain": "ARGMIN({pt[*]}, y) → ARGMAX({pt[*]}, y) → PROJ(pt[min] → yaxis) → PROJ(pt[max] → yaxis) → READ(y)≈43 → READ(y)≈74 → RANGE(43,74)",
+    "ops": [
+     "ARGMIN",
+     "ARGMAX",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [
+     "pt[min-weight]",
+     "pt[max-weight]"
+    ],
+    "elements_sketch": [
+     "pt[max-weight 74kg]",
+     "pt[min-weight 44kg]",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal lines from topmost point (~74) and bottom-left point (~44) to the y-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ3_R_yDE3uwv04ZnHOpP",
+    "accuracy": 0.0,
+    "answer": "44 / 74",
+    "chain": "ARGMIN({pt[*]}, y) → ARGMAX({pt[*]}, y) → PROJ(pt[min] → yaxis) → PROJ(pt[max] → yaxis) → READ(y)≈44 → READ(y)≈74 → RANGE(44,74)",
+    "ops": [
+     "ARGMIN",
+     "ARGMAX",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [
+     "pt[min-weight]",
+     "pt[max-weight]",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "pt[max-weight 74kg]",
+     "pt[min-weight 44kg]",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal lines from topmost point (~74) and bottom-left point (~44) to the y-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ3_R_1NlwFmOuUVBaeea",
+    "accuracy": 0.0,
+    "answer": "44 / 74",
+    "chain": "ARGMIN({pt[*]}, y) → ARGMAX({pt[*]}, y) → READ(pt[min], y)≈44 → READ(pt[max], y)≈74 → RANGE(44,74)",
+    "ops": [
+     "ARGMIN",
+     "ARGMAX",
+     "READ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [
+     "pt[min-weight]",
+     "pt[max-weight]"
+    ],
+    "elements_sketch": [
+     "pt[max-weight 74kg]",
+     "pt[min-weight 44kg]"
+    ],
+    "sketch_gesture": "circles on the topmost point (~177,74) and the bottom-left point (~161,44)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ3_R_2YFI0HJHbxlYEle",
+    "accuracy": 0.0,
+    "answer": "40 / 75",
+    "chain": "LOOK(yaxis) → READ(ytick[40]) → READ(ytick[75]) → RANGE(40,75) ?wrong:axis-extent-not-data-extent",
+    "ops": [
+     "LOOK",
+     "READ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "ytick[75]",
+     "ytick[40]"
+    ],
+    "sketch_gesture": "circles on y-axis tick labels 75 and 40",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ3_R_1mIBohkOmIdsgF5",
+    "accuracy": 0.0,
+    "answer": "75 / 40",
+    "chain": "KNOW(range = span between two numbers) → READ(ytick[75]) → READ(ytick[40]) → RANGE(40,75) ?wrong:axis-extent-not-data-extent",
+    "ops": [
+     "KNOW",
+     "READ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "ytick[75]",
+     "ytick[40]"
+    ],
+    "sketch_gesture": "scribbled circles on y-axis tick labels 75 and 40",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ3_R_3fp1jUHNcaoySeC",
+    "accuracy": 0.0,
+    "answer": "75 / 40",
+    "chain": "SCAN(yaxis) → READ(ytick[75]) → READ(ytick[40]) → RANGE(40,75) ?wrong:axis-extent-not-data-extent",
+    "ops": [
+     "SCAN",
+     "READ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [
+     "ytick[*]"
+    ],
+    "elements_sketch": [
+     "ytick[75]",
+     "ytick[40]",
+     "yaxis"
+    ],
+    "sketch_gesture": "circles on y-axis tick labels 75 and 40 joined by a line traced along the y-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ3_R_VI12BPzRmJrIXVn",
+    "accuracy": 0.0,
+    "answer": "44 / 74",
+    "chain": "LOOK(yaxis) → ARGMIN({pt[*]}, y) → ARGMAX({pt[*]}, y) → PROJ(pt[min] → yaxis) → PROJ(pt[max] → yaxis) → READ(y)≈44 → READ(y)≈74 → RANGE(44,74)",
+    "ops": [
+     "LOOK",
+     "ARGMIN",
+     "ARGMAX",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [
+     "yaxis",
+     "pt[min-weight]",
+     "pt[max-weight]"
+    ],
+    "elements_sketch": [
+     "pt[max-weight 74kg]",
+     "pt[min-weight 44kg]",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal lines from topmost point (~74) and bottom-left point (~44) to the y-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ3_R_3Ecgvll7yCxiSfq",
+    "accuracy": 0.0,
+    "answer": "44 / 74",
+    "chain": "LOOK(yaxis) → ARGMAX({pt[*]}, y) → ARGMIN({pt[*]}, y) → OUTLIER({pt[*]}) → PROJ(pt[max] → yaxis) → PROJ(pt[min] → yaxis) → READ(y)≈74 → READ(y)≈44 → RANGE(44,74)",
+    "ops": [
+     "LOOK",
+     "ARGMAX",
+     "ARGMIN",
+     "OUTLIER",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [
+     "yaxis",
+     "pt[max-weight]",
+     "pt[min-weight]"
+    ],
+    "elements_sketch": [
+     "pt[max-weight 74kg]",
+     "pt[min-weight 44kg]",
+     "yaxis"
+    ],
+    "sketch_gesture": "circles on topmost and bottom-left points with lines drawn from each to the y-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ3_R_2t5U2hVrti4y8IC",
+    "accuracy": 0.0,
+    "answer": "44 / 74",
+    "chain": "OUTLIER({pt[*]}) → ARGMIN({pt[*]}, y) → PROJ(pt[min] → yaxis) → READ(y)≈44 → ARGMAX({pt[*]}, y) → READ(y)≈74 → RANGE(44,74)",
+    "ops": [
+     "OUTLIER",
+     "ARGMIN",
+     "PROJ",
+     "READ",
+     "ARGMAX",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [
+     "pt[outlier]"
+    ],
+    "elements_sketch": [
+     "pt[min-weight 44kg]",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal line from bottom-left point (~44) to the y-axis only",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ3_R_2ARVdxy7i72DYgW",
+    "accuracy": 0.0,
+    "answer": "182 / 161",
+    "chain": "MAP(range → height) ?wrong:used-height-not-weight → ARGMIN({pt[*]}, x) → ARGMAX({pt[low]}, x) → PROJ(pt → xaxis) → READ(x)≈161 → READ(x)≈182 → RANGE(161,182)",
+    "ops": [
+     "MAP",
+     "ARGMIN",
+     "ARGMAX",
+     "PROJ",
+     "READ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [
+     "pt[*]"
+    ],
+    "elements_sketch": [
+     "pt[161cm,44kg]",
+     "pt[181.6cm,45.8kg]",
+     "xaxis"
+    ],
+    "sketch_gesture": "circles on bottom-left point (~161,44) and low-right point (~182,46), joined by an arc, each with a vertical line down to the x-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ3_R_5dKmq0Uur1nbAxX",
+    "accuracy": 0.0,
+    "answer": "75 / -75",
+    "chain": "SCAN(yaxis) → READ(ytick[75]) → ANSWER(75,-75) ?wrong:axis-not-data,nonsense-lower-bound → DOUBT(no data)",
+    "ops": [
+     "SCAN",
+     "READ",
+     "DOUBT"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "yaxis"
+    ],
+    "sketch_gesture": "wavy line traced down along the y-axis from above 75 to ~42",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SPQ3_R_3hokieevT5vHr8Y",
+    "accuracy": 0.0,
+    "answer": "75 / 40",
+    "chain": "SCAN(yaxis) → READ(ytick[75]) → READ(ytick[40]) → RANGE(40,75) ?wrong:axis-extent-not-data-extent",
+    "ops": [
+     "SCAN",
+     "READ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "yaxis",
+     "ytick[75]",
+     "ytick[40]"
+    ],
+    "sketch_gesture": "double-headed arrow drawn along the y-axis from 40 to 75",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SPQ3_R_3EiHZeDwJysMONb",
+    "accuracy": 0.0,
+    "answer": "44 / 74",
+    "chain": "ARGMAX({pt[*]}, y) → ARGMIN({pt[*]}, y) → PROJ(pt[max] → yaxis) → PROJ(pt[min] → yaxis) → READ(y)≈74 → READ(y)≈44 → RANGE(44,74)",
+    "ops": [
+     "ARGMAX",
+     "ARGMIN",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "pt[max-weight 74kg]",
+     "pt[min-weight 44kg]",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal lines from topmost point (~74) and bottom-left point (~44) to the y-axis",
+    "source": "sketch"
+   }
+  ]
+ },
+ "SPQ4": {
+  "qid": "SPQ4",
+  "chart": "SP",
+  "task": "find_clusters",
+  "question": "There is a group of individuals centered at the height of 176 cm and the weight of 55 kg. True or False?",
+  "reference_chain": "FIND(xtick[176]) → FIND(ytick[55]) → PROJ(both → chart) → LOOK(region[176cm,55kg]) → COUNT({pt} in region)=0 → GROUP({pt[*]}) shows dense cluster near (170-174, 55-60) → CMP(cluster center ? (176,55)) → ANSWER(False)",
+  "notes": "Most participants (34/39) answered False. The dominant gesture was a crosshair: a horizontal line from 55 kg and a vertical line from 176 cm meeting at an empty spot, sometimes circled. Variants were circling the empty region directly, projecting only vertically, or drawing outward arrows from a circled spot to both axes as a check. Errors came from reading 'centered at' loosely (accepting points along the 176 column or nearby as a group), from not knowing how many points make a group, and from stopping short when locating 176, which is not a labelled tick. Few participants located the real dense cluster (170-175 cm, 55-60 kg).",
+  "new_symbols": {
+   "region[x,y]": "an (often empty) location in the plot defined by an x,y coordinate pair or ranges, e.g. region[176cm,55kg]",
+   "cluster[...]": "used as in spec, for a perceived dense group of points"
+  },
+  "strategies": [
+   {
+    "chain": "FIND(ytick[55]) → FIND(xtick[176]) → PROJ(both → chart) → LOOK(region[176,55]) → COUNT({pt} in region)=0 → ANSWER(False)  [crosshair]",
+    "n": 16,
+    "n_correct": 15,
+    "n_incorrect": 0,
+    "n_unknown": 1,
+    "quote": "There are no dots at 176 cm, therefore no one has that height while weighing 55 kgs.",
+    "trial_ids": [
+     "SPQ4_R_1DI6FoXNtxFt08R",
+     "SPQ4_R_yDE3uwv04ZnHOpP",
+     "SPQ4_R_2WNi2HH78I5OZOO",
+     "SPQ4_R_2vhPlLuWjhQSOuF",
+     "SPQ4_R_2TB0FublSPtGYCF",
+     "SPQ4_R_2wNv3TVT6WyZtEv",
+     "SPQ4_R_3R7JWvNDOwOuGrj",
+     "SPQ4_R_2tFEioxy5Zpl83Y",
+     "SPQ4_R_31TW6MZyafbLjOs",
+     "SPQ4_R_VI12BPzRmJrIXVn",
+     "SPQ4_R_3Ecgvll7yCxiSfq",
+     "SPQ4_R_2t5U2hVrti4y8IC",
+     "SPQ4_R_2Uge8H6SyoVmGK7",
+     "SPQ4_R_3nP07ToNj9d03FE",
+     "SPQ4_R_5dKmq0Uur1nbAxX",
+     "SPQ4_R_1NeORuwehcuKOMn"
+    ]
+   },
+   {
+    "chain": "FIND(xtick[176]) → PROJ(xtick → ytick[55]) → LOOK(region) → (COUNT=0) → ANSWER(False)  [vertical projection only]",
+    "n": 6,
+    "n_correct": 6,
+    "n_incorrect": 0,
+    "n_unknown": 0,
+    "quote": "I looked for the group of points around (176, 55) and there were none. The grid lines helps find the spot faster.",
+    "trial_ids": [
+     "SPQ4_R_2qa33uKUNjCuE0q",
+     "SPQ4_R_3fp1jUHNcaoySeC",
+     "SPQ4_R_21b7may8A1p29mG",
+     "SPQ4_R_2ARVdxy7i72DYgW",
+     "SPQ4_R_3EiHZeDwJysMONb",
+     "SPQ4_R_1g6nV97j3m0UrXN"
+    ]
+   },
+   {
+    "chain": "LOOK(region[176,55]) → COUNT({pt} in region)=0 → ANSWER(False)  [region circled directly]",
+    "n": 5,
+    "n_correct": 5,
+    "n_incorrect": 0,
+    "n_unknown": 0,
+    "quote": "I just noticed there were no dots in that area",
+    "trial_ids": [
+     "SPQ4_R_6JTMV49ouv1ou0p",
+     "SPQ4_R_2t9cXi0XKbdaZFg",
+     "SPQ4_R_2bIxvFjGgb8JirJ",
+     "SPQ4_R_12JUTlzcehwtUdN",
+     "SPQ4_R_2YFI0HJHbxlYEle"
+    ]
+   },
+   {
+    "chain": "LOOK(region[176,55]) → PROJ(region → yaxis) → PROJ(region → xaxis) → COUNT=0 → ANSWER(False)  [circle + outward arrows to axes as check]",
+    "n": 4,
+    "n_correct": 4,
+    "n_incorrect": 0,
+    "n_unknown": 0,
+    "quote": "I found the exact location where weren't any dots. The 176 was not on the scale, so it was hard to measure the right spot.",
+    "trial_ids": [
+     "SPQ4_R_5iPAzwTI0Ac36WR",
+     "SPQ4_R_3D8wKq4NHSwZu4i",
+     "SPQ4_R_3hokieevT5vHr8Y",
+     "SPQ4_R_2BgNvVo1U4htyBO"
+    ]
+   },
+   {
+    "chain": "FIND(xtick[176]) → SCAN({pt: x≈176}) → CMP(center.y ? 55) → ANSWER(False)  [column-first]",
+    "n": 2,
+    "n_correct": 2,
+    "n_incorrect": 0,
+    "n_unknown": 0,
+    "quote": "I first had a glance of the one that were with 176 cm and then tried to find results with 55 kg",
+    "trial_ids": [
+     "SPQ4_R_1Nejz2jhtWZgg7D",
+     "SPQ4_R_339oxKJvqasU1as"
+    ]
+   },
+   {
+    "chain": "crosshair → COUNT({pt} near/along 176)>0 ?wrong:accepted-nearby-or-column-points → ANSWER(True)",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "n_unknown": 0,
+    "quote": "Saw if there were many people at the given height and weight",
+    "trial_ids": [
+     "SPQ4_R_1j9P5vv5Ufod123",
+     "SPQ4_R_1P1APSbf9y0uGtL"
+    ]
+   },
+   {
+    "chain": "crosshair or LOOK(region) → CONFUSED/DOUBT(what counts as a group) → ANSWER(Impossible / not sure) ?wrong",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "n_unknown": 0,
+    "quote": "Not clear what number is considered a group",
+    "trial_ids": [
+     "SPQ4_R_2xFzb7lDkJFr8wu",
+     "SPQ4_R_1NlwFmOuUVBaeea"
+    ]
+   },
+   {
+    "chain": "GROUP({pt[*]}) → cluster[170-175,55-60] → CMP(center ? (176,55)) → ANSWER(False)  [find actual cluster]",
+    "n": 1,
+    "n_correct": 1,
+    "n_incorrect": 0,
+    "n_unknown": 0,
+    "quote": "There is a group centred at around 55 to 60kg and 170 to 175 cm",
+    "trial_ids": [
+     "SPQ4_R_1mIBohkOmIdsgF5"
+    ]
+   },
+   {
+    "chain": "FIND(xtick[176]) → PROJ(→ chart) ?wrong:stopped-short → CONFUSED(where to look) → ANSWER(not sure)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "n_unknown": 0,
+    "quote": "im not sure where to look for this one i am lost",
+    "trial_ids": [
+     "SPQ4_R_Td2pJ0stpB6hKo1"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "SPQ4_R_1DI6FoXNtxFt08R",
+    "accuracy": null,
+    "answer": "False",
+    "chain": "FIND(ytick[55]) → FIND(xtick[176]) → PROJ(ytick[55] → chart) → PROJ(xtick[176] → chart) → LOOK(region[176cm,55kg]) → COUNT({pt} in region)=0 → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "LOOK",
+     "COUNT"
+    ],
+    "elements_text": [
+     "pt"
+    ],
+    "elements_sketch": [
+     "ytick[55]",
+     "xtick[176]",
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at 55 and vertical line from x-axis at ~176 meeting at (176,55)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_6JTMV49ouv1ou0p",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "LOOK(region[176cm,55kg]) → COUNT({pt} in region)=0 → ANSWER(False)",
+    "ops": [
+     "LOOK",
+     "COUNT"
+    ],
+    "elements_text": [
+     "pt",
+     "region"
+    ],
+    "elements_sketch": [
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "circle on empty spot at ~(176,55)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_yDE3uwv04ZnHOpP",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(ytick[55]) → FIND(xtick[176]) → PROJ(ytick[55] → chart) → PROJ(xtick[176] → chart) → LOOK(region[176cm,55kg]) → COUNT({pt} in region)≈0 → CMP(cluster center ? 174cm) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "LOOK",
+     "COUNT",
+     "CMP"
+    ],
+    "elements_text": [
+     "xtick[174]"
+    ],
+    "elements_sketch": [
+     "ytick[55]",
+     "xtick[176]",
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at 55 and vertical line from x-axis at ~176 meeting at (176,55)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_2t9cXi0XKbdaZFg",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "LOOK(region[176cm,55kg]) → COUNT({pt} in region)=0 → ANSWER(False)",
+    "ops": [
+     "LOOK",
+     "COUNT"
+    ],
+    "elements_text": [
+     "region"
+    ],
+    "elements_sketch": [
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "circle on empty spot at ~(176,55)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_1NlwFmOuUVBaeea",
+    "accuracy": 0.0,
+    "answer": "I'm not sure",
+    "chain": "LOOK(xaxis) → LOOK(yaxis) → FIND(region[176cm,55kg]) → DOUBT(group?) → ANSWER(I'm not sure) ?wrong:no-judgement-made",
+    "ops": [
+     "LOOK",
+     "LOOK",
+     "FIND",
+     "DOUBT"
+    ],
+    "elements_text": [
+     "xaxis",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "region[177cm,55kg]"
+    ],
+    "sketch_gesture": "small circle at ~(177,55)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_2bIxvFjGgb8JirJ",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "LOOK(region[176cm,55kg]) → COUNT({pt} in region)=0 → ANSWER(False)",
+    "ops": [
+     "LOOK",
+     "COUNT"
+    ],
+    "elements_text": [
+     "region"
+    ],
+    "elements_sketch": [
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "small circle at ~(175,56)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_12JUTlzcehwtUdN",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "LOOK(region[174-180cm,53-58kg]) → COUNT({pt} in region)≈0 → ANSWER(False)",
+    "ops": [
+     "LOOK",
+     "COUNT"
+    ],
+    "elements_text": [
+     "region"
+    ],
+    "elements_sketch": [
+     "region[174-180cm,53-58kg]"
+    ],
+    "sketch_gesture": "large circle enclosing area ~174-180 cm, 53-58 kg",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_2YFI0HJHbxlYEle",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "LOOK(region[176cm,55kg]) → COUNT({pt} in region)=0 → ANSWER(False)",
+    "ops": [
+     "LOOK",
+     "COUNT"
+    ],
+    "elements_text": [
+     "region"
+    ],
+    "elements_sketch": [
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "circle on empty spot at ~(176,55)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_1Nejz2jhtWZgg7D",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(xtick[176]) → SCAN({pt: x≈176}) → FIND(ytick[55]) → PROJ(ytick[55] → chart) → CMP({pt: x≈176}.y ? 55) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "SCAN",
+     "FIND",
+     "PROJ",
+     "CMP"
+    ],
+    "elements_text": [
+     "pt[176cm]",
+     "ytick[55]"
+    ],
+    "elements_sketch": [
+     "{pt: x≈176}",
+     "ytick[55]"
+    ],
+    "sketch_gesture": "elongated loop around the column of points at x≈176 (52-66 kg) plus horizontal line from y-axis at 55",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_2WNi2HH78I5OZOO",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(ytick[55]) → FIND(xtick[176]) → PROJ(ytick[55] → chart) → PROJ(xtick[176] → chart) → LOOK(region[176cm,55kg]) → COUNT({pt} in region)=0 → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "LOOK",
+     "COUNT"
+    ],
+    "elements_text": [
+     "region"
+    ],
+    "elements_sketch": [
+     "ytick[55]",
+     "xtick[176]",
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at 55 and vertical line from x-axis at ~176 meeting at (176,55) with circle at intersection",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_339oxKJvqasU1as",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND({pt: x≈176}) → CMP(center({pt: x≈176}).y ? 55) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "CMP"
+    ],
+    "elements_text": [
+     "pt[176cm]"
+    ],
+    "elements_sketch": [
+     "region[174-179cm,51-55kg]"
+    ],
+    "sketch_gesture": "curved hook/arrow around points just below 55 kg at ~174-179 cm",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_2vhPlLuWjhQSOuF",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(ytick[55]) → FIND(xtick[176]) → PROJ(ytick[55] → chart) → PROJ(xtick[176] → chart) → LOOK(region[176cm,55kg]) → COUNT({pt} near region)=0 → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "LOOK",
+     "COUNT"
+    ],
+    "elements_text": [
+     "region"
+    ],
+    "elements_sketch": [
+     "ytick[55]",
+     "xtick[176]",
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at 55 and vertical line from x-axis at ~176 meeting at (176,55); dot at intersection, arrow continuing right with '?'",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_2TB0FublSPtGYCF",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(ytick[55]) → FIND(xtick[176]) → PROJ(ytick[55] → chart) → PROJ(xtick[176] → chart) → LOOK(region[176cm,55kg]) → CMP(center(cluster) ? (176,55)) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "LOOK",
+     "CMP"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "ytick[55]",
+     "xtick[176]",
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "full-length crosshair: vertical line at x≈176 and horizontal line at y=55 across the chart",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_1mIBohkOmIdsgF5",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "GROUP({pt[*]}) → cluster[170-175cm,55-60kg] → CMP(center(cluster) ? (176,55)) → ANSWER(False)",
+    "ops": [
+     "GROUP",
+     "CMP"
+    ],
+    "elements_text": [
+     "cluster[170-175cm,55-60kg]"
+    ],
+    "elements_sketch": [
+     "cluster[169-177cm,54-61kg]"
+    ],
+    "sketch_gesture": "loop enclosing the dense cluster at ~169-177 cm, 54-61 kg",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_2qa33uKUNjCuE0q",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(xtick[176]) → PROJ(xtick[176] → ytick[55]) → LOOK(region[176cm,55kg]) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "LOOK"
+    ],
+    "elements_text": [
+     "xtick[176]",
+     "ytick[55]"
+    ],
+    "elements_sketch": [
+     "xtick[176]",
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "vertical line from x-axis at ~176 up to 55 kg",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_2wNv3TVT6WyZtEv",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(ytick[55]) → FIND(xtick[176]) → PROJ(ytick[55] → chart) → PROJ(xtick[176] → chart) → LOOK(region[176cm,55kg]) → COUNT({pt} in region)=0 → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "LOOK",
+     "COUNT"
+    ],
+    "elements_text": [
+     "pt"
+    ],
+    "elements_sketch": [
+     "ytick[55]",
+     "xtick[176]",
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at 55 and vertical line from x-axis at ~176 meeting at (176,55) with circle at intersection",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_3R7JWvNDOwOuGrj",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(ytick[55]) → FIND(xtick[176]) → PROJ(ytick[55] → chart) → PROJ(xtick[176] → chart) → LOOK(region[176cm,55kg]) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "LOOK"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "ytick[55]",
+     "xtick[176]",
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at 55 and vertical line from x-axis at ~176 meeting at (176,55) with circle at intersection",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SPQ4_R_2tFEioxy5Zpl83Y",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(ytick[55]) → FIND(xtick[176]) → PROJ(ytick[55] → chart) → PROJ(xtick[176] → chart) → LOOK(region[176cm,55kg]) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "LOOK"
+    ],
+    "elements_text": [
+     "ytick[55]"
+    ],
+    "elements_sketch": [
+     "ytick[55]",
+     "xtick[176]",
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at 55 and vertical line from x-axis at ~176 meeting at (176,55)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_1j9P5vv5Ufod123",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "FIND(ytick[55]) → FIND(xtick[176]) → PROJ(ytick[55] → chart) → PROJ(xtick[176] → chart) → LOOK(region[176cm,55kg]) → SCAN({pt: x≈176}) → COUNT({pt} at height,weight)>0 ?wrong:counted-points-along-176-column-not-at-intersection → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "LOOK",
+     "SCAN",
+     "COUNT"
+    ],
+    "elements_text": [
+     "pt"
+    ],
+    "elements_sketch": [
+     "ytick[55]",
+     "xtick[176]",
+     "region[176cm,55kg]",
+     "{pt: x≈176, y 55-68}"
+    ],
+    "sketch_gesture": "crosshair at (176,55) with vertical line extending up to ~68 kg and a diagonal stroke down-right to ~(183,63)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_3fp1jUHNcaoySeC",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(xtick[176]) → PROJ(xtick[176] → ytick[55]) → LOOK(region[176cm,55kg]) → COUNT({pt} in region)=0 → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "LOOK",
+     "COUNT"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "xtick[176]",
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "vertical line from x-axis at ~176 up to 55, with the word 'empty' written at the spot",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SPQ4_R_5iPAzwTI0Ac36WR",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "LOOK(region[176cm,55kg]) → PROJ(region → yaxis) → PROJ(region → xaxis) → COUNT({pt} in region)=0 → ANSWER(False)",
+    "ops": [
+     "LOOK",
+     "PROJ",
+     "PROJ",
+     "COUNT"
+    ],
+    "elements_text": [
+     "pt",
+     "region"
+    ],
+    "elements_sketch": [
+     "ytick[55]",
+     "xtick[176]",
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "circle at (176,55) with arrows to y-axis at 55 and down to x-axis at ~176",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_31TW6MZyafbLjOs",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(ytick[55]) → FIND(xtick[176]) → PROJ(ytick[55] → chart) → PROJ(xtick[176] → chart) → LOOK(region[176cm,55kg]) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "LOOK"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "ytick[55]",
+     "xtick[177]",
+     "region[177cm,55kg]"
+    ],
+    "sketch_gesture": "horizontal line at 55 and vertical line at ~177 meeting",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SPQ4_R_VI12BPzRmJrIXVn",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(ytick[55]) → FIND(xtick[176]) → PROJ(ytick[55] → chart) → PROJ(xtick[176] → chart) → LOOK(region[176cm,55kg]) → COUNT({pt: x=176})=0 → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "LOOK",
+     "COUNT"
+    ],
+    "elements_text": [
+     "pt[176cm]",
+     "xtick[176]",
+     "ytick[55]"
+    ],
+    "elements_sketch": [
+     "ytick[55]",
+     "xtick[176]",
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at 55 and vertical line from x-axis at ~176 meeting at (176,55) with small circle at intersection",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_3Ecgvll7yCxiSfq",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(ytick[55]) → FIND(xtick[176]) → PROJ(ytick[55] → chart) → PROJ(xtick[176] → chart) → LOOK(region[176cm,55kg]) → COUNT({pt} at intersection)=0 → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "LOOK",
+     "COUNT"
+    ],
+    "elements_text": [
+     "pt"
+    ],
+    "elements_sketch": [
+     "ytick[55]",
+     "xtick[176]",
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at 55 and vertical line from x-axis at ~176 meeting at (176,55)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_2xFzb7lDkJFr8wu",
+    "accuracy": 0.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "FIND(ytick[55]) → FIND(xtick[176]) → PROJ(ytick[55] → chart) → PROJ(xtick[176] → chart) → LOOK(region[176cm,55kg]) → CONFUSED(what counts as a group) → ANSWER(Impossible) ?wrong:definition-of-group",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "LOOK",
+     "CONFUSED"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "ytick[55]",
+     "xtick[176]",
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at 55 and vertical line from x-axis at ~176 meeting at (176,55)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_2t5U2hVrti4y8IC",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(ytick[55]) → FIND(xtick[176]) → PROJ(ytick[55] → chart) → PROJ(xtick[176] → chart) → LOOK(region[176cm,55kg]) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "LOOK"
+    ],
+    "elements_text": [
+     "xtick[176]",
+     "ytick[55]"
+    ],
+    "elements_sketch": [
+     "ytick[55]",
+     "xtick[176]",
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at 55 and vertical line from x-axis at ~176 meeting at (176,55)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_1P1APSbf9y0uGtL",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "FIND(ytick[55]) → FIND(xtick[176]) → PROJ(axes → chart) → LOOK(region[176cm,55kg]) → COUNT({pt} meeting criteria)>0 ?wrong:accepted-nearby-points-as-group → CONFUSED('centered at') → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "LOOK",
+     "COUNT",
+     "CONFUSED"
+    ],
+    "elements_text": [
+     "ytick[55]",
+     "xtick[176]",
+     "pt"
+    ],
+    "elements_sketch": [
+     "ytick[55]",
+     "xtick[176]",
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "arrows from (176,55) to the y-axis at 55 and down to the x-axis at ~176",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_Td2pJ0stpB6hKo1",
+    "accuracy": 0.0,
+    "answer": "I'm not sure",
+    "chain": "FIND(xtick[176]) → PROJ(xtick[176] → chart) ?wrong:stopped-at-~50kg → CONFUSED(where to look) → ANSWER(I'm not sure)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "CONFUSED"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "xtick[176]",
+     "pt[175.5cm,52.5kg]"
+    ],
+    "sketch_gesture": "vertical line from x-axis at ~176 up to ~52 kg with a small tick at 50",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_21b7may8A1p29mG",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(xtick[177]) → PROJ(xtick → chart) → LOOK(region[177cm,55kg]) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "LOOK"
+    ],
+    "elements_text": [
+     "xaxis",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "xtick[177]",
+     "region[177cm,55kg]"
+    ],
+    "sketch_gesture": "line from x-axis at ~177 up to a circle at ~(177,55)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_3D8wKq4NHSwZu4i",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "LOOK(region[176cm,55kg]) → PROJ(region → yaxis) → PROJ(region → xaxis) → COUNT({pt} in region)=0 → ANSWER(False)",
+    "ops": [
+     "LOOK",
+     "PROJ",
+     "PROJ",
+     "COUNT"
+    ],
+    "elements_text": [
+     "region[center]",
+     "pt"
+    ],
+    "elements_sketch": [
+     "ytick[55]",
+     "xtick[176]",
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "circle with a dot at (176,55) and arrows to y-axis at 55 and x-axis at ~176",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_2ARVdxy7i72DYgW",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(xtick[177]) → PROJ(xtick → chart) → LOOK(region[175-180cm,49-59kg]) → COUNT({pt} in region)≈few → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "LOOK",
+     "COUNT"
+    ],
+    "elements_text": [
+     "region",
+     "pt"
+    ],
+    "elements_sketch": [
+     "xtick[177]",
+     "region[175-180cm,49-59kg]"
+    ],
+    "sketch_gesture": "vertical line from x-axis at ~177 to 56 kg, with a loop enclosing ~175-180 cm, 49-59 kg",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_2BgNvVo1U4htyBO",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(ytick[55]) → FIND(xtick[176]) → INTERP(176 | ticks 175,180) → PROJ(region → yaxis) → PROJ(region → xaxis) → LOOK(region[176cm,55kg]) → COUNT({pt} in region)=0 → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "INTERP",
+     "PROJ",
+     "PROJ",
+     "LOOK",
+     "COUNT"
+    ],
+    "elements_text": [
+     "xtick[176]",
+     "pt"
+    ],
+    "elements_sketch": [
+     "ytick[55]",
+     "xtick[176]",
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "crossed circle at (176,55) with arrows to y-axis at 55 and down to x-axis at ~176; small tick marks to the right",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_2Uge8H6SyoVmGK7",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(ytick[55]) → FIND(xtick[176]) → PROJ(ytick[55] → chart) → PROJ(xtick[176] → chart) → LOOK(region[176cm,55kg]) → COUNT({pt} in region)=0 → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "LOOK",
+     "COUNT"
+    ],
+    "elements_text": [
+     "ytick[55]",
+     "xtick[176]"
+    ],
+    "elements_sketch": [
+     "ytick[55]",
+     "xtick[176]",
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at 55 and vertical line from x-axis at ~176 meeting at (176,55)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_3nP07ToNj9d03FE",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(ytick[55]) → FIND(xtick[176]) → PROJ(ytick[55] → chart) → PROJ(xtick[176] → chart) → LOOK(region[176cm,55kg]) → COUNT({pt} in region)=0 → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "LOOK",
+     "COUNT"
+    ],
+    "elements_text": [
+     "region[176cm,55kg]"
+    ],
+    "elements_sketch": [
+     "ytick[55]",
+     "xtick[176]",
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "horizontal line at 55 and vertical line from top of chart at ~177 down to 55, with a loop at the intersection",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_1g6nV97j3m0UrXN",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(ytick[55]) → FIND(xtick[176]) → LOOK(grid) → PROJ(xtick[176] → ytick[55]) → LOOK(region[176cm,55kg]) → COUNT({pt} around)=0 → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "LOOK",
+     "PROJ",
+     "LOOK",
+     "COUNT"
+    ],
+    "elements_text": [
+     "region[176cm,55kg]",
+     "grid"
+    ],
+    "elements_sketch": [
+     "ytick[55]",
+     "xtick[176]",
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "dashed vertical line from x-axis at ~176 up to 55, with tick marks at y=55 on the y-axis and at ~175 on the x-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_5dKmq0Uur1nbAxX",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(ytick[55]) → FIND(xtick[176]) → PROJ(ytick[55] → chart) → PROJ(xtick[176] → chart) → LOOK(region[176cm,55kg]) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "LOOK"
+    ],
+    "elements_text": [
+     "ytick[55]",
+     "xtick[176]"
+    ],
+    "elements_sketch": [
+     "ytick[55]",
+     "xtick[176]",
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at 55 and vertical line from x-axis at ~176 meeting at (176,55)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_3hokieevT5vHr8Y",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "LOOK(region[177cm,55kg]) → PROJ(region → yaxis) → PROJ(region → xaxis) → COUNT({pt} around)=0 → ANSWER(False)",
+    "ops": [
+     "LOOK",
+     "PROJ",
+     "PROJ",
+     "COUNT"
+    ],
+    "elements_text": [
+     "ytick[55]",
+     "xtick[176]"
+    ],
+    "elements_sketch": [
+     "ytick[55]",
+     "xtick[177]",
+     "region[177cm,55kg]"
+    ],
+    "sketch_gesture": "loop at ~(177,55) with arrows to y-axis at 55 and down to x-axis at ~178",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_3EiHZeDwJysMONb",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(xtick[177]) → PROJ(xtick → ytick[55]) → LOOK(region[176-179cm,55kg]) → LOOK(grid) → CMP(pt positions ? gridline) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "LOOK",
+     "LOOK",
+     "CMP"
+    ],
+    "elements_text": [
+     "pt",
+     "ytick[55]",
+     "xtick[176]",
+     "grid"
+    ],
+    "elements_sketch": [
+     "xtick[177]",
+     "region[176-179cm,55kg]"
+    ],
+    "sketch_gesture": "vertical line from x-axis at ~177.5 up to 55 topped by a short horizontal bar at 55 (T-shape)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ4_R_1NeORuwehcuKOMn",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(ytick[55]) → FIND(xtick[176]) → PROJ(ytick[55] → chart) → PROJ(xtick[176] → chart) → LOOK(region[176cm,55kg]) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "LOOK"
+    ],
+    "elements_text": [
+     "xtick[176]",
+     "ytick[55]"
+    ],
+    "elements_sketch": [
+     "ytick[55]",
+     "xtick[176]",
+     "region[176cm,55kg]"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at 55 and vertical line from x-axis at ~176 meeting at (176,55)",
+    "source": "both"
+   }
+  ]
+ },
+ "SPQ5": {
+  "qid": "SPQ5",
+  "chart": "SP",
+  "task": "find_correlation",
+  "question": "There is a negative linear relationship between the height and the weight of the 85 individuals. True or False?",
+  "reference_chain": "SCAN({pt[*]}) → FIT(trendline) → SLOPE(trendline) > 0 → CORR(height,weight)=+ → CMP(+ ? −) → ANSWER(False)",
+  "notes": "Drawing a freehand upward trendline through the cloud was by far the most common strategy (19 trendlines), and nearly all of those answered False. Three drew the correct upward line but still answered True or 'not sure', so seeing the trend and mapping its sign to the claim are separate steps. Most failures were vocabulary confusion about 'negative linear' with no reading of the chart, or reasoning from a couple of extreme points (the tallest-but-light outlier, the lightest person) instead of the overall trend. Rare strategies: an upper/lower envelope, a staircase of sampled point projections, and a drawn negative-slope template compared against the cloud.",
+  "new_symbols": {
+   "FIT(trendline)": "draw or imagine a best-fit line through a point set (sketch: a freehand line through the cloud)",
+   "DRAW(template[...])": "draw a reference shape (e.g. what a negative slope would look like) to compare against the data",
+   "trendline[↗]": "the participant-drawn trend line, with direction arrow",
+   "envelope[upper|lower]": "a boundary line drawn along the upper or lower edge of a point cloud",
+   "template[↘]": "a drawn hypothetical pattern, not fitted to the data"
+  },
+  "strategies": [
+   {
+    "chain": "SCAN({pt[*]}) → FIT(trendline) → SLOPE>0 → CORR=+ → ANSWER(False)  [drawn trendline]",
+    "n": 15,
+    "n_correct": 14,
+    "n_incorrect": 0,
+    "n_unknown": 1,
+    "quote": "There is a linear relationship but it is positive, as you can see from the line that I drew, as the height goes up the weight goes up",
+    "trial_ids": [
+     "SPQ5_R_1DI6FoXNtxFt08R",
+     "SPQ5_R_6JTMV49ouv1ou0p",
+     "SPQ5_R_yDE3uwv04ZnHOpP",
+     "SPQ5_R_2t9cXi0XKbdaZFg",
+     "SPQ5_R_1NlwFmOuUVBaeea",
+     "SPQ5_R_2YFI0HJHbxlYEle",
+     "SPQ5_R_2qa33uKUNjCuE0q",
+     "SPQ5_R_2wNv3TVT6WyZtEv",
+     "SPQ5_R_2tFEioxy5Zpl83Y",
+     "SPQ5_R_5iPAzwTI0Ac36WR",
+     "SPQ5_R_31TW6MZyafbLjOs",
+     "SPQ5_R_3Ecgvll7yCxiSfq",
+     "SPQ5_R_1P1APSbf9y0uGtL",
+     "SPQ5_R_2Uge8H6SyoVmGK7",
+     "SPQ5_R_1g6nV97j3m0UrXN"
+    ]
+   },
+   {
+    "chain": "CONFUSED/DOUBT(question or 'negative linear') → ANSWER(not sure / Impossible)  [no reading of trend]",
+    "n": 8,
+    "n_correct": 0,
+    "n_incorrect": 8,
+    "n_unknown": 0,
+    "quote": "I'm not sure that we can be able to identify negative linear relationship in the chart.",
+    "trial_ids": [
+     "SPQ5_R_2WNi2HH78I5OZOO",
+     "SPQ5_R_3fp1jUHNcaoySeC",
+     "SPQ5_R_2ARVdxy7i72DYgW",
+     "SPQ5_R_1mIBohkOmIdsgF5",
+     "SPQ5_R_2vhPlLuWjhQSOuF",
+     "SPQ5_R_5dKmq0Uur1nbAxX",
+     "SPQ5_R_Td2pJ0stpB6hKo1",
+     "SPQ5_R_2xFzb7lDkJFr8wu"
+    ]
+   },
+   {
+    "chain": "SCAN({pt[*]}) → FIT(trendline) → SLOPE>0 → (fails to map sign to claim) ?wrong → ANSWER(True / not sure)",
+    "n": 3,
+    "n_correct": 0,
+    "n_incorrect": 3,
+    "n_unknown": 0,
+    "quote": "I can't answer this question, I don't understand it.",
+    "trial_ids": [
+     "SPQ5_R_12JUTlzcehwtUdN",
+     "SPQ5_R_3R7JWvNDOwOuGrj",
+     "SPQ5_R_3nP07ToNj9d03FE"
+    ]
+   },
+   {
+    "chain": "FIND(extreme pts) → PROJ(pts → axes) → CMP(extremes) → CORR from 2 points ?wrong:extreme-point-reasoning-not-trend → ANSWER(True / Impossible)",
+    "n": 3,
+    "n_correct": 0,
+    "n_incorrect": 3,
+    "n_unknown": 0,
+    "quote": "There is too many points which make it tricky to draw straight lines",
+    "trial_ids": [
+     "SPQ5_R_3D8wKq4NHSwZu4i",
+     "SPQ5_R_2BgNvVo1U4htyBO",
+     "SPQ5_R_2t5U2hVrti4y8IC"
+    ]
+   },
+   {
+    "chain": "GROUP({pt[*]}) → cluster[main] → CORR=0 or CONFUSED ?wrong → ANSWER(not sure)  [cloud enclosed]",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "n_unknown": 0,
+    "quote": "There is no relationship",
+    "trial_ids": [
+     "SPQ5_R_2bIxvFjGgb8JirJ",
+     "SPQ5_R_1Nejz2jhtWZgg7D"
+    ]
+   },
+   {
+    "chain": "FIND(sampled pts) → PROJ(each → axes) → CMP(x↑ ⇒ y↑) → TREND=↑ → CORR=+ → ANSWER(False)  [point-pair staircase]",
+    "n": 1,
+    "n_correct": 1,
+    "n_incorrect": 0,
+    "n_unknown": 0,
+    "quote": "In general, it seems that the taller someone is, the heavier that person also is, so it is not a negative relationship",
+    "trial_ids": [
+     "SPQ5_R_1NeORuwehcuKOMn"
+    ]
+   },
+   {
+    "chain": "SCAN → FIT(trendline) + PROJ(sample pts → axes) → CMP(weight↑ ⇒ height↑) → CORR=+ → ANSWER(False)",
+    "n": 1,
+    "n_correct": 1,
+    "n_incorrect": 0,
+    "n_unknown": 0,
+    "quote": "The higher the weight the higher the height therefore it’s a positive relationship",
+    "trial_ids": [
+     "SPQ5_R_1j9P5vv5Ufod123"
+    ]
+   },
+   {
+    "chain": "GIST(chart) → FIT(upper & lower envelope ↗) → CORR=+ → ANSWER(False)  [envelope]",
+    "n": 1,
+    "n_correct": 1,
+    "n_incorrect": 0,
+    "n_unknown": 0,
+    "quote": "It was clear at first sight that is the opposite.",
+    "trial_ids": [
+     "SPQ5_R_2TB0FublSPtGYCF"
+    ]
+   },
+   {
+    "chain": "KNOW(negative shape) → DRAW(template[↘]) → CMP(cloud ? template) → FIX(→ False)  [template comparison]",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "n_unknown": 0,
+    "quote": "After a bit more thinking, negative linear relationship should look like I drew I think, so I would change my answer to false.",
+    "trial_ids": [
+     "SPQ5_R_VI12BPzRmJrIXVn"
+    ]
+   },
+   {
+    "chain": "GROUP({pt[*]}) → KNOW(height-weight related in real life) → ANSWER(False)",
+    "n": 1,
+    "n_correct": 1,
+    "n_incorrect": 0,
+    "n_unknown": 0,
+    "quote": "I dont understand clearly the answer, but I think is a coherent relation between the data according to the real life empirical relation w...",
+    "trial_ids": [
+     "SPQ5_R_21b7may8A1p29mG"
+    ]
+   },
+   {
+    "chain": "DOUBT('negative linear') → FIT(short local up-stroke) → ANSWER(False)",
+    "n": 1,
+    "n_correct": 1,
+    "n_incorrect": 0,
+    "n_unknown": 0,
+    "quote": "im not sure what negative linear relationship is exactly",
+    "trial_ids": [
+     "SPQ5_R_339oxKJvqasU1as"
+    ]
+   },
+   {
+    "chain": "SCAN → FIT(local polylines, mixed directions) → CORR=0 ?wrong:'random' → ANSWER(False)",
+    "n": 1,
+    "n_correct": 1,
+    "n_incorrect": 0,
+    "n_unknown": 0,
+    "quote": "the is no linear relationship between the height and weights all the values are random",
+    "trial_ids": [
+     "SPQ5_R_3EiHZeDwJysMONb"
+    ]
+   },
+   {
+    "chain": "FIND(ytick[85]) ?wrong:searched-axis-for-title-number → ANSWER(False)",
+    "n": 1,
+    "n_correct": 1,
+    "n_incorrect": 0,
+    "n_unknown": 0,
+    "quote": "There is no 85 in the chart.",
+    "trial_ids": [
+     "SPQ5_R_3hokieevT5vHr8Y"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "SPQ5_R_1DI6FoXNtxFt08R",
+    "accuracy": null,
+    "answer": "False",
+    "chain": "SCAN({pt[*]}) → FIT(trendline over {pt[*]}) → SLOPE(trendline) > 0 → CORR(height,weight)=+ → KNOW(negative = opposite direction) → CMP(trend ? negative template) → ANSWER(False)",
+    "ops": [
+     "SCAN",
+     "FIT",
+     "SLOPE",
+     "CORR",
+     "KNOW",
+     "CMP"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "trendline[↗]",
+     "{pt[*]}"
+    ],
+    "sketch_gesture": "freehand upward-sloping trendline drawn through the point cloud from lower-left to upper-right",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_6JTMV49ouv1ou0p",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "SCAN({pt[*]}) → FIT(trendline over {pt[*]}) → SLOPE(trendline) > 0 → CORR(height,weight)=+ → ANSWER(False)",
+    "ops": [
+     "SCAN",
+     "FIT",
+     "SLOPE",
+     "CORR"
+    ],
+    "elements_text": [
+     "xtitle",
+     "ytitle"
+    ],
+    "elements_sketch": [
+     "trendline[↗]"
+    ],
+    "sketch_gesture": "freehand upward-sloping trendline drawn through the point cloud from lower-left to upper-right",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_yDE3uwv04ZnHOpP",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "SCAN({pt[*]}) → FIT(trendline over {pt[*]}) → SLOPE(trendline) > 0 → CORR(height,weight)=+ → ANSWER(False)",
+    "ops": [
+     "SCAN",
+     "FIT",
+     "SLOPE",
+     "CORR"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "trendline[↗]"
+    ],
+    "sketch_gesture": "freehand upward-sloping trendline drawn through the point cloud from lower-left to upper-right",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_2t9cXi0XKbdaZFg",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "SCAN({pt[*]}) → FIT(trendline over {pt[*]}) → SLOPE(trendline) > 0 → CORR(height,weight)=+ → TREND(weight | height ↑)=↑ → ANSWER(False)",
+    "ops": [
+     "SCAN",
+     "FIT",
+     "SLOPE",
+     "CORR",
+     "TREND"
+    ],
+    "elements_text": [
+     "xtitle",
+     "ytitle"
+    ],
+    "elements_sketch": [
+     "trendline[↗]"
+    ],
+    "sketch_gesture": "upward trend arrow drawn through the cloud from ~(160,43) to ~(183,69)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_1NlwFmOuUVBaeea",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "SCAN({pt[*]}) → FIT(trendline over {pt[*]}) → SLOPE(trendline) > 0 → CORR(height,weight)=+ → ANSWER(False)",
+    "ops": [
+     "SCAN",
+     "FIT",
+     "SLOPE",
+     "CORR"
+    ],
+    "elements_text": [
+     "trendline"
+    ],
+    "elements_sketch": [
+     "trendline[↗]"
+    ],
+    "sketch_gesture": "freehand upward-sloping trendline drawn through the point cloud from lower-left to upper-right",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_2bIxvFjGgb8JirJ",
+    "accuracy": 0.0,
+    "answer": "I'm not sure",
+    "chain": "GROUP({pt[*]}) → cluster[main] → GIST(chart) → CORR(height,weight)=0 ?wrong:missed-positive-trend → ANSWER(I'm not sure)",
+    "ops": [
+     "GROUP",
+     "GIST",
+     "CORR"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "cluster[main]"
+    ],
+    "sketch_gesture": "large loop enclosing the main point cloud",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_12JUTlzcehwtUdN",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "SCAN({pt[*]}) → FIT(trendline over {pt[*]}) → SLOPE(trendline) > 0 → CORR(height,weight)=+ → GIST(chart) → 'clear relationship' → ANSWER(True) ?wrong:ignored-sign-of-relationship",
+    "ops": [
+     "SCAN",
+     "FIT",
+     "SLOPE",
+     "CORR",
+     "GIST"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "trendline[↗]"
+    ],
+    "sketch_gesture": "freehand upward-sloping trendline drawn through the point cloud from lower-left to upper-right",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_2YFI0HJHbxlYEle",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "SCAN({pt[*]}) → FIT(trendline over {pt[*]}) → SLOPE(trendline) > 0 → CORR(height,weight)=+ → AVG(weight | height ↑)=↑ → ANSWER(False)",
+    "ops": [
+     "SCAN",
+     "FIT",
+     "SLOPE",
+     "CORR",
+     "AVG"
+    ],
+    "elements_text": [
+     "xtitle",
+     "ytitle"
+    ],
+    "elements_sketch": [
+     "trendline[↗]"
+    ],
+    "sketch_gesture": "freehand upward-sloping trendline drawn through the point cloud from lower-left to upper-right",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_1Nejz2jhtWZgg7D",
+    "accuracy": 0.0,
+    "answer": "I'm not sure",
+    "chain": "GROUP({pt[*]}) → cluster[main] → CONFUSED(which variable to compare) → CORR=− ?wrong:believed-negative → ANSWER(I'm not sure)",
+    "ops": [
+     "GROUP",
+     "CONFUSED",
+     "CORR"
+    ],
+    "elements_text": [
+     "xtitle",
+     "ytitle"
+    ],
+    "elements_sketch": [
+     "cluster[main]"
+    ],
+    "sketch_gesture": "loop enclosing the main point cloud",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_2WNi2HH78I5OZOO",
+    "accuracy": 0.0,
+    "answer": "I'm not sure",
+    "chain": "CONFUSED(question wording) → ANSWER(I'm not sure)",
+    "ops": [
+     "CONFUSED"
+    ],
+    "elements_text": [
+     "question"
+    ],
+    "elements_sketch": [],
+    "sketch_gesture": "large question mark drawn on the right of the chart",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_339oxKJvqasU1as",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "DOUBT(meaning of 'negative linear') → SCAN({pt: lower-left}) → FIT(short up-slope stroke) → ANSWER(False)",
+    "ops": [
+     "DOUBT",
+     "SCAN",
+     "FIT"
+    ],
+    "elements_text": [
+     "question"
+    ],
+    "elements_sketch": [
+     "{pt: 166-172cm, 47-54kg}"
+    ],
+    "sketch_gesture": "short upward stroke through lower-left points (~167,47 to ~172,54)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_2vhPlLuWjhQSOuF",
+    "accuracy": 0.0,
+    "answer": "I'm not sure",
+    "chain": "LOOK(yaxis) → RANGE(weight ≈43-75) → CONFUSED(meaning of 'negative linear') → ANSWER(I'm not sure)",
+    "ops": [
+     "LOOK",
+     "RANGE",
+     "CONFUSED"
+    ],
+    "elements_text": [
+     "question"
+    ],
+    "elements_sketch": [
+     "yaxis",
+     "{pt[*]} weight extent"
+    ],
+    "sketch_gesture": "bracket alongside the y-axis spanning ~43 to 75 kg, plus a partial question mark",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_2TB0FublSPtGYCF",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "GIST(chart) → SCAN({pt[*]}) → FIT(upper & lower envelope ↗) → CORR(height,weight)=+ → ANSWER(False)",
+    "ops": [
+     "GIST",
+     "SCAN",
+     "FIT",
+     "CORR"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "envelope[upper]",
+     "envelope[lower]"
+    ],
+    "sketch_gesture": "two upward-sloping lines bounding the cloud above and below (envelope)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_1mIBohkOmIdsgF5",
+    "accuracy": 0.0,
+    "answer": "I'm not sure",
+    "chain": "LOOK(origin) → CONFUSED(meaning of 'negative linear') → ANSWER(I'm not sure)",
+    "ops": [
+     "LOOK",
+     "CONFUSED"
+    ],
+    "elements_text": [
+     "question"
+    ],
+    "elements_sketch": [
+     "xtick[155]",
+     "ytick[40]"
+    ],
+    "sketch_gesture": "small scribble circling the origin (155,40)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_2qa33uKUNjCuE0q",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "SCAN({pt[*]}) → FIT(trendline over {pt[*]}) → SLOPE(trendline) > 0 → CORR(height,weight)=+ → ANSWER(False)",
+    "ops": [
+     "SCAN",
+     "FIT",
+     "SLOPE",
+     "CORR"
+    ],
+    "elements_text": [
+     "line"
+    ],
+    "elements_sketch": [
+     "trendline[↗]"
+    ],
+    "sketch_gesture": "freehand upward-sloping trendline drawn through the point cloud from lower-left to upper-right",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_2wNv3TVT6WyZtEv",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "SCAN({pt[*]}) → FIT(trendline over {pt[*]}) → SLOPE(trendline) > 0 → CORR(height,weight)=+ → CMP(y of right side ? left side) → ANSWER(False)",
+    "ops": [
+     "SCAN",
+     "FIT",
+     "SLOPE",
+     "CORR",
+     "CMP"
+    ],
+    "elements_text": [
+     "{pt: right side}"
+    ],
+    "elements_sketch": [
+     "trendline[↗]"
+    ],
+    "sketch_gesture": "freehand upward-sloping trendline drawn through the point cloud from lower-left to upper-right (S-shaped)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_3R7JWvNDOwOuGrj",
+    "accuracy": 0.0,
+    "answer": "I'm not sure",
+    "chain": "SCAN({pt[*]}) → FIT(trendline over {pt[*]}) → SLOPE(trendline) > 0 → CORR(height,weight)=+ → CONFUSED(question) → ANSWER(I'm not sure) ?wrong:did-not-map-trend-to-answer",
+    "ops": [
+     "SCAN",
+     "FIT",
+     "SLOPE",
+     "CORR",
+     "CONFUSED"
+    ],
+    "elements_text": [
+     "question"
+    ],
+    "elements_sketch": [
+     "trendline[↗]"
+    ],
+    "sketch_gesture": "freehand upward-sloping trendline drawn through the point cloud from lower-left to upper-right",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_2tFEioxy5Zpl83Y",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "OUTLIER({pt[*]}) → SCAN({pt[*]}) → FIT(trendline over {pt[*]}) → SLOPE(trendline) > 0 → CORR(height,weight)=+",
+    "ops": [
+     "OUTLIER",
+     "SCAN",
+     "FIT",
+     "SLOPE",
+     "CORR"
+    ],
+    "elements_text": [
+     "pt[outlier]"
+    ],
+    "elements_sketch": [
+     "trendline[↗]"
+    ],
+    "sketch_gesture": "freehand upward-sloping trendline drawn through the point cloud from lower-left to upper-right",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_1j9P5vv5Ufod123",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "SCAN({pt[*]}) → FIT(trendline) → PROJ(pt[166cm,52kg] → axes) → PROJ(pt[161cm,46kg] → axes) → CMP(pairs: weight↑ ⇒ height↑) → CORR=+ → ANSWER(False)",
+    "ops": [
+     "SCAN",
+     "FIT",
+     "PROJ",
+     "PROJ",
+     "CMP",
+     "CORR"
+    ],
+    "elements_text": [
+     "xtitle",
+     "ytitle"
+    ],
+    "elements_sketch": [
+     "trendline[↗]",
+     "pt[166cm,52kg]",
+     "pt[161cm,46kg]",
+     "pt[outlier]"
+    ],
+    "sketch_gesture": "upward trendline plus L-shaped projections from two lower-left points to both axes; stroke near the low-right outlier",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_3fp1jUHNcaoySeC",
+    "accuracy": 0.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "CONFUSED(question) → ANSWER(Impossible) ?wrong:no-reading-attempted",
+    "ops": [
+     "CONFUSED"
+    ],
+    "elements_text": [
+     "question"
+    ],
+    "elements_sketch": [],
+    "sketch_gesture": "blank (only a tiny stray mark)",
+    "source": "text"
+   },
+   {
+    "trial_id": "SPQ5_R_5iPAzwTI0Ac36WR",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "SCAN({pt[*]}) → FIT(trendline over {pt[*]}) → SLOPE(trendline) > 0 → CORR(height,weight)=+ → ANSWER(False)",
+    "ops": [
+     "SCAN",
+     "FIT",
+     "SLOPE",
+     "CORR"
+    ],
+    "elements_text": [
+     "line",
+     "{pt[*]}"
+    ],
+    "elements_sketch": [
+     "trendline[↗]"
+    ],
+    "sketch_gesture": "upward arrow trendline drawn through the cloud from ~(156,40) to ~(187,75)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_31TW6MZyafbLjOs",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "SCAN({pt[*]}) → FIT(trendline over {pt[*]}) → SLOPE(trendline) > 0 → CORR(height,weight)=+ → ANSWER(False)",
+    "ops": [
+     "SCAN",
+     "FIT",
+     "SLOPE",
+     "CORR"
+    ],
+    "elements_text": [
+     "line"
+    ],
+    "elements_sketch": [
+     "trendline[↗]"
+    ],
+    "sketch_gesture": "upward stepped line traced through points from ~(156,41) to ~(179,66)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_VI12BPzRmJrIXVn",
+    "accuracy": 0.0,
+    "answer": "I'm not sure",
+    "chain": "KNOW(negative linear shape) → DRAW(template[↘]) → CMP(cloud ? template[↘]) → FIX(I'm not sure → False)",
+    "ops": [
+     "KNOW",
+     "DRAW",
+     "CMP",
+     "FIX"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "template[↘]"
+    ],
+    "sketch_gesture": "downward-sloping line drawn from ~(161,70) to ~(184,45) as a negative-relationship template",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_3Ecgvll7yCxiSfq",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "SCAN({pt[*]}) → FIT(trendline over {pt[*]}) → SLOPE(trendline) > 0 → CORR(height,weight)=+ → TREND(weight | height ↑)=↑ → ANSWER(False)",
+    "ops": [
+     "SCAN",
+     "FIT",
+     "SLOPE",
+     "CORR",
+     "TREND"
+    ],
+    "elements_text": [
+     "line"
+    ],
+    "elements_sketch": [
+     "trendline[↗]"
+    ],
+    "sketch_gesture": "freehand upward-sloping trendline drawn through the point cloud from lower-left to upper-right",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_2xFzb7lDkJFr8wu",
+    "accuracy": 0.0,
+    "answer": "I'm not sure",
+    "chain": "FIND(pt?) → PROJ(→ yaxis ~59) → PROJ(→ xaxis ~164.5) → CONFUSED(hard to interpret) → ANSWER(I'm not sure)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "CONFUSED"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "ytick[~59]",
+     "xtick[~164.5]"
+    ],
+    "sketch_gesture": "L-shaped line from the y-axis at ~59 kg over to x≈164.5 and down to the x-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_2t5U2hVrti4y8IC",
+    "accuracy": 0.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "FIND(pt[161cm,44kg]) → FIND(pt[181.6cm,45.8kg]) → PROJ(pts → axes) → CONFUSED(too many points to draw straight lines) → ANSWER(Impossible) ?wrong:point-reading-instead-of-trend",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "CONFUSED"
+    ],
+    "elements_text": [
+     "{pt[*]}",
+     "line"
+    ],
+    "elements_sketch": [
+     "pt[161cm,44kg]",
+     "pt[181.6cm,45.8kg]",
+     "yaxis",
+     "xaxis"
+    ],
+    "sketch_gesture": "L-shaped projection lines from the two lowest points (~161,44 and ~182,46) to both axes",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_1P1APSbf9y0uGtL",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "LOOK({pt[*]}) → SCAN({pt[*]}) → FIT(trendline over {pt[*]}) → SLOPE(trendline) > 0 → CORR(height,weight)=+ → ANSWER(False)",
+    "ops": [
+     "LOOK",
+     "SCAN",
+     "FIT",
+     "SLOPE",
+     "CORR"
+    ],
+    "elements_text": [
+     "{pt[*]}"
+    ],
+    "elements_sketch": [
+     "trendline[↗]"
+    ],
+    "sketch_gesture": "upward arrow trendline through the cloud",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_Td2pJ0stpB6hKo1",
+    "accuracy": 0.0,
+    "answer": "I'm not sure",
+    "chain": "FIT(near-flat line at ~59kg) → CONFUSED(data asked) → ANSWER(I'm not sure)",
+    "ops": [
+     "FIT",
+     "CONFUSED"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "line[~59kg flat]",
+     "yaxis"
+    ],
+    "sketch_gesture": "near-horizontal line at ~59 kg across the cloud curving up to the y-axis at ~63",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_21b7may8A1p29mG",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "GROUP({pt[*]}) → cluster[main] → KNOW(height & weight related in real life) → CONFUSED(question) → ANSWER(False)",
+    "ops": [
+     "GROUP",
+     "KNOW",
+     "CONFUSED"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "cluster[main]"
+    ],
+    "sketch_gesture": "large loop enclosing nearly all points",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_3D8wKq4NHSwZu4i",
+    "accuracy": 0.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "KNOW(height does not determine weight) → ARGMAX({pt[*]}, x) → ARGMAX({pt[*]}, y) → FIND(pt[181.6cm,45.8kg]) → FIND(pt[176.8cm,74kg]) → PROJ(pts → axes) → CORR(height,weight)=0 ?wrong:reasoned-from-extreme-points-not-trend → ANSWER(Impossible)",
+    "ops": [
+     "KNOW",
+     "ARGMAX",
+     "ARGMAX",
+     "FIND",
+     "FIND",
+     "PROJ",
+     "CORR"
+    ],
+    "elements_text": [
+     "pt[tallest]",
+     "pt[heaviest]"
+    ],
+    "elements_sketch": [
+     "pt[176.8cm,74kg]",
+     "pt[181.6cm,45.8kg]",
+     "yaxis",
+     "xaxis"
+    ],
+    "sketch_gesture": "circles on the topmost point (~177,74) and the low-right point (~182,46) with arrows from each to both axes",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_2ARVdxy7i72DYgW",
+    "accuracy": 0.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "DOUBT(can a negative linear relationship be identified) → ANSWER(Impossible)",
+    "ops": [
+     "DOUBT"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [],
+    "sketch_gesture": "question mark drawn in the upper-left of the plot",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_2BgNvVo1U4htyBO",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "ARGMIN({pt[*]}, y) → FIND(pt[161cm,44kg]) → FIND(pt[181.6cm,45.8kg]) → CMP(y ≈ y) → GROUP(pairs of similar weight) ?wrong:pairing-instead-of-trend → ANSWER(True)",
+    "ops": [
+     "ARGMIN",
+     "FIND",
+     "FIND",
+     "CMP",
+     "GROUP"
+    ],
+    "elements_text": [
+     "pt[min-weight]",
+     "pt[second-tallest]"
+    ],
+    "elements_sketch": [
+     "pt[161cm,44kg]",
+     "pt[181.6cm,45.8kg]"
+    ],
+    "sketch_gesture": "circles on the lightest point (~161,44) and the low-right point (~182,46)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_2Uge8H6SyoVmGK7",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "SCAN({pt[*]}) → FIT(trendline over {pt[*]}) → SLOPE(trendline) > 0 → CORR(height,weight)=+ → TREND(height | weight ↑)=↑ → ANSWER(False)",
+    "ops": [
+     "SCAN",
+     "FIT",
+     "SLOPE",
+     "CORR",
+     "TREND"
+    ],
+    "elements_text": [
+     "ytitle",
+     "xtitle"
+    ],
+    "elements_sketch": [
+     "trendline[↗]"
+    ],
+    "sketch_gesture": "freehand upward-sloping trendline drawn through the point cloud from lower-left to upper-right",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_3nP07ToNj9d03FE",
+    "accuracy": 0.0,
+    "answer": "I'm not sure",
+    "chain": "SCAN({pt[*]}) → FIT(trendline over {pt[*]}) → SLOPE(trendline) > 0 → CORR(height,weight)=+ → CONFUSED(question) → ANSWER(I'm not sure) ?wrong:did-not-map-trend-to-answer",
+    "ops": [
+     "SCAN",
+     "FIT",
+     "SLOPE",
+     "CORR",
+     "CONFUSED"
+    ],
+    "elements_text": [
+     "question"
+    ],
+    "elements_sketch": [
+     "trendline[↗]"
+    ],
+    "sketch_gesture": "upward trendline spanning the full chart from (155,40) to (190,75)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_1g6nV97j3m0UrXN",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "KNOW(taller ⇒ heavier) → SCAN({pt[*]}) → FIT(trendline over {pt[*]}) → SLOPE(trendline) > 0 → CORR(height,weight)=+ → ANSWER(False)",
+    "ops": [
+     "KNOW",
+     "SCAN",
+     "FIT",
+     "SLOPE",
+     "CORR"
+    ],
+    "elements_text": [
+     "xtitle",
+     "ytitle"
+    ],
+    "elements_sketch": [
+     "trendline[↗]"
+    ],
+    "sketch_gesture": "freehand upward-sloping trendline drawn through the point cloud from lower-left to upper-right",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_5dKmq0Uur1nbAxX",
+    "accuracy": 0.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "SCAN(yaxis) → DOUBT(no data to show that) → ANSWER(Impossible)",
+    "ops": [
+     "SCAN",
+     "DOUBT"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "yaxis"
+    ],
+    "sketch_gesture": "line traced along the y-axis from the top to the bottom",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_3hokieevT5vHr8Y",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "LOOK(yaxis) → FIND(ytick[85]) ?wrong:searched-axis-for-'85'-from-title → ANSWER(False)",
+    "ops": [
+     "LOOK",
+     "FIND"
+    ],
+    "elements_text": [
+     "title"
+    ],
+    "elements_sketch": [
+     "ytick[75]"
+    ],
+    "sketch_gesture": "X mark at the top of the y-axis (above 75)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_3EiHZeDwJysMONb",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "SCAN({pt[*]}) → FIT(local polylines in mixed directions) → CORR(height,weight)=0 ?wrong:called-it-random → ANSWER(False)",
+    "ops": [
+     "SCAN",
+     "FIT",
+     "CORR"
+    ],
+    "elements_text": [
+     "{pt[*]}"
+    ],
+    "elements_sketch": [
+     "{pt[*]} local paths"
+    ],
+    "sketch_gesture": "several squiggly polylines connecting nearby points in different directions",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ5_R_1NeORuwehcuKOMn",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(pt[161cm,44kg]) → FIND(pt[166cm,51kg]) → FIND(pt[173cm,60kg]) → FIND(pt[175cm,65kg]) → FIND(pt[176cm,70kg]) → PROJ(each → axes) → CMP(pairs: x↑ ⇒ y↑) → TREND(weight | height ↑)=↑ → CORR=+ → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "FIND",
+     "FIND",
+     "FIND",
+     "PROJ",
+     "CMP",
+     "TREND",
+     "CORR"
+    ],
+    "elements_text": [
+     "xtitle",
+     "ytitle"
+    ],
+    "elements_sketch": [
+     "pt[161cm,44kg]",
+     "pt[166cm,51kg]",
+     "pt[173cm,60kg]",
+     "pt[175cm,65kg]",
+     "pt[176cm,70kg]",
+     "yaxis",
+     "xaxis"
+    ],
+    "sketch_gesture": "staircase of five L-shaped projections from sampled points (~161/44, 166/51, 173/60, 175/65, 176/70) to both axes",
+    "source": "both"
+   }
+  ]
+ },
+ "SPQ6": {
+  "qid": "SPQ6",
+  "chart": "SP",
+  "task": "find_anomalies",
+  "question": "What is the height of the most prominent outlier in the data?",
+  "reference_chain": "SCAN({pt[*]}) → FIT(trendline ↗) → OUTLIER({pt[*]} | distance from trend) = pt[181.6cm,45.8kg] → PROJ(pt → xaxis) → INTERP(x | ticks 180,185) → READ(x)≈181.6 → ANSWER(≈182)",
+  "notes": "Accuracy was not recorded for any trial. Only two participants (2/9) picked the true outlier, the tall-but-light point at (181.6 cm, 45.8 kg), and both then entered its weight (46) and corrected themselves in the text. Most people took 'most prominent outlier' to mean an extreme on one axis: the topmost point (176-177 cm, 74 kg) or the shortest and lightest point (161 cm, 44 kg). One chose the densest column. The pivotal element is spotting distance from the positive trend, which no one described explicitly.",
+  "new_symbols": {
+   "GROUP(densest column)": "GROUP applied to pick the mode / densest vertical strip of points"
+  },
+  "strategies": [
+   {
+    "chain": "OUTLIER({pt[*]}) → pt[181.6,45.8] → READ(pt, y)≈46 ?wrong:reported-weight-not-height → ANSWER(46) → FIX(meant ≈182)",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 0,
+    "n_unknown": 2,
+    "quote": "I confused the weight and height. The height is 181cm.",
+    "trial_ids": [
+     "SPQ6_R_2t5U2hVrti4y8IC",
+     "SPQ6_R_3hokieevT5vHr8Y"
+    ]
+   },
+   {
+    "chain": "ARGMAX({pt[*]}, y) ?wrong:prominent=topmost → PROJ(pt → xaxis) → READ(x)≈176 → ANSWER(176)",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 0,
+    "n_unknown": 2,
+    "quote": "I found the most prominent outlier and the I measured the height of it.",
+    "trial_ids": [
+     "SPQ6_R_1P1APSbf9y0uGtL",
+     "SPQ6_R_2BgNvVo1U4htyBO"
+    ]
+   },
+   {
+    "chain": "ARGMIN({pt[*]}, x & y) ?wrong:chose-shortest-lightest-point → PROJ(pt → axes) → READ(x)≈161 → ANSWER(161)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 0,
+    "n_unknown": 1,
+    "quote": "This person stands out the most, as they are the only individual with these stats. It is the shortest and lightest person.",
+    "trial_ids": [
+     "SPQ6_R_3D8wKq4NHSwZu4i"
+    ]
+   },
+   {
+    "chain": "SCAN → GROUP(several edge groups) → OUTLIER ?wrong:chose-lower-left-group → READ(x)≈161 → ANSWER(161)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 0,
+    "n_unknown": 1,
+    "quote": "more bigger bundle at the higher end",
+    "trial_ids": [
+     "SPQ6_R_1DI6FoXNtxFt08R"
+    ]
+   },
+   {
+    "chain": "SCAN → GROUP(densest column) ?wrong:mode-not-outlier → READ(x)≈172 → ANSWER(172)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 0,
+    "n_unknown": 1,
+    "quote": "I saw where most of the dots were and went close to the actual number",
+    "trial_ids": [
+     "SPQ6_R_2vhPlLuWjhQSOuF"
+    ]
+   },
+   {
+    "chain": "CONFUSED → FIND(pt[topmost]) → PROJ(→ yaxis) → READ(y)≈74 ?wrong:weight-of-topmost → GUESS",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 0,
+    "n_unknown": 1,
+    "quote": "am guessing, am confused.",
+    "trial_ids": [
+     "SPQ6_R_5dKmq0Uur1nbAxX"
+    ]
+   },
+   {
+    "chain": "DOUBT → LOOK(origin) → GUESS(150) ?wrong",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 0,
+    "n_unknown": 1,
+    "quote": "i am not sure with this question",
+    "trial_ids": [
+     "SPQ6_R_Td2pJ0stpB6hKo1"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "SPQ6_R_1DI6FoXNtxFt08R",
+    "accuracy": null,
+    "answer": "161",
+    "chain": "SCAN({pt[*]}) → GROUP({pt: x≥179}) → cluster[right column] → GROUP({pt: lower-left}) → cluster[lower-left] → OUTLIER ?wrong:chose-lower-left-group → READ(x)≈161 → ANSWER(161)",
+    "ops": [
+     "SCAN",
+     "GROUP",
+     "GROUP",
+     "OUTLIER",
+     "READ"
+    ],
+    "elements_text": [
+     "cluster[higher end]"
+    ],
+    "elements_sketch": [
+     "cluster[180-182cm,44-66kg]",
+     "pt[182.4cm,63.5kg]",
+     "pt[161cm,44kg]",
+     "cluster[162-163cm,46-48kg]",
+     "pt[181.6cm,45.8kg]"
+    ],
+    "sketch_gesture": "loops around the right-edge column of points (incl. the low-right outlier), the point at ~(182,63.5), and two lower-left groups (~161,44 and ~162-163,46-48)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ6_R_2vhPlLuWjhQSOuF",
+    "accuracy": null,
+    "answer": "172",
+    "chain": "SCAN({pt[*]}) → GROUP(densest column) ?wrong:chose-mode-not-outlier → READ(x)≈172 → ANSWER(172)",
+    "ops": [
+     "SCAN",
+     "GROUP",
+     "READ"
+    ],
+    "elements_text": [
+     "{pt[*]}"
+    ],
+    "elements_sketch": [
+     "{pt: x≈172}"
+    ],
+    "sketch_gesture": "vertical band drawn over the dense column of points at x≈172",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ6_R_2t5U2hVrti4y8IC",
+    "accuracy": null,
+    "answer": "46",
+    "chain": "OUTLIER({pt[*]}) → pt[181.6cm,45.8kg] → PROJ(pt → yaxis) → PROJ(pt → xaxis) → READ(pt, y)≈46 ?wrong:reported-weight-not-height → ANSWER(46) → FIX(height=181)",
+    "ops": [
+     "OUTLIER",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "FIX"
+    ],
+    "elements_text": [
+     "xtitle",
+     "ytitle"
+    ],
+    "elements_sketch": [
+     "pt[181.6cm,45.8kg]",
+     "yaxis",
+     "xaxis"
+    ],
+    "sketch_gesture": "horizontal line from the low-right outlier (~182,46) to the y-axis, plus vertical line down to the x-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ6_R_1P1APSbf9y0uGtL",
+    "accuracy": null,
+    "answer": "176",
+    "chain": "ARGMAX({pt[*]}, y) ?wrong:prominent=highest-point → FIND(pt[176.8cm,74kg]) → PROJ(pt → yaxis) → PROJ(pt → xaxis) → READ(x)≈176 → ANSWER(176)",
+    "ops": [
+     "ARGMAX",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ"
+    ],
+    "elements_text": [
+     "pt[top]"
+    ],
+    "elements_sketch": [
+     "pt[176.8cm,74kg]",
+     "yaxis",
+     "xaxis"
+    ],
+    "sketch_gesture": "circle on the topmost point (~177,74) with arrows to the y-axis and down to the x-axis at ~176.5",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ6_R_Td2pJ0stpB6hKo1",
+    "accuracy": null,
+    "answer": "150",
+    "chain": "DOUBT(question) → LOOK(origin) → GUESS → ANSWER(150) ?wrong:off-axis-value",
+    "ops": [
+     "DOUBT",
+     "LOOK",
+     "GUESS"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "xtick[155]",
+     "yaxis[40-43]"
+    ],
+    "sketch_gesture": "short stroke along the y-axis just above the origin (~40-43 kg)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ6_R_3D8wKq4NHSwZu4i",
+    "accuracy": null,
+    "answer": "161",
+    "chain": "OUTLIER({pt[*]}) → ARGMIN({pt[*]}, x) → ARGMIN({pt[*]}, y) → FIND(pt[161cm,44kg]) ?wrong:chose-extreme-low-point-not-off-trend-point → PROJ(pt → yaxis) → PROJ(pt → xaxis) → READ(x)≈161 → ANSWER(161)",
+    "ops": [
+     "OUTLIER",
+     "ARGMIN",
+     "ARGMIN",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ"
+    ],
+    "elements_text": [
+     "pt[shortest]",
+     "pt[lightest]"
+    ],
+    "elements_sketch": [
+     "pt[161cm,44kg]",
+     "yaxis",
+     "xaxis"
+    ],
+    "sketch_gesture": "circle on the bottom-left point (~161,44) with arrows to the y-axis and down to the x-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ6_R_2BgNvVo1U4htyBO",
+    "accuracy": null,
+    "answer": "176",
+    "chain": "OUTLIER({pt[*]}) → FIND(pt[176.8cm,74kg]) ?wrong:chose-topmost-point → PROJ(pt → xaxis) → INTERP(x | ticks 175,180) → READ(x)≈176 → ANSWER(176)",
+    "ops": [
+     "OUTLIER",
+     "FIND",
+     "PROJ",
+     "INTERP",
+     "READ"
+    ],
+    "elements_text": [
+     "pt[outlier]"
+    ],
+    "elements_sketch": [
+     "pt[176.8cm,74kg]",
+     "xaxis"
+    ],
+    "sketch_gesture": "vertical line from the topmost point (~177,74) down to the x-axis at ~176.5 with small tick marks along the axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ6_R_5dKmq0Uur1nbAxX",
+    "accuracy": null,
+    "answer": "74",
+    "chain": "CONFUSED(question) → FIND(pt[176.8cm,74kg]) → PROJ(pt → yaxis) → READ(y)≈74 ?wrong:reported-weight-of-topmost-point → GUESS → ANSWER(74)",
+    "ops": [
+     "CONFUSED",
+     "FIND",
+     "PROJ",
+     "READ",
+     "GUESS"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "pt[176.8cm,74kg]",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal line from the topmost point (~177,74) to the y-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "SPQ6_R_3hokieevT5vHr8Y",
+    "accuracy": null,
+    "answer": "46",
+    "chain": "OUTLIER({pt[*]}) → pt[181.6cm,45.8kg] → READ(pt, y)≈46 ?wrong:reported-weight-not-height → ANSWER(46) → FIX(meant 182 cm)",
+    "ops": [
+     "OUTLIER",
+     "READ",
+     "FIX"
+    ],
+    "elements_text": [
+     "xtitle",
+     "ytitle"
+    ],
+    "elements_sketch": [
+     "pt[181.6cm,45.8kg]"
+    ],
+    "sketch_gesture": "circle on the low-right outlier (~182,46)",
+    "source": "both"
+   }
+  ]
+ }
+}

@@ -1,0 +1,2366 @@
+{
+ "TMQ1": {
+  "qid": "TMQ1",
+  "chart": "TM",
+  "task": "find_extremum",
+  "question": "For which website was the number of unique visitors the largest in 2020?",
+  "reference_chain": "MAP(size(tile) → visitors) → SCAN({tile[*]}) → ARGMAX({tile[*]}, size)=tile[Google] → ANSWER(Google)",
+  "notes": "Only two trials, both wrong: both participants declined to read area as value because the treemap has no key, legend or numeric scale. The sketches point at the root \"Websites\" header or write \"No key\", so the pivotal element is the absent size legend, not any tile.",
+  "new_symbols": {
+   "MISSING(x)": "participant judges that information needed to answer (key, scale, values, totals) is absent from the chart"
+  },
+  "strategies": [
+   {
+    "strategy": "missing-key",
+    "chain": "LOOK(chart) → MISSING(legend|value key) → ANSWER(Impossible) ?wrong:area-encoding-is-conventional",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "It doesn't state that the bigger the box the higher the number of visitors",
+    "trial_ids": [
+     "TMQ1_R_2tFEioxy5Zpl83Y",
+     "TMQ1_R_3HRhA2l19nQiHDq"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "TMQ1_R_2tFEioxy5Zpl83Y",
+    "accuracy": 0.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "LOOK(annot[Websites]) → DOUBT(MAP(size(tile) → visitors)) → MISSING(size-encoding key) → ANSWER(Impossible) ?wrong:area-encoding-is-conventional",
+    "ops": [
+     "LOOK",
+     "DOUBT",
+     "MAP",
+     "MISSING"
+    ],
+    "elements_text": [
+     "tile",
+     "size(tile)"
+    ],
+    "elements_sketch": [
+     "annot[Websites]"
+    ],
+    "sketch_gesture": "circle around the \"Websites\" root header",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ1_R_3HRhA2l19nQiHDq",
+    "accuracy": 0.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "LOOK(chart) → MISSING(legend | value scale) → ANSWER(Impossible) ?wrong:area-encoding-is-conventional",
+    "ops": [
+     "LOOK",
+     "MISSING"
+    ],
+    "elements_text": [
+     "legend",
+     "annot[scale]"
+    ],
+    "elements_sketch": [
+     "tile[Google]"
+    ],
+    "sketch_gesture": "wrote \"No key\" inside the Google tile",
+    "source": "both"
+   }
+  ]
+ },
+ "TMQ2": {
+  "qid": "TMQ2",
+  "chart": "TM",
+  "task": "make_comparison",
+  "question": "The number of unique visitors for Amazon was more than that of Yahoo in 2020. True or False?",
+  "reference_chain": "MAP(size(tile) → visitors) → FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMPvis(size(tile[Yahoo!]) > size(tile[Amazon])) → ANSWER(False)",
+  "notes": "Most participants outlined, circled or scribbled over the Yahoo! and Amazon tiles and judged area directly; a few measured width and height with arrows or estimated a ~2:1 ratio. Errors came from comparing Google instead of Amazon (2), from refusing to read area without numbers or a key (several \"Impossible\" or \"not sure\"), from one within-group share comparison (Amazon large relative to Retail), and from one participant whose overlay showed Amazon at half of Yahoo! but who still answered True.",
+  "new_symbols": {
+   "MISSING(x)": "participant judges required information (values, scale, key) to be absent from the chart",
+   "OVERLAY(a → b)": "redraws/transposes the outline of mark a onto mark b to compare sizes directly",
+   "group[name]": "a treemap parent category rectangle (e.g. group[Retail]) containing child tiles",
+   "shape(m)": "the shape of a mark as a possible encoding channel"
+  },
+  "strategies": [
+   {
+    "strategy": "cmp-size",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMPvis(size(tile[Yahoo!]) > size(tile[Amazon])) → ANSWER(False)",
+    "n": 21,
+    "n_correct": 21,
+    "n_incorrect": 0,
+    "quote": "Was trying to make a spot the difference drawing to make my answer clear and the drawing helped.",
+    "trial_ids": [
+     "TMQ2_R_yDE3uwv04ZnHOpP",
+     "TMQ2_R_WrL4Jjku9WT6JeF",
+     "TMQ2_R_32Q56m6gcri89NR",
+     "TMQ2_R_241SEsUc9JJZ9ii",
+     "TMQ2_R_DHVf3ZBb8NKIn9n",
+     "TMQ2_R_1i58c2WHUP6VpcD",
+     "TMQ2_R_2v2rWlRd58loD8l",
+     "TMQ2_R_t0CD8Sjo20owQE1",
+     "TMQ2_R_OHJyjNK3dci47O9",
+     "TMQ2_R_2YgGlmdIRITklxf",
+     "TMQ2_R_rfNBQrIzVvs2tPz",
+     "TMQ2_R_2aCSBNJjBanMISN",
+     "TMQ2_R_2RPteVShn9rbma8",
+     "TMQ2_R_1P1APSbf9y0uGtL",
+     "TMQ2_R_xsaKUVdTdetngd3",
+     "TMQ2_R_3G94sLKEDU4CAIr",
+     "TMQ2_R_3D8wKq4NHSwZu4i",
+     "TMQ2_R_2rqIKFQJrR5RqI4",
+     "TMQ2_R_xc1B7hqJfIecigp",
+     "TMQ2_R_3hokieevT5vHr8Y",
+     "TMQ2_R_2SozfrY7GG4R8qB"
+    ]
+   },
+   {
+    "strategy": "confused",
+    "chain": "FIND(tile|label[Yahoo!], tile|label[Amazon]) → CONFUSED(MAP(size|shape|color → visitors)) → ANSWER(Impossible) ?wrong:did-not-map-area-to-value",
+    "n": 4,
+    "n_correct": 0,
+    "n_incorrect": 4,
+    "quote": "I am not sure if the number of visitors has to do with the size, shape or colour.",
+    "trial_ids": [
+     "TMQ2_R_vHJZLdwKhmAzoLn",
+     "TMQ2_R_1ruyP2fs01EBume",
+     "TMQ2_R_1rjN4TGyxMk2oDq",
+     "TMQ2_R_O9Xc4cu0X7El0Ep"
+    ]
+   },
+   {
+    "strategy": "missing-values",
+    "chain": "[FIND(tile[Yahoo!]) → FIND(tile[Amazon]) →] MISSING(values|scale) → ANSWER(Impossible|not sure) ?wrong:area-encoding-is-conventional",
+    "n": 4,
+    "n_correct": 0,
+    "n_incorrect": 4,
+    "quote": "Still no actual numbers to come to that conclusion reliably.",
+    "trial_ids": [
+     "TMQ2_R_2tFEioxy5Zpl83Y",
+     "TMQ2_R_3fp1jUHNcaoySeC",
+     "TMQ2_R_3HRhA2l19nQiHDq",
+     "TMQ2_R_3EiHZeDwJysMONb"
+    ]
+   },
+   {
+    "strategy": "wrong-tile",
+    "chain": "FIND(tile[Google]) ?wrong:compared-Google-instead-of-Amazon → FIND(tile[Yahoo!]) → CMPvis(size(tile[Google]) > size(tile[Yahoo!])) → ANSWER(True)",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "googles area is much bigger than yahoo",
+    "trial_ids": [
+     "TMQ2_R_2ScaASXNCAC93KF",
+     "TMQ2_R_3R7JWvNDOwOuGrj"
+    ]
+   },
+   {
+    "strategy": "cmp-dims",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → LOOK(width,height of each) → CMPvis(size(tile[Yahoo!]) > size(tile[Amazon])) → ANSWER(False)",
+    "n": 2,
+    "n_correct": 2,
+    "n_incorrect": 0,
+    "quote": "The surface area of the different categories in clearly not equal",
+    "trial_ids": [
+     "TMQ2_R_24IBNfNMWz4DNnw",
+     "TMQ2_R_2Ed9wQrWEbHKZvv"
+    ]
+   },
+   {
+    "strategy": "cmp-value",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMP(visitors(Yahoo!) > visitors(Amazon)) → ANSWER(False)",
+    "n": 2,
+    "n_correct": 2,
+    "n_incorrect": 0,
+    "quote": "The number of unique visitors for Yahoo was more than that of Amazon in 2020.",
+    "trial_ids": [
+     "TMQ2_R_339oxKJvqasU1as",
+     "TMQ2_R_2t5Ki7bfT2GvV0H"
+    ]
+   },
+   {
+    "strategy": "locate-only",
+    "chain": "FIND(tile[Yahoo!]) [→ FIND(tile[Amazon])] → ANSWER(False)",
+    "n": 2,
+    "n_correct": 2,
+    "n_incorrect": 0,
+    "quote": "there is no numbers to answer this question",
+    "trial_ids": [
+     "TMQ2_R_3MPZlfAYK0vAJyJ",
+     "TMQ2_R_Td2pJ0stpB6hKo1"
+    ]
+   },
+   {
+    "strategy": "ratio",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → LOOK(width/height) → RATIO(size(tile[Yahoo!]), size(tile[Amazon]))≈2 → ANSWER(False)",
+    "n": 2,
+    "n_correct": 2,
+    "n_incorrect": 0,
+    "quote": "I compared their sizes. Amazon is more or less half of Yahoo! size, therefore it is false.",
+    "trial_ids": [
+     "TMQ2_R_3gZSXeLLnjuAoDA",
+     "TMQ2_R_2BgNvVo1U4htyBO"
+    ]
+   },
+   {
+    "strategy": "overlay-ratio",
+    "chain": "FIND(tile[Amazon]) → FIND(tile[Yahoo!]) → OVERLAY(tile[Amazon] → tile[Yahoo!]) → RATIO≈0.5 → ANSWER(True) ?wrong:answer-contradicts-own-comparison",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "The rectangle of amazon seems to be about half of the size of Yahoo! rectangle.",
+    "trial_ids": [
+     "TMQ2_R_1E7h0Cr6gK7k9Zg"
+    ]
+   },
+   {
+    "strategy": "within-group",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMP(share of group[Retail] vs share of group[Search/Portal]) ?wrong:within-group-share → DOUBT → ANSWER(not sure)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "I don't really know but i think yes because the shape for amazon is bigger compared to other retailers than yahoo's c...",
+    "trial_ids": [
+     "TMQ2_R_3knQAl7GyjqPd14"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "TMQ2_R_yDE3uwv04ZnHOpP",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMPvis(size(tile[Yahoo!]) > size(tile[Amazon])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "tile[Yahoo!]",
+     "tile[Amazon]",
+     "size(tile[Yahoo!])"
+    ],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "rectangles traced around Yahoo! and Amazon tiles",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_WrL4Jjku9WT6JeF",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMPvis(size(tile[Yahoo!]) > size(tile[Amazon])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "tile[Yahoo!]"
+    ],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "rectangles traced around Yahoo! and Amazon tiles",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_2ScaASXNCAC93KF",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "FIND(tile[Google]) ?wrong:compared-Google-instead-of-Amazon → FIND(tile[Yahoo!]) → CMPvis(size(tile[Google]) > size(tile[Yahoo!])) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "tile[Google]",
+     "tile[Yahoo!]",
+     "size(tile[Google])"
+    ],
+    "elements_sketch": [
+     "tile[Google]",
+     "tile[Yahoo!]"
+    ],
+    "sketch_gesture": "rectangles traced around Google and Yahoo! tiles",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_32Q56m6gcri89NR",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMPvis(size(tile[Yahoo!]) > size(tile[Amazon])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "circle on Yahoo! with arrow and word \"Bigger\", circle on Amazon",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_241SEsUc9JJZ9ii",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMPvis(size(tile[Yahoo!]) > size(tile[Amazon])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "rectangles around Yahoo! and Amazon tiles",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_DHVf3ZBb8NKIn9n",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMPvis(size(tile[Yahoo!]) > size(tile[Amazon])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "tile[Yahoo!]"
+    ],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Ask]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "loose circle over Yahoo!/Ask area and circle on Amazon",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_1i58c2WHUP6VpcD",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMPvis(size(tile[Yahoo!]) > size(tile[Amazon])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "tile[Yahoo!]"
+    ],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "circles on Yahoo! and Amazon tiles",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_2v2rWlRd58loD8l",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMPvis(size(tile[Yahoo!]) > size(tile[Amazon])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "tile[Yahoo!]",
+     "tile[Amazon]",
+     "size(tile)"
+    ],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "rectangles around Yahoo! and Amazon tiles",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_24IBNfNMWz4DNnw",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → LOOK(width(tile[Yahoo!]), height(tile[Yahoo!])) → LOOK(width(tile[Amazon]), height(tile[Amazon])) → CMPvis(size(tile[Yahoo!]) > size(tile[Amazon])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "LOOK",
+     "LOOK",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "tile"
+    ],
+    "elements_sketch": [
+     "width(tile[Yahoo!])",
+     "height(tile[Yahoo!])",
+     "width(tile[Amazon])",
+     "height(tile[Amazon])"
+    ],
+    "sketch_gesture": "double-headed arrows spanning width and height of Yahoo! and Amazon tiles",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_339oxKJvqasU1as",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMP(visitors(tile[Yahoo!]) > visitors(tile[Amazon])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMP"
+    ],
+    "elements_text": [
+     "tile[Yahoo!]"
+    ],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "single stroke inside Yahoo!, check-like stroke inside Amazon",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_t0CD8Sjo20owQE1",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "LOOK({size(tile[*])}) → FIND(label[Yahoo!]) → FIND(label[Amazon]) → CMPvis(size(tile[Yahoo!]) > size(tile[Amazon])) → ANSWER(False)",
+    "ops": [
+     "LOOK",
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "size(tile)",
+     "label"
+    ],
+    "elements_sketch": [
+     "label[Yahoo!]",
+     "label[Amazon]",
+     "tile[Yahoo!]"
+    ],
+    "sketch_gesture": "circled the Yahoo! and Amazon labels, wrote \"Bigger.\" in Yahoo! tile",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_1E7h0Cr6gK7k9Zg",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "FIND(tile[Amazon]) → FIND(tile[Yahoo!]) → OVERLAY(tile[Amazon] → tile[Yahoo!]) → RATIO(size(tile[Amazon]), size(tile[Yahoo!]))≈0.5 → ANSWER(True) ?wrong:answer-contradicts-own-comparison",
+    "ops": [
+     "FIND",
+     "FIND",
+     "OVERLAY",
+     "RATIO"
+    ],
+    "elements_text": [
+     "tile[Amazon]",
+     "tile[Yahoo!]",
+     "size(tile[Amazon])"
+    ],
+    "elements_sketch": [
+     "tile[Amazon]",
+     "tile[Yahoo!]"
+    ],
+    "sketch_gesture": "rectangle around Amazon, then an Amazon-sized box labelled \"Amazon\" drawn inside the Yahoo!/Ask area",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_OHJyjNK3dci47O9",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMPvis(size(tile[Yahoo!]) > size(tile[Amazon])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "labelled Yahoo! \"b1\" and Amazon \"b2\", wrote \"b1>b2\"",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_vHJZLdwKhmAzoLn",
+    "accuracy": 0.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "FIND(label[Yahoo!]) → FIND(label[Amazon]) → CONFUSED(how to compare) → ANSWER(Impossible) ?wrong:did-not-map-area-to-value",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CONFUSED"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "label[Yahoo!]",
+     "label[Amazon]"
+    ],
+    "sketch_gesture": "circled Yahoo! and Amazon labels",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_3R7JWvNDOwOuGrj",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "FIND(tile[Google]) ?wrong:compared-Google-instead-of-Amazon → FIND(tile[Yahoo!]) → CMPvis(size(tile[Google]) > size(tile[Yahoo!])) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "tile[Google]",
+     "tile[Yahoo!]",
+     "size(tile[Google])"
+    ],
+    "elements_sketch": [
+     "tile[Google]",
+     "tile[Yahoo!]"
+    ],
+    "sketch_gesture": "rectangles around Google and Yahoo! tiles",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_2tFEioxy5Zpl83Y",
+    "accuracy": 0.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "LOOK(annot[Websites]) → MISSING(label[values]) → ANSWER(Impossible) ?wrong:area-encoding-is-conventional",
+    "ops": [
+     "LOOK",
+     "MISSING"
+    ],
+    "elements_text": [
+     "label[values]"
+    ],
+    "elements_sketch": [
+     "annot[Websites]"
+    ],
+    "sketch_gesture": "circle around \"Websites\" root header",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_1ruyP2fs01EBume",
+    "accuracy": 0.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "LOOK(group[Retail]) → CONFUSED(MAP(tile → ?)) → ANSWER(Impossible) ?wrong:did-not-map-area-to-value",
+    "ops": [
+     "LOOK",
+     "CONFUSED",
+     "MAP"
+    ],
+    "elements_text": [
+     "tile"
+    ],
+    "elements_sketch": [
+     "group[Retail]"
+    ],
+    "sketch_gesture": "large circle around the Retail group",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_2YgGlmdIRITklxf",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMPvis(size(tile[Yahoo!]) > size(tile[Amazon])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "tile[Yahoo!]"
+    ],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "circles on Yahoo! and Amazon",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_rfNBQrIzVvs2tPz",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMPvis(size(tile[Yahoo!]) > size(tile[Amazon])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "size(tile)"
+    ],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "circles on Yahoo! and Amazon",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_2aCSBNJjBanMISN",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMPvis(size(tile[Yahoo!]) > size(tile[Amazon])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "tile[Yahoo!]",
+     "tile[Amazon]",
+     "size(tile[Yahoo!])"
+    ],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "zigzag scribbles filling Yahoo! and Amazon",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_3fp1jUHNcaoySeC",
+    "accuracy": 0.0,
+    "answer": "I'm not sure",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → MISSING(values) → ANSWER(not sure) ?wrong:area-encoding-is-conventional",
+    "ops": [
+     "FIND",
+     "FIND",
+     "MISSING"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "question marks drawn in Yahoo! and Amazon",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_2RPteVShn9rbma8",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMPvis(size(tile[Yahoo!]) > size(tile[Amazon])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "diagonal hatching over Yahoo! and Amazon",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_3MPZlfAYK0vAJyJ",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "rectangles around Yahoo! and Amazon",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "TMQ2_R_3HRhA2l19nQiHDq",
+    "accuracy": 0.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → MISSING(values | scale) → ANSWER(Impossible) ?wrong:area-encoding-is-conventional",
+    "ops": [
+     "FIND",
+     "FIND",
+     "MISSING"
+    ],
+    "elements_text": [
+     "tile",
+     "annot[scale]"
+    ],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "zigzag scribbles in Yahoo! and Amazon",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_2Ed9wQrWEbHKZvv",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → LOOK(width(tile[Yahoo!]), height(tile[Yahoo!])) → LOOK(width(tile[Amazon]), height(tile[Amazon])) → CMPvis(size(tile[Yahoo!]) ≠ size(tile[Amazon])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "LOOK",
+     "LOOK",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "size(tile)"
+    ],
+    "elements_sketch": [
+     "width(tile[Yahoo!])",
+     "height(tile[Yahoo!])",
+     "width(tile[Amazon])",
+     "height(tile[Amazon])"
+    ],
+    "sketch_gesture": "arrows along the width and height of Yahoo! and of Amazon",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_1P1APSbf9y0uGtL",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "MAP(size(tile) → visitors) → FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMPvis(size(tile[Yahoo!]) > size(tile[Amazon])) → ANSWER(False)",
+    "ops": [
+     "MAP",
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "size(tile)",
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "rectangles around Yahoo! and Amazon",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_xsaKUVdTdetngd3",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMPvis(size(tile[Amazon]) < size(tile[Yahoo!])) → MAP(size(tile) → visitors) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis",
+     "MAP"
+    ],
+    "elements_text": [
+     "tile[Amazon]",
+     "tile[Yahoo!]"
+    ],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "rectangles around Yahoo! and Amazon",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_Td2pJ0stpB6hKo1",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "MISSING(values) → FIND(tile[Yahoo!]) → ANSWER(False)",
+    "ops": [
+     "MISSING",
+     "FIND"
+    ],
+    "elements_text": [
+     "label[values]"
+    ],
+    "elements_sketch": [
+     "tile[Yahoo!]"
+    ],
+    "sketch_gesture": "check mark inside Yahoo! tile",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_3gZSXeLLnjuAoDA",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → LOOK(width(tile[Yahoo!]), height(tile[Yahoo!])) → LOOK(width(tile[Amazon])) → RATIO(size(tile[Amazon]), size(tile[Yahoo!]))≈0.5 → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "LOOK",
+     "LOOK",
+     "RATIO"
+    ],
+    "elements_text": [
+     "tile[Amazon]",
+     "tile[Yahoo!]",
+     "size(tile)"
+    ],
+    "elements_sketch": [
+     "width(tile[Yahoo!])",
+     "height(tile[Yahoo!])",
+     "width(tile[Amazon])"
+    ],
+    "sketch_gesture": "T-shape lines along top edge and height of Yahoo!, line along top edge of Amazon",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_3G94sLKEDU4CAIr",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMPvis(size(tile[Yahoo!]) > size(tile[Amazon])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "rectangles around Yahoo! and Amazon joined by a connecting line",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_3D8wKq4NHSwZu4i",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMPvis(size(tile[Yahoo!]) > size(tile[Amazon])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "circles on Yahoo! and Amazon",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_2BgNvVo1U4htyBO",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(label[Yahoo!]) → FIND(label[Amazon]) → LOOK(height(tile[Yahoo!])) → RATIO(size(tile[Yahoo!]), size(tile[Amazon]))≈2 → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "LOOK",
+     "RATIO"
+    ],
+    "elements_text": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "elements_sketch": [
+     "label[Yahoo!]",
+     "label[Amazon]",
+     "height(tile[Yahoo!])"
+    ],
+    "sketch_gesture": "small circles on Yahoo! and Amazon labels, vertical line down Yahoo! tile",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_2rqIKFQJrR5RqI4",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMPvis(size(tile[Yahoo!]) > size(tile[Amazon])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "tile[Yahoo!]",
+     "tile[Amazon]",
+     "size(tile)"
+    ],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "dense scribble fill over Yahoo! and Amazon",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_xc1B7hqJfIecigp",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMPvis(size(tile[Yahoo!]) > size(tile[Amazon])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "tile[Yahoo!]"
+    ],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "circles on Yahoo! and Amazon joined by a line, \">\" sign drawn",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_1rjN4TGyxMk2oDq",
+    "accuracy": 0.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CONFUSED(chart) → ANSWER(Impossible) ?wrong:did-not-map-area-to-value",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CONFUSED"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "rectangle on Yahoo!, circle on Amazon",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_3knQAl7GyjqPd14",
+    "accuracy": 0.0,
+    "answer": "I'm not sure",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMP(RATIO(size(tile[Amazon]), size(group[Retail])) > RATIO(size(tile[Yahoo!]), size(group[Search/Portal]))) ?wrong:compared-within-group-share-not-absolute-area → DOUBT(answer) → ANSWER(not sure)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMP",
+     "RATIO",
+     "RATIO",
+     "DOUBT"
+    ],
+    "elements_text": [
+     "tile[Amazon]",
+     "tile[Yahoo!]",
+     "group[Retail]",
+     "group[Search/Portal]"
+    ],
+    "elements_sketch": [
+     "edge(tile[Yahoo!])",
+     "edge(tile[Amazon])"
+    ],
+    "sketch_gesture": "short tick marks at the corners/edges of Yahoo! and Amazon tiles",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_O9Xc4cu0X7El0Ep",
+    "accuracy": 0.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "FIND(label[Yahoo!]) → FIND(label[Amazon]) → CONFUSED(MAP(size | shape | color → visitors)) → ANSWER(Impossible) ?wrong:did-not-map-area-to-value",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CONFUSED",
+     "MAP"
+    ],
+    "elements_text": [
+     "size(tile)",
+     "shape(tile)",
+     "color"
+    ],
+    "elements_sketch": [
+     "label[Yahoo!]",
+     "label[Amazon]"
+    ],
+    "sketch_gesture": "short underlines under Yahoo! and Amazon labels",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_3hokieevT5vHr8Y",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMPvis(size(tile[Yahoo!]) > size(tile[Amazon])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "X marks on Yahoo! and Amazon",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_2SozfrY7GG4R8qB",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMPvis(size(tile[Yahoo!]) > size(tile[Amazon])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "tile[Yahoo!]"
+    ],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Ask]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "loose circle over Yahoo!/Ask, circle on Amazon",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_3EiHZeDwJysMONb",
+    "accuracy": 0.0,
+    "answer": "I'm not sure",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → MISSING(values) → ANSWER(not sure) ?wrong:area-encoding-is-conventional",
+    "ops": [
+     "FIND",
+     "FIND",
+     "MISSING"
+    ],
+    "elements_text": [
+     "label[values]"
+    ],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "circles on Yahoo! and Amazon",
+    "source": "both"
+   },
+   {
+    "trial_id": "TMQ2_R_2t5Ki7bfT2GvV0H",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(tile[Yahoo!]) → FIND(tile[Amazon]) → CMP(visitors(tile[Yahoo!]) > visitors(tile[Amazon])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMP"
+    ],
+    "elements_text": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "elements_sketch": [
+     "tile[Yahoo!]",
+     "tile[Amazon]"
+    ],
+    "sketch_gesture": "rectangles around Yahoo! and Amazon",
+    "source": "both"
+   }
+  ]
+ },
+ "SB100Q1": {
+  "qid": "SB100Q1",
+  "chart": "SB100",
+  "task": "retrieve_value",
+  "question": "What percentage of Japan's Olympic medals are Bronze?",
+  "reference_chain": "FIND(seg[Japan,Bronze] | legend[Bronze]→color[brown], xtick[Japan]) → PROJ(bottom(seg[Japan,Bronze]) → yaxis) → READ(y)≈71 → SEG(100 − 71)≈29 → ANSWER(≈29)",
+  "notes": "No trial was correct. The dominant error was projecting the Japan bronze/silver boundary (~70) to the y-axis and reporting that cumulative position (69/71) instead of 100 − 71 ≈ 29. Others subtracted correctly but on the wrong bar (Australia, 48/49) or wrong segment (silver, 20), made an arithmetic slip (39), or split the bar into quarters (25). The pivotal step is SEG(top − bottom) on the correct segment.",
+  "new_symbols": {
+   "SPLIT(e, n)": "visually subdivides a mark into n equal parts to estimate a fraction"
+  },
+  "strategies": [
+   {
+    "strategy": "read-boundary",
+    "chain": "FIND(seg[Japan,Bronze]) → PROJ(bottom(seg[Japan,Bronze]) → yaxis) → READ(y)≈70 ?wrong:read-boundary-not-segment-length → ANSWER(≈70)",
+    "n": 3,
+    "n_correct": 0,
+    "n_incorrect": 3,
+    "quote": "I think I was wrong by two numbers",
+    "trial_ids": [
+     "SB100Q1_R_2Pb3ABApTsqS3Jl",
+     "SB100Q1_R_2dSKNTMDrpOIGb1",
+     "SB100Q1_R_3Rwr5F6bciAzuf4"
+    ]
+   },
+   {
+    "strategy": "wrong-bar-subtract",
+    "chain": "FIND(seg[Australia,Bronze]) ?wrong:wrong-bar → PROJ(bottom → yaxis)≈52 → SEG(100 − 52) → ANSWER(48|49)",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "it was abit tricky to calculate the percentage from top to bottom",
+    "trial_ids": [
+     "SB100Q1_R_5dKmq0Uur1nbAxX",
+     "SB100Q1_R_3EiHZeDwJysMONb"
+    ]
+   },
+   {
+    "strategy": "split-estimate",
+    "chain": "FIND(bar[Japan]) → SPLIT(bar[Japan],4) → READ(seg[Japan,Bronze], len)≈1/4 ?wrong:coarse-estimate → ANSWER(25)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "The blocks are helpful for estimations",
+    "trial_ids": [
+     "SB100Q1_R_2WNi2HH78I5OZOO"
+    ]
+   },
+   {
+    "strategy": "subtract",
+    "chain": "FIND(seg[Japan,Bronze]) → PROJ(top → yaxis)=100 → PROJ(bottom → yaxis)≈71 → SEG(100 − 71) → ANSWER(39) ?wrong:subtraction-error",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "found the range then subtracted from 100",
+    "trial_ids": [
+     "SB100Q1_R_qxg0KknHF5gbXfH"
+    ]
+   },
+   {
+    "strategy": "wrong-seg-subtract",
+    "chain": "FIND(seg[Japan,Silver]) ?wrong:wrong-segment → PROJ(top,bottom → yaxis) → SEG(72 − 46) → ANSWER(20)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "I estimated the percentage not sure if it is correct",
+    "trial_ids": [
+     "SB100Q1_R_2xFzb7lDkJFr8wu"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "SB100Q1_R_2Pb3ABApTsqS3Jl",
+    "accuracy": 0.0,
+    "answer": "69",
+    "chain": "FIND(seg[Japan,Bronze]) → PROJ(bottom(seg[Japan,Bronze]) → yaxis) → READ(y)≈70 ?wrong:read-boundary-not-segment-length → ANSWER(69) → DOUBT(off by two)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "READ",
+     "DOUBT"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bottom(seg[Japan,Bronze])",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at ~70 across to Japan bronze/silver boundary",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q1_R_2WNi2HH78I5OZOO",
+    "accuracy": 0.0,
+    "answer": "25",
+    "chain": "FIND(bar[Japan]) → SPLIT(bar[Japan], 4) → READ(seg[Japan,Bronze], len)≈1/4 ?wrong:coarse-quarter-estimate → ANSWER(25)",
+    "ops": [
+     "FIND",
+     "SPLIT",
+     "READ"
+    ],
+    "elements_text": [
+     "bar"
+    ],
+    "elements_sketch": [
+     "bar[Japan]",
+     "seg[Japan,Bronze]",
+     "seg[Japan,Silver]",
+     "seg[Japan,Gold]"
+    ],
+    "sketch_gesture": "Japan bar outlined and divided into four boxes each labelled 1/4",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q1_R_2dSKNTMDrpOIGb1",
+    "accuracy": 0.0,
+    "answer": "71",
+    "chain": "FIND(xtick[Japan]) → FIND(bottom(seg[Japan,Bronze])) → READ(y)≈71 ?wrong:read-boundary-not-segment-length → ANSWER(71)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "READ"
+    ],
+    "elements_text": [
+     "xtick[Japan]"
+    ],
+    "elements_sketch": [
+     "bottom(seg[Japan,Bronze])"
+    ],
+    "sketch_gesture": "oval around Japan bronze/silver boundary at ~71",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q1_R_qxg0KknHF5gbXfH",
+    "accuracy": 0.0,
+    "answer": "39",
+    "chain": "FIND(seg[Japan,Bronze]) → PROJ(top(seg[Japan,Bronze]) → yaxis)=100 → PROJ(bottom(seg[Japan,Bronze]) → yaxis)≈71 → SEG(100 − 71) → ANSWER(39) ?wrong:subtraction-error",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "SEG"
+    ],
+    "elements_text": [
+     "ytick[100]"
+    ],
+    "elements_sketch": [
+     "top(seg[Japan,Bronze])",
+     "bottom(seg[Japan,Bronze])",
+     "seg[U.S.A.,Bronze]",
+     "grid[y=100]",
+     "grid[y=71]"
+    ],
+    "sketch_gesture": "dashed lines at 100 and ~71 across U.S.A./GB/Japan, bracket along U.S.A. bronze",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q1_R_2xFzb7lDkJFr8wu",
+    "accuracy": 0.0,
+    "answer": "20",
+    "chain": "FIND(seg[Japan,Silver]) ?wrong:wrong-segment(silver) → PROJ(top(seg[Japan,Silver]) → yaxis)≈72 → PROJ(bottom(seg[Japan,Silver]) → yaxis)≈46 → SEG(72 − 46)≈20 → DOUBT(estimate) → ANSWER(20)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "SEG",
+     "DOUBT"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "seg[Japan,Silver]",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal lines from y-axis at ~72 and ~46 enclosing the Japan silver segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q1_R_5dKmq0Uur1nbAxX",
+    "accuracy": 0.0,
+    "answer": "48",
+    "chain": "FIND(seg[Australia,Bronze]) ?wrong:wrong-bar(Australia) → PROJ(bottom(seg[Australia,Bronze]) → yaxis)≈52 → SEG(100 − 52)=48 → ANSWER(48)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "SEG"
+    ],
+    "elements_text": [
+     "seg[*,Bronze]"
+    ],
+    "elements_sketch": [
+     "bottom(seg[Australia,Bronze])",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at ~52 across to Australia bronze bottom",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q1_R_3Rwr5F6bciAzuf4",
+    "accuracy": 0.0,
+    "answer": "69",
+    "chain": "FIND(seg[Japan,Bronze]) → PROJ(bottom(seg[Japan,Bronze]) → yaxis) → READ(ytick)≈69 ?wrong:read-boundary-not-segment-length → ANSWER(69)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "READ"
+    ],
+    "elements_text": [
+     "ytick"
+    ],
+    "elements_sketch": [
+     "bottom(seg[Japan,Bronze])",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal line at ~70 from y-axis to Great Britain/Japan",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q1_R_3EiHZeDwJysMONb",
+    "accuracy": 0.0,
+    "answer": "49",
+    "chain": "FIND(seg[Australia,Bronze]) ?wrong:wrong-bar(Australia) → PROJ(bottom(seg[Australia,Bronze]) → yaxis)≈52 → SEG(100 − 52)≈49 → ANSWER(49)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "SEG"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bottom(seg[Australia,Bronze])",
+     "seg[Australia,Bronze]",
+     "yaxis"
+    ],
+    "sketch_gesture": "line from y-axis at ~53 to Australia, bracket up the Australia bronze segment to 100",
+    "source": "both"
+   }
+  ]
+ },
+ "SB100Q2": {
+  "qid": "SB100Q2",
+  "chart": "SB100",
+  "task": "make_comparison",
+  "question": "Who has the bigger percentage of Silver medals, Japan or Great Britain?",
+  "reference_chain": "FIND(seg[GB,Silver], seg[Japan,Silver] | legend[Silver]) → PROJ(top,bottom of each → yaxis) → SEG(66−34)≈32, SEG(71−47)≈24 → CMP(32 > 24) → ANSWER(Great Britain)",
+  "notes": "All three were wrong (Japan). One compared the top positions of the silver segments rather than their lengths, one compared the gold segments, and one stated that GB was larger but answered Japan. In this chart the floating silver segment's length, not its position, is pivotal.",
+  "new_symbols": {},
+  "strategies": [
+   {
+    "strategy": "cmp-top",
+    "chain": "FIND(legend[Silver]) → FIND(seg[GB,Silver]), FIND(seg[Japan,Silver]) → CMP(top(seg[Japan,Silver]) > top(seg[GB,Silver])) ?wrong:compared-top-position-not-length → ANSWER(Japan)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "Fist I focused on the silver medals then on the cities and then on which one was higher",
+    "trial_ids": [
+     "SB100Q2_R_2zbWL29UVPi0v1e"
+    ]
+   },
+   {
+    "strategy": "cmp-height-inconsistent",
+    "chain": "FIND(seg[GB,Silver]) → FIND(seg[Japan,Silver]) → CMPvis(height(GB) > height(Japan)) → ANSWER(Japan) ?wrong:answer-contradicts-own-comparison",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "Great britain has more %than japan",
+    "trial_ids": [
+     "SB100Q2_R_bBYquHiBklKfmAF"
+    ]
+   },
+   {
+    "strategy": "wrong-category",
+    "chain": "FIND(seg[Japan,Gold]) ?wrong:wrong-category → FIND(seg[GB,Gold]) → CMPvis(height(GB,Gold) < height(Japan,Gold)) → ANSWER(Japan)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "The part of the column representing the amount of golden medals earned by Japan is greater than that of Britain.",
+    "trial_ids": [
+     "SB100Q2_R_xc1B7hqJfIecigp"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "SB100Q2_R_2zbWL29UVPi0v1e",
+    "accuracy": 0.0,
+    "answer": "Japan",
+    "chain": "FIND(legend[Silver]) → FIND(seg[Great Britain,Silver]) → FIND(seg[Japan,Silver]) → CMP(top(seg[Japan,Silver]) > top(seg[Great Britain,Silver])) ?wrong:compared-top-position-not-segment-length → ANSWER(Japan)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "FIND",
+     "CMP"
+    ],
+    "elements_text": [
+     "legend[Silver]",
+     "xtick"
+    ],
+    "elements_sketch": [
+     "legend[Silver]",
+     "seg[Great Britain,Gold]",
+     "seg[Japan,Gold]",
+     "top(seg[Japan,Silver])"
+    ],
+    "sketch_gesture": "arrows from Silver legend down to Great Britain and Japan bars, horizontal arrow at ~72 from GB to Japan",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q2_R_bBYquHiBklKfmAF",
+    "accuracy": 0.0,
+    "answer": "Japan",
+    "chain": "FIND(seg[Great Britain,Silver]) → FIND(seg[Japan,Silver]) → CMPvis(height(seg[Great Britain,Silver]) > height(seg[Japan,Silver])) → ANSWER(Japan) ?wrong:answer-contradicts-own-comparison",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "seg[Great Britain,Silver]",
+     "seg[Japan,Silver]"
+    ],
+    "sketch_gesture": "circles on Great Britain and Japan silver segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q2_R_xc1B7hqJfIecigp",
+    "accuracy": 0.0,
+    "answer": "Japan",
+    "chain": "FIND(seg[Japan,Gold]) ?wrong:wrong-category(gold-not-silver) → FIND(seg[Great Britain,Gold]) → CMPvis(height(seg[Great Britain,Gold]) < height(seg[Japan,Gold])) → ANSWER(Japan)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "seg[Japan,Gold]",
+     "seg[Great Britain,Gold]"
+    ],
+    "elements_sketch": [
+     "seg[Great Britain,Gold]",
+     "seg[Japan,Gold]"
+    ],
+    "sketch_gesture": "wrote \"BIG GAP\" and \"<\" between GB and Japan, ruler-like vertical line with ticks beside the gold segments",
+    "source": "both"
+   }
+  ]
+ },
+ "SB100Q3": {
+  "qid": "SB100Q3",
+  "chart": "SB100",
+  "task": "find_extremum",
+  "question": "Which country has the highest number (absolute number, not %)  of Bronze medals?",
+  "reference_chain": "LOOK(ytitle[%]) → MAP(height(seg) → within-country share) → KNOW(share ≠ count without totals) → MISSING(total medals per country) → ANSWER(Impossible)",
+  "notes": "This is a trick item. 16 of 40 were correct, mostly by noticing the \"%\" in the y-axis title or reasoning that totals per country are missing. The majority bracketed or circled the large Australia bronze segment and answered Australia, treating the within-country share as a count. Several drew horizontal lines from the Australia bronze bottom across all bars to compare. Some hedgers saw the problem but still answered Australia, and a few were \"correct\" only because they gave up.",
+  "new_symbols": {
+   "MISSING(x)": "participant judges required information (e.g. total medals per country) absent from the chart"
+  },
+  "strategies": [
+   {
+    "strategy": "argmax-share",
+    "chain": "SCAN({seg[*,Bronze]}) → ARGMAX({seg[*,Bronze]}, len)=seg[Australia,Bronze] ?wrong:share-treated-as-count → ANSWER(Australia)",
+    "n": 9,
+    "n_correct": 0,
+    "n_incorrect": 9,
+    "quote": "Australia has a the largest portion of bronze of total medals against other countries",
+    "trial_ids": [
+     "SB100Q3_R_WrL4Jjku9WT6JeF",
+     "SB100Q3_R_2bIxvFjGgb8JirJ",
+     "SB100Q3_R_1eWE62X6AUScCMc",
+     "SB100Q3_R_1mIBohkOmIdsgF5",
+     "SB100Q3_R_3fp1jUHNcaoySeC",
+     "SB100Q3_R_2azPvbhGGrKpoeu",
+     "SB100Q3_R_bBYquHiBklKfmAF",
+     "SB100Q3_R_1qalWvDa8z4HLfs",
+     "SB100Q3_R_3EiHZeDwJysMONb"
+    ]
+   },
+   {
+    "strategy": "argmax-extend",
+    "chain": "SCAN({seg[*,Bronze]}) → PROJ(bottom(seg[Australia,Bronze]) → {bar[*]}|yaxis) → ARGMAX(len)=Australia ?wrong:share-treated-as-count → ANSWER(Australia)",
+    "n": 7,
+    "n_correct": 0,
+    "n_incorrect": 7,
+    "quote": "The biggest brown rectangle is for Australia, therefore I think is the one with the most bronze medals",
+    "trial_ids": [
+     "SB100Q3_R_2WNi2HH78I5OZOO",
+     "SB100Q3_R_3KoNCnW4A4ISLZ8",
+     "SB100Q3_R_3HRhA2l19nQiHDq",
+     "SB100Q3_R_3gZSXeLLnjuAoDA",
+     "SB100Q3_R_1GH7NAokHW4iM4G",
+     "SB100Q3_R_Uyc5ozKwAykkAiR",
+     "SB100Q3_R_5dKmq0Uur1nbAxX"
+    ]
+   },
+   {
+    "strategy": "know-share",
+    "chain": "[LOOK(seg[Australia,Bronze]) →] KNOW(segments are within-country shares; % ≠ count) → MISSING(totals) → ANSWER(Impossible)",
+    "n": 5,
+    "n_correct": 5,
+    "n_incorrect": 0,
+    "quote": "Visualization refers to no absolute numbers just percentages (Australia having the largest percentage.",
+    "trial_ids": [
+     "SB100Q3_R_2t9cXi0XKbdaZFg",
+     "SB100Q3_R_1NlwFmOuUVBaeea",
+     "SB100Q3_R_2XnbILPqlz7EVfh",
+     "SB100Q3_R_1Sz5EK9PgAFUldT",
+     "SB100Q3_R_2rqIKFQJrR5RqI4"
+    ]
+   },
+   {
+    "strategy": "percent-only",
+    "chain": "LOOK(ytitle[%]) → KNOW(only percentages shown) → MISSING(counts) → ANSWER(Impossible)",
+    "n": 5,
+    "n_correct": 5,
+    "n_incorrect": 0,
+    "quote": "You can only see the percentage on this visualization.",
+    "trial_ids": [
+     "SB100Q3_R_2tFEioxy5Zpl83Y",
+     "SB100Q3_R_2RPteVShn9rbma8",
+     "SB100Q3_R_2vY85VrJ5kA63mo",
+     "SB100Q3_R_xc1B7hqJfIecigp",
+     "SB100Q3_R_1g6nV97j3m0UrXN"
+    ]
+   },
+   {
+    "strategy": "missing-totals",
+    "chain": "LOOK(chart|yaxis|xtick) → MISSING(total medals per country) → ANSWER(Impossible)",
+    "n": 4,
+    "n_correct": 4,
+    "n_incorrect": 0,
+    "quote": "perhaps I'm being stupid, but without any numbers, I can't work out the actual figures",
+    "trial_ids": [
+     "SB100Q3_R_6AyfcLIRg3E9Cvf",
+     "SB100Q3_R_6QpN86zEs2BsSyZ",
+     "SB100Q3_R_2vhPlLuWjhQSOuF",
+     "SB100Q3_R_2zbWL29UVPi0v1e"
+    ]
+   },
+   {
+    "strategy": "locate-australia",
+    "chain": "FIND(seg[Australia,Bronze]) → ANSWER(Australia) ?wrong:share-treated-as-count",
+    "n": 4,
+    "n_correct": 0,
+    "n_incorrect": 4,
+    "quote": "This one was simple, nothing complicated.",
+    "trial_ids": [
+     "SB100Q3_R_PwGfSrtGpqLD9vz",
+     "SB100Q3_R_2Pb3ABApTsqS3Jl",
+     "SB100Q3_R_2xFzb7lDkJFr8wu",
+     "SB100Q3_R_2t5U2hVrti4y8IC"
+    ]
+   },
+   {
+    "strategy": "hedge-argmax",
+    "chain": "ARGMAX(len)=Australia → PROJ(top,bottom → yaxis) → DOUBT|MISSING(totals) → ANSWER(Australia) ?wrong:share-treated-as-count",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "I think it is uncertain, because the chart does not give you number of medals, just %. But, considering that Australi...",
+    "trial_ids": [
+     "SB100Q3_R_5iPAzwTI0Ac36WR",
+     "SB100Q3_R_qxg0KknHF5gbXfH"
+    ]
+   },
+   {
+    "strategy": "gave-up",
+    "chain": "LOOK(e) → CONFUSED(answer) → ANSWER(Impossible) [correct by default]",
+    "n": 2,
+    "n_correct": 2,
+    "n_incorrect": 0,
+    "quote": "Couldn't find the answer",
+    "trial_ids": [
+     "SB100Q3_R_6eSxIAherLvH4VH",
+     "SB100Q3_R_3Rwr5F6bciAzuf4"
+    ]
+   },
+   {
+    "strategy": "wrong-bar",
+    "chain": "FIND(xtick[U.S.A.]) → LOOK(seg[U.S.A.,Bronze]) → ANSWER(U.S.A.) ?wrong",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "Looking for the USA in the bar graph",
+    "trial_ids": [
+     "SB100Q3_R_2dSKNTMDrpOIGb1"
+    ]
+   },
+   {
+    "strategy": "confused",
+    "chain": "SCAN({bottom(seg[*,Bronze])}) → CONFUSED(term \"absolute number\") → ANSWER(not sure)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "i dont undertand  what do you mean buy absolute number",
+    "trial_ids": [
+     "SB100Q3_R_3DwMwbbvKGck1j8"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "SB100Q3_R_WrL4Jjku9WT6JeF",
+    "accuracy": 0.0,
+    "answer": "Australia",
+    "chain": "MAP(color[brown] → Bronze) → SCAN({seg[*,Bronze]}) → ARGMAX({seg[*,Bronze]}, len)=seg[Australia,Bronze] ?wrong:share-treated-as-count → ANSWER(Australia)",
+    "ops": [
+     "MAP",
+     "SCAN",
+     "ARGMAX"
+    ],
+    "elements_text": [
+     "color[brown]",
+     "seg[*,Bronze]"
+    ],
+    "elements_sketch": [
+     "seg[Australia,Bronze]"
+    ],
+    "sketch_gesture": "bracket along the Australia bronze segment from 100 to ~52",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_6AyfcLIRg3E9Cvf",
+    "accuracy": 1.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "LOOK(yaxis) → MISSING(total medals per country) → ANSWER(Impossible)",
+    "ops": [
+     "LOOK",
+     "MISSING"
+    ],
+    "elements_text": [
+     "annot[total medals]"
+    ],
+    "elements_sketch": [
+     "yaxis"
+    ],
+    "sketch_gesture": "arc along the y-axis between ~20 and ~70",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_2t9cXi0XKbdaZFg",
+    "accuracy": 1.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "LOOK(seg[Australia,Bronze]) → KNOW(segments are within-country shares) → MISSING(total medals per country) → ANSWER(Impossible)",
+    "ops": [
+     "LOOK",
+     "KNOW",
+     "MISSING"
+    ],
+    "elements_text": [
+     "seg[*,Bronze]",
+     "seg[*,Silver]",
+     "seg[*,Gold]"
+    ],
+    "elements_sketch": [
+     "height(seg[Australia,Bronze])"
+    ],
+    "sketch_gesture": "double-headed arrow spanning the Australia bronze segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_PwGfSrtGpqLD9vz",
+    "accuracy": 0.0,
+    "answer": "Australia",
+    "chain": "LOOK({seg[U.S.A.,Silver], seg[Great Britain,Silver], seg[Japan,Silver]}) → FIND(seg[Australia,Bronze]) → PROJ(bottom(seg[Australia,Bronze]) → yaxis)≈50 → ANSWER(Australia) ?wrong:share-treated-as-count",
+    "ops": [
+     "LOOK",
+     "FIND",
+     "PROJ"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "seg[U.S.A.,Silver]",
+     "seg[Great Britain,Silver]",
+     "seg[Japan,Silver]",
+     "seg[Australia,Bronze]",
+     "yaxis"
+    ],
+    "sketch_gesture": "small ticks on three silver segments, bracket around Australia bronze, arrow from its bottom (~50) to the y-axis",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SB100Q3_R_1NlwFmOuUVBaeea",
+    "accuracy": 1.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "KNOW(chart shows % only) → MISSING(counts) → ANSWER(Impossible)",
+    "ops": [
+     "KNOW",
+     "MISSING"
+    ],
+    "elements_text": [
+     "annot[percentage]"
+    ],
+    "elements_sketch": [],
+    "sketch_gesture": "essentially blank (one stray dot near y-axis)",
+    "source": "text"
+   },
+   {
+    "trial_id": "SB100Q3_R_2bIxvFjGgb8JirJ",
+    "accuracy": 0.0,
+    "answer": "Australia",
+    "chain": "SCAN({seg[*,Bronze]}) → ARGMAX({seg[*,Bronze]}, size)=seg[Australia,Bronze] ?wrong:share-treated-as-count → ANSWER(Australia)",
+    "ops": [
+     "SCAN",
+     "ARGMAX"
+    ],
+    "elements_text": [
+     "seg[*,Bronze]"
+    ],
+    "elements_sketch": [
+     "seg[Australia,Bronze]"
+    ],
+    "sketch_gesture": "circle around Australia bronze segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_2Pb3ABApTsqS3Jl",
+    "accuracy": 0.0,
+    "answer": "Australia",
+    "chain": "FIND(bottom(seg[Australia,Bronze])) → ANSWER(Australia) ?wrong:share-treated-as-count",
+    "ops": [
+     "FIND"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bottom(seg[Australia,Bronze])"
+    ],
+    "sketch_gesture": "short horizontal line at Australia bronze bottom (~52)",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SB100Q3_R_2WNi2HH78I5OZOO",
+    "accuracy": 0.0,
+    "answer": "Australia",
+    "chain": "LOOK(color) → PROJ(bottom(seg[Australia,Bronze]) → {bar[*]}) → ARGMAX({seg[*,Bronze]}, len)=seg[Australia,Bronze] ?wrong:share-treated-as-count → ANSWER(Australia)",
+    "ops": [
+     "LOOK",
+     "PROJ",
+     "ARGMAX"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "bottom(seg[Australia,Bronze])",
+     "{bar[*]}"
+    ],
+    "sketch_gesture": "horizontal line at ~52 extended from Australia bronze bottom across all bars to the y-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_6QpN86zEs2BsSyZ",
+    "accuracy": 1.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "LOOK(chart) → MISSING(numbers) → ANSWER(Impossible)",
+    "ops": [
+     "LOOK",
+     "MISSING"
+    ],
+    "elements_text": [
+     "label[numbers]"
+    ],
+    "elements_sketch": [
+     "chart"
+    ],
+    "sketch_gesture": "large loop enclosing the whole chart",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_1eWE62X6AUScCMc",
+    "accuracy": 0.0,
+    "answer": "Australia",
+    "chain": "FIND(legend[Bronze]) → MAP(color[brown] → Bronze) → SCAN({seg[*,Bronze]}) → ARGMAX({seg[*,Bronze]}, size)=seg[Australia,Bronze] ?wrong:share-treated-as-count → PROJ(top(seg[Australia,Bronze]), bottom(seg[Australia,Bronze]) → yaxis) → FIND(xtick[Australia]) → ANSWER(Australia)",
+    "ops": [
+     "FIND",
+     "MAP",
+     "SCAN",
+     "ARGMAX",
+     "PROJ",
+     "FIND"
+    ],
+    "elements_text": [
+     "color[brown]",
+     "seg[*,Bronze]"
+    ],
+    "elements_sketch": [
+     "seg[Australia,Bronze]",
+     "legend[Bronze]",
+     "xtick[Australia]",
+     "ytick[100]",
+     "yaxis"
+    ],
+    "sketch_gesture": "circles on Australia bronze, Bronze legend and Australia tick; marks on y-axis at 100 and ~53",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_2vhPlLuWjhQSOuF",
+    "accuracy": 1.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "LOOK({xtick[*]}) → MISSING(total medals per country) → ANSWER(Impossible)",
+    "ops": [
+     "LOOK",
+     "MISSING"
+    ],
+    "elements_text": [
+     "annot[total medals]"
+    ],
+    "elements_sketch": [
+     "{xtick[*]}"
+    ],
+    "sketch_gesture": "line underlining all country tick labels",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_3KoNCnW4A4ISLZ8",
+    "accuracy": 0.0,
+    "answer": "Australia",
+    "chain": "SCAN({seg[*,Bronze]}) → PROJ(bottom(seg[Australia,Bronze]) → {bar[*]}) → ARGMAX({seg[*,Bronze]}, size)=seg[Australia,Bronze] ?wrong:share-treated-as-count → ANSWER(Australia)",
+    "ops": [
+     "SCAN",
+     "PROJ",
+     "ARGMAX"
+    ],
+    "elements_text": [
+     "seg[Australia,Bronze]"
+    ],
+    "elements_sketch": [
+     "seg[U.S.A.,Bronze]",
+     "seg[Great Britain,Bronze]",
+     "seg[Japan,Bronze]",
+     "seg[Australia,Bronze]",
+     "bottom(seg[Australia,Bronze])"
+    ],
+    "sketch_gesture": "ovals on U.S.A./GB/Japan bronze, rectangle on Australia bronze, horizontal line at ~52 across all bars",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_1mIBohkOmIdsgF5",
+    "accuracy": 0.0,
+    "answer": "Australia",
+    "chain": "SCAN({seg[*,Bronze]}) → ARGMAX({seg[*,Bronze]}, len)=seg[Australia,Bronze] ?wrong:share-treated-as-count → ANSWER(Australia)",
+    "ops": [
+     "SCAN",
+     "ARGMAX"
+    ],
+    "elements_text": [
+     "seg[Australia,Bronze]",
+     "bar"
+    ],
+    "elements_sketch": [
+     "seg[Australia,Bronze]"
+    ],
+    "sketch_gesture": "circle around Australia bronze segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_2dSKNTMDrpOIGb1",
+    "accuracy": 0.0,
+    "answer": "U.S.A.",
+    "chain": "FIND(xtick[U.S.A.]) → LOOK(seg[U.S.A.,Bronze]) → ANSWER(U.S.A.) ?wrong:unclear-basis",
+    "ops": [
+     "FIND",
+     "LOOK"
+    ],
+    "elements_text": [
+     "xtick[U.S.A.]"
+    ],
+    "elements_sketch": [
+     "seg[U.S.A.,Bronze]",
+     "bottom(seg[U.S.A.,Bronze])"
+    ],
+    "sketch_gesture": "circle at U.S.A. bronze/silver boundary (~70)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_2zbWL29UVPi0v1e",
+    "accuracy": 1.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "LOOK(bar[U.S.A.]) → MISSING(numbers) → ANSWER(Impossible)",
+    "ops": [
+     "LOOK",
+     "MISSING"
+    ],
+    "elements_text": [
+     "label[numbers]"
+    ],
+    "elements_sketch": [
+     "bar[U.S.A.]"
+    ],
+    "sketch_gesture": "question mark drawn on U.S.A. gold/silver",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_2tFEioxy5Zpl83Y",
+    "accuracy": 1.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "LOOK(ytitle[%]) → KNOW(only percentages shown) → MISSING(counts) → ANSWER(Impossible)",
+    "ops": [
+     "LOOK",
+     "KNOW",
+     "MISSING"
+    ],
+    "elements_text": [
+     "ytitle[%]"
+    ],
+    "elements_sketch": [
+     "ytitle[%]"
+    ],
+    "sketch_gesture": "circle around \"(%)\" in the y-axis title",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_3fp1jUHNcaoySeC",
+    "accuracy": 0.0,
+    "answer": "Australia",
+    "chain": "SCAN({seg[*,Bronze]}) → ARGMAX({seg[*,Bronze]}, size)=seg[Australia,Bronze] ?wrong:share-treated-as-count → FIND(xtick[Australia]) → ANSWER(Australia)",
+    "ops": [
+     "SCAN",
+     "ARGMAX",
+     "FIND"
+    ],
+    "elements_text": [
+     "color",
+     "bar"
+    ],
+    "elements_sketch": [
+     "seg[Australia,Bronze]",
+     "xtick[Australia]"
+    ],
+    "sketch_gesture": "rectangle around Australia bronze, circle on Australia tick label",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_2XnbILPqlz7EVfh",
+    "accuracy": 1.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "LOOK(xaxis) → MISSING(total medals per country) → ARGMAX({seg[*,Bronze]}, len)=seg[Australia,Bronze] → KNOW(larger total with smaller share can mean more medals) → ANSWER(Impossible)",
+    "ops": [
+     "LOOK",
+     "MISSING",
+     "ARGMAX",
+     "KNOW"
+    ],
+    "elements_text": [
+     "annot[total medals]",
+     "seg[Australia,Bronze]"
+    ],
+    "elements_sketch": [
+     "xaxis"
+    ],
+    "sketch_gesture": "wrote \"n=?\" below the x-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_5iPAzwTI0Ac36WR",
+    "accuracy": 0.0,
+    "answer": "Australia",
+    "chain": "MISSING(total medals per country) → ARGMAX({seg[*,Bronze]}, len)=seg[Australia,Bronze] → PROJ(top(seg[Australia,Bronze]), bottom(seg[Australia,Bronze]) → yaxis) → GUESS(share implies count) ?wrong:share-treated-as-count → ANSWER(Australia)",
+    "ops": [
+     "MISSING",
+     "ARGMAX",
+     "PROJ",
+     "GUESS"
+    ],
+    "elements_text": [
+     "annot[number of medals]",
+     "seg[Australia,Bronze]"
+    ],
+    "elements_sketch": [
+     "top(seg[Australia,Bronze])",
+     "bottom(seg[Australia,Bronze])",
+     "yaxis"
+    ],
+    "sketch_gesture": "arrows from Australia bar top (100) and bronze bottom (~52) back to the y-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_2RPteVShn9rbma8",
+    "accuracy": 1.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "LOOK(ytitle[%]) → MISSING(counts) → ANSWER(Impossible)",
+    "ops": [
+     "LOOK",
+     "MISSING"
+    ],
+    "elements_text": [
+     "annot[percentages]"
+    ],
+    "elements_sketch": [
+     "ytitle[%]"
+    ],
+    "sketch_gesture": "bracket beside the y-axis title",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_qxg0KknHF5gbXfH",
+    "accuracy": 0.0,
+    "answer": "Australia",
+    "chain": "FIND(seg[Australia,Bronze]) → PROJ(top(seg[Australia,Bronze]), bottom(seg[Australia,Bronze]) → yaxis) → ANSWER(Australia) ?wrong:share-treated-as-count → DOUBT(KNOW(share ≠ count; totals missing))",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "DOUBT",
+     "KNOW"
+    ],
+    "elements_text": [
+     "annot[total medals]",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "top(seg[Australia,Bronze])",
+     "bottom(seg[Australia,Bronze])"
+    ],
+    "sketch_gesture": "short lines at top (100) and bottom (~52) of Australia bronze",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_1Sz5EK9PgAFUldT",
+    "accuracy": 1.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "FIND(seg[Australia,Bronze]) → KNOW(percentage ≠ absolute number) → ANSWER(Impossible)",
+    "ops": [
+     "FIND",
+     "KNOW"
+    ],
+    "elements_text": [
+     "annot[percentage]"
+    ],
+    "elements_sketch": [
+     "seg[Australia,Bronze]"
+    ],
+    "sketch_gesture": "rectangle around Australia bronze",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_2azPvbhGGrKpoeu",
+    "accuracy": 0.0,
+    "answer": "Australia",
+    "chain": "SCAN({seg[*,Bronze]}) → ARGMAX({seg[*,Bronze]}, len)=seg[Australia,Bronze] ?wrong:share-treated-as-count → ANSWER(Australia)",
+    "ops": [
+     "SCAN",
+     "ARGMAX"
+    ],
+    "elements_text": [
+     "annot[percentage]"
+    ],
+    "elements_sketch": [
+     "seg[Australia,Bronze]"
+    ],
+    "sketch_gesture": "circle around Australia bronze",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_6eSxIAherLvH4VH",
+    "accuracy": 1.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "FIND(seg[Australia,Bronze]) → CONFUSED(answer) → ANSWER(Impossible)",
+    "ops": [
+     "FIND",
+     "CONFUSED"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "seg[Australia,Bronze]"
+    ],
+    "sketch_gesture": "circle around Australia bronze",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_3HRhA2l19nQiHDq",
+    "accuracy": 0.0,
+    "answer": "Australia",
+    "chain": "SCAN({seg[*,Bronze]}) → PROJ(top(seg[Australia,Bronze]), bottom(seg[Australia,Bronze]) → yaxis) → ARGMAX({seg[*,Bronze]}, len)=seg[Australia,Bronze] ?wrong:share-treated-as-count → ANSWER(Australia)",
+    "ops": [
+     "SCAN",
+     "PROJ",
+     "ARGMAX"
+    ],
+    "elements_text": [
+     "seg[Australia,Bronze]",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "grid[y=100]",
+     "bottom(seg[Australia,Bronze])"
+    ],
+    "sketch_gesture": "lines along 100 across all bars and at ~53 across U.S.A.–Japan",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_2xFzb7lDkJFr8wu",
+    "accuracy": 0.0,
+    "answer": "Australia",
+    "chain": "FIND(seg[Australia,Bronze]) → ANSWER(Australia) ?wrong:share-treated-as-count",
+    "ops": [
+     "FIND"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "seg[Australia,Bronze]"
+    ],
+    "sketch_gesture": "rectangle around Australia bronze",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SB100Q3_R_2t5U2hVrti4y8IC",
+    "accuracy": 0.0,
+    "answer": "Australia",
+    "chain": "FIND(seg[Australia,Bronze]) → ANSWER(Australia) ?wrong:share-treated-as-count",
+    "ops": [
+     "FIND"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "seg[Australia,Bronze]"
+    ],
+    "sketch_gesture": "rectangle around Australia bronze",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SB100Q3_R_3gZSXeLLnjuAoDA",
+    "accuracy": 0.0,
+    "answer": "Australia",
+    "chain": "LOOK(top({bar[*]})) → SCAN({seg[*,Bronze]}) → PROJ(bottom(seg[Australia,Bronze]) → {bar[*]}) → ARGMAX({seg[*,Bronze]}, len)=seg[Australia,Bronze] ?wrong:share-treated-as-count → ANSWER(Australia)",
+    "ops": [
+     "LOOK",
+     "SCAN",
+     "PROJ",
+     "ARGMAX"
+    ],
+    "elements_text": [
+     "seg[*,Bronze]"
+    ],
+    "elements_sketch": [
+     "bottom(seg[Australia,Bronze])",
+     "{bar[*]}"
+    ],
+    "sketch_gesture": "horizontal line at ~53 across all bars",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_2vY85VrJ5kA63mo",
+    "accuracy": 1.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "LOOK(ytitle[%]) → KNOW(ratio ≠ absolute number) → MISSING(absolute numbers) → ANSWER(Impossible)",
+    "ops": [
+     "LOOK",
+     "KNOW",
+     "MISSING"
+    ],
+    "elements_text": [
+     "annot[absolute numbers]"
+    ],
+    "elements_sketch": [
+     "ytitle[%]"
+    ],
+    "sketch_gesture": "circle around \"(%)\" in y-axis title",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_bBYquHiBklKfmAF",
+    "accuracy": 0.0,
+    "answer": "Australia",
+    "chain": "SCAN({seg[*,Bronze]}) → ARGMAX({seg[*,Bronze]}, len)=seg[Australia,Bronze] ?wrong:share-treated-as-count → ANSWER(Australia)",
+    "ops": [
+     "SCAN",
+     "ARGMAX"
+    ],
+    "elements_text": [
+     "seg[*,Bronze]"
+    ],
+    "elements_sketch": [
+     "seg[Australia,Bronze]"
+    ],
+    "sketch_gesture": "rectangle around Australia bronze",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_3DwMwbbvKGck1j8",
+    "accuracy": 0.0,
+    "answer": "I'm not sure",
+    "chain": "SCAN({bottom(seg[*,Bronze])}) → CONFUSED(term \"absolute number\") → ANSWER(not sure)",
+    "ops": [
+     "SCAN",
+     "CONFUSED"
+    ],
+    "elements_text": [
+     "question"
+    ],
+    "elements_sketch": [
+     "{bottom(seg[*,Bronze])}"
+    ],
+    "sketch_gesture": "line tracing the bronze/silver boundaries across all four bars",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_2rqIKFQJrR5RqI4",
+    "accuracy": 1.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "LOOK(seg[Australia,Bronze]) → ARGMAX({seg[*,Bronze]}, len)=seg[Australia,Bronze] → KNOW(only percentages shown) → MISSING(absolute numbers) → ANSWER(Impossible)",
+    "ops": [
+     "LOOK",
+     "ARGMAX",
+     "KNOW",
+     "MISSING"
+    ],
+    "elements_text": [
+     "annot[absolute numbers]",
+     "seg[Australia,Bronze]"
+    ],
+    "elements_sketch": [
+     "seg[Australia,Bronze]"
+    ],
+    "sketch_gesture": "vertical line down the Australia bronze segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_1GH7NAokHW4iM4G",
+    "accuracy": 0.0,
+    "answer": "Australia",
+    "chain": "PROJ({top(seg[*,Bronze])}, {bottom(seg[*,Bronze])} → yaxis) → CMP({len(seg[*,Bronze])}) → ARGMAX({seg[*,Bronze]}, len)=seg[Australia,Bronze] ?wrong:share-treated-as-count → ANSWER(Australia)",
+    "ops": [
+     "PROJ",
+     "CMP",
+     "ARGMAX"
+    ],
+    "elements_text": [
+     "annot[percentage]"
+    ],
+    "elements_sketch": [
+     "grid[y=100]",
+     "{bottom(seg[*,Bronze])}"
+    ],
+    "sketch_gesture": "horizontal lines at 100, ~70, ~65 and ~52 marking each bronze segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_Uyc5ozKwAykkAiR",
+    "accuracy": 0.0,
+    "answer": "Australia",
+    "chain": "SCAN({seg[*,Bronze]}) → PROJ(top(seg[Australia,Bronze]), bottom(seg[Australia,Bronze]) → {bar[*]}) → ARGMAX({seg[*,Bronze]}, len)=seg[Australia,Bronze] ?wrong:share-treated-as-count → ANSWER(Australia)",
+    "ops": [
+     "SCAN",
+     "PROJ",
+     "ARGMAX"
+    ],
+    "elements_text": [
+     "color[brown]"
+    ],
+    "elements_sketch": [
+     "grid[y=100]",
+     "bottom(seg[Australia,Bronze])"
+    ],
+    "sketch_gesture": "lines at 100 and ~53 across all bars",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_xc1B7hqJfIecigp",
+    "accuracy": 1.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "LOOK({seg[U.S.A.,Bronze], seg[Great Britain,Bronze]}) → KNOW(only percentages shown) → MISSING(counts) → ANSWER(Impossible)",
+    "ops": [
+     "LOOK",
+     "KNOW",
+     "MISSING"
+    ],
+    "elements_text": [
+     "annot[percentage]"
+    ],
+    "elements_sketch": [
+     "seg[U.S.A.,Bronze]",
+     "seg[Great Britain,Bronze]"
+    ],
+    "sketch_gesture": "large X across the U.S.A. and Great Britain bronze segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_1g6nV97j3m0UrXN",
+    "accuracy": 1.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "LOOK(xtitle) → LOOK(ytitle[%]) → MAP(yaxis → ratio of medals in %) → MISSING(counts per country) → ANSWER(Impossible)",
+    "ops": [
+     "LOOK",
+     "LOOK",
+     "MAP",
+     "MISSING"
+    ],
+    "elements_text": [
+     "xaxis",
+     "yaxis",
+     "ytitle[%]"
+    ],
+    "elements_sketch": [
+     "ytitle[%]",
+     "xtitle"
+    ],
+    "sketch_gesture": "vertical line with \"?\" beside the y-axis title and \"?\" under \"Countries\"",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_5dKmq0Uur1nbAxX",
+    "accuracy": 0.0,
+    "answer": "Australia",
+    "chain": "PROJ(top(seg[Australia,Bronze]) → yaxis)=100 → PROJ(bottom(seg[Australia,Bronze]) → yaxis)≈52 → SEG(100 − 52)≈48 → ARGMAX({seg[*,Bronze]}, len)=seg[Australia,Bronze] ?wrong:share-treated-as-count → ANSWER(Australia)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "SEG",
+     "ARGMAX"
+    ],
+    "elements_text": [
+     "seg[Australia,Bronze]"
+    ],
+    "elements_sketch": [
+     "grid[y=100]",
+     "bottom(seg[Australia,Bronze])"
+    ],
+    "sketch_gesture": "lines at 100 and ~53 across all bars, loop at Australia bronze bottom",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_1qalWvDa8z4HLfs",
+    "accuracy": 0.0,
+    "answer": "Australia",
+    "chain": "SCAN({bottom(seg[*,Bronze])}) → ARGMAX({seg[*,Bronze]}, len)=seg[Australia,Bronze] ?wrong:share-treated-as-count → ANSWER(Australia)",
+    "ops": [
+     "SCAN",
+     "ARGMAX"
+    ],
+    "elements_text": [
+     "seg[Australia,Bronze]"
+    ],
+    "elements_sketch": [
+     "{bottom(seg[*,Bronze])}"
+    ],
+    "sketch_gesture": "short ticks at the bottom of each bronze segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_3Rwr5F6bciAzuf4",
+    "accuracy": 1.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "LOOK(bar[Great Britain]) → CONFUSED(answer) → ANSWER(Impossible)",
+    "ops": [
+     "LOOK",
+     "CONFUSED"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bar[Great Britain]"
+    ],
+    "sketch_gesture": "question mark drawn over Great Britain bar",
+    "source": "both"
+   },
+   {
+    "trial_id": "SB100Q3_R_3EiHZeDwJysMONb",
+    "accuracy": 0.0,
+    "answer": "Australia",
+    "chain": "SCAN({seg[*,Bronze]}) → ARGMAX({seg[*,Bronze]}, len)=seg[Australia,Bronze] ?wrong:share-treated-as-count → ANSWER(Australia)",
+    "ops": [
+     "SCAN",
+     "ARGMAX"
+    ],
+    "elements_text": [
+     "bar",
+     "seg[Australia,Bronze]"
+    ],
+    "elements_sketch": [
+     "seg[Australia,Bronze]"
+    ],
+    "sketch_gesture": "bracket alongside the Australia bronze segment (100 to ~52)",
+    "source": "both"
+   }
+  ]
+ }
+}

@@ -1,0 +1,4321 @@
+{
+ "SAQ1": {
+  "qid": "SAQ1",
+  "chart": "SA",
+  "task": "retrieve_value",
+  "question": "What was the number of girls named 'Isla' in 2010 in the UK?",
+  "reference_chain": "FIND(band[Isla] | legend[Isla]→color[purple]) → FIND(xtick[2010]) → PROJ(top(band[Isla])@2010 → yaxis) → READ(y)≈6600 → PROJ(bottom(band[Isla])=top(band[Amelia])@2010 → yaxis) → READ(y)≈4200 → SEG(6600 − 4200) ≈ 2400 → ANSWER(≈2400)",
+  "notes": "Not a single participant subtracted the lower boundary: nearly everyone traced the 2010 tick up to the top edge of the purple band and across to the y-axis, reporting the cumulative ~6500 instead of the band thickness (~2400). The sketches are strikingly uniform L-shaped 'up-then-across' traces, which shows a line-chart reading schema applied to a stacked area. The minority errors were different targets: the top of the whole stack (Olivia, ~12000), the 2012 Isla peak (~10500), or the Amelia/Isla boundary (~4200). One participant explicitly knew the bands were stacked (P8) and another explicitly believed the band body was 'just aesthetics' (P15), yet both still read the top edge; the pivotal element, bottom(band[Isla]), was marked only once (P34) and never used in a subtraction.",
+  "new_symbols": {
+   "band[...] top/bottom": "top(band[X]) / bottom(band[X]) = upper/lower boundary of a stacked-area band (bottom(band[Isla]) = top(band[Amelia]))",
+   "ANSWER(v)": "the final reported response, used to show when a reported value departs from the read value",
+   "line[Isla]": "participant's term for the band's boundary line (kept as written in the text)"
+  },
+  "strategies": [
+   {
+    "chain": "FIND(xtick[2010]) → PROJ(xtick[2010] → top(band[Isla])) → PROJ(top(band[Isla]) → yaxis) → READ(top(band[Isla]), y)≈6000..6900 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER",
+    "n": 16,
+    "n_correct": 0,
+    "n_incorrect": 15,
+    "n_unknown": 1,
+    "quote": "you go from 2010 til you hit the top and then accross to find thw nuber",
+    "trial_ids": [
+     "SAQ1_R_1DI6FoXNtxFt08R",
+     "SAQ1_R_2Pb3ABApTsqS3Jl",
+     "SAQ1_R_DHVf3ZBb8NKIn9n",
+     "SAQ1_R_2E7bKzEVRvQoxPT",
+     "SAQ1_R_1i58c2WHUP6VpcD",
+     "SAQ1_R_2WNi2HH78I5OZOO",
+     "SAQ1_R_3dNi1nbkrQu2sXL",
+     "SAQ1_R_vHJZLdwKhmAzoLn",
+     "SAQ1_R_5iPAzwTI0Ac36WR",
+     "SAQ1_R_2QGUeAYb1lmdcHL",
+     "SAQ1_R_6eSxIAherLvH4VH",
+     "SAQ1_R_1kGflyCImAFfv3L",
+     "SAQ1_R_3D8wKq4NHSwZu4i",
+     "SAQ1_R_3nP07ToNj9d03FE",
+     "SAQ1_R_O9Xc4cu0X7El0Ep",
+     "SAQ1_R_5dKmq0Uur1nbAxX"
+    ]
+   },
+   {
+    "chain": "FIND(xtick[2010]) → FIND(band[Isla]) → READ(top(band[Isla]), y)≈6200..6500 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER  (point on edge, no explicit projection)",
+    "n": 4,
+    "n_correct": 0,
+    "n_incorrect": 4,
+    "n_unknown": 0,
+    "quote": "Found the year on the x, and the line for Isla had the corresponding y value. I estimated in a range from 6300 to 6500 since I can't be precisely sure",
+    "trial_ids": [
+     "SAQ1_R_2UXCZ9C5l64SSxM",
+     "SAQ1_R_3R7JWvNDOwOuGrj",
+     "SAQ1_R_1Ea5ftRdqVjV65x",
+     "SAQ1_R_1NeORuwehcuKOMn"
+    ]
+   },
+   {
+    "chain": "FIND(band[Isla] | legend/color) → FIND(xtick[2010]) → PROJ(→ top(band[Isla])) → PROJ(→ yaxis) → READ(y)≈6500 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER",
+    "n": 3,
+    "n_correct": 0,
+    "n_incorrect": 3,
+    "n_unknown": 0,
+    "quote": "I identified the color that represents the name Isla, then identified the year 2010. Then traced the end point to the number of girls with that name",
+    "trial_ids": [
+     "SAQ1_R_2Ed9wQrWEbHKZvv",
+     "SAQ1_R_25RyReDyqsW6Mru",
+     "SAQ1_R_1FtyDyJ5x9l9fws"
+    ]
+   },
+   {
+    "chain": "PROJ(xtick[2010] → top(band[Isla])) → INTERP(v | ticks 6000,8000 or imagined grid) → READ(y)≈6500..6750 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER",
+    "n": 3,
+    "n_correct": 0,
+    "n_incorrect": 3,
+    "n_unknown": 0,
+    "quote": "Just had to locate where the 'edge' of purple is in the year 2010. Getting an exact number is near to impossible, but I could make an estimate by guessing where 7000 is between 6000 and 8000 are..",
+    "trial_ids": [
+     "SAQ1_R_6QEHFq0jT9asAJH",
+     "SAQ1_R_1CfNOq4BP1ODnXy",
+     "SAQ1_R_dmzzLQciMejEAQF"
+    ]
+   },
+   {
+    "chain": "READ(top(band[Olivia])@2010, y)≈12000 ?wrong:read-total-stack-height(top band) → ANSWER(≈12000)",
+    "n": 3,
+    "n_correct": 0,
+    "n_incorrect": 3,
+    "n_unknown": 0,
+    "quote": "I found this one colour blinding as the colours looked the same, correct answer is 6800",
+    "trial_ids": [
+     "SAQ1_R_eKlhx6ye2Un8NkR",
+     "SAQ1_R_1qalWvDa8z4HLfs",
+     "SAQ1_R_2azPvbhGGrKpoeu"
+    ]
+   },
+   {
+    "chain": "FIND(peak(band[Isla])) ?wrong:went-to-2012-peak-not-2010 → PROJ(→ yaxis) → READ(y)≈10500 → ANSWER(10500)",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "n_unknown": 0,
+    "quote": "I made a mistake, I went for the peak of names and didn't focused on the year 2010, the correct answer would be around 6,500",
+    "trial_ids": [
+     "SAQ1_R_s7KjkTnbS1R4AEN",
+     "SAQ1_R_2tA4SBEuaVuTjvn"
+    ]
+   },
+   {
+    "chain": "READ(top(band[Amelia])@2010, y)≈4100..4200 ?wrong:wrong-band/read-Amelia-Isla-boundary → ANSWER",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "n_unknown": 0,
+    "quote": "The drawing is correct however the amount that I entered was incorrect as I was looking at the wrong name and looked at the correct name on this question",
+    "trial_ids": [
+     "SAQ1_R_12JUTlzcehwtUdN",
+     "SAQ1_R_1GH7NAokHW4iM4G"
+    ]
+   },
+   {
+    "chain": "KNOW(stacked: top = Isla+Amelia) → DOUBT → PROJ(→ top(band[Isla])) → READ(y)≈6500 ?wrong:read-cumulative-top-of-stack-not-band-thickness:knew-stacking-but-did-not-subtract → ANSWER(6500)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "n_unknown": 0,
+    "quote": "If I am reading the chart properly by adding Isla to Amelia's values then my drawing indicates my thought process.",
+    "trial_ids": [
+     "SAQ1_R_2v2rWlRd58loD8l"
+    ]
+   },
+   {
+    "chain": "MAP(top edge(band[Isla]) → value; band body is aesthetic) ?wrong → FIND(top(band[Isla])@2010) → PROJ(→ yaxis) → READ(y)≈6500 → ANSWER(6500)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "n_unknown": 0,
+    "quote": "I believe the top edge of the color is the value (the rest is just for esthetics/easier reading) so I found the point for 2010 and then read the number (estimated)",
+    "trial_ids": [
+     "SAQ1_R_3lDJ3gJlEx9bvdy"
+    ]
+   },
+   {
+    "chain": "PROJ(top(band[Amelia]) → yaxis)≈4200 & PROJ(top(band[Isla]) → yaxis)≈6000 → READ(top(band[Isla]))≈6000 ?wrong:marked-both-boundaries-but-no-SEG → ANSWER(6000)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "n_unknown": 0,
+    "quote": "its on the 6000 mark",
+    "trial_ids": [
+     "SAQ1_R_2SozfrY7GG4R8qB"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "SAQ1_R_1DI6FoXNtxFt08R",
+    "accuracy": null,
+    "answer": "9000",
+    "chain": "FIND(xtick[2010]) → PROJ(xtick[2010] → top(band[Isla])) → PROJ(top(band[Isla]) → yaxis) → READ(top(band[Isla]), y)≈6500 ?wrong:read-cumulative-top-of-stack-not-band-thickness → FIX(9000→6500) → ANSWER(9000) ?wrong:entered-value-inconsistent-with-own-reading",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "FIX",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "xtick[2010]",
+     "top(band[Isla])",
+     "yaxis",
+     "ytick[~6500]"
+    ],
+    "sketch_gesture": "vertical line from 2010 tick up to top of Isla band, then horizontal to y-axis at ~6500; small mark at ~7000",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_2UXCZ9C5l64SSxM",
+    "accuracy": 0.0,
+    "answer": "6400",
+    "chain": "FIND(xtick[2010]) → FIND(band[Isla]) → READ(top(band[Isla]), y)≈6300..6500 ?wrong:read-cumulative-top-of-stack-not-band-thickness → INTERP(6400) → ANSWER(6400)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "READ",
+     "INTERP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xaxis",
+     "xtick[2010]",
+     "line[Isla]",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])"
+    ],
+    "sketch_gesture": "dot on top edge of Isla band at 2010",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_6QEHFq0jT9asAJH",
+    "accuracy": 0.0,
+    "answer": "6750",
+    "chain": "PROJ(yaxis → top(band[Isla]) @2010) → INTERP(v | ticks 6000,8000) → READ(top(band[Isla]), y)≈6750 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER(6750)",
+    "ops": [
+     "PROJ",
+     "INTERP",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "ytick[6000]",
+     "ytick[8000]"
+    ],
+    "elements_sketch": [
+     "yaxis",
+     "top(band[Isla])"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at ~6600 to Isla top edge at 2010, scribbles to the right",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_2Pb3ABApTsqS3Jl",
+    "accuracy": 0.0,
+    "answer": "6500",
+    "chain": "FIND(xtick[2010]) → PROJ(xtick[2010] → top(band[Isla])) → PROJ(top(band[Isla]) → yaxis) → READ(top(band[Isla]), y)≈6500 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER(6500)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "xtick[2010]",
+     "top(band[Isla])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from 2010 up to Isla top edge, then horizontal to y-axis at ~6900",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SAQ1_R_DHVf3ZBb8NKIn9n",
+    "accuracy": 0.0,
+    "answer": "6300",
+    "chain": "FIND(xtick[2010]) → PROJ(xtick[2010] → top(band[Isla])) → PROJ(top(band[Isla]) → yaxis) → READ(top(band[Isla]), y)≈6300 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER(6300)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "xtick[2010]",
+     "yaxis"
+    ],
+    "sketch_gesture": "circle on Isla top edge at 2010 with arrows left to y-axis (~6400) and down to 2010",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SAQ1_R_12JUTlzcehwtUdN",
+    "accuracy": 0.0,
+    "answer": "4100",
+    "chain": "FIND(xtick[2010]) → READ(top(band[Amelia]), y)≈4100 ?wrong:read-Amelia/Isla-boundary(bottom of Isla) → ANSWER(4100)",
+    "ops": [
+     "FIND",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(band[Amelia])"
+    ],
+    "sketch_gesture": "dot on the Amelia/Isla boundary at 2010 (~4200)",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SAQ1_R_2E7bKzEVRvQoxPT",
+    "accuracy": 0.0,
+    "answer": "6500",
+    "chain": "FIND(xtick[2010]) → PROJ(xtick[2010] → top(band[Isla])) → PROJ(top(band[Isla]) → yaxis) → READ(top(band[Isla]), y)≈6500 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER(6500)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "xtick[2010]",
+     "top(band[Isla])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from 2010 to Isla top edge, horizontal to y-axis at ~6500",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SAQ1_R_1i58c2WHUP6VpcD",
+    "accuracy": 0.0,
+    "answer": "6100",
+    "chain": "FIND(xtick[2010]) → PROJ(xtick[2010] → top(band[Isla])) → PROJ(top(band[Isla]) → yaxis) → COUNT(grid[y]) → READ(top(band[Isla]), y)≈6100 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER(6100)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "COUNT",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "grid"
+    ],
+    "elements_sketch": [
+     "xtick[2010]",
+     "top(band[Isla])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from 2010 to Isla top edge, horizontal to y-axis at ~6600",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_2v2rWlRd58loD8l",
+    "accuracy": 0.0,
+    "answer": "6500",
+    "chain": "KNOW(stacked: top(band[Isla]) = Isla+Amelia) → DOUBT(reading) → FIND(xtick[2010]) → PROJ(xtick[2010] → top(band[Isla])) → PROJ(top(band[Isla]) → yaxis) → READ(top(band[Isla]), y)≈6500 ?wrong:read-cumulative-top-of-stack-not-band-thickness:knew-stacking-but-did-not-subtract → ANSWER(6500)",
+    "ops": [
+     "KNOW",
+     "DOUBT",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "band[Isla]",
+     "band[Amelia]"
+    ],
+    "elements_sketch": [
+     "xtick[2010]",
+     "top(band[Isla])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from 2010 to Isla top edge, horizontal to y-axis at ~6500",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_2WNi2HH78I5OZOO",
+    "accuracy": 0.0,
+    "answer": "6200",
+    "chain": "PROJ(yaxis → top(band[Isla])) → PROJ(top(band[Isla]) → xtick[2010]) → READ(top(band[Isla]), y)≈6200 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER(6200)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "yaxis",
+     "top(band[Isla])",
+     "xtick[2010]"
+    ],
+    "sketch_gesture": "horizontal line from y-axis ~6500 to Isla top at 2010, circle there, vertical line down to 2010",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_1CfNOq4BP1ODnXy",
+    "accuracy": 0.0,
+    "answer": "6500",
+    "chain": "FIND(xtick[2010]) → FIND(edge(band[Isla]) | color[purple]) → PROJ(xtick[2010] → top(band[Isla])) → INTERP(v | ticks 6000,8000) → READ(top(band[Isla]), y)≈6500 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER(6500)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "INTERP",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "edge(band[Isla])",
+     "color[purple]",
+     "xtick[2010]",
+     "ytick[6000]",
+     "ytick[8000]"
+    ],
+    "elements_sketch": [
+     "xtick[2010]",
+     "top(band[Isla])"
+    ],
+    "sketch_gesture": "vertical line from 2010 up to Isla top edge with tick marks at ~6500 and ~7000 and scribbled numbers",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_s7KjkTnbS1R4AEN",
+    "accuracy": 0.0,
+    "answer": "10500",
+    "chain": "FIND(legend[Isla]) → FIND(peak(band[Isla])) ?wrong:went-to-peak-not-2010 → PROJ(peak(top(band[Isla]))@2012 → yaxis) → READ(y)≈10500 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER(10500) → FIX(10500→6500)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "READ",
+     "ANSWER",
+     "FIX"
+    ],
+    "elements_text": [
+     "peak(band[Isla])",
+     "xtick[2010]"
+    ],
+    "elements_sketch": [
+     "legend[Isla]",
+     "peak(band[Isla])",
+     "yaxis"
+    ],
+    "sketch_gesture": "circle on Isla legend entry; horizontal line from y-axis at ~10400 to Isla peak at 2012",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_3dNi1nbkrQu2sXL",
+    "accuracy": 0.0,
+    "answer": "6500",
+    "chain": "FIND(xtick[2010]) → PROJ(xtick[2010] → top(band[Isla])) → PROJ(top(band[Isla]) → yaxis) → READ(top(band[Isla]), y)≈6500 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER(6500)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "legend"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "yaxis",
+     "xtick[2010]"
+    ],
+    "sketch_gesture": "circle on Isla top edge at 2010, arrows left to y-axis (~6500) and down to 2010",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_vHJZLdwKhmAzoLn",
+    "accuracy": 0.0,
+    "answer": "6500",
+    "chain": "FIND(xtick[2010]) → PROJ(xtick[2010] → top(band[Isla])) → PROJ(top(band[Isla]) → yaxis) → READ(top(band[Isla]), y)≈6500 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER(6500)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[2010]",
+     "top",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "xtick[2010]",
+     "top(band[Isla])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from 2010 up to Isla top edge with arrowhead, then horizontal to y-axis at ~6400",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_3R7JWvNDOwOuGrj",
+    "accuracy": 0.0,
+    "answer": "6200",
+    "chain": "FIND(band[Isla] | color) → READ(top(band[Isla]), y)≈6200 ?wrong:read-cumulative-top-of-stack-not-band-thickness → PROJ(→ yaxis) → ANSWER(6200)",
+    "ops": [
+     "FIND",
+     "READ",
+     "PROJ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])"
+    ],
+    "sketch_gesture": "dot on Isla top edge at 2010",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_3lDJ3gJlEx9bvdy",
+    "accuracy": 0.0,
+    "answer": "6500",
+    "chain": "MAP(top edge(band[Isla]) → value) ?wrong:believes-band-thickness-is-aesthetic → FIND(top(band[Isla]) @ xtick[2010]) → PROJ(top(band[Isla]) → yaxis) → READ(y)≈6500 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER(6500)",
+    "ops": [
+     "MAP",
+     "FIND",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "edge(band[Isla])",
+     "xtick[2010]"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "yaxis"
+    ],
+    "sketch_gesture": "arrow from Isla top edge at 2010 left to y-axis at ~6600",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_5iPAzwTI0Ac36WR",
+    "accuracy": 0.0,
+    "answer": "6500",
+    "chain": "FIND(xtick[2010]) → PROJ(xtick[2010] → top(band[Isla])) → PROJ(top(band[Isla]) → yaxis) → READ(top(band[Isla]), y)≈6500 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER(6500)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "yaxis",
+     "xtick[2010]"
+    ],
+    "sketch_gesture": "loop at Isla top edge at 2010 with arrows left to y-axis (~6400) and down to 2010",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SAQ1_R_dmzzLQciMejEAQF",
+    "accuracy": 0.0,
+    "answer": "6500",
+    "chain": "FIND(xtick[2010]) → PROJ(xtick[2010] → top(band[Isla])) → PROJ(top(band[Isla]) → yaxis) → INTERP(v | imagined grid on yaxis) → READ(y)≈6500 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER(6500)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "INTERP",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "grid",
+     "yaxis",
+     "ytitle"
+    ],
+    "elements_sketch": [
+     "xtick[2010]",
+     "top(band[Isla])",
+     "yaxis"
+    ],
+    "sketch_gesture": "loop at Isla top edge at 2010, arrows left to y-axis (~6500) and down to 2010",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_2tA4SBEuaVuTjvn",
+    "accuracy": 0.0,
+    "answer": "10500",
+    "chain": "FIND(peak(band[Isla])) ?wrong:went-to-2012-peak-not-2010 → PROJ(→ yaxis) → READ(top(band[Isla])@2012, y)≈10500 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER(10500)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "peak(band[Isla])"
+    ],
+    "sketch_gesture": "tiny dot at Isla peak at 2012 (~10500)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_2QGUeAYb1lmdcHL",
+    "accuracy": 0.0,
+    "answer": "6455",
+    "chain": "FIND(xtick[2010]) → PROJ(xtick[2010] → top(band[Isla])) → PROJ(top(band[Isla]) → yaxis) → READ(y)≈6455 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER(6455)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "yaxis",
+     "xtick[2010]"
+    ],
+    "elements_sketch": [
+     "xtick[2010]",
+     "top(band[Isla])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from 2010 up to Isla top edge, circle there, horizontal to y-axis at ~6700",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_2azPvbhGGrKpoeu",
+    "accuracy": 0.0,
+    "answer": "12000",
+    "chain": "CONFUSED(color[Isla] ≈ color[Olivia]) → READ(top(band[Olivia])@2010, y)≈12000 ?wrong:wrong-band-color-confusion → ANSWER(12000) → PROJ(yaxis → top(band[Isla])@2010) → FIX(12000→6800) ?wrong:read-cumulative-top-of-stack-not-band-thickness",
+    "ops": [
+     "CONFUSED",
+     "READ",
+     "ANSWER",
+     "PROJ",
+     "FIX"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "yaxis",
+     "top(band[Isla])",
+     "peak(band[Isla])"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at ~6800 to Isla top edge at 2010; small dot at Isla peak 2012",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_6eSxIAherLvH4VH",
+    "accuracy": 0.0,
+    "answer": "6300",
+    "chain": "FIND(xtick[2010]) → PROJ(xtick[2010] → top(band[Isla])) → PROJ(top(band[Isla]) → yaxis) → LOOK(grid) → READ(y)≈6300 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER(6300)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "LOOK",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "grid"
+    ],
+    "elements_sketch": [
+     "xtick[2010]",
+     "top(band[Isla])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from 2010 up to Isla top edge, horizontal to y-axis at ~6500",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_2Ed9wQrWEbHKZvv",
+    "accuracy": 0.0,
+    "answer": "6500",
+    "chain": "FIND(line[Isla] | color) → FIND(xtick[2010]) → PROJ(xtick[2010] → top(band[Isla])) → PROJ(top(band[Isla]) → yaxis) → READ(y)≈6500 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER(6500)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "line[Isla]",
+     "color"
+    ],
+    "elements_sketch": [
+     "xtick[2010]",
+     "top(band[Isla])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from 2010 up to Isla top edge, horizontal to y-axis at ~6500",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_1kGflyCImAFfv3L",
+    "accuracy": 0.0,
+    "answer": "6000",
+    "chain": "FIND(xtick[2010]) → PROJ(xtick[2010] → top(band[Isla])) → PROJ(top(band[Isla]) → yaxis) → READ(top(band[Isla]), y)≈6000 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER(6000)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "xtick[2010]",
+     "top(band[Isla])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from 2010 up to Isla top edge, horizontal (sloping) to y-axis at ~6200",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SAQ1_R_25RyReDyqsW6Mru",
+    "accuracy": 0.0,
+    "answer": "6500",
+    "chain": "FIND(legend[Isla] → color[purple]) → FIND(xtick[2010]) → PROJ(xtick[2010] → top(band[Isla])) → PROJ(top(band[Isla]) → yaxis) → READ(y)≈6500 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER(6500)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color",
+     "legend[Isla]",
+     "xtick[2010]",
+     "edge(band[Isla])",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "legend[Isla]",
+     "xtick[2010]",
+     "top(band[Isla])",
+     "yaxis"
+    ],
+    "sketch_gesture": "circle on Isla legend entry; circle on 2010 tick, arrow up to circled Isla top edge, arrow left to y-axis (~6600)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_3D8wKq4NHSwZu4i",
+    "accuracy": 0.0,
+    "answer": "6500",
+    "chain": "FIND(top(band[Isla]) @ xtick[2010]) → PROJ(top(band[Isla]) → yaxis) → PROJ(top(band[Isla]) → xtick[2010]) → READ(y)≈6500 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER(6500)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "pt"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "yaxis",
+     "xtick[2010]"
+    ],
+    "sketch_gesture": "circle on Isla top edge at 2010 with arrows left to y-axis (~6700) and down to 2010",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_1GH7NAokHW4iM4G",
+    "accuracy": 0.0,
+    "answer": "4200",
+    "chain": "READ(top(band[Amelia])@2010, y)≈4200 ?wrong:looked-at-wrong-name(Amelia) → ANSWER(4200) → FIX(wrong name) ; sketch: FIND(xtick[2010]) → PROJ(xtick[2010] → top(band[Isla])) → PROJ(top(band[Isla]) → yaxis) → READ(y)≈6500 ?wrong:read-cumulative-top-of-stack-not-band-thickness",
+    "ops": [
+     "READ",
+     "ANSWER",
+     "FIX",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ"
+    ],
+    "elements_text": [
+     "legend"
+    ],
+    "elements_sketch": [
+     "xtick[2010]",
+     "top(band[Isla])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from 2010 up to Isla top edge, horizontal to y-axis at ~6500",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_3nP07ToNj9d03FE",
+    "accuracy": 0.0,
+    "answer": "6300",
+    "chain": "FIND(xtick[2010]) → PROJ(xtick[2010] → top(band[Isla])) → PROJ(top(band[Isla]) → yaxis) → READ(top(band[Isla]), y)≈6300 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER(6300)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "xtick[2010]",
+     "top(band[Isla])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from 2010 up to circled Isla top edge, horizontal to y-axis at ~6400",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SAQ1_R_1Ea5ftRdqVjV65x",
+    "accuracy": 0.0,
+    "answer": "6200",
+    "chain": "FIND(xtick[2010]) → FIND(band[Isla]) → READ(top(band[Isla]), y)≈6200 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER(6200)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[2010]",
+     "band[Isla]"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])"
+    ],
+    "sketch_gesture": "small circle on Isla top edge at 2010",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_O9Xc4cu0X7El0Ep",
+    "accuracy": 0.0,
+    "answer": "6500",
+    "chain": "FIND(xtick[2010]) → PROJ(xtick[2010] → top(band[Isla])) → PROJ(top(band[Isla]) → yaxis) → READ(top(band[Isla]), y)≈6500 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER(6500)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "yaxis",
+     "xaxis"
+    ],
+    "elements_sketch": [
+     "xtick[2010]",
+     "top(band[Isla])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from 2010 up to Isla top edge, horizontal to y-axis at ~6500",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_5dKmq0Uur1nbAxX",
+    "accuracy": 0.0,
+    "answer": "6000",
+    "chain": "FIND(xtick[2010]) → PROJ(xtick[2010] → top(band[Isla])) → PROJ(top(band[Isla]) → yaxis) → CMP(v > ytick[6000]) → READ(y)≈6000 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER(6000)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "CMP",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[2010]",
+     "ytick[6000]"
+    ],
+    "elements_sketch": [
+     "xtick[2010]",
+     "top(band[Isla])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from 2010 up to Isla top edge, wavy horizontal to y-axis at ~6800",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_eKlhx6ye2Un8NkR",
+    "accuracy": 0.0,
+    "answer": "12000",
+    "chain": "FIND(xtick[2010]) → PROJ(xtick[2010] → top(band[Olivia])) ?wrong:went-to-top-of-whole-stack(Olivia) → PROJ(top(band[Olivia]) → yaxis) → READ(y)≈12000 ?wrong:read-total-stack-height → ANSWER(12000)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xaxis",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "xtick[2010]",
+     "top(band[Olivia])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from 2010 all the way up to top of Olivia band, horizontal to y-axis at ~12000",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_1qalWvDa8z4HLfs",
+    "accuracy": 0.0,
+    "answer": "11900",
+    "chain": "FIND(xtick[2010]) → PROJ(xtick[2010] → top(band[Olivia])) ?wrong:went-to-top-of-whole-stack(Olivia) → PROJ(top(band[Olivia]) → yaxis) → READ(y)≈11900 ?wrong:read-total-stack-height → ANSWER(11900)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "yaxis",
+     "xtick"
+    ],
+    "elements_sketch": [
+     "xtick[2010]",
+     "top(band[Olivia])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from 2010 up to top of Olivia band, horizontal to y-axis at ~11800",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_1FtyDyJ5x9l9fws",
+    "accuracy": 0.0,
+    "answer": "6500",
+    "chain": "READ(y)≈6500 → PROJ(ytick[~6500] → xtick[2010]) → MAP(color → Isla) → READ(top(band[Isla]), y)≈6500 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER(6500)",
+    "ops": [
+     "READ",
+     "PROJ",
+     "MAP",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "ytick",
+     "xtick[2010]",
+     "color"
+    ],
+    "elements_sketch": [
+     "xtick[2010]",
+     "top(band[Isla])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from 2010 up to Isla top edge, horizontal to y-axis at ~6600",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_2SozfrY7GG4R8qB",
+    "accuracy": 0.0,
+    "answer": "6000",
+    "chain": "FIND(xtick[2010]) → PROJ(top(band[Amelia]) → yaxis)≈4200 → PROJ(top(band[Isla]) → yaxis)≈6000 → READ(top(band[Isla]), y)≈6000 ?wrong:marked-both-boundaries-but-did-not-subtract → ANSWER(6000)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "ytick[6000]"
+    ],
+    "elements_sketch": [
+     "xtick[2010]",
+     "top(band[Amelia])",
+     "top(band[Isla])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line at 2010; one horizontal line at ~6000 across Isla top, a zigzag horizontal line at ~4200 (Amelia/Isla boundary) to y-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ1_R_1NeORuwehcuKOMn",
+    "accuracy": 0.0,
+    "answer": "6500",
+    "chain": "FIND(xtick[2010]) → FIND(band[Isla]) → PROJ(xtick[2010] → top(band[Isla])) → READ(y)≈6500 ?wrong:read-cumulative-top-of-stack-not-band-thickness → ANSWER(6500)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[2010]",
+     "question"
+    ],
+    "elements_sketch": [
+     "xtick[2010]",
+     "top(band[Isla])"
+    ],
+    "sketch_gesture": "circle on 2010 tick label, vertical line up to Isla top edge (~6800)",
+    "source": "both"
+   }
+  ]
+ },
+ "SAQ2": {
+  "qid": "SAQ2",
+  "chart": "SA",
+  "task": "make_comparison",
+  "question": "Over the course of years between 2009 and 2014, the number of girls named 'Isla' was always more than 'Amelia'. True or False?",
+  "reference_chain": "SCAN({xtick 2009..2014}) → for each x: SEG(top(band[Isla]) − top(band[Amelia])) vs READ(top(band[Amelia]), y) → e.g. @2012: SEG(10500 − 7000)≈3500 < 7000 → CMP(Isla < Amelia @2009..2013) → ANSWER(False)",
+  "notes": "The pivotal confusion is between stack position and band thickness. Most participants traced the top edges of the purple and orange bands and concluded 'Isla is always above Amelia', which is True only by position. The 8 correct responders used thickness, through brackets or double arrows spanning each band at 2009/2012/2014 (P42, P56, P72), or through a holistic 'more orange area' judgement (P53, P65). Several participants knew the encoding was stacked ('Isla's numbers also include Amelia's', 'each colour represents the surplus') yet still compared tops. Two declared the chart unanswerable, and one read peak heights (~10500 vs ~7000) straight off the y-axis.",
+  "new_symbols": {
+   "TRACE(e)": "follow a line/edge/boundary with the pen along its length (sketch evidence of attending to that contour over x)",
+   "LABEL(e 'text')": "participant writes a name/letter onto a mark to bind it to a series",
+   "height(band[X])": "vertical thickness of a stacked band at a given x (bottom to top), as opposed to top(band[X])",
+   "outline(band[X])": "the closed contour of a band (top and bottom edges)"
+  },
+  "strategies": [
+   {
+    "chain": "TRACE(top(band[Isla])) → TRACE(top(band[Amelia])) → CMP(top(band[Isla]) > top(band[Amelia]) ∀ years) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)  [often with MAP(color→name)]",
+    "n": 14,
+    "n_correct": 0,
+    "n_incorrect": 13,
+    "n_unknown": 1,
+    "quote": "the shaded section for Isla has always been above the shaded section for Amelia.",
+    "trial_ids": [
+     "SAQ2_R_1DI6FoXNtxFt08R",
+     "SAQ2_R_2UXCZ9C5l64SSxM",
+     "SAQ2_R_2Pb3ABApTsqS3Jl",
+     "SAQ2_R_2E7bKzEVRvQoxPT",
+     "SAQ2_R_s7KjkTnbS1R4AEN",
+     "SAQ2_R_3R7JWvNDOwOuGrj",
+     "SAQ2_R_2tA4SBEuaVuTjvn",
+     "SAQ2_R_6eSxIAherLvH4VH",
+     "SAQ2_R_2Ed9wQrWEbHKZvv",
+     "SAQ2_R_3D8wKq4NHSwZu4i",
+     "SAQ2_R_3nP07ToNj9d03FE",
+     "SAQ2_R_eKlhx6ye2Un8NkR",
+     "SAQ2_R_1FtyDyJ5x9l9fws",
+     "SAQ2_R_2SozfrY7GG4R8qB"
+    ]
+   },
+   {
+    "chain": "FIND(peak@2012) → PROJ(peak(band[Amelia]) → yaxis)≈7000 → PROJ(peak(top(band[Isla])) → yaxis)≈10500 → CMP(10500 > 7000) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "n": 5,
+    "n_correct": 0,
+    "n_incorrect": 5,
+    "n_unknown": 0,
+    "quote": "Isla had over 1000 named children at peak where amelia only had almost 7000",
+    "trial_ids": [
+     "SAQ2_R_vHJZLdwKhmAzoLn",
+     "SAQ2_R_1kGflyCImAFfv3L",
+     "SAQ2_R_O9Xc4cu0X7El0Ep",
+     "SAQ2_R_5dKmq0Uur1nbAxX",
+     "SAQ2_R_1i58c2WHUP6VpcD"
+    ]
+   },
+   {
+    "chain": "MAP(color → name) → CMP(band[Isla] above/higher than band[Amelia]) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)  [position read from loops, labels, zigzags, no edge tracing]",
+    "n": 4,
+    "n_correct": 0,
+    "n_incorrect": 4,
+    "n_unknown": 0,
+    "quote": "colors were helpful, easy to compare since violet (Isla) is always above orange (Amelia)",
+    "trial_ids": [
+     "SAQ2_R_DHVf3ZBb8NKIn9n",
+     "SAQ2_R_3lDJ3gJlEx9bvdy",
+     "SAQ2_R_2QGUeAYb1lmdcHL",
+     "SAQ2_R_25RyReDyqsW6Mru"
+    ]
+   },
+   {
+    "chain": "SCAN({x}: arrow from top(band[Amelia]) or 0 up to top(band[Isla])) → CMP(Isla > Amelia per year) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "n": 4,
+    "n_correct": 0,
+    "n_incorrect": 4,
+    "n_unknown": 0,
+    "quote": "Every year there are more Islas than Amelias, i find the question confusing because if it is asking about the peak of Amelias compared to the peak of Islas, the itis false, but since i think is asking",
+    "trial_ids": [
+     "SAQ2_R_3dNi1nbkrQu2sXL",
+     "SAQ2_R_dmzzLQciMejEAQF",
+     "SAQ2_R_1NeORuwehcuKOMn",
+     "SAQ2_R_1CfNOq4BP1ODnXy"
+    ]
+   },
+   {
+    "chain": "READ(height(band[Amelia])) & READ(height(band[Isla])) at ≥1 year (brackets / double arrows) → CMP(height(band[Isla]) < height(band[Amelia])) → ANSWER(False)",
+    "n": 3,
+    "n_correct": 3,
+    "n_incorrect": 0,
+    "n_unknown": 0,
+    "quote": "The size of the color of \"Isla\" is instead smaller than the size of the color \"Amelia\"",
+    "trial_ids": [
+     "SAQ2_R_12JUTlzcehwtUdN",
+     "SAQ2_R_2RPteVShn9rbma8",
+     "SAQ2_R_1qalWvDa8z4HLfs"
+    ]
+   },
+   {
+    "chain": "SCAN(band[Isla]) → SCAN(band[Amelia]) → CMPvis(area(band[Amelia]) > area(band[Isla])) → ANSWER(False)",
+    "n": 2,
+    "n_correct": 2,
+    "n_incorrect": 0,
+    "n_unknown": 0,
+    "quote": "More area covered by Amelia names than Isla names.",
+    "trial_ids": [
+     "SAQ2_R_2aCSBNJjBanMISN",
+     "SAQ2_R_2rqIKFQJrR5RqI4"
+    ]
+   },
+   {
+    "chain": "TRACE(top edges) → CONFUSED(MAP(area size) vs MAP(position→yaxis)) → CMP(tops) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "n_unknown": 0,
+    "quote": "Hard to identify whether to go with the size of the coloured area or the link to the numbers on the left",
+    "trial_ids": [
+     "SAQ2_R_6QEHFq0jT9asAJH",
+     "SAQ2_R_5iPAzwTI0Ac36WR"
+    ]
+   },
+   {
+    "chain": "DOUBT/CONFUSED(chart cannot show exact amounts) → ANSWER(Impossible) ?wrong:declared-unanswerable",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "n_unknown": 0,
+    "quote": "It hard to tell the exact amounts over the course of the year",
+    "trial_ids": [
+     "SAQ2_R_1GH7NAokHW4iM4G",
+     "SAQ2_R_1Ea5ftRdqVjV65x"
+    ]
+   },
+   {
+    "chain": "KNOW(stacked: top(band[Isla]) includes Amelia) → TRACE(top(band[Isla])) → CMP(top above) ?wrong:compared-stack-position/cumulative-top-not-band-thickness:knew-cumulative-but-did-not-subtract → ANSWER(True)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "n_unknown": 0,
+    "quote": "I'm not familiar with reading these types of graphs but I assumed that because Isla's value is above Amelia, Isla's numbers also include Amelia's total.",
+    "trial_ids": [
+     "SAQ2_R_2v2rWlRd58loD8l"
+    ]
+   },
+   {
+    "chain": "GIST(chart) → ANSWER(False)",
+    "n": 1,
+    "n_correct": 1,
+    "n_incorrect": 0,
+    "n_unknown": 0,
+    "quote": "nothing was confusing, I just look and i know",
+    "trial_ids": [
+     "SAQ2_R_2bIfHokuAuYN3Js"
+    ]
+   },
+   {
+    "chain": "FIND(legend) → PROJ(peak(band[Amelia])@2012 → yaxis)≈7000 → CMP(vs top(band[Isla])@2010) → ANSWER(False)  [right answer, unclear basis]",
+    "n": 1,
+    "n_correct": 1,
+    "n_incorrect": 0,
+    "n_unknown": 0,
+    "quote": "The simpleness of the graph was very helpful",
+    "trial_ids": [
+     "SAQ2_R_2WNi2HH78I5OZOO"
+    ]
+   },
+   {
+    "chain": "TRACE(reference line through band[Isla]) → CMP(top(band[Amelia])@2012 > Isla line) → ANSWER(False)",
+    "n": 1,
+    "n_correct": 1,
+    "n_incorrect": 0,
+    "n_unknown": 0,
+    "quote": "There was nothing which was confusing, using the line you can see that at the end of 2011 beginning of 2012, there were more girls named Amelia than Isla",
+    "trial_ids": [
+     "SAQ2_R_2azPvbhGGrKpoeu"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "SAQ2_R_1DI6FoXNtxFt08R",
+    "accuracy": null,
+    "answer": "True",
+    "chain": "TRACE(top(band[Isla])) → TRACE(top(band[Amelia])) → CMP(top(band[Isla]) > top(band[Amelia]) ∀ 2009..2014) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "ops": [
+     "TRACE",
+     "TRACE",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "top(band[Amelia])"
+    ],
+    "sketch_gesture": "traced top edges of the Isla and Amelia bands across 2009–2014",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_2UXCZ9C5l64SSxM",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "TRACE(top(band[Isla])) → TRACE(top(band[Amelia])) → CMP(top(band[Isla]) > top(band[Amelia]) ∀ 2009..2014) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "ops": [
+     "TRACE",
+     "TRACE",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "top(band[Amelia])"
+    ],
+    "sketch_gesture": "traced top edges of the Isla and Amelia bands across 2009–2014 (wobbly)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_2bIfHokuAuYN3Js",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "GIST(chart) → ANSWER(False)",
+    "ops": [
+     "GIST",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "chart"
+    ],
+    "sketch_gesture": "large loop around the whole chart plus arcs over the top",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_6QEHFq0jT9asAJH",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "TRACE(top(band[Isla])) → LABEL(band[Isla] 'I') → TRACE(top(band[Amelia])) → LABEL(band[Amelia] 'A') → CONFUSED(MAP(area size → count) vs MAP(position → yaxis)) → CMP(top(band[Isla]) > top(band[Amelia])) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "ops": [
+     "TRACE",
+     "LABEL",
+     "TRACE",
+     "LABEL",
+     "CONFUSED",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "area",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "top(band[Amelia])",
+     "band[Isla]",
+     "band[Amelia]"
+    ],
+    "sketch_gesture": "traced Isla and Amelia top edges across all years, wrote 'I' in purple band and 'A' in orange band",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_2Pb3ABApTsqS3Jl",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "TRACE(top(band[Isla]) 2009..2012) → TRACE(top(band[Amelia]) 2009..2012) → TREND(both, 2009..2012) = ↑ parallel → CMP(top(band[Isla]) > top(band[Amelia])) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "ops": [
+     "TRACE",
+     "TRACE",
+     "TREND",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "line"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "top(band[Amelia])"
+    ],
+    "sketch_gesture": "traced Isla and Amelia top edges from 2009 to 2012 only",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_DHVf3ZBb8NKIn9n",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "MAP(color → name) → LOOK(region around top(band[Amelia])/band[Isla]) → CMP(band[Isla] above band[Amelia]) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "ops": [
+     "MAP",
+     "LOOK",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "top(band[Amelia])",
+     "band[Isla]"
+    ],
+    "sketch_gesture": "closed loop enclosing the Amelia/Isla boundary region across all years",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_12JUTlzcehwtUdN",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(xtick[2012]) → READ(height(band[Amelia])@2012 from 0 to top)≈7000 → READ(height(band[Isla])@2012 from bottom to top)≈3500 → CMP(height(band[Isla]) < height(band[Amelia])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "READ",
+     "READ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "xtick[2012]",
+     "height(band[Amelia])",
+     "height(band[Isla])"
+    ],
+    "sketch_gesture": "double-headed arrows at 2012: one spanning the orange band from 0 to ~7000, one spanning the purple band from ~7000 to ~10500",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SAQ2_R_2E7bKzEVRvQoxPT",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "TRACE(top(band[Isla])) → TRACE(top(band[Amelia])) → CMP(band[Isla](purple) above band[Amelia](orange) ∀ years) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "ops": [
+     "TRACE",
+     "TRACE",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color[purple]",
+     "color[orange]",
+     "band[Isla]",
+     "band[Amelia]"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "top(band[Amelia])"
+    ],
+    "sketch_gesture": "traced top edges of the Isla and Amelia bands across 2009–2014",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_1i58c2WHUP6VpcD",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "LOOK(yaxis numbers) → PROJ({xtick 2009,2012,2014} → up through bands) → PROJ(peak(top(band[Isla]))≈10500 → across all years) → CMP(Isla > Amelia) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "ops": [
+     "LOOK",
+     "PROJ",
+     "PROJ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "ytick"
+    ],
+    "elements_sketch": [
+     "xtick[2009]",
+     "xtick[2012]",
+     "xtick[2014]",
+     "peak(band[Isla])"
+    ],
+    "sketch_gesture": "vertical lines up from 2009, 2012 and 2014; horizontal line across the chart at ~10000–10500 (level of Isla peak)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_2v2rWlRd58loD8l",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "KNOW(stacked: top(band[Isla]) includes Amelia's total) → TRACE(top(band[Isla])) → CMP(top(band[Isla]) above band[Amelia]) ?wrong:compared-stack-position/cumulative-top-not-band-thickness:knew-cumulative-but-did-not-subtract → ANSWER(True)",
+    "ops": [
+     "KNOW",
+     "TRACE",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "band[Isla]",
+     "band[Amelia]"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])"
+    ],
+    "sketch_gesture": "traced the top edge of the Isla band across 2009–2014",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_2WNi2HH78I5OZOO",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(legend) → PROJ(peak(band[Amelia])@2012 → yaxis)≈7000 → CMP(peak(band[Amelia]) > top(band[Isla])@2010) ?wrong:compares-Amelia-peak-to-cumulative-Isla-at-another-year(right-answer-unclear-reasoning) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "legend",
+     "peak(band[Amelia])",
+     "yaxis",
+     "top(band[Isla])"
+    ],
+    "sketch_gesture": "circle around legend; horizontal line from y-axis at ~6800 to Amelia peak at 2012; X mark where the line crosses the Isla top edge near 2010",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SAQ2_R_1CfNOq4BP1ODnXy",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "MAP(color → name) → READ(height from 0 to top(band[Isla])@2009) & READ(height from 0 to top(band[Amelia])@2009) → READ(height from 0 to top(band[Isla])@2014) → CMP(which bigger) ?wrong:compared-stack-position/cumulative-top-not-band-thickness:measured-from-zero-not-from-band-bottom → ANSWER(True)",
+    "ops": [
+     "MAP",
+     "READ",
+     "READ",
+     "READ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "yaxis",
+     "top(band[Isla])",
+     "top(band[Amelia])",
+     "xtick[2009]",
+     "xtick[2014]",
+     "legend"
+    ],
+    "sketch_gesture": "brackets along the y-axis at 2009 spanning 0–5500 and 0–3700; a long bracket at the right (2014) from the legend down to ~5800 and to 0",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_s7KjkTnbS1R4AEN",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "MAP(color[purple] → Isla, color[orange] → Amelia) → TRACE(top(band[Isla])) → TRACE(top(band[Amelia])) → CMP(purple above orange ∀ 2009..2014) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "ops": [
+     "MAP",
+     "TRACE",
+     "TRACE",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color[purple]",
+     "color[orange]",
+     "legend[Isla]",
+     "legend[Amelia]"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "top(band[Amelia])"
+    ],
+    "sketch_gesture": "traced top edges of the Isla and Amelia bands across 2009–2014",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_3dNi1nbkrQu2sXL",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "FIND(legend[Isla], legend[Amelia]) → SCAN({x 2009..2014}: top(band[Amelia]) ↑ top(band[Isla])) → CMP(top(band[Isla]) > top(band[Amelia]) ∀ x) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "SCAN",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "line[Isla]"
+    ],
+    "elements_sketch": [
+     "legend[Isla]",
+     "legend[Amelia]",
+     "top(band[Isla])",
+     "top(band[Amelia])"
+    ],
+    "sketch_gesture": "two long arrows from legend entries to Isla and Amelia edges near 2013; many short upward arrows from the Amelia edge to the Isla edge at every year",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_vHJZLdwKhmAzoLn",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "FIND(peak(band[Isla])@2012) → READ(peak(top(band[Isla])), y)≈10000 ?wrong:compared-stack-position/cumulative-top-not-band-thickness → READ(peak(band[Amelia]), y)≈7000 → CMP(10000 > 7000) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "READ",
+     "READ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "peak(band[Isla])",
+     "peak(band[Amelia])"
+    ],
+    "elements_sketch": [
+     "height(band[Isla])"
+    ],
+    "sketch_gesture": "vertical stroke at 2012 spanning the Isla band from ~7000 to ~10300",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_3R7JWvNDOwOuGrj",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "TRACE(top(band[Isla]) 2009..2012) → TRACE(top(band[Amelia]) 2009..2012) → CMP(band[Amelia] underneath band[Isla]) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "ops": [
+     "TRACE",
+     "TRACE",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "band[Amelia]",
+     "band[Isla]"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "top(band[Amelia])"
+    ],
+    "sketch_gesture": "traced Isla and Amelia top edges from 2009 to ~2012",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_3lDJ3gJlEx9bvdy",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "MAP(color[violet] → Isla, color[orange] → Amelia) → SCAN(band[Isla] 2009..2014) → CMP(band[Isla] above band[Amelia] ∀ years) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "ops": [
+     "MAP",
+     "SCAN",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color[violet]",
+     "color[orange]"
+    ],
+    "elements_sketch": [
+     "band[Isla]"
+    ],
+    "sketch_gesture": "zigzag line running through the purple Isla band from 2009 to 2014",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_2aCSBNJjBanMISN",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "SCAN(band[Isla]) → SCAN(band[Amelia]) → CMPvis(area(band[Amelia]) > area(band[Isla])) → ANSWER(False)",
+    "ops": [
+     "SCAN",
+     "SCAN",
+     "CMPvis",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "area",
+     "band[Amelia]",
+     "band[Isla]"
+    ],
+    "elements_sketch": [
+     "band[Isla]",
+     "band[Amelia]"
+    ],
+    "sketch_gesture": "wavy line drawn inside the Isla band and another inside the Amelia band across 2009–2014",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_5iPAzwTI0Ac36WR",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "CONFUSED(each line has the area below colored) → FIND(top(band[Isla])@2009,2014) → PROJ(top(band[Isla])@2014 → yaxis)≈7800 → FIND(top(band[Amelia])@2009,2014) → PROJ(top(band[Amelia])@2014 → yaxis)≈3300 → CMP(top(band[Isla]) > top(band[Amelia])) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "ops": [
+     "CONFUSED",
+     "FIND",
+     "PROJ",
+     "FIND",
+     "PROJ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color",
+     "line",
+     "area"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "top(band[Amelia])",
+     "xtick[2009]",
+     "xtick[2014]",
+     "yaxis"
+    ],
+    "sketch_gesture": "circles on the Isla and Amelia top edges at 2009 and 2014, labelled I and A; long horizontal arrows to the y-axis at ~7800 and ~3200; arrows from 2014 down to 0",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_dmzzLQciMejEAQF",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "MAP(each band = surplus over the band below) → SCAN({xtick 2009..2014}: height(0 → top(band[Isla]))) → CMP(Isla > Amelia) ?wrong:stated-surplus-encoding-but-measured-from-zero → ANSWER(True)",
+    "ops": [
+     "MAP",
+     "SCAN",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color",
+     "band"
+    ],
+    "elements_sketch": [
+     "xtick[2009]",
+     "xtick[2010]",
+     "xtick[2011]",
+     "xtick[2012]",
+     "xtick[2013]",
+     "xtick[2014]",
+     "top(band[Isla])"
+    ],
+    "sketch_gesture": "double-headed vertical arrows at every year from 0 up to the Isla top edge",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_2RPteVShn9rbma8",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "SCAN({xtick 2010..2014}: READ(height(band[Amelia])) & READ(height(band[Isla]))) → CMP(height(band[Isla]) < height(band[Amelia]) at some years) → ANSWER(False)",
+    "ops": [
+     "SCAN",
+     "READ",
+     "READ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "height(band[Amelia])",
+     "height(band[Isla])"
+    ],
+    "sketch_gesture": "pairs of double-headed arrows at each year: one spanning the orange band (0 to Amelia top), one spanning the purple band (Amelia top to Isla top)",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SAQ2_R_2tA4SBEuaVuTjvn",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "TRACE(top(band[Isla])) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "ops": [
+     "TRACE",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(band[Isla])"
+    ],
+    "sketch_gesture": "dotted trail of small marks along the Isla top edge from 2009 to 2014",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SAQ2_R_2QGUeAYb1lmdcHL",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "LOOK(band[Isla]) → LOOK(band[Amelia]) → CONFUSED(fill of colors) → CMP(Isla > Amelia ∀ years) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "ops": [
+     "LOOK",
+     "LOOK",
+     "CONFUSED",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "top(band[Amelia])",
+     "band[Isla]"
+    ],
+    "sketch_gesture": "two long closed loops: one around the Isla top edge, one around the Amelia/Isla boundary, spanning 2009–2014",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_2azPvbhGGrKpoeu",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "TRACE(reference line through band[Isla] 2009..2014) → FIND(xtick[2011..2012]) → CMP(top(band[Amelia])@2012 > Isla) → ANSWER(False)",
+    "ops": [
+     "TRACE",
+     "FIND",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "line",
+     "xtick[2011]",
+     "xtick[2012]"
+    ],
+    "elements_sketch": [
+     "band[Isla]",
+     "peak(band[Amelia])"
+    ],
+    "sketch_gesture": "near-horizontal line from ~5400 at 2009 to ~6100 at 2014 through the Isla band, which the Amelia peak at 2012 pokes above",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_6eSxIAherLvH4VH",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "MAP(color → name) → TRACE(top(band[Isla])) → TRACE(top(band[Amelia])) → CMP(top(band[Isla]) > top(band[Amelia]) ∀ 2009..2014) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "ops": [
+     "MAP",
+     "TRACE",
+     "TRACE",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "top(band[Amelia])"
+    ],
+    "sketch_gesture": "traced top edges of the Isla and Amelia bands across 2009–2014",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_2Ed9wQrWEbHKZvv",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "TRACE(top(band[Isla])) → TRACE(top(band[Amelia])) → CMP(band[Isla] shaded section above band[Amelia] ∀ years) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "ops": [
+     "TRACE",
+     "TRACE",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "band[Isla]",
+     "band[Amelia]"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "top(band[Amelia])"
+    ],
+    "sketch_gesture": "traced top edges of the Isla and Amelia bands across 2009–2014",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_1kGflyCImAFfv3L",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "FIND(xtick[2012]) → PROJ(xtick[2012] → peak(top(band[Isla]))) → PROJ(peak(top(band[Isla])) → yaxis)≈10400 ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "xtick[2012]",
+     "peak(band[Isla])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from 2012 up to Isla peak, horizontal line to y-axis at ~10400",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SAQ2_R_25RyReDyqsW6Mru",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "MAP(legend → color → name) → LABEL(band[Isla] 'Isla', band[Amelia] 'Amelia') → CMP(Isla > Amelia ∀ years) ?wrong:basis-of-measurement-unstated(likely-position/top) → ANSWER(True)",
+    "ops": [
+     "MAP",
+     "LABEL",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color",
+     "legend"
+    ],
+    "elements_sketch": [
+     "legend",
+     "band[Isla]",
+     "band[Amelia]"
+    ],
+    "sketch_gesture": "rectangle around the legend; wrote 'Isla' inside the purple band and 'Amelia' inside the orange band",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_3D8wKq4NHSwZu4i",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "SCAN({xtick 2009..2014}: FIND(top(band[Isla])), FIND(top(band[Amelia]))) → TRACE(top(band[Isla]), top(band[Amelia])) → CMP(per year: Isla > Amelia) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "ops": [
+     "SCAN",
+     "FIND",
+     "FIND",
+     "TRACE",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "top(band[Amelia])",
+     "xtick"
+    ],
+    "sketch_gesture": "traced Isla and Amelia top edges with small circles at each year's vertex",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_2rqIKFQJrR5RqI4",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "SCAN(band[Isla]) → SCAN(band[Amelia]) → CMPvis(area(band[Amelia]) > area(band[Isla])) → ANSWER(False)",
+    "ops": [
+     "SCAN",
+     "SCAN",
+     "CMPvis",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "area",
+     "band[Amelia]",
+     "band[Isla]"
+    ],
+    "elements_sketch": [
+     "band[Isla]",
+     "band[Amelia]"
+    ],
+    "sketch_gesture": "scribble-filled both bands: zigzag through the purple band, many loops filling the orange band",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_1GH7NAokHW4iM4G",
+    "accuracy": 0.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "TRACE(top(band[Isla])) → TRACE(top(band[Amelia])) → PROJ({x 2009..2014} → verticals through bands) → DOUBT(exact amounts unreadable) ?wrong:declared-unanswerable → ANSWER(Impossible)",
+    "ops": [
+     "TRACE",
+     "TRACE",
+     "PROJ",
+     "DOUBT",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "top(band[Amelia])",
+     "xtick"
+    ],
+    "sketch_gesture": "traced Isla and Amelia top edges plus many vertical lines from the x-axis up through the bands",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_3nP07ToNj9d03FE",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "TRACE(top(band[Isla])) → TRACE(top(band[Amelia])) → LOOK(endpoints @2009, @2014) → CMP(top(band[Isla]) > top(band[Amelia])) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "ops": [
+     "TRACE",
+     "TRACE",
+     "LOOK",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart",
+     "xtick[2009]",
+     "xtick[2014]"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "top(band[Amelia])",
+     "xtick[2009]",
+     "xtick[2014]"
+    ],
+    "sketch_gesture": "traced Isla and Amelia top edges with circles at both endpoints (2009 and 2014)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_1Ea5ftRdqVjV65x",
+    "accuracy": 0.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "LOOK(band[Amelia]@2009) → CONFUSED(chart does not display data correctly) ?wrong:declared-unanswerable → ANSWER(Impossible)",
+    "ops": [
+     "LOOK",
+     "CONFUSED",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "band[Amelia]"
+    ],
+    "sketch_gesture": "loop drawn over the orange Amelia band near 2009 (~1000–4800)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_O9Xc4cu0X7El0Ep",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "LOOK(band[Amelia] across years) → PROJ(peak(band[Amelia]) level across 2009..2014)≈7000 → PROJ(peak(top(band[Isla])) level across 2009..2014)≈10500 → CMP(Isla > Amelia) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "ops": [
+     "LOOK",
+     "PROJ",
+     "PROJ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "band[Amelia]",
+     "band[Isla]",
+     "xtick"
+    ],
+    "elements_sketch": [
+     "xaxis",
+     "peak(band[Amelia])",
+     "peak(band[Isla])"
+    ],
+    "sketch_gesture": "three near-horizontal lines spanning the chart: along the x-axis baseline, at ~6500–7100 (Amelia peak level), at ~10300–11000 (Isla peak level)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_5dKmq0Uur1nbAxX",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "FIND(xtick[2012]) → PROJ(peak(band[Amelia]) → yaxis)≈7000 → PROJ(peak(top(band[Isla])) → yaxis)≈10500 → CMP(Isla graph above Amelia) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "line[Isla]",
+     "line[Amelia]"
+    ],
+    "elements_sketch": [
+     "xtick[2012]",
+     "peak(band[Amelia])",
+     "peak(band[Isla])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from below 2012 up to Isla peak; lines from y-axis at ~6700 to Amelia peak and from ~8900 rising to Isla peak",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_eKlhx6ye2Un8NkR",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "MAP(color[purple] → Isla, color[orange] → Amelia) → TRACE(top(band[Isla])) → TRACE(top(band[Amelia])) → CMP(purple higher than orange) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "ops": [
+     "MAP",
+     "TRACE",
+     "TRACE",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color[orange]",
+     "color[purple]",
+     "band[Isla]",
+     "band[Amelia]"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "top(band[Amelia])"
+    ],
+    "sketch_gesture": "traced top edges of the Isla and Amelia bands across 2009–2014",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_1qalWvDa8z4HLfs",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND({xtick 2009,2012,2014}) → READ(height(band[Amelia])) & READ(height(band[Isla])) at each → CMPvis(size(band[Isla]) < size(band[Amelia])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "READ",
+     "READ",
+     "CMPvis",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "size",
+     "color",
+     "band[Isla]",
+     "band[Amelia]"
+    ],
+    "elements_sketch": [
+     "height(band[Amelia])",
+     "height(band[Isla])",
+     "xtick[2009]",
+     "xtick[2012]",
+     "xtick[2014]"
+    ],
+    "sketch_gesture": "stacked curly brackets at 2009, 2012 and 2014 marking each band's vertical extent: 0 to Amelia top, and Amelia top to Isla top",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_1FtyDyJ5x9l9fws",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "MAP(color[blue] → Isla, color[brown] → Amelia) → TRACE(top(band[Isla])) → TRACE(top(band[Amelia])) → PROJ(peak(band[Amelia]) → peak(band[Isla]))@2012 → CMP(Isla > Amelia) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "ops": [
+     "MAP",
+     "TRACE",
+     "TRACE",
+     "PROJ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color[blue]",
+     "color[brown]"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "top(band[Amelia])",
+     "peak(band[Isla])",
+     "peak(band[Amelia])"
+    ],
+    "sketch_gesture": "traced Isla and Amelia top edges; extra line from ~10000 at 2009 to the 2012 Isla peak; vertical stroke at 2012 between the two peaks",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_2SozfrY7GG4R8qB",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "TRACE(outline(band[Isla]) = top(band[Isla]) + top(band[Amelia])) → SCAN(band[Isla]) → CMP(Isla higher ∀ years) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → ANSWER(True)",
+    "ops": [
+     "TRACE",
+     "SCAN",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "top(band[Amelia])",
+     "band[Isla]"
+    ],
+    "sketch_gesture": "closed outline around the whole purple Isla band, with diagonal arrows inside it",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ2_R_1NeORuwehcuKOMn",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "SCAN({xtick 2009..2014}: top(band[Amelia]) ↑ band[Isla]) → CMP(per year: Isla > Amelia) ?wrong:compared-stack-position/cumulative-top-not-band-thickness → CONFUSED(question: year-by-year vs peak-vs-peak) → CMP(peak(band[Amelia]) vs peak(band[Isla])) → ANSWER(True)",
+    "ops": [
+     "SCAN",
+     "CMP",
+     "CONFUSED",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "peak(band[Amelia])",
+     "peak(band[Isla])",
+     "question"
+    ],
+    "elements_sketch": [
+     "top(band[Amelia])",
+     "band[Isla]"
+    ],
+    "sketch_gesture": "short upward arrows at each year from the Amelia edge into the Isla band",
+    "source": "both"
+   }
+  ]
+ },
+ "SAQ3": {
+  "qid": "SAQ3",
+  "chart": "SA",
+  "task": "find_extremum",
+  "question": "Over the course of years between 2009 and 2014, when was the number of girls named 'Isla' at the maximum?",
+  "reference_chain": "SCAN({xtick 2009..2014}: SEG(top(band[Isla]) − top(band[Amelia]))) ≈ {1900, 2400, 2900, 3500, 3500, 4700} → ARGMAX = 2014 → ANSWER(2014)",
+  "notes": "All three participants used band thickness (height(band[Isla])), not the top-edge position. A top-edge reading would point to 2012, where the purple top peaks at ~10500. Two sketches are a single vertical span at 2014, and one participant wrote a relative thickness estimate inside the band at every year (1 to 2.4) and estimated about 4800 at 2014. All three answered 2014, which matches the key, yet the data records accuracy 0, so the accuracy field for this item looks mis-scored.",
+  "new_symbols": {
+   "height(band[X])": "vertical thickness of a stacked band at an x position, read with channel len"
+  },
+  "strategies": [
+   {
+    "chain": "READ(height(band[Isla])@2014, len) → ARGMAX(height(band[Isla])) = 2014 → ANSWER(2014)  [single vertical span at 2014]",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "n_unknown": 0,
+    "quote": "That's the longest part, hence te time more girs were named Isla",
+    "trial_ids": [
+     "SAQ3_R_2aCSBNJjBanMISN",
+     "SAQ3_R_2RPteVShn9rbma8"
+    ],
+    "n_correct_by_key": 2
+   },
+   {
+    "chain": "SCAN({xtick}: READ(height(band[Isla])) written per year) → ARGMAX = 2014 → READ≈4800 → ANSWER(2014)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "n_unknown": 0,
+    "quote": "2014 highest with value of about 4800",
+    "trial_ids": [
+     "SAQ3_R_2rqIKFQJrR5RqI4"
+    ],
+    "n_correct_by_key": 1
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "SAQ3_R_2aCSBNJjBanMISN",
+    "accuracy": 0.0,
+    "answer": "2014",
+    "correct_by_key": true,
+    "chain": "FIND(band[Isla]) → READ(height(band[Isla])@2014, len) → ARGMAX({height(band[Isla])}, len) = 2014 ('longest part') → ANSWER(2014)",
+    "ops": [
+     "FIND",
+     "READ",
+     "ARGMAX",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "band[Isla]",
+     "height(band[Isla])"
+    ],
+    "elements_sketch": [
+     "height(band[Isla])",
+     "xtick[2014]"
+    ],
+    "sketch_gesture": "vertical stroke at 2014 spanning the Isla band from ~3500 to ~8000",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ3_R_2RPteVShn9rbma8",
+    "accuracy": 0.0,
+    "answer": "2014",
+    "correct_by_key": true,
+    "chain": "READ(height(band[Isla])@2014) → ARGMAX(height(band[Isla])) = 2014 → ANSWER(2014)",
+    "ops": [
+     "READ",
+     "ARGMAX",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "height(band[Isla])",
+     "xtick[2014]"
+    ],
+    "sketch_gesture": "double-headed vertical arrow at 2014 spanning the Isla band (~3500 to ~8000)",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SAQ3_R_2rqIKFQJrR5RqI4",
+    "accuracy": 0.0,
+    "answer": "2014",
+    "correct_by_key": true,
+    "chain": "SCAN({xtick 2009..2014}: READ(height(band[Isla]), len) ≈ 1, 1.1, 1.2, 2, 2, 2.4 (relative units written in band)) → ARGMAX = 2014 → READ(height(band[Isla])@2014)≈4800 → ANSWER(2014)",
+    "ops": [
+     "SCAN",
+     "READ",
+     "ARGMAX",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[2014]"
+    ],
+    "elements_sketch": [
+     "band[Isla]",
+     "height(band[Isla])"
+    ],
+    "sketch_gesture": "wrote estimated thicknesses inside the Isla band at each year: 1, 1.1, 1.2, 2, 2, 2.4",
+    "source": "both"
+   }
+  ]
+ },
+ "SAQ4": {
+  "qid": "SAQ4",
+  "chart": "SA",
+  "task": "characterize_trend",
+  "question": "The number of girls named 'Olivia' was __________ from 2009 to 2012.",
+  "reference_chain": "FIND(band[Olivia] | legend[Olivia]→color[green]) → SCAN({xtick 2009..2012}: SEG(top(band[Olivia]) − top(band[Isla]))) ≈ {5200, 5300, 4900, 4600} → TREND(height(band[Olivia]), 2009..2012) = ↓ → ANSWER(Falling)",
+  "notes": "The answer key is Falling, because the Olivia band gets thinner (~5200 to ~4600). The recorded accuracy field instead scores 'Rising' as 1 and the near-correct 'Constant' as 0, so the field looks inverted for this item, and n_correct_by_key is reported next to it. Almost everyone traced the rising top edge of the green band, which is the stack total, and read its slope as Olivia's trend. Only P85 and P108 compared band thickness at 2009 vs 2012: P85 called the change 'about the same', and P108 noticed afterwards that Olivia was 'actually falling'. Because Olivia is the top band, its top edge is the most salient element here, which is why the line-chart reading wins.",
+  "new_symbols": {
+   "TRACE(e)": "follow an edge/line with the pen along x",
+   "height(band[X])": "vertical thickness of a stacked band at an x position",
+   "bottom(band[X])": "lower boundary of a band (= top of the band beneath)"
+  },
+  "strategies": [
+   {
+    "chain": "[FIND(legend[Olivia])] → TRACE(top(band[Olivia]) 2009..2012) → TREND(top(band[Olivia])) = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "n": 22,
+    "n_correct": 21,
+    "n_incorrect": 0,
+    "n_unknown": 1,
+    "quote": "I just took the top line of the green for Olivia and saw that it gradually increased each year to 2012",
+    "trial_ids": [
+     "SAQ4_R_6QEHFq0jT9asAJH",
+     "SAQ4_R_2Pb3ABApTsqS3Jl",
+     "SAQ4_R_2E7bKzEVRvQoxPT",
+     "SAQ4_R_2v2rWlRd58loD8l",
+     "SAQ4_R_2WNi2HH78I5OZOO",
+     "SAQ4_R_s7KjkTnbS1R4AEN",
+     "SAQ4_R_3lDJ3gJlEx9bvdy",
+     "SAQ4_R_2tA4SBEuaVuTjvn",
+     "SAQ4_R_2QGUeAYb1lmdcHL",
+     "SAQ4_R_2azPvbhGGrKpoeu",
+     "SAQ4_R_6eSxIAherLvH4VH",
+     "SAQ4_R_25RyReDyqsW6Mru",
+     "SAQ4_R_3nP07ToNj9d03FE",
+     "SAQ4_R_1Ea5ftRdqVjV65x",
+     "SAQ4_R_O9Xc4cu0X7El0Ep",
+     "SAQ4_R_1FtyDyJ5x9l9fws",
+     "SAQ4_R_2SozfrY7GG4R8qB",
+     "SAQ4_R_1NeORuwehcuKOMn",
+     "SAQ4_R_2UXCZ9C5l64SSxM",
+     "SAQ4_R_1DI6FoXNtxFt08R",
+     "SAQ4_R_1i58c2WHUP6VpcD",
+     "SAQ4_R_1CfNOq4BP1ODnXy"
+    ],
+    "n_correct_by_key": 0
+   },
+   {
+    "chain": "PROJ(xtick[2012] → peak(top(band[Olivia]))) → PROJ(peak → yaxis)≈15000 [vs 2009 top ≈10700] → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "n": 8,
+    "n_correct": 8,
+    "n_incorrect": 0,
+    "n_unknown": 0,
+    "quote": "that a peak, the highest level.",
+    "trial_ids": [
+     "SAQ4_R_DHVf3ZBb8NKIn9n",
+     "SAQ4_R_vHJZLdwKhmAzoLn",
+     "SAQ4_R_5iPAzwTI0Ac36WR",
+     "SAQ4_R_2Ed9wQrWEbHKZvv",
+     "SAQ4_R_1kGflyCImAFfv3L",
+     "SAQ4_R_3D8wKq4NHSwZu4i",
+     "SAQ4_R_5dKmq0Uur1nbAxX",
+     "SAQ4_R_eKlhx6ye2Un8NkR"
+    ],
+    "n_correct_by_key": 0
+   },
+   {
+    "chain": "TRACE(band[Olivia] interior / several band edges) → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "n": 4,
+    "n_correct": 4,
+    "n_incorrect": 0,
+    "n_unknown": 0,
+    "quote": "The slope of the curve kept rising",
+    "trial_ids": [
+     "SAQ4_R_3R7JWvNDOwOuGrj",
+     "SAQ4_R_2aCSBNJjBanMISN",
+     "SAQ4_R_2RPteVShn9rbma8",
+     "SAQ4_R_1qalWvDa8z4HLfs"
+    ],
+    "n_correct_by_key": 0
+   },
+   {
+    "chain": "LOOK/loop(top(band[Olivia]) 2009..2012) → GIST(rising) ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "n": 2,
+    "n_correct": 2,
+    "n_incorrect": 0,
+    "n_unknown": 0,
+    "quote": "I just look on the picture",
+    "trial_ids": [
+     "SAQ4_R_2bIfHokuAuYN3Js",
+     "SAQ4_R_3dNi1nbkrQu2sXL"
+    ],
+    "n_correct_by_key": 0
+   },
+   {
+    "chain": "TRACE(top(band[Amelia])) ?wrong:wrong-series → TREND = ↑ → ANSWER(Rising)",
+    "n": 1,
+    "n_correct": 1,
+    "n_incorrect": 0,
+    "n_unknown": 0,
+    "quote": "The orange part of the graphic increase between 2009 and 2012",
+    "trial_ids": [
+     "SAQ4_R_dmzzLQciMejEAQF"
+    ],
+    "n_correct_by_key": 0
+   },
+   {
+    "chain": "READ(height(band[Olivia])@2009)≈5200 → READ(height(band[Olivia])@2012)≈4600 → CMP → TREND = → (judged ≈ constant) → ANSWER(Constant)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "n_unknown": 0,
+    "quote": "About the same amount",
+    "trial_ids": [
+     "SAQ4_R_12JUTlzcehwtUdN"
+    ],
+    "n_correct_by_key": 0
+   },
+   {
+    "chain": "READ(height(band[Olivia])@2009, @2012) → CMP(<) → TREND = ↓ → FIX(Rising→Falling) [after entering Rising]",
+    "n": 1,
+    "n_correct": 1,
+    "n_incorrect": 0,
+    "n_unknown": 0,
+    "quote": "Error: Mistakenly looked at Amelia. Olivia names actually falling.",
+    "trial_ids": [
+     "SAQ4_R_2rqIKFQJrR5RqI4"
+    ],
+    "n_correct_by_key": 0
+   },
+   {
+    "chain": "SCAN(height(band[Olivia]) strokes @2010..2012) → TREND = ↑ ?wrong:marked-thickness-but-judged-by-position → ANSWER(Rising)",
+    "n": 1,
+    "n_correct": 1,
+    "n_incorrect": 0,
+    "n_unknown": 0,
+    "quote": "I looked at the number of girls over the years",
+    "trial_ids": [
+     "SAQ4_R_1GH7NAokHW4iM4G"
+    ],
+    "n_correct_by_key": 0
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "SAQ4_R_1DI6FoXNtxFt08R",
+    "accuracy": null,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "TRACE(top(band[Olivia]) 2009..2012) → READ({xtick 2009..2012}: top(band[Olivia]), y) (tick marks) → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "TRACE",
+     "READ",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(band[Olivia])",
+     "xtick"
+    ],
+    "sketch_gesture": "rising line just above the Olivia top edge 2009–2011.5 with short horizontal dashes at each year's top value",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_2UXCZ9C5l64SSxM",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "FIND({xtick 2009..2012}) → TRACE(top(band[Olivia]) 2009→2012) → READ(y increases) → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "FIND",
+     "TRACE",
+     "READ",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xaxis",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "xaxis",
+     "xtick[2009]",
+     "xtick[2012]",
+     "top(band[Olivia])"
+    ],
+    "sketch_gesture": "arrow along the x-axis from 2009 to 2012; arrow along the Olivia top edge from 2009 to 2012 peak",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_2bIfHokuAuYN3Js",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "LOOK(top(band[Olivia]) 2009..2012) → GIST(rising) ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "LOOK",
+     "GIST",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "top(band[Olivia])"
+    ],
+    "sketch_gesture": "elongated loop around the Olivia top edge from 2009 to 2012",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_6QEHFq0jT9asAJH",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "TRACE(top(band[Olivia]) 2009..2012) → SLOPE(top(band[Olivia])) > 0 → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "TRACE",
+     "SLOPE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "slope"
+    ],
+    "elements_sketch": [
+     "top(band[Olivia])"
+    ],
+    "sketch_gesture": "traced the top edge of the green Olivia band from 2009 to 2012",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_2Pb3ABApTsqS3Jl",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "TRACE(top(band[Olivia]) 2009..2012 'rising line') → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "TRACE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "line"
+    ],
+    "elements_sketch": [
+     "top(band[Olivia])"
+    ],
+    "sketch_gesture": "traced the top edge of the green Olivia band from 2009 to 2012",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_DHVf3ZBb8NKIn9n",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "MAP(color → name) → LOOK(top(band[Olivia]) 2009..2012) → PROJ(peak(top(band[Olivia]))@2012 → yaxis)≈15000 → CMP(top@2009≈10500 < top@2012) → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "MAP",
+     "LOOK",
+     "PROJ",
+     "CMP",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "top(band[Olivia])",
+     "peak(band[Olivia])",
+     "yaxis",
+     "xtick[2009]"
+    ],
+    "sketch_gesture": "loop around the Olivia top edge 2009–2012, circle at the 2009 top (~10500), horizontal line from the 2012 peak to the y-axis at ~15000",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_12JUTlzcehwtUdN",
+    "accuracy": 0.0,
+    "answer": "Constant",
+    "correct_by_key": false,
+    "chain": "READ(height(band[Olivia])@2009, len)≈5200 → READ(height(band[Olivia])@2012, len)≈4600 → CMP(≈) → TREND = → ?wrong:small-decrease-judged-constant → ANSWER(Constant)",
+    "ops": [
+     "READ",
+     "READ",
+     "CMP",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "height(band[Olivia])",
+     "xtick[2009]",
+     "xtick[2012]"
+    ],
+    "sketch_gesture": "double-headed arrows spanning the green Olivia band at 2009 (~5500–10700) and at 2012 (~10500–15100)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_2E7bKzEVRvQoxPT",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "TRACE(top(band[Olivia]) 2009..2012 'top of the green field') → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "TRACE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "top(band[Olivia])",
+     "color[green]"
+    ],
+    "elements_sketch": [
+     "top(band[Olivia])"
+    ],
+    "sketch_gesture": "traced the top edge of the green Olivia band from 2009 to 2012 ending in an arrowhead",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_1i58c2WHUP6VpcD",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "PROJ(xtick[2009] → top(band[Olivia])) → PROJ(xtick[2012] → top(band[Olivia])) → TRACE(top(band[Olivia]) 2009..2012) → CMP(top@2009 < top@2012) → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "TRACE",
+     "CMP",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "line"
+    ],
+    "elements_sketch": [
+     "xtick[2009]",
+     "xtick[2012]",
+     "top(band[Olivia])"
+    ],
+    "sketch_gesture": "vertical lines from 2009 and 2012 up to the Olivia top edge, joined by a trace along the top edge",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_2v2rWlRd58loD8l",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "TRACE(top(band[Olivia]) 2009..2012) → TREND = ↑ ('on an incline') ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "TRACE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(band[Olivia])"
+    ],
+    "sketch_gesture": "traced the top edge of the green Olivia band from 2009 to 2012",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_2WNi2HH78I5OZOO",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "FIND(legend[Olivia]) → TRACE(top(band[Olivia]) 2009→2012) → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "FIND",
+     "TRACE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "legend[Olivia]",
+     "top(band[Olivia])"
+    ],
+    "sketch_gesture": "circle on the Olivia legend entry; straight arrow along the Olivia top edge from 2009 to 2012",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_1CfNOq4BP1ODnXy",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "FIND(legend[Olivia]) → PROJ(xtick[2009] → up) → PROJ(xtick[2012] → up) → TRACE(above top(band[Olivia]) 2009→2012) → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "TRACE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "legend[Olivia]",
+     "xtick[2009]",
+     "xtick[2012]",
+     "top(band[Olivia])"
+    ],
+    "sketch_gesture": "tick on Olivia legend; vertical lines at 2009 and 2012 from the axis up past the top; rising arrow just above the Olivia top edge",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_s7KjkTnbS1R4AEN",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "FIND(legend[Olivia] → color[green]) → FIND(band[Olivia]) → PROJ(xtick[2009], xtick[2012] → up) → TRACE(top(band[Olivia]) 2009..2012) → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "TRACE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "legend[Olivia]",
+     "color[green]",
+     "band[Olivia]",
+     "xtick[2009]",
+     "xtick[2012]"
+    ],
+    "elements_sketch": [
+     "legend[Olivia]",
+     "top(band[Olivia])",
+     "xtick[2009]",
+     "xtick[2012]"
+    ],
+    "sketch_gesture": "circle on Olivia legend; traced Olivia top edge 2009–2012; dashed vertical lines at 2009 and 2012",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_3dNi1nbkrQu2sXL",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "MAP(color → name) → FIND(legend[Olivia]) → LOOK(top(band[Olivia]) 2009..2012) → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "MAP",
+     "FIND",
+     "LOOK",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "top(band[Olivia])",
+     "legend[Olivia]"
+    ],
+    "sketch_gesture": "loop around the Olivia top edge 2009–2012 with an arrow from 2012 up to the Olivia legend entry",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_vHJZLdwKhmAzoLn",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "PROJ(peak(top(band[Olivia]))@2012 → yaxis)≈15000 → TREND = ↑ ('steady rise') ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "PROJ",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "line",
+     "xtick[2012]"
+    ],
+    "elements_sketch": [
+     "peak(band[Olivia])",
+     "yaxis"
+    ],
+    "sketch_gesture": "near-horizontal line from the y-axis at ~15000 to the 2012 Olivia peak",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_3R7JWvNDOwOuGrj",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "TRACE(band[Olivia] interior 2009..2012) → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "TRACE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "band[Olivia]"
+    ],
+    "sketch_gesture": "straight rising line through the middle of the green Olivia band from ~8900 at 2009 to ~13100 at 2012",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SAQ4_R_3lDJ3gJlEx9bvdy",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "FIND(edge(band[Olivia]) | color[green]) → TRACE(top(band[Olivia]) 2009..2012) → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "FIND",
+     "TRACE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "edge(band[Olivia])",
+     "color[green]",
+     "area"
+    ],
+    "elements_sketch": [
+     "top(band[Olivia])"
+    ],
+    "sketch_gesture": "traced the top edge of the green Olivia band from 2009 to 2012",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_2aCSBNJjBanMISN",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "TRACE(top(band[Olivia]) 2009..2012) → TRACE(top(band[Isla]) = bottom(band[Olivia]) 2009..2012) → SLOPE(curve) > 0 → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness:both-edges-rise-but-gap-not-compared → ANSWER(Rising)",
+    "ops": [
+     "TRACE",
+     "TRACE",
+     "SLOPE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "slope",
+     "line"
+    ],
+    "elements_sketch": [
+     "top(band[Olivia])",
+     "bottom(band[Olivia])"
+    ],
+    "sketch_gesture": "traced both the top edge of the Olivia band and the Olivia/Isla boundary from 2009 to ~2012",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_5iPAzwTI0Ac36WR",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "FIND(top(band[Olivia])@2009) → PROJ(→ xtick[2009]) → FIND(peak(top(band[Olivia]))@2012) → PROJ(→ xtick[2012]) → PROJ(peak → yaxis)≈14300 → CMP(top@2009≈10700 < top@2012) → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → CONFUSED(chart) → ANSWER(Rising)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "CMP",
+     "TREND",
+     "CONFUSED",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(band[Olivia])",
+     "peak(band[Olivia])",
+     "xtick[2009]",
+     "xtick[2012]",
+     "yaxis"
+    ],
+    "sketch_gesture": "circles on the Olivia top at 2009 (~10700) and at the 2012 peak; arrows from each down to the x-axis and from the peak left to the y-axis (~14300)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_dmzzLQciMejEAQF",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "TRACE(top(band[Amelia]) 2009..2012) ?wrong:wrong-series(Amelia/orange-not-Olivia) → TREND = ↑ → ANSWER(Rising)",
+    "ops": [
+     "TRACE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color[orange]",
+     "band[Amelia]"
+    ],
+    "elements_sketch": [
+     "top(band[Amelia])"
+    ],
+    "sketch_gesture": "traced the top edge of the orange Amelia band from 2009 to 2012",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_2RPteVShn9rbma8",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "TRACE(top(band[Olivia]), top(band[Isla]), top(band[Amelia]) 2009→2012) → TREND(all) = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "TRACE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(band[Olivia])",
+     "top(band[Isla])",
+     "top(band[Amelia])"
+    ],
+    "sketch_gesture": "three rising arrows along the top edges of all three bands from 2009 to 2012",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SAQ4_R_2tA4SBEuaVuTjvn",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "TRACE(top(band[Olivia]) 2010..2012, dotted) → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "TRACE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "line[Olivia]",
+     "color[green]"
+    ],
+    "elements_sketch": [
+     "top(band[Olivia])"
+    ],
+    "sketch_gesture": "dotted marks along the Olivia top edge from 2010 to 2012",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_2QGUeAYb1lmdcHL",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "TRACE(top(band[Olivia]) 2009→2012) → TREND = ↑ ('kept rising') ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "TRACE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(band[Olivia])"
+    ],
+    "sketch_gesture": "arrow along the Olivia top edge from 2009 to the 2012 peak",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_2azPvbhGGrKpoeu",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "TRACE(top(band[Olivia]) 2009..2012) → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "TRACE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[2009]",
+     "xtick[2012]"
+    ],
+    "elements_sketch": [
+     "top(band[Olivia])"
+    ],
+    "sketch_gesture": "rising line just above the Olivia top edge from 2009 to 2012",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_6eSxIAherLvH4VH",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "MAP(color → name) → TRACE(top(band[Olivia]) 2009..2012) → PROJ(xtick[2012] → peak(top(band[Olivia]))) → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "MAP",
+     "TRACE",
+     "PROJ",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "top(band[Olivia])",
+     "xtick[2012]",
+     "peak(band[Olivia])"
+    ],
+    "sketch_gesture": "traced Olivia top edge 2009–2012 plus vertical line from 2012 up to the peak",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_2Ed9wQrWEbHKZvv",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "FIND(band[Olivia] | color[green]) → PROJ(xtick[2012] → peak(top(band[Olivia]))) → PROJ(peak → yaxis)≈15200 → TREND = ↑ ('steady increase until 2012') ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "band[Olivia]",
+     "color[green]",
+     "xtick[2012]"
+    ],
+    "elements_sketch": [
+     "xtick[2012]",
+     "peak(band[Olivia])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from 2012 up to the Olivia peak, horizontal line to the y-axis at ~15200",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_1kGflyCImAFfv3L",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "PROJ(xtick[2012] → peak(top(band[Olivia]))) → PROJ(peak → yaxis)≈15000 → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "xtick[2012]",
+     "peak(band[Olivia])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from 2012 up to the Olivia peak, wavy horizontal line to the y-axis at ~15000",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SAQ4_R_25RyReDyqsW6Mru",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "FIND(legend[Olivia] → color) → FIND(xtick[2009], xtick[2012]) → PROJ(xtick[2009] → top(band[Olivia])) → TRACE(top(band[Olivia]) 2009→2012 peak) → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "TRACE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color",
+     "legend[Olivia]",
+     "xtick[2009]",
+     "xtick[2012]"
+    ],
+    "elements_sketch": [
+     "legend[Olivia]",
+     "xtick[2009]",
+     "xtick[2012]",
+     "top(band[Olivia])",
+     "peak(band[Olivia])"
+    ],
+    "sketch_gesture": "circles on the Olivia legend, the 2009 and 2012 ticks, the 2009 top and the 2012 peak; arrow from 2009 tick up to the top and curving to the 2012 peak",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_3D8wKq4NHSwZu4i",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "PROJ(yaxis → top(band[Olivia])@2010)≈11600 → PROJ(yaxis → top(band[Olivia])@2011)≈12700 → PROJ(yaxis → top(band[Olivia])@2012)≈15000 → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "trend"
+    ],
+    "elements_sketch": [
+     "yaxis",
+     "top(band[Olivia])"
+    ],
+    "sketch_gesture": "three horizontal arrows from the y-axis to the Olivia top edge at 2010 (~11600), 2011 (~12700) and 2012 (~15000)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_2rqIKFQJrR5RqI4",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "FIND(band[Amelia]) ?wrong:looked-at-wrong-series(Amelia) → TREND = ↑ → ANSWER(Rising) → READ(height(band[Olivia])@2009, len)≈5200 → READ(height(band[Olivia])@2012, len)≈4600 → CMP(<) → TREND = ↓ → FIX(Rising→Falling)",
+    "ops": [
+     "FIND",
+     "TREND",
+     "ANSWER",
+     "READ",
+     "READ",
+     "CMP",
+     "TREND",
+     "FIX"
+    ],
+    "elements_text": [
+     "band[Amelia]",
+     "band[Olivia]"
+    ],
+    "elements_sketch": [
+     "height(band[Olivia])",
+     "xtick[2009]",
+     "xtick[2012]",
+     "band[Olivia]"
+    ],
+    "sketch_gesture": "double-headed arrows spanning the green Olivia band at 2009 (~5600–10700) and at 2012 (~10500–15000); rising line through the band interior",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_1GH7NAokHW4iM4G",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "SCAN({xtick 2010..2012}: height(band[Olivia]) as vertical strokes) → TREND = ↑ ?wrong:marked-band-thickness-but-judged-by-rising-position → ANSWER(Rising)",
+    "ops": [
+     "SCAN",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "height(band[Olivia])",
+     "xtick[2010]",
+     "xtick[2011]",
+     "xtick[2012]"
+    ],
+    "sketch_gesture": "vertical strokes spanning the green Olivia band at 2010, 2011 and 2012 (bottom to top edge)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_3nP07ToNj9d03FE",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "FIND(top(band[Olivia])@2009) → FIND(peak(top(band[Olivia]))@2012) → PROJ(xtick → top) at both → TRACE(top(band[Olivia]) 2009..2012) → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "TRACE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[2009]",
+     "xtick[2012]"
+    ],
+    "elements_sketch": [
+     "top(band[Olivia])",
+     "peak(band[Olivia])",
+     "xtick[2009]",
+     "xtick[2012]"
+    ],
+    "sketch_gesture": "circles on the Olivia top at 2009 and the 2012 peak; vertical lines from both ticks up to them; trace along the top edge between",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_1Ea5ftRdqVjV65x",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "FIND(top(band[Olivia])@2009) → TRACE(top(band[Olivia]) 2009..2012) → FIND(peak(top(band[Olivia]))@2012) → TREND = ↑ ('tendency in growth') ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "FIND",
+     "TRACE",
+     "FIND",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "trend"
+    ],
+    "elements_sketch": [
+     "top(band[Olivia])",
+     "peak(band[Olivia])"
+    ],
+    "sketch_gesture": "circles on the Olivia top at 2009 and the 2012 peak joined by a trace along the top edge",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_O9Xc4cu0X7El0Ep",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "TRACE(top(band[Olivia]) 2009→2012) → TREND = ↑ ('graph pertaining to Olivia shows growth') ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "TRACE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "band[Olivia]"
+    ],
+    "elements_sketch": [
+     "top(band[Olivia])"
+    ],
+    "sketch_gesture": "traced the Olivia top edge 2009–2012 ending in an arrowhead",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_5dKmq0Uur1nbAxX",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "PROJ(xtick[2012] → peak(top(band[Olivia]))) → PROJ(peak → yaxis)≈15200 → MAX(peak = highest level) → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "MAX",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "peak(band[Olivia])"
+    ],
+    "elements_sketch": [
+     "xtick[2012]",
+     "peak(band[Olivia])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from 2012 up to the Olivia peak, horizontal line to the y-axis at ~15000",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_eKlhx6ye2Un8NkR",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "PROJ(xtick[2009] → top(band[Olivia])) → PROJ(xtick[2012] → peak(top(band[Olivia]))) → TRACE(top(band[Olivia]) 2009..2012) → PROJ(peak → yaxis)≈15000 → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "TRACE",
+     "PROJ",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xaxis",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "xtick[2009]",
+     "xtick[2012]",
+     "top(band[Olivia])",
+     "peak(band[Olivia])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical lines at 2009 and 2012, trace along the Olivia top edge, horizontal line from the y-axis at ~15000 to the 2012 peak",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_1qalWvDa8z4HLfs",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "TRACE(band[Olivia] interior 2009→2012, parallel to top line) → TREND(top(band[Olivia])) = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "TRACE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "top(band[Olivia])",
+     "color[green]"
+    ],
+    "elements_sketch": [
+     "band[Olivia]"
+    ],
+    "sketch_gesture": "rising arrow through the green band interior from ~9000 at 2009 to ~14000 at 2012",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_1FtyDyJ5x9l9fws",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "MAP(top line of green → Olivia) → TRACE(top(band[Olivia]) 2009..2012) → TREND = ↑ ('gradually increased each year') ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "MAP",
+     "TRACE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "top(band[Olivia])",
+     "color[green]"
+    ],
+    "elements_sketch": [
+     "top(band[Olivia])"
+    ],
+    "sketch_gesture": "traced the top edge of the green Olivia band from 2009 to 2012",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_2SozfrY7GG4R8qB",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "TRACE(top(band[Olivia]) 2009→2012) → MAP(higher → more children) → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "TRACE",
+     "MAP",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(band[Olivia])"
+    ],
+    "sketch_gesture": "traced the Olivia top edge 2009–2012 with an arrow continuing up past the peak",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ4_R_1NeORuwehcuKOMn",
+    "accuracy": 1.0,
+    "answer": "Rising",
+    "correct_by_key": false,
+    "chain": "FIND(band[Olivia] | question name, xtick 2009..2012) → TRACE(top(band[Olivia]) 2009..2012) → TREND = ↑ ?wrong:trend-of-cumulative-top-edge-not-band-thickness → ANSWER(Rising)",
+    "ops": [
+     "FIND",
+     "TRACE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "question",
+     "xtick"
+    ],
+    "elements_sketch": [
+     "top(band[Olivia])"
+    ],
+    "sketch_gesture": "traced the Olivia top edge 2009–2012 plus a dashed parallel arrow above it",
+    "source": "both"
+   }
+  ]
+ },
+ "SAQ5": {
+  "qid": "SAQ5",
+  "chart": "SA",
+  "task": "make_comparison",
+  "question": "In the UK, the number of girls named ‘Isla’ in 2014 was more than it was in 2013.",
+  "reference_chain": "FIND(band[Isla] | legend[Isla]) → SEG(top(band[Isla])@2013 − top(band[Amelia])@2013) ≈ 9100−5600 = 3500 → SEG(top(band[Isla])@2014 − top(band[Amelia])@2014) ≈ 8100−3400 = 4700 → CMP(4700 > 3500) → ANSWER(True)",
+  "notes": "Isla's band thickens from 2013 to 2014 (~3500 to ~4700), but its top edge falls (~9100 to ~8100) because Amelia shrinks underneath. That makes this item a near-perfect trap for top-edge reading. 35 of 40 answered False after comparing the Isla top edges, mostly with L-shaped projections to the y-axis or a downward trace. The correct responders measured band thickness, via brackets labelled 2.8/4.2 (P148), vertical spans with '<' (P136), or projecting all four boundaries (P139). Two 'True' answers contradict their own decline reasoning, and P138 noticed the purple band was bigger but explained it away as fewer Amelias.",
+  "new_symbols": {
+   "TRACE(e)": "follow an edge/line with the pen along x",
+   "height(band[X])": "vertical thickness of a stacked band at an x position"
+  },
+  "strategies": [
+   {
+    "chain": "PROJ(xtick[2013] → top(band[Isla])) → PROJ(top@2013 → yaxis)≈9000 → PROJ(xtick[2014] → top(band[Isla])) → PROJ(top@2014 → yaxis)≈8000 → CMP(9000 > 8000) ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)  [L-shaped projections to y-axis at both years]",
+    "n": 11,
+    "n_correct": 0,
+    "n_incorrect": 11,
+    "n_unknown": 0,
+    "quote": "I identified the color that represented the name and measured the difference between the number of girls per year.",
+    "trial_ids": [
+     "SAQ5_R_2E7bKzEVRvQoxPT",
+     "SAQ5_R_6eSxIAherLvH4VH",
+     "SAQ5_R_2Ed9wQrWEbHKZvv",
+     "SAQ5_R_1kGflyCImAFfv3L",
+     "SAQ5_R_25RyReDyqsW6Mru",
+     "SAQ5_R_3D8wKq4NHSwZu4i",
+     "SAQ5_R_1GH7NAokHW4iM4G",
+     "SAQ5_R_3nP07ToNj9d03FE",
+     "SAQ5_R_s7KjkTnbS1R4AEN",
+     "SAQ5_R_3lDJ3gJlEx9bvdy",
+     "SAQ5_R_5iPAzwTI0Ac36WR"
+    ]
+   },
+   {
+    "chain": "FIND/mark(top(band[Isla])@2013, @2014) → CMP(top@2013 > top@2014) ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "n": 10,
+    "n_correct": 0,
+    "n_incorrect": 9,
+    "n_unknown": 1,
+    "quote": "As you can see on the graph the total number of girls with the name \"Isla\" went down.",
+    "trial_ids": [
+     "SAQ5_R_1DI6FoXNtxFt08R",
+     "SAQ5_R_2Pb3ABApTsqS3Jl",
+     "SAQ5_R_1i58c2WHUP6VpcD",
+     "SAQ5_R_2v2rWlRd58loD8l",
+     "SAQ5_R_2WNi2HH78I5OZOO",
+     "SAQ5_R_vHJZLdwKhmAzoLn",
+     "SAQ5_R_2QGUeAYb1lmdcHL",
+     "SAQ5_R_1Ea5ftRdqVjV65x",
+     "SAQ5_R_1NeORuwehcuKOMn",
+     "SAQ5_R_dmzzLQciMejEAQF"
+    ]
+   },
+   {
+    "chain": "TRACE(top(band[Isla]) 2013→2014) → TREND = ↓ ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "n": 8,
+    "n_correct": 0,
+    "n_incorrect": 8,
+    "n_unknown": 0,
+    "quote": "the chart goes down indicating less",
+    "trial_ids": [
+     "SAQ5_R_2UXCZ9C5l64SSxM",
+     "SAQ5_R_DHVf3ZBb8NKIn9n",
+     "SAQ5_R_1CfNOq4BP1ODnXy",
+     "SAQ5_R_3dNi1nbkrQu2sXL",
+     "SAQ5_R_3R7JWvNDOwOuGrj",
+     "SAQ5_R_2azPvbhGGrKpoeu",
+     "SAQ5_R_O9Xc4cu0X7El0Ep",
+     "SAQ5_R_eKlhx6ye2Un8NkR"
+    ]
+   },
+   {
+    "chain": "READ(height(band[Isla])@2013) & READ(height(band[Isla])@2014) → CMP(len@2014 > len@2013) → ANSWER(True)",
+    "n": 3,
+    "n_correct": 3,
+    "n_incorrect": 0,
+    "n_unknown": 0,
+    "quote": "Measure for Isla 2014 is 4200 and about 2800 for 2013.",
+    "trial_ids": [
+     "SAQ5_R_2aCSBNJjBanMISN",
+     "SAQ5_R_2rqIKFQJrR5RqI4",
+     "SAQ5_R_2RPteVShn9rbma8"
+    ]
+   },
+   {
+    "chain": "LOOK(top(band[Isla])) → GIST ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "n_unknown": 0,
+    "quote": "I just look on the picture",
+    "trial_ids": [
+     "SAQ5_R_2bIfHokuAuYN3Js",
+     "SAQ5_R_2tA4SBEuaVuTjvn"
+    ]
+   },
+   {
+    "chain": "FIND/TRACE(top(band[Olivia])) ?wrong:wrong-band(top-of-stack) → CMP/TREND ↓ → ANSWER(False)",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "n_unknown": 0,
+    "quote": "I compared the points of 2013 and 2014 by which one is highest",
+    "trial_ids": [
+     "SAQ5_R_1qalWvDa8z4HLfs",
+     "SAQ5_R_1FtyDyJ5x9l9fws"
+    ]
+   },
+   {
+    "chain": "TREND(top, 2012/2013..2014) = ↓ → ANSWER(True) ?wrong:answer-contradicts-own-reasoning",
+    "n": 2,
+    "n_correct": 2,
+    "n_incorrect": 0,
+    "n_unknown": 0,
+    "quote": "the turning point is in 2012 then from there it keeps decreasing.",
+    "trial_ids": [
+     "SAQ5_R_5dKmq0Uur1nbAxX",
+     "SAQ5_R_2SozfrY7GG4R8qB"
+    ]
+   },
+   {
+    "chain": "FIND(peak(band[Isla])@2012) → PROJ(→ 2014) → CMP(lower) ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "n_unknown": 0,
+    "quote": "Clearly less popular",
+    "trial_ids": [
+     "SAQ5_R_12JUTlzcehwtUdN"
+    ]
+   },
+   {
+    "chain": "READ(height(band[Isla])@2013, @2014) → CONFUSED(all the purple) → ANSWER(False) ?wrong:marked-thickness-but-concluded-decrease",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "n_unknown": 0,
+    "quote": "confusing to identify the overall number with such a large area to consider e.g. all the purple",
+    "trial_ids": [
+     "SAQ5_R_6QEHFq0jT9asAJH"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "SAQ5_R_1DI6FoXNtxFt08R",
+    "accuracy": null,
+    "answer": "False",
+    "chain": "FIND(top(band[Isla])@2013) → FIND(top(band[Isla])@2014) → CMP(top@2013≈9100 > top@2014≈8100) ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])"
+    ],
+    "sketch_gesture": "short dashes on the Isla top edge at 2013 (~9100) and 2014 (~8100)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_2UXCZ9C5l64SSxM",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "TRACE(top(band[Isla]) 2013→2014) → TREND = ↓ ('declining') ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "TRACE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(band[Isla])"
+    ],
+    "sketch_gesture": "arrow along the Isla top edge from 2013 down to 2014",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_2bIfHokuAuYN3Js",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "LOOK(top(band[Isla]) 2013..2014) → GIST(lower in 2014) ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "LOOK",
+     "GIST",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])"
+    ],
+    "sketch_gesture": "loop around the Isla top edge between 2013 and 2014",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_6QEHFq0jT9asAJH",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "READ(height(band[Isla])@2013, len) → READ(height(band[Isla])@2014, len) → CONFUSED(large area / all the purple) → CMP ?wrong:marked-band-thickness-but-concluded-decrease → ANSWER(False)",
+    "ops": [
+     "READ",
+     "READ",
+     "CONFUSED",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "area",
+     "color[purple]"
+    ],
+    "elements_sketch": [
+     "height(band[Isla])",
+     "xtick[2013]",
+     "xtick[2014]"
+    ],
+    "sketch_gesture": "vertical strokes spanning the Isla band at 2013 (~5500–9200) and 2014 (~3400–8100)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_2Pb3ABApTsqS3Jl",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "FIND(xtick[2013], xtick[2014]) → PROJ(top(band[Isla])@2013 → right)≈9000 → PROJ(top(band[Isla])@2014)≈8100 → CMP(9000 > 8100) ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "xtick[2013]",
+     "xtick[2014]"
+    ],
+    "sketch_gesture": "two short horizontal lines from 2013 to 2014 at ~9000 and ~8100 (levels of the Isla top at each year)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_DHVf3ZBb8NKIn9n",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "LOOK(top(band[Isla]) 2013..2014) → PROJ(top@2013 → xtick[2013]) → PROJ(top@2014 → xtick[2014]) → TREND = ↓ ('perfect falling trend line') ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "LOOK",
+     "PROJ",
+     "PROJ",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "trendline"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "xtick[2013]",
+     "xtick[2014]"
+    ],
+    "sketch_gesture": "loop around the Isla top edge 2013–2014 with arrows down to the 2013 and 2014 ticks",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_12JUTlzcehwtUdN",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "FIND(peak(top(band[Isla]))@2012)≈10500 → PROJ(→ top(band[Isla])@2014)≈8100 → CMP(lower) ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "peak(band[Isla])",
+     "top(band[Isla])",
+     "xtick[2014]"
+    ],
+    "sketch_gesture": "arrow from 2014 up to the 2012-peak level, horizontal arrow left to the 2012 Isla peak, arrow down to the 2014 Isla top",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_2E7bKzEVRvQoxPT",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "MAP(color → name) → PROJ(xtick[2013] → top(band[Isla])) → PROJ(→ yaxis)≈9200 → PROJ(xtick[2014] → top(band[Isla])) → PROJ(→ yaxis)≈8100 → CMP(9200 > 8100) ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "MAP",
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "xtick[2013]",
+     "xtick[2014]",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical lines from 2013 and 2014 up to the Isla top edge; horizontal lines from each to the y-axis at ~9200 and ~8100",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_1i58c2WHUP6VpcD",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "FIND(xtick[2013], xtick[2014]) → PROJ(xtick[2013] → top(band[Isla])) → PROJ(xtick[2014] → top(band[Isla])) → TRACE(top(band[Isla]) 2013→2014) → CMP(top@2013 > top@2014) ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "TRACE",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "xtick[2013]",
+     "xtick[2014]"
+    ],
+    "sketch_gesture": "vertical lines from 2013 and 2014 up to the Isla top edge, joined by a trace along the top edge",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_2v2rWlRd58loD8l",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "FIND(top(band[Isla])@2013) → PROJ(top(band[Isla])@2014 level ≈8000 → back to 2013) → CMP(2013 higher than 2014) ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[2013]",
+     "xtick[2014]"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "xtick[2013]",
+     "xtick[2014]"
+    ],
+    "sketch_gesture": "vertical tick at 2013 on the Isla top; horizontal line at ~8000 from 2013 to 2014 (level of the 2014 top)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_2WNi2HH78I5OZOO",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "FIND(legend[Isla]) → PROJ(xtick[2013] → top(band[Isla])) → PROJ(xtick[2014] → top(band[Isla])) → CMP(top@2013 > top@2014) ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "legend"
+    ],
+    "elements_sketch": [
+     "legend[Isla]",
+     "top(band[Isla])",
+     "xtick[2013]",
+     "xtick[2014]"
+    ],
+    "sketch_gesture": "circle on the Isla legend entry; arrows from 2013 and 2014 up to the Isla top edge; horizontal line at ~8200 across",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_1CfNOq4BP1ODnXy",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "PROJ(xtick[2013] → up) → PROJ(xtick[2014] → up) → TRACE(top(band[Isla]) 2013→2014) → TREND = ↓ ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "TRACE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "xtick[2013]",
+     "xtick[2014]"
+    ],
+    "sketch_gesture": "full-height vertical lines at 2013 and 2014; arrow along the Isla top edge from 2013 to 2014",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_s7KjkTnbS1R4AEN",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "PROJ(top(band[Isla])@2013 → yaxis)≈8900 → PROJ(top(band[Isla])@2014 → yaxis)≈7800 → DIFF(marked 'I' bracket) → CMP(2013 higher) ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "DIFF",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[2013]",
+     "xtick[2014]"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "xtick[2013]",
+     "xtick[2014]",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal lines from the y-axis at ~8900 and ~7900 to the 2013 and 2014 Isla tops; dashed verticals at both years; an I-shaped bracket at the right spanning the difference",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_3dNi1nbkrQu2sXL",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "FIND(legend[Isla]) → FIND(top(band[Isla])@2013, @2014) → PROJ(→ xticks) → TREND = ↓ ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "trend"
+    ],
+    "elements_sketch": [
+     "legend[Isla]",
+     "top(band[Isla])",
+     "xtick[2013]",
+     "xtick[2014]"
+    ],
+    "sketch_gesture": "circles on the Isla top at 2013 and 2014 joined by a line, arrows down to both ticks, arrow up to the Isla legend",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_vHJZLdwKhmAzoLn",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "TRACE(top(band[Isla]) 2013→2014 as level line) → CMP(more in 2013) ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "TRACE",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "line"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])"
+    ],
+    "sketch_gesture": "short near-horizontal line from the 2013 Isla top toward 2014 at ~8800",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_3R7JWvNDOwOuGrj",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "TRACE(top(band[Isla]) 2013→2014) → TREND = ↓ ('chart goes down') ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "TRACE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])"
+    ],
+    "sketch_gesture": "traced the Isla top edge from 2013 to 2014",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_3lDJ3gJlEx9bvdy",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "PROJ(top(band[Isla])@2013 → yaxis)≈9500..10000 → PROJ(top(band[Isla])@2014 → yaxis)≈8000 → CMP(2013 value > 2014 value) ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[2013]",
+     "xtick[2014]"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "xtick[2013]",
+     "xtick[2014]",
+     "yaxis"
+    ],
+    "sketch_gesture": "arrows from the Isla top at 2013 and 2014 to the y-axis at ~9800 and ~8000",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_2aCSBNJjBanMISN",
+    "accuracy": 1.0,
+    "answer": "True",
+    "chain": "READ(height(band[Isla])@2013, len)≈3500 → READ(height(band[Isla])@2014, len)≈4700 → CMPvis(len@2013 < len@2014) → ANSWER(True)",
+    "ops": [
+     "READ",
+     "READ",
+     "CMPvis",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "line",
+     "xtick[2013]",
+     "xtick[2014]"
+    ],
+    "elements_sketch": [
+     "height(band[Isla])",
+     "xtick[2013]",
+     "xtick[2014]"
+    ],
+    "sketch_gesture": "vertical strokes spanning the Isla band at 2013 and 2014 with a '<' sign drawn between them",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_5iPAzwTI0Ac36WR",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "PROJ(top(band[Isla])@2013 → yaxis)≈8800 → PROJ(top(band[Isla])@2014 → yaxis)≈7800 → PROJ(→ xtick[2013], xtick[2014]) → CMP(8800 > 7800) ?wrong:compared-cumulative-top-edge-not-band-thickness → CONFUSED(chart) → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "CMP",
+     "CONFUSED",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "xtick[2013]",
+     "xtick[2014]",
+     "yaxis"
+    ],
+    "sketch_gesture": "circles on the Isla top at 2013 and 2014 with arrows to the y-axis (~8800, ~7800) and down to both ticks",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_dmzzLQciMejEAQF",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "TRACE(top(band[Isla]) 2013→2014) → CMPvis(band[Isla]@2014 bigger) → KNOW(purple bigger only because fewer Amelia) ?wrong:attributes-thicker-band-to-lower-band-shrinking → ANSWER(False)",
+    "ops": [
+     "TRACE",
+     "CMPvis",
+     "KNOW",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color[purple]",
+     "band[Isla]",
+     "band[Amelia]"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "xtick[2013]",
+     "xtick[2014]"
+    ],
+    "sketch_gesture": "circle on the Isla top at 2013 with a line along the top to an arrowhead at 2014",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_2RPteVShn9rbma8",
+    "accuracy": 1.0,
+    "answer": "True",
+    "chain": "PROJ(top(band[Isla])@2013)≈9000 & PROJ(top(band[Amelia])@2013)≈5500 → PROJ(top(band[Isla])@2014)≈8000 & PROJ(top(band[Amelia])@2014)≈3400 → SEG(9000−5500)≈3500 vs SEG(8000−3400)≈4600 → CMP(2014 > 2013) → ANSWER(True)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "SEG",
+     "SEG",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "top(band[Amelia])",
+     "yaxis",
+     "xtick[2013]",
+     "xtick[2014]"
+    ],
+    "sketch_gesture": "four long near-horizontal lines at ~9000, ~8000, ~5500 and ~3400: the levels of the Isla and Amelia top edges at 2013 and 2014",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SAQ5_R_2tA4SBEuaVuTjvn",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "LOOK(top(band[Isla])@2013) → GIST(observation of diagram) ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "LOOK",
+     "GIST",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])"
+    ],
+    "sketch_gesture": "tiny dot on the Isla top edge at 2013",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_2QGUeAYb1lmdcHL",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "FIND(top(band[Isla])@2013) → FIND(top(band[Isla])@2014) → CMP(top@2013 > top@2014) → MAP(top = total number of Isla) ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMP",
+     "MAP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "band[Isla]"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])"
+    ],
+    "sketch_gesture": "small circles on the Isla top edge at 2013 and 2014",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_2azPvbhGGrKpoeu",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "FIND(top(band[Isla])@2013) → FIND(top(band[Isla])@2014) → TREND = ↓ ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "top(band[Olivia])"
+    ],
+    "sketch_gesture": "vertical stroke at 2013 from the Isla top up into the Olivia band (~9000–10800); short stroke at the 2014 Isla top (~8200)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_6eSxIAherLvH4VH",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "PROJ(xtick[2013] → top(band[Isla])) → PROJ(top@2013 → yaxis)≈9000 → PROJ(xtick[2014] → top(band[Isla])) → PROJ(top@2014 → yaxis)≈8000 → LOOK(grid) → CMP(9000 > 8000) ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "LOOK",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "grid",
+     "color"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "xtick[2013]",
+     "xtick[2014]",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical lines from 2013 and 2014 up to the Isla top edge, horizontal lines from each to the y-axis at ~9000 and ~8000",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_2Ed9wQrWEbHKZvv",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "PROJ(xtick[2013] → top(band[Isla])) → PROJ(top@2013 → yaxis)≈9000 → PROJ(xtick[2014] → top(band[Isla])) → PROJ(top@2014 → yaxis)≈8000 → TREND(shaded section) = ↓ ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "band[Isla]"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "xtick[2013]",
+     "xtick[2014]",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical lines from 2013 and 2014 up to the Isla top edge, horizontal lines from each to the y-axis at ~9000 and ~8000",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_1kGflyCImAFfv3L",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "PROJ(xtick[2013] → top(band[Isla])) → PROJ(top@2013 → yaxis)≈9200 → CMP(vs 2014) ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "xtick[2013]",
+     "top(band[Isla])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from 2013 up to the Isla top edge, horizontal line to the y-axis at ~9200",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SAQ5_R_25RyReDyqsW6Mru",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "FIND(legend[Isla] → color) → PROJ(xtick[2013] → top(band[Isla])) → PROJ(top@2013 → yaxis)≈9000 → PROJ(xtick[2014] → top(band[Isla])) → PROJ(top@2014 → yaxis)≈8000 → DIFF(per year) → CMP(9000 > 8000) ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "DIFF",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color",
+     "legend"
+    ],
+    "elements_sketch": [
+     "legend[Isla]",
+     "top(band[Isla])",
+     "xtick[2013]",
+     "xtick[2014]",
+     "yaxis"
+    ],
+    "sketch_gesture": "circle on Isla legend; vertical lines from 2013 and 2014 up to the Isla top edge, horizontal lines from each to the y-axis at ~9000 and ~8000; circles on both top points",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_3D8wKq4NHSwZu4i",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "PROJ(xtick[2013] → top(band[Isla])) → PROJ(top@2013 → yaxis)≈9000 → PROJ(xtick[2014] → top(band[Isla])) → PROJ(top@2014 → yaxis)≈8000 → TREND = ↓ ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "trend"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "xtick[2013]",
+     "xtick[2014]",
+     "yaxis"
+    ],
+    "sketch_gesture": "circles on the Isla top at 2013 and 2014, arrows left to the y-axis (~9100, ~7900) and down to both ticks",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_2rqIKFQJrR5RqI4",
+    "accuracy": 1.0,
+    "answer": "True",
+    "chain": "READ(height(band[Isla])@2013, len)≈2800 → READ(height(band[Isla])@2014, len)≈4200 → CMP(4200 > 2800) → ANSWER(True)",
+    "ops": [
+     "READ",
+     "READ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "band[Isla]",
+     "xtick[2013]",
+     "xtick[2014]"
+    ],
+    "elements_sketch": [
+     "height(band[Isla])",
+     "xtick[2013]",
+     "xtick[2014]"
+    ],
+    "sketch_gesture": "brackets spanning the Isla band at 2013 and 2014, labelled '2.8' and '4.2'",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_1GH7NAokHW4iM4G",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "PROJ(xtick[2013] → top(band[Isla])) → PROJ(top@2013 → yaxis)≈9000 → PROJ(xtick[2014] → top(band[Isla])) → PROJ(top@2014 → yaxis)≈8000 → CMP(9000 > 8000) ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick",
+     "chart"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "xtick[2013]",
+     "xtick[2014]",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical lines from 2013 and 2014 up to the Isla top edge, horizontal lines from each to the y-axis at ~9000 and ~8000",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_3nP07ToNj9d03FE",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "PROJ(xtick[2013] → top(band[Isla])) → PROJ(top@2013 → yaxis)≈9000 → PROJ(xtick[2014] → top(band[Isla])) → PROJ(top@2014 → yaxis)≈8000 → CMP(9000 > 8000) ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "band[Isla]",
+     "xtick[2013]",
+     "xtick[2014]"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "xtick[2013]",
+     "xtick[2014]",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical lines from 2013 and 2014 up to the Isla top edge, horizontal lines from each to the y-axis at ~9000 and ~8000; circles on both top points",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_1Ea5ftRdqVjV65x",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "FIND(top(band[Isla])@2013) → FIND(top(band[Isla])@2014) → TRACE(top 2013→2014) → CMP(top@2013≈9100 > top@2014≈8100) ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "TRACE",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "ytick"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])"
+    ],
+    "sketch_gesture": "circles on the Isla top at 2013 and 2014 joined by a line",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_O9Xc4cu0X7El0Ep",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "FIND(xtick[2013], xtick[2014]) → TRACE(top(band[Isla]) 2013→2014) → GIST(shape of Isla part going down) → CMP(2013 > 2014) ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "TRACE",
+     "GIST",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "band[Isla]"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "xtick[2013]",
+     "xtick[2014]"
+    ],
+    "sketch_gesture": "circles on the 2013 and 2014 tick labels; line along the Isla top 2013→2014 ending in a '>' sign",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_5dKmq0Uur1nbAxX",
+    "accuracy": 1.0,
+    "answer": "True",
+    "chain": "PROJ(xtick[2012] → peak(top(band[Isla]))) → PROJ(peak → yaxis)≈10500 → TREND(top(band[Isla]), 2012..2014) = ↓ ?wrong:cumulative-top → ANSWER(True) ?wrong:answer-contradicts-own-reasoning",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[2012]"
+    ],
+    "elements_sketch": [
+     "xtick[2012]",
+     "peak(band[Isla])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from 2012 up to the Isla peak, line from the peak to the y-axis at ~10300",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_eKlhx6ye2Un8NkR",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "PROJ(xtick[2013] → top(band[Isla])) → PROJ(xtick[2014] → top(band[Isla])) → TRACE(top(band[Isla]) 2013→2014) → TREND = ↓ ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "TRACE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xaxis",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "xtick[2013]",
+     "xtick[2014]"
+    ],
+    "sketch_gesture": "vertical lines from 2013 and 2014 up to the Isla top edge, joined by a loop along the top edge",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_1qalWvDa8z4HLfs",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "FIND(top(band[Olivia])@2013) ?wrong:wrong-band(top-of-stack) → FIND(top(band[Olivia])@2014) → CMP(highest point @2013 > @2014) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "pt"
+    ],
+    "elements_sketch": [
+     "top(band[Olivia])"
+    ],
+    "sketch_gesture": "small circles on the top of the green Olivia band at 2013 (~13700) and 2014 (~12800)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_1FtyDyJ5x9l9fws",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "TRACE(top(band[Olivia]) 2012..2014) ?wrong:wrong-band(top-of-stack) → TREND = ↓ → ANSWER(False)",
+    "ops": [
+     "TRACE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[2012]",
+     "xtick[2014]"
+    ],
+    "elements_sketch": [
+     "top(band[Olivia])"
+    ],
+    "sketch_gesture": "traced the top of the green Olivia band from 2012 and from 2013 to 2014",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_2SozfrY7GG4R8qB",
+    "accuracy": 1.0,
+    "answer": "True",
+    "chain": "FIND(top(band[Isla])@2013) → TRACE(→ 2014) → TREND = ↓ ('lowers in numbers') ?wrong:cumulative-top → ANSWER(True) ?wrong:answer-contradicts-own-reasoning",
+    "ops": [
+     "FIND",
+     "TRACE",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(band[Isla])",
+     "band[Isla]"
+    ],
+    "sketch_gesture": "loop around the Isla top at 2013 with an arrow down to a triangle inside the Isla band at 2014",
+    "source": "both"
+   },
+   {
+    "trial_id": "SAQ5_R_1NeORuwehcuKOMn",
+    "accuracy": 0.0,
+    "answer": "False",
+    "chain": "FIND(legend[Isla]) → FIND(xtick[2013], xtick[2014]) → FIND(top(band[Isla])@2013, @2014) → CMP(top@2013 > top@2014, '>') ?wrong:compared-cumulative-top-edge-not-band-thickness → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "FIND",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick",
+     "legend"
+    ],
+    "elements_sketch": [
+     "legend[Isla]",
+     "top(band[Isla])",
+     "xtick[2013]",
+     "xtick[2014]"
+    ],
+    "sketch_gesture": "circle on the Isla legend; dots on the Isla top at 2013 and 2014 with a '>' between them; dashes under both tick labels",
+    "source": "both"
+   }
+  ]
+ }
+}

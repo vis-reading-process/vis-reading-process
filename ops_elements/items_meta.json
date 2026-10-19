@@ -1,0 +1,296 @@
+{
+ "SBQ1": {
+  "chart": "SB",
+  "chart_type": "stacked_bar",
+  "task": "retrieve_value",
+  "question": "What percentage of the room service cost in Copenhagen comes from the sandwich?"
+ },
+ "SBQ2": {
+  "chart": "SB",
+  "chart_type": "stacked_bar",
+  "task": "find_extremum",
+  "question": "In which city is the cost of soda the highest?"
+ },
+ "SBQ3": {
+  "chart": "SB",
+  "chart_type": "stacked_bar",
+  "task": "make_comparison",
+  "question": "The cost of vodka in Helsinki is higher than that of Toronto."
+ },
+ "SBQ4": {
+  "chart": "SB",
+  "chart_type": "stacked_bar",
+  "task": "make_comparison",
+  "question": "The ratio of the cost of Soda to the cost of Water is higher in N.Y.C than in Stockholm. True or False?"
+ },
+ "SBQ5": {
+  "chart": "SB",
+  "chart_type": "stacked_bar",
+  "task": "retrieve_value",
+  "question": "What is the cost of peanuts in room service in Seoul?"
+ },
+ "SAQ1": {
+  "chart": "SA",
+  "chart_type": "stacked_area",
+  "task": "retrieve_value",
+  "question": "What was the number of girls named 'Isla' in 2010 in the UK?"
+ },
+ "SAQ2": {
+  "chart": "SA",
+  "chart_type": "stacked_area",
+  "task": "make_comparison",
+  "question": "Over the course of years between 2009 and 2014, the number of girls named 'Isla' was always more than 'Amelia'. True or False?"
+ },
+ "SAQ3": {
+  "chart": "SA",
+  "chart_type": "stacked_area",
+  "task": "find_extremum",
+  "question": "Over the course of years between 2009 and 2014, when was the number of girls named 'Isla' at the maximum?"
+ },
+ "SAQ4": {
+  "chart": "SA",
+  "chart_type": "stacked_area",
+  "task": "characterize_trend",
+  "question": "The number of girls named 'Olivia' was __________ from 2009 to 2012."
+ },
+ "SAQ5": {
+  "chart": "SA",
+  "chart_type": "stacked_area",
+  "task": "make_comparison",
+  "question": "In the UK, the number of girls named \u2018Isla\u2019 in 2014 was more than it was in 2013."
+ },
+ "SPQ1": {
+  "chart": "SP",
+  "chart_type": "scatter",
+  "task": "retrieve_value",
+  "question": "What is the weight for the person who is 161 cm tall?"
+ },
+ "SPQ2": {
+  "chart": "SP",
+  "chart_type": "scatter",
+  "task": "find_extremum",
+  "question": "What is the height for the tallest person among the 85 individuals?'"
+ },
+ "SPQ3": {
+  "chart": "SP",
+  "chart_type": "scatter",
+  "task": "determine_range",
+  "question": "What is the range in weight for the 85 individuals?"
+ },
+ "SPQ4": {
+  "chart": "SP",
+  "chart_type": "scatter",
+  "task": "find_clusters",
+  "question": "There is a group of individuals centered at the height of 176 cm and the weight of 55 kg. True or False?"
+ },
+ "SPQ5": {
+  "chart": "SP",
+  "chart_type": "scatter",
+  "task": "find_correlation",
+  "question": "There is a negative linear relationship between the height and the weight of the 85 individuals. True or False?"
+ },
+ "SPQ6": {
+  "chart": "SP",
+  "chart_type": "scatter",
+  "task": "find_anomalies",
+  "question": "What is the height of the most prominent outlier in the data?"
+ },
+ "LCQ1": {
+  "chart": "LC",
+  "chart_type": "line",
+  "task": "retrieve_value",
+  "question": "What was the price of a barrel of oil in February 2020?"
+ },
+ "LCQ3": {
+  "chart": "LC",
+  "chart_type": "line",
+  "task": "determine_range",
+  "question": "What was the price range of a barrel of oil in 2020?"
+ },
+ "LCQ4": {
+  "chart": "LC",
+  "chart_type": "line",
+  "task": "characterize_trend",
+  "question": "Over the course of the first quarter of 2020, the price of a barrel of oil was ______."
+ },
+ "LCQ5": {
+  "chart": "LC",
+  "chart_type": "line",
+  "task": "compute_derived_value",
+  "question": "About how much did the price of a barrel of oil rise from April to August in 2020?"
+ },
+ "BuCQ2": {
+  "chart": "BuC",
+  "chart_type": "bubble",
+  "task": "determine_range",
+  "question": "What is the range of metro system lengths  in the data shown in this chart?"
+ },
+ "BuCQ3": {
+  "chart": "BuC",
+  "chart_type": "bubble",
+  "task": "make_comparison",
+  "question": "Tokyo has a bigger ridership than Guangzhow. True or False?"
+ },
+ "BuCQ4": {
+  "chart": "BuC",
+  "chart_type": "bubble",
+  "task": "find_correlation",
+  "question": "In general, the ridership of the metro system increases as the number of stations increases. True or False?"
+ },
+ "BuCQ5": {
+  "chart": "BuC",
+  "chart_type": "bubble",
+  "task": "compute_derived_value",
+  "question": "The average metro system in this chart has approximately 300 stations 200km in length"
+ },
+ "BuCQ6": {
+  "chart": "BuC",
+  "chart_type": "bubble",
+  "task": "find_extremum",
+  "question": "Which city's metro system has the largest number of stations?"
+ },
+ "ACQ1": {
+  "chart": "AC",
+  "chart_type": "area",
+  "task": "retrieve_value",
+  "question": "What was the price of a pound of coffee beans in June 2019?"
+ },
+ "ACQ2": {
+  "chart": "AC",
+  "chart_type": "area",
+  "task": "find_extremum",
+  "question": "When was the price of a pound of coffee beans at a minimum?"
+ },
+ "ACQ3": {
+  "chart": "AC",
+  "chart_type": "area",
+  "task": "determine_range",
+  "question": "What was the range of the price of a pound of coffee beans between January 2018 and January 2020?"
+ },
+ "ACQ4": {
+  "chart": "AC",
+  "chart_type": "area",
+  "task": "characterize_trend",
+  "question": "Over the first 6 months of 2018, the price of a pound of coffee beans was roughly ____________.'"
+ },
+ "AC2Q1": {
+  "chart": "AC2",
+  "chart_type": "area(variant 2)",
+  "task": "retrieve_value",
+  "question": "What was the price of a pound of coffee beans in May 2019?"
+ },
+ "AC2Q2": {
+  "chart": "AC2",
+  "chart_type": "area(variant 2)",
+  "task": "find_extremum",
+  "question": "When was the price of a pound of coffee beans at a minimum?"
+ },
+ "AC2Q3": {
+  "chart": "AC2",
+  "chart_type": "area(variant 2)",
+  "task": "determine_range",
+  "question": "What was the range of the price of a pound of coffee beans between January 2018 and January 2020?"
+ },
+ "AC2Q4": {
+  "chart": "AC2",
+  "chart_type": "area(variant 2)",
+  "task": "characterize_trend",
+  "question": "Over the first 6 months of 2019, the price of a pound of coffee beans was roughly ____________.'"
+ },
+ "CCQ2": {
+  "chart": "CC",
+  "chart_type": "choropleth",
+  "task": "retrieve_value",
+  "question": "What was the unemployment rate for Indiana (IN) in 2020?"
+ },
+ "HCQ1": {
+  "chart": "HC",
+  "chart_type": "histogram",
+  "task": "compute_derived_value",
+  "question": "How many people have traveled a distance between 20km and 40km?"
+ },
+ "HCQ2": {
+  "chart": "HC",
+  "chart_type": "histogram",
+  "task": "make_comparison",
+  "question": "More people have traveled the distance between 10 and 20 km than between 40 and 50 km. True or False?"
+ },
+ "HCQ3": {
+  "chart": "HC",
+  "chart_type": "histogram",
+  "task": "find_extremum",
+  "question": "What is the most common distance customers have travelled?"
+ },
+ "HC2Q1": {
+  "chart": "HC2",
+  "chart_type": "histogram(variant 2)",
+  "task": "compute_derived_value",
+  "question": "How many people have traveled a distance between 20km and 40km?"
+ },
+ "HC2Q2": {
+  "chart": "HC2",
+  "chart_type": "histogram(variant 2)",
+  "task": "make_comparison",
+  "question": "More people have traveled the distance between 10 and 20 km than between 40 and 50 km. True or False?"
+ },
+ "HC2Q3": {
+  "chart": "HC2",
+  "chart_type": "histogram(variant 2)",
+  "task": "find_extremum",
+  "question": "What is the most common distance customers have travelled?"
+ },
+ "TMQ1": {
+  "chart": "TM",
+  "chart_type": "treemap",
+  "task": "find_extremum",
+  "question": "For which website was the number of unique visitors the largest in 2020?"
+ },
+ "TMQ2": {
+  "chart": "TM",
+  "chart_type": "treemap",
+  "task": "make_comparison",
+  "question": "The number of unique visitors for Amazon was more than that of Yahoo in 2020. True or False?"
+ },
+ "PCQ1": {
+  "chart": "PC",
+  "chart_type": "pie",
+  "task": "retrieve_value",
+  "question": "What is the approximate global smartphone market share (in %) of Samsung?"
+ },
+ "PCQ2": {
+  "chart": "PC",
+  "chart_type": "pie",
+  "task": "find_extremum",
+  "question": "Which company has the largest global market share for smart phones?"
+ },
+ "SB100Q1": {
+  "chart": "SB100",
+  "chart_type": "100pct_stacked_bar",
+  "task": "retrieve_value",
+  "question": "What percentage of Japan's Olympic medals are Bronze?"
+ },
+ "SB100Q2": {
+  "chart": "SB100",
+  "chart_type": "100pct_stacked_bar",
+  "task": "make_comparison",
+  "question": "Who has the bigger percentage of Silver medals, Japan or Great Britain?"
+ },
+ "SB100Q3": {
+  "chart": "SB100",
+  "chart_type": "100pct_stacked_bar",
+  "task": "find_extremum",
+  "question": "Which country has the highest number (absolute number, not %)  of Bronze medals?"
+ },
+ "BCQ3": {
+  "chart": "BC",
+  "chart_type": "bar",
+  "task": "determine_range",
+  "question": "What is the range of the global internet speed?"
+ },
+ "BCQ4": {
+  "chart": "BC",
+  "chart_type": "bar",
+  "task": "count",
+  "question": "In how many countries  is the internet speed slower than Japan?"
+ }
+}

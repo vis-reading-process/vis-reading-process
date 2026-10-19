@@ -1,0 +1,3998 @@
+{
+ "SBQ1": {
+  "qid": "SBQ1",
+  "chart": "SB",
+  "task": "retrieve_value",
+  "question": "What percentage of the room service cost in Copenhagen comes from the sandwich?",
+  "reference_chain": "FIND(seg[Copenhagen,Sandwich] | legend[Sandwich]→color[blue], xtick[Copenhagen]) → PROJ(top(seg) → yaxis) → READ(y)≈24.3 → PROJ(top(bar[Copenhagen]) → yaxis) → READ(y)≈46.6 → PCT(24.3, 46.6)≈52 → ANSWER(52)",
+  "notes": "No participant in this group got the item right. The dominant failure (11/20) is reading the dollar height of the Copenhagen sandwich segment (~24) off the $ y-axis and reporting it as the percentage, with no division by the bar total; a long horizontal line from the y-axis to the sandwich top is the signature sketch. The few who did read the total (~47) and form a ratio made arithmetic or estimation errors (45, 59, 60). The pivotal elements are the top of the whole Copenhagen bar (the denominator) and the sandwich-segment top; one participant even missed the title and said room service was not in the chart.",
+  "new_symbols": {
+   "mid(m)": "mark part: halfway point of a mark's extent (used as a 50% reference)",
+   "question[x]": "a specific phrase of the question text",
+   "ANSWER(v)": "final reported answer (terminal step of a chain)"
+  },
+  "strategies": [
+   {
+    "chain": "FIND(seg[Copenhagen,Sandwich]) → PROJ(top → yaxis) → READ(y)≈24-25 ?wrong:read-$-value-as-percent → ANSWER",
+    "n": 11,
+    "n_correct": 0,
+    "n_incorrect": 11,
+    "quote": "the blue colour represents sandwich and its almost at 25%",
+    "trial_ids": [
+     "SBQ1_R_6QpN86zEs2BsSyZ",
+     "SBQ1_R_1E7h0Cr6gK7k9Zg",
+     "SBQ1_R_1kGflyCImAFfv3L",
+     "SBQ1_R_Td2pJ0stpB6hKo1",
+     "SBQ1_R_3DwMwbbvKGck1j8",
+     "SBQ1_R_2rqIKFQJrR5RqI4",
+     "SBQ1_R_1mg5BeiiV66yolL",
+     "SBQ1_R_Uyc5ozKwAykkAiR",
+     "SBQ1_R_1rjN4TGyxMk2oDq",
+     "SBQ1_R_1FtyDyJ5x9l9fws",
+     "SBQ1_R_3Rwr5F6bciAzuf4"
+    ]
+   },
+   {
+    "chain": "READ(top(bar[Copenhagen]),y) → READ(top(seg[Copenhagen,Sandwich]),y) → PCT(seg, total) ?wrong:arithmetic → ANSWER",
+    "n": 3,
+    "n_correct": 0,
+    "n_incorrect": 3,
+    "quote": "the total cost is almost $50 and the price of a sandwich is almost 25 so the percentage must be around 45%",
+    "trial_ids": [
+     "SBQ1_R_vYxQQ6kbWuIPPSV",
+     "SBQ1_R_2AQYp4GVL23l9aY",
+     "SBQ1_R_xc1B7hqJfIecigp"
+    ]
+   },
+   {
+    "chain": "FIND(bar[Copenhagen]) → LOOK(seg[Copenhagen,Sandwich]) → ANSWER ?wrong:unexplained-overestimate",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "The blue represents the sandwich costs",
+    "trial_ids": [
+     "SBQ1_R_2ARVdxy7i72DYgW",
+     "SBQ1_R_1Ea5ftRdqVjV65x"
+    ]
+   },
+   {
+    "chain": "LOOK(bar[Copenhagen]) → PCT(mid(bar))=50% → CMP(top(seg) vs mid) → PCT ?wrong:overestimate → ANSWER",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "calculated roughly where the 50% was and then calculated from there how much of that was just sandwiches",
+    "trial_ids": [
+     "SBQ1_R_3KoNCnW4A4ISLZ8"
+    ]
+   },
+   {
+    "chain": "READ(top(bar[Copenhagen]),y)≈47 → PROJ(top(seg[Copenhagen,Sandwich]) → yaxis) → READ≈24 ?wrong:no-division → ANSWER",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "The total cost is around $47. From that, 24 percent (just below the 25 line) seems to be associated with Sandwich.",
+    "trial_ids": [
+     "SBQ1_R_2vY85VrJ5kA63mo"
+    ]
+   },
+   {
+    "chain": "FIND(seg[Copenhagen,Water]) ?wrong:wrong-category → PCT → FIX → ANSWER",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "My mistake, I took 'water'.",
+    "trial_ids": [
+     "SBQ1_R_bdrkvkZgo0WJVGV"
+    ]
+   },
+   {
+    "chain": "FIND(question[room service] | chart)=∅ ?wrong:missed-title → CONFUSED → ANSWER(0)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "I couldnt, because room service is not mentioned in the graphic",
+    "trial_ids": [
+     "SBQ1_R_2zbWL29UVPi0v1e"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "SBQ1_R_6QpN86zEs2BsSyZ",
+    "accuracy": 0.0,
+    "answer": "24",
+    "chain": "FIND(seg[Copenhagen,Sandwich]) → PROJ(top(seg[Copenhagen,Sandwich]) → yaxis) → READ(y)≈24 ?wrong:read-$-value-as-percent → ANSWER(24)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "seg[Copenhagen,Sandwich]",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal line at ~24 from y-axis across all bars to Copenhagen sandwich top",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ1_R_1E7h0Cr6gK7k9Zg",
+    "accuracy": 0.0,
+    "answer": "24",
+    "chain": "PROJ(top(seg[Copenhagen,Sandwich]) → yaxis) → CMP(top < grid[y=25]) → READ(y)≈24 ?wrong:read-$-value-as-percent → DOUBT(24) → ANSWER(24)",
+    "ops": [
+     "PROJ",
+     "CMP",
+     "READ",
+     "DOUBT",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "grid[y=25]"
+    ],
+    "elements_sketch": [
+     "seg[Copenhagen,Sandwich]",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal line at ~24 from y-axis to Toronto/Copenhagen",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ1_R_3KoNCnW4A4ISLZ8",
+    "accuracy": 0.0,
+    "answer": "60",
+    "chain": "LOOK(bar[Copenhagen]) → PCT(mid(bar[Copenhagen]))=50% → CMP(top(seg[Copenhagen,Sandwich]) ≈ mid(bar[Copenhagen])) → PCT(seg[Copenhagen,Sandwich], bar[Copenhagen])≈60 ?wrong:overestimated-share → ANSWER(60)",
+    "ops": [
+     "LOOK",
+     "PCT",
+     "CMP",
+     "PCT",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "bar[Copenhagen]",
+     "seg[Copenhagen,Sandwich]"
+    ],
+    "elements_sketch": [
+     "bar[Copenhagen]",
+     "mid(bar[Copenhagen])"
+    ],
+    "sketch_gesture": "box around whole Copenhagen bar; tick at ~23 labelled \"50%\"",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ1_R_2zbWL29UVPi0v1e",
+    "accuracy": 0.0,
+    "answer": "0",
+    "chain": "FIND(question[room service] | chart)=∅ ?wrong:title-says-Room-Service-Prices → CONFUSED(room service) → ANSWER(0)",
+    "ops": [
+     "FIND",
+     "CONFUSED",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "question[room service]",
+     "chart"
+    ],
+    "elements_sketch": [],
+    "sketch_gesture": "large question mark drawn over Paris/N.Y.C. bars",
+    "source": "text"
+   },
+   {
+    "trial_id": "SBQ1_R_vYxQQ6kbWuIPPSV",
+    "accuracy": 0.0,
+    "answer": "45",
+    "chain": "FIND(bar[Copenhagen]) → READ(top(bar[Copenhagen]), y)≈50 → READ(top(seg[Copenhagen,Sandwich]), y)≈25 → PCT(25,50)≈45 ?wrong:arithmetic-(25/50=50%) → ANSWER(45)",
+    "ops": [
+     "FIND",
+     "READ",
+     "READ",
+     "PCT",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "bar[Copenhagen]",
+     "seg[Copenhagen,Sandwich]"
+    ],
+    "elements_sketch": [
+     "bar[Copenhagen]"
+    ],
+    "sketch_gesture": "loop around whole Copenhagen bar",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ1_R_bdrkvkZgo0WJVGV",
+    "accuracy": 0.0,
+    "answer": "11.11",
+    "chain": "FIND(seg[Copenhagen,Water]) ?wrong:wrong-category(took Water) → PCT(seg[Copenhagen,Water], bar[Copenhagen])=11.11 → FIX(Water→Sandwich: 60) → ANSWER(11.11)",
+    "ops": [
+     "FIND",
+     "PCT",
+     "FIX",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "legend[Water]"
+    ],
+    "elements_sketch": [
+     "seg[Copenhagen,Sandwich]"
+    ],
+    "sketch_gesture": "circle around Copenhagen sandwich segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ1_R_1kGflyCImAFfv3L",
+    "accuracy": 0.0,
+    "answer": "25",
+    "chain": "LOOK(color) → FIND(seg[Copenhagen,Sandwich]) → PROJ(top(seg[Copenhagen,Sandwich]) → yaxis) → READ(y)≈25 ?wrong:read-$-value-as-percent → ANSWER(25)",
+    "ops": [
+     "LOOK",
+     "FIND",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "seg[Copenhagen,Sandwich]",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line up Copenhagen bar to sandwich top, then horizontal line left to y-axis at ~24",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ1_R_Td2pJ0stpB6hKo1",
+    "accuracy": 0.0,
+    "answer": "25",
+    "chain": "LOOK(question) → LOOK(chart) → PROJ(top(seg[Copenhagen,Sandwich]) → yaxis) → READ(y)≈25 ?wrong:read-$-value-as-percent → ANSWER(25)",
+    "ops": [
+     "LOOK",
+     "LOOK",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "question",
+     "chart"
+    ],
+    "elements_sketch": [
+     "seg[Copenhagen,Sandwich]",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal line at ~24 from left edge to Copenhagen sandwich top",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ1_R_2vY85VrJ5kA63mo",
+    "accuracy": 0.0,
+    "answer": "24",
+    "chain": "READ(top(bar[Copenhagen]), y)≈47 → FIND(seg[Copenhagen,Sandwich]) → PROJ(top(seg[Copenhagen,Sandwich]) → yaxis) → CMP(top < grid[y=25]) → READ(y)≈24 ?wrong:reported-$-value-not-share(no division by total) → ANSWER(24)",
+    "ops": [
+     "READ",
+     "FIND",
+     "PROJ",
+     "CMP",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "bar[Copenhagen]",
+     "seg[Copenhagen,Sandwich]",
+     "grid[y=25]"
+    ],
+    "elements_sketch": [
+     "seg[Copenhagen,Sandwich]",
+     "yaxis"
+    ],
+    "sketch_gesture": "arrow from y-axis at ~24 to Copenhagen sandwich top; brace along Copenhagen sandwich segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ1_R_3DwMwbbvKGck1j8",
+    "accuracy": 0.0,
+    "answer": "24",
+    "chain": "LOOK(bar[Copenhagen]) → PROJ(top(seg[Copenhagen,Sandwich]) → yaxis) → READ(y)≈24 ?wrong:read-$-value-as-percent → ANSWER(24)",
+    "ops": [
+     "LOOK",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "bar[Copenhagen]"
+    ],
+    "elements_sketch": [
+     "seg[Copenhagen,Sandwich]",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal line at ~24 across bars ending in small box at Copenhagen sandwich top",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ1_R_2ARVdxy7i72DYgW",
+    "accuracy": 0.0,
+    "answer": "60",
+    "chain": "MAP(color[blue] → Sandwich) → FIND(seg[Copenhagen,Sandwich]) → LOOK(height(seg[Copenhagen,Sandwich])) → ANSWER(60) ?wrong:unexplained-overestimate",
+    "ops": [
+     "MAP",
+     "FIND",
+     "LOOK",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color[blue]",
+     "legend[Sandwich]"
+    ],
+    "elements_sketch": [
+     "seg[Copenhagen,Sandwich]"
+    ],
+    "sketch_gesture": "vertical line tracing Copenhagen sandwich segment from base to top",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ1_R_2rqIKFQJrR5RqI4",
+    "accuracy": 0.0,
+    "answer": "24",
+    "chain": "MAP(color[blue] → Sandwich %) ?wrong:read-$-axis-as-percent → FIND(seg[Copenhagen,Sandwich] | xtick[Copenhagen]) → READ(height(seg[Copenhagen,Sandwich]), y)≈24 → ANSWER(24)",
+    "ops": [
+     "MAP",
+     "FIND",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color[blue]",
+     "legend[Sandwich]",
+     "xtick[Copenhagen]"
+    ],
+    "elements_sketch": [
+     "seg[Copenhagen,Sandwich]"
+    ],
+    "sketch_gesture": "double-headed vertical arrow spanning Copenhagen sandwich segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ1_R_1mg5BeiiV66yolL",
+    "accuracy": 0.0,
+    "answer": "24",
+    "chain": "FIND(seg[Copenhagen,Sandwich]) → PROJ(top(seg[Copenhagen,Sandwich]) → yaxis) → CMP(top < ytick[25]) → READ(y)≈24 ?wrong:read-$-value-as-percent → ANSWER(24)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "CMP",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "ytick[25]"
+    ],
+    "elements_sketch": [
+     "seg[Copenhagen,Sandwich]",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal line at ~24 from y-axis plus vertical line down left edge of Copenhagen bar",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ1_R_Uyc5ozKwAykkAiR",
+    "accuracy": 0.0,
+    "answer": "24",
+    "chain": "MAP(color[blue] → Sandwich) → FIND(seg[Copenhagen,Sandwich]) → READ(top(seg[Copenhagen,Sandwich]), y)≈25 ?wrong:read-$-value-as-percent → ANSWER(24)",
+    "ops": [
+     "MAP",
+     "FIND",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color[blue]",
+     "legend[Sandwich]"
+    ],
+    "elements_sketch": [
+     "seg[Copenhagen,Sandwich]"
+    ],
+    "sketch_gesture": "\"≈25\" written beside Copenhagen sandwich top",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ1_R_xc1B7hqJfIecigp",
+    "accuracy": 0.0,
+    "answer": "60",
+    "chain": "READ(top(bar[Copenhagen]), y)≈47 → MAP(top(bar[Copenhagen]) → 100%) → READ(top(seg[Copenhagen,Sandwich]), y)≈20-28 → PCT(seg[Copenhagen,Sandwich], bar[Copenhagen])≈60 ?wrong:arithmetic-overestimate → CONFUSED(ytick[70]) → ANSWER(60)",
+    "ops": [
+     "READ",
+     "MAP",
+     "READ",
+     "PCT",
+     "CONFUSED",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "ytick[70]",
+     "bar[*]"
+    ],
+    "elements_sketch": [
+     "bar[Copenhagen]",
+     "seg[Copenhagen,Sandwich]"
+    ],
+    "sketch_gesture": "brace along full Copenhagen bar labelled \"47\" and \"100%\"; bracket on lower part labelled \"About 2x\"",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ1_R_1Ea5ftRdqVjV65x",
+    "accuracy": 0.0,
+    "answer": "57",
+    "chain": "FIND(bar[Copenhagen]) → READ(seg[Copenhagen,Sandwich], y)=v? → ANSWER(57) ?wrong:imprecise-share",
+    "ops": [
+     "FIND",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[Copenhagen,Sandwich]"
+    ],
+    "elements_sketch": [
+     "bar[Copenhagen]"
+    ],
+    "sketch_gesture": "loop around whole Copenhagen bar",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ1_R_1rjN4TGyxMk2oDq",
+    "accuracy": 0.0,
+    "answer": "25",
+    "chain": "FIND(seg[Copenhagen,Sandwich]) → PROJ(top(seg[Copenhagen,Sandwich]) → yaxis) → READ(y)≈25 ?wrong:read-$-value-as-percent → ANSWER(25)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "seg[Copenhagen,Sandwich]",
+     "yaxis",
+     "ytick[25]"
+    ],
+    "sketch_gesture": "horizontal line at 25 from y-axis; box around Copenhagen sandwich segment",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SBQ1_R_2AQYp4GVL23l9aY",
+    "accuracy": 0.0,
+    "answer": "59",
+    "chain": "PROJ(top(seg[Copenhagen,Sandwich]) → yaxis) → READ(y)≈25 → PROJ(top(seg[Copenhagen,Vodka]) → yaxis) → READ(y)≈47 → PCT(25,47)≈59 ?wrong:arithmetic → ANSWER(59)",
+    "ops": [
+     "PROJ",
+     "READ",
+     "PROJ",
+     "READ",
+     "PCT",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[*,Sandwich]",
+     "seg[*,Vodka]"
+    ],
+    "elements_sketch": [
+     "seg[Copenhagen,Sandwich]",
+     "top(bar[Copenhagen])",
+     "yaxis"
+    ],
+    "sketch_gesture": "two horizontal lines from y-axis: one at ~47 (Copenhagen total) and one at ~25 (sandwich top)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ1_R_1FtyDyJ5x9l9fws",
+    "accuracy": 0.0,
+    "answer": "25",
+    "chain": "MAP(color[blue] → Sandwich) → FIND(seg[Copenhagen,Sandwich]) → PROJ(top(seg[Copenhagen,Sandwich]) → yaxis) → READ(y)≈25 ?wrong:read-$-value-as-percent → ANSWER(25)",
+    "ops": [
+     "MAP",
+     "FIND",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color[blue]",
+     "seg[Copenhagen,Sandwich]",
+     "yaxis",
+     "ytick[25]"
+    ],
+    "elements_sketch": [
+     "seg[Copenhagen,Sandwich]",
+     "yaxis"
+    ],
+    "sketch_gesture": "wavy horizontal line at ~24 across chart plus vertical line on Copenhagen bar",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ1_R_3Rwr5F6bciAzuf4",
+    "accuracy": 0.0,
+    "answer": "24",
+    "chain": "PROJ(top(seg[Copenhagen,Sandwich]) → yaxis) → READ(y)≈24 ?wrong:read-$-value-as-percent → ANSWER(24)",
+    "ops": [
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "yaxis",
+     "seg[Copenhagen,Sandwich]"
+    ],
+    "sketch_gesture": "horizontal line at ~24 from y-axis to Toronto",
+    "source": "sketch"
+   }
+  ]
+ },
+ "SBQ2": {
+  "qid": "SBQ2",
+  "chart": "SB",
+  "task": "find_extremum",
+  "question": "In which city is the cost of soda the highest?",
+  "reference_chain": "FIND({seg[*,Soda]} | legend[Soda]→color[green]) → SCAN({seg[*,Soda]}) → CMPvis(len(seg[Stockholm,Soda]) > len(seg[Seoul,Soda]) > ...) → ARGMAX({seg[*,Soda]}, len)=Stockholm (≈53.3−43.8≈9.5) → ANSWER(Stockholm)",
+  "notes": "Every answer in this group was wrong; 13/18 chose Helsinki because its soda segment sits highest on the y-axis (~63), i.e. they ranked the cumulative top position of the green segment rather than its length. Sketches show this clearly: circles on the Helsinki soda segment, lines from its top to the y-axis, or a horizontal line at ~63 across all bars. Two participants used the total Helsinki bar height (one by mistaking brown/Vodka for soda), and only one person compared segment lengths (Stockholm) but then picked the \"impossible\" option. The pivotal element is len(seg[*,Soda]), which requires SEG(top − bottom) on non-aligned baselines.",
+  "new_symbols": {
+   "top-y (channel)": "ARGMAX/CMP keyed on the vertical position of a mark's top edge rather than its length"
+  },
+  "strategies": [
+   {
+    "chain": "FIND({seg[*,Soda]} | color[green]) → ARGMAX({seg[*,Soda]}, top-y)=Helsinki ?wrong:compared-cumulative-top-position-not-segment-length → (PROJ(top → yaxis)) → ANSWER(Helsinki)",
+    "n": 13,
+    "n_correct": 0,
+    "n_incorrect": 13,
+    "quote": "Look for the tallest green bar because it represents soda.",
+    "trial_ids": [
+     "SBQ2_R_241SEsUc9JJZ9ii",
+     "SBQ2_R_PwGfSrtGpqLD9vz",
+     "SBQ2_R_2zbWL29UVPi0v1e",
+     "SBQ2_R_1ruyP2fs01EBume",
+     "SBQ2_R_3lDJ3gJlEx9bvdy",
+     "SBQ2_R_vYxQQ6kbWuIPPSV",
+     "SBQ2_R_bdrkvkZgo0WJVGV",
+     "SBQ2_R_1mg5BeiiV66yolL",
+     "SBQ2_R_1Ea5ftRdqVjV65x",
+     "SBQ2_R_1rjN4TGyxMk2oDq",
+     "SBQ2_R_3knQAl7GyjqPd14",
+     "SBQ2_R_PN8Fm084aWGMILf",
+     "SBQ2_R_2AQYp4GVL23l9aY"
+    ]
+   },
+   {
+    "chain": "FIND(bar[Helsinki]) → PROJ(top(bar[Helsinki]) → yaxis) ?wrong:used-total-bar-height → ANSWER(Helsinki)",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "Just measured the top of the brown square for Helsinki with the figures on the side",
+    "trial_ids": [
+     "SBQ2_R_1kGflyCImAFfv3L",
+     "SBQ2_R_1FtyDyJ5x9l9fws"
+    ]
+   },
+   {
+    "chain": "READ(top(bar[Helsinki]),y) → COUNT(grid) → READ(len(seg[Helsinki,Soda])) → ANSWER ?wrong:no-cross-city-comparison",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "I divide the numbers of horizontal lines between the height of the bar(total cost)",
+    "trial_ids": [
+     "SBQ2_R_21b7may8A1p29mG"
+    ]
+   },
+   {
+    "chain": "CMPvis(height(seg[*,Soda])) → ARGMAX(len)=Stockholm → ANSWER(Impossible) ?wrong:answer-mismatch",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "Stockholm seems to have the highest price as the green section seems to be biggest",
+    "trial_ids": [
+     "SBQ2_R_2bIxvFjGgb8JirJ"
+    ]
+   },
+   {
+    "chain": "SCAN({seg[*,Soda]}) → CONFUSED → ANSWER(not sure)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "These charts are very confusing",
+    "trial_ids": [
+     "SBQ2_R_6eSxIAherLvH4VH"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "SBQ2_R_241SEsUc9JJZ9ii",
+    "accuracy": 0.0,
+    "answer": "Helsinki",
+    "chain": "LOOK(color) → FIND(seg[Helsinki,Soda]) ?wrong:compared-cumulative-top-position-not-segment-length → ANSWER(Helsinki)",
+    "ops": [
+     "LOOK",
+     "FIND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Soda]"
+    ],
+    "sketch_gesture": "circle around Helsinki soda segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ2_R_PwGfSrtGpqLD9vz",
+    "accuracy": 0.0,
+    "answer": "Helsinki",
+    "chain": "FIND(seg[Helsinki,Soda]) → PROJ(top(seg[Helsinki,Soda]) → yaxis) ?wrong:compared-cumulative-top-position-not-segment-length → FIND(xtick[Helsinki]) → ANSWER(Helsinki)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "FIND",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "seg[Helsinki,Soda]",
+     "yaxis",
+     "xtick[Helsinki]"
+    ],
+    "sketch_gesture": "arrow from Helsinki soda top (~63) left to y-axis; circle on Helsinki x-label",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SBQ2_R_2bIxvFjGgb8JirJ",
+    "accuracy": 0.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "FIND({seg[*,Soda]} | color[green]) → CMPvis(height(seg[Stockholm,Soda]) > others) → ARGMAX({seg[*,Soda]}, len)=Stockholm → ANSWER(Impossible to answer) ?wrong:answer-option-contradicts-own-reasoning",
+    "ops": [
+     "FIND",
+     "CMPvis",
+     "ARGMAX",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[Stockholm,Soda]",
+     "color[green]"
+    ],
+    "elements_sketch": [
+     "seg[Stockholm,Soda]"
+    ],
+    "sketch_gesture": "circle around Stockholm soda segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ2_R_2zbWL29UVPi0v1e",
+    "accuracy": 0.0,
+    "answer": "Helsinki",
+    "chain": "MAP(legend[Soda] → color[green]) → FIND({seg[*,Soda]}) → ARGMAX({seg[*,Soda]}, top-y)=Helsinki ?wrong:compared-cumulative-top-position-not-segment-length → PROJ(bar[Helsinki] → xtick[Helsinki]) → ANSWER(Helsinki)",
+    "ops": [
+     "MAP",
+     "FIND",
+     "ARGMAX",
+     "PROJ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color",
+     "legend",
+     "seg[*,Soda]",
+     "xtick"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Soda]",
+     "xtick[Helsinki]"
+    ],
+    "sketch_gesture": "arrow pointing at Helsinki soda segment; vertical arrow down Helsinki bar to x-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ2_R_1ruyP2fs01EBume",
+    "accuracy": 0.0,
+    "answer": "Helsinki",
+    "chain": "FIND(seg[Helsinki,Soda]) → READ(bottom(seg[Helsinki,Soda]), y)≈55 → CMP(bars) → ARGMAX({seg[*,Soda]}, y-position)=Helsinki ?wrong:compared-cumulative-top-position-not-segment-length → ANSWER(Helsinki)",
+    "ops": [
+     "FIND",
+     "READ",
+     "CMP",
+     "ARGMAX",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[Helsinki,Soda]",
+     "ytick[55]",
+     "bar[*]"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Soda]"
+    ],
+    "sketch_gesture": "circle around Helsinki soda segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ2_R_3lDJ3gJlEx9bvdy",
+    "accuracy": 0.0,
+    "answer": "Helsinki",
+    "chain": "FIND(seg[Helsinki,Soda]) → PROJ(top(seg[Helsinki,Soda]) → yaxis) ?wrong:compared-cumulative-top-position-not-segment-length → FIND(xtick[Helsinki]) → ANSWER(Helsinki)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "FIND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[Helsinki,Soda]"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Soda]",
+     "yaxis",
+     "xtick[Helsinki]"
+    ],
+    "sketch_gesture": "loop at Helsinki soda top near y-axis, line down y-axis to circled Helsinki label",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ2_R_vYxQQ6kbWuIPPSV",
+    "accuracy": 0.0,
+    "answer": "Helsinki",
+    "chain": "FIND(legend[Soda]) → FIND(seg[Helsinki,Soda]) ?wrong:compared-cumulative-top-position-not-segment-length → ANSWER(Helsinki)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[Helsinki,Soda]"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Soda]",
+     "legend[Soda]"
+    ],
+    "sketch_gesture": "circle around Helsinki soda segment; arrow pointing to Soda legend entry",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ2_R_6eSxIAherLvH4VH",
+    "accuracy": 0.0,
+    "answer": "I'm not sure",
+    "chain": "SCAN({seg[*,Soda]}) → CONFUSED(chart) → ANSWER(not sure)",
+    "ops": [
+     "SCAN",
+     "CONFUSED",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "seg[*,Soda]"
+    ],
+    "sketch_gesture": "circles drawn on every city's soda segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ2_R_bdrkvkZgo0WJVGV",
+    "accuracy": 0.0,
+    "answer": "Helsinki",
+    "chain": "LOOK(chart) → FIND(seg[Helsinki,Soda]) ?wrong:compared-cumulative-top-position-not-segment-length → ANSWER(Helsinki)",
+    "ops": [
+     "LOOK",
+     "FIND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Soda]"
+    ],
+    "sketch_gesture": "circle around Helsinki soda segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ2_R_1kGflyCImAFfv3L",
+    "accuracy": 0.0,
+    "answer": "Helsinki",
+    "chain": "LOOK(color) → FIND(bar[Helsinki]) → PROJ(top(bar[Helsinki]) → yaxis) ?wrong:used-total-bar-height → ANSWER(Helsinki)",
+    "ops": [
+     "LOOK",
+     "FIND",
+     "PROJ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "bar[Helsinki]",
+     "top(bar[Helsinki])"
+    ],
+    "sketch_gesture": "vertical line up the full Helsinki bar to its top (~68.5) with short stroke to y-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ2_R_21b7may8A1p29mG",
+    "accuracy": 0.0,
+    "answer": "Helsinki",
+    "chain": "READ(top(bar[Helsinki]), y)=68 → COUNT({grid} | within bar) → READ(len(seg[Helsinki,Soda]))≈12 ?wrong:overestimated-length → ANSWER(Helsinki) ?wrong:no-comparison-across-cities",
+    "ops": [
+     "READ",
+     "COUNT",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "grid",
+     "bar[Helsinki]",
+     "seg[*,Soda]"
+    ],
+    "elements_sketch": [
+     "top(bar[Helsinki])",
+     "seg[Helsinki,Soda]"
+    ],
+    "sketch_gesture": "\"68$\" written above Helsinki bar; box around Helsinki soda segment labelled \"12\"",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ2_R_1mg5BeiiV66yolL",
+    "accuracy": 0.0,
+    "answer": "Helsinki",
+    "chain": "MAP(color[green] → Soda) → ARGMAX({seg[*,Soda]}, top-y)=Helsinki ?wrong:compared-cumulative-top-position-not-segment-length → PROJ(top(seg[Helsinki,Soda]) → yaxis) → ANSWER(Helsinki)",
+    "ops": [
+     "MAP",
+     "ARGMAX",
+     "PROJ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color[green]",
+     "seg[*,Soda]"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Soda]",
+     "bar[Helsinki]",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line up Helsinki bar to soda top (~63) hooking left to y-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ2_R_1Ea5ftRdqVjV65x",
+    "accuracy": 0.0,
+    "answer": "Helsinki",
+    "chain": "LOOK(color) → FIND(seg[Helsinki,Soda]) ?wrong:compared-cumulative-top-position-not-segment-length → ANSWER(Helsinki)",
+    "ops": [
+     "LOOK",
+     "FIND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Soda]"
+    ],
+    "sketch_gesture": "circle around Helsinki soda segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ2_R_1rjN4TGyxMk2oDq",
+    "accuracy": 0.0,
+    "answer": "Helsinki",
+    "chain": "LOOK(yaxis) → FIND(top(seg[Helsinki,Soda])) ?wrong:compared-cumulative-top-position-not-segment-length → ANSWER(Helsinki)",
+    "ops": [
+     "LOOK",
+     "FIND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "top(seg[Helsinki,Soda])"
+    ],
+    "sketch_gesture": "short horizontal stroke at Helsinki soda top (~63)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ2_R_3knQAl7GyjqPd14",
+    "accuracy": 0.0,
+    "answer": "Helsinki",
+    "chain": "FIND(seg[Helsinki,Soda]) → READ(top(seg[Helsinki,Soda]), y)≈64 ?wrong:compared-cumulative-top-position-not-segment-length → PROJ(y=64 → {bar[*]}) → CMP(all others < 64) → ANSWER(Helsinki)",
+    "ops": [
+     "FIND",
+     "READ",
+     "PROJ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[Helsinki,Soda]",
+     "bar[*]"
+    ],
+    "elements_sketch": [
+     "top(seg[Helsinki,Soda])",
+     "bar[*]"
+    ],
+    "sketch_gesture": "horizontal line at ~63 across all bars from Helsinki soda top",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ2_R_PN8Fm084aWGMILf",
+    "accuracy": 0.0,
+    "answer": "Helsinki",
+    "chain": "FIND(color[green]) → FIND(seg[Helsinki,Soda]) → PROJ(top(seg[Helsinki,Soda]) → yaxis) ?wrong:compared-cumulative-top-position-not-segment-length → ANSWER(Helsinki)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Soda]",
+     "bar[Helsinki]",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line up Helsinki bar to soda top (~63) hooking left to y-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ2_R_2AQYp4GVL23l9aY",
+    "accuracy": 0.0,
+    "answer": "Helsinki",
+    "chain": "ARGMAX({seg[*,Soda]}, top-y)=Helsinki ?wrong:compared-cumulative-top-position-not-segment-length → PROJ(top(seg[Helsinki,Soda]) → {bar[*]}) → ANSWER(Helsinki)",
+    "ops": [
+     "ARGMAX",
+     "PROJ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[*,Soda]"
+    ],
+    "elements_sketch": [
+     "top(seg[Helsinki,Soda])",
+     "bar[*]"
+    ],
+    "sketch_gesture": "horizontal line at ~63 across all bars",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ2_R_1FtyDyJ5x9l9fws",
+    "accuracy": 0.0,
+    "answer": "Helsinki",
+    "chain": "FIND(seg[Helsinki,Vodka]) ?wrong:used-brown(Vodka)-not-green(Soda) → PROJ(top(bar[Helsinki]) → yaxis) → READ(y)≈68.5 ?wrong:total-height → ANSWER(Helsinki)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color[brown]",
+     "seg[Helsinki,Vodka]",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "bar[Helsinki]",
+     "top(bar[Helsinki])"
+    ],
+    "sketch_gesture": "line up left edge of Helsinki bar to top (~69) then across top of chart",
+    "source": "both"
+   }
+  ]
+ },
+ "SBQ3": {
+  "qid": "SBQ3",
+  "chart": "SB",
+  "task": "make_comparison",
+  "question": "The cost of vodka in Helsinki is higher than that of Toronto.",
+  "reference_chain": "FIND(seg[Helsinki,Vodka] | legend[Vodka]→color[orange], xtick[Helsinki]) → FIND(seg[Toronto,Vodka]) → SEG(68.6 − 63.1)≈5.5 → SEG(55.8 − 47.8)≈8 → CMP(5.5 < 8) → ANSWER(False)",
+  "notes": "Accuracy split roughly in half (20/42 correct). The decisive split is the operand: people who compared the LENGTH of the two orange vodka segments (visually, with brackets/I-beams, or by projecting top and bottom edges to the axis and subtracting) answered False, while those who compared where the segments sit (top of the Helsinki bar at ~68.5 vs Toronto at ~56), often drawing a horizontal line across from Helsinki's top, answered True. A notable minority (5) explicitly could not decide whether the segment length or the cumulative height encodes vodka cost and chose Impossible/not sure. The non-adjacent bars and offset baselines make the length comparison hard, and one person marked the soda segments instead.",
+  "new_symbols": {
+   "extent(m)": "the vertical span [bottom, top] of a mark, used when translating a segment to compare against another",
+   "PROJ(e → right/across)": "projection drawn horizontally away from the y-axis or across to another bar rather than to the axis"
+  },
+  "strategies": [
+   {
+    "chain": "FIND(seg[Helsinki,Vodka]), FIND(seg[Toronto,Vodka]) → PROJ(top(seg|bar) → yaxis/across) → CMP(top-y Helsinki > Toronto) ?wrong:compared-cumulative-top-not-segment-length → ANSWER(True)",
+    "n": 13,
+    "n_correct": 0,
+    "n_incorrect": 13,
+    "quote": "I drew a line acrross from Helsinki to toronto marking the highest price of Vodka",
+    "trial_ids": [
+     "SBQ3_R_241SEsUc9JJZ9ii",
+     "SBQ3_R_PwGfSrtGpqLD9vz",
+     "SBQ3_R_2zbWL29UVPi0v1e",
+     "SBQ3_R_1ruyP2fs01EBume",
+     "SBQ3_R_3lDJ3gJlEx9bvdy",
+     "SBQ3_R_vYxQQ6kbWuIPPSV",
+     "SBQ3_R_bdrkvkZgo0WJVGV",
+     "SBQ3_R_1mg5BeiiV66yolL",
+     "SBQ3_R_1kGflyCImAFfv3L",
+     "SBQ3_R_PN8Fm084aWGMILf",
+     "SBQ3_R_2AQYp4GVL23l9aY",
+     "SBQ3_R_1FtyDyJ5x9l9fws",
+     "SBQ3_R_1rjN4TGyxMk2oDq"
+    ]
+   },
+   {
+    "chain": "FIND(seg[Helsinki,Vodka]), FIND(seg[Toronto,Vodka]) → CMPvis(len/size(seg[Helsinki,Vodka]) < len/size(seg[Toronto,Vodka])) → ANSWER(False)",
+    "n": 12,
+    "n_correct": 12,
+    "n_incorrect": 0,
+    "quote": "I visualized both orange boxes that represent the value of vodka and checked which one was bigger, regardless of it's starting position",
+    "trial_ids": [
+     "SBQ3_R_6AyfcLIRg3E9Cvf",
+     "SBQ3_R_1ILTvcjG8il5ivT",
+     "SBQ3_R_6QpN86zEs2BsSyZ",
+     "SBQ3_R_3qlo0gTj7qX5NaV",
+     "SBQ3_R_2XnbILPqlz7EVfh",
+     "SBQ3_R_3Ecgvll7yCxiSfq",
+     "SBQ3_R_2vY85VrJ5kA63mo",
+     "SBQ3_R_3DwMwbbvKGck1j8",
+     "SBQ3_R_3knQAl7GyjqPd14",
+     "SBQ3_R_8JvQ0RbjUMPV2zn",
+     "SBQ3_R_3KoNCnW4A4ISLZ8",
+     "SBQ3_R_21b7may8A1p29mG"
+    ]
+   },
+   {
+    "chain": "PROJ(top/bottom(seg[Helsinki,Vodka]) → yaxis), PROJ(top/bottom(seg[Toronto,Vodka]) → yaxis) → SEG(top − bottom) / READ(len) ≈5 vs ≈8 → CMP → ANSWER(False)",
+    "n": 8,
+    "n_correct": 8,
+    "n_incorrect": 0,
+    "quote": "Helsinki has about 5 unites when it comes to vodka where as Toronto has more than 5 units",
+    "trial_ids": [
+     "SBQ3_R_1E7h0Cr6gK7k9Zg",
+     "SBQ3_R_2RPteVShn9rbma8",
+     "SBQ3_R_3HRhA2l19nQiHDq",
+     "SBQ3_R_Uyc5ozKwAykkAiR",
+     "SBQ3_R_3Rwr5F6bciAzuf4",
+     "SBQ3_R_2rqIKFQJrR5RqI4",
+     "SBQ3_R_1g6nV97j3m0UrXN",
+     "SBQ3_R_1OqMOqjFiKUVIda"
+    ]
+   },
+   {
+    "chain": "FIND(seg[*,Vodka]) → CONFUSED(MAP(height(bar)→total) vs MAP(len(seg)→vodka)) → ANSWER(Impossible / not sure)",
+    "n": 5,
+    "n_correct": 0,
+    "n_incorrect": 5,
+    "quote": "I am unsure if I had to look at the overall value (true) or just the vodka value (false).",
+    "trial_ids": [
+     "SBQ3_R_2bIxvFjGgb8JirJ",
+     "SBQ3_R_OHJyjNK3dci47O9",
+     "SBQ3_R_3gZSXeLLnjuAoDA",
+     "SBQ3_R_6eSxIAherLvH4VH",
+     "SBQ3_R_xc1B7hqJfIecigp"
+    ]
+   },
+   {
+    "chain": "FIND(seg[Helsinki,Vodka]), FIND(seg[Toronto,Vodka]) → CMPvis(len) ?wrong:misjudged → ANSWER(True)",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "I looked at the length of each section for vodka",
+    "trial_ids": [
+     "SBQ3_R_2ARVdxy7i72DYgW",
+     "SBQ3_R_1Ea5ftRdqVjV65x"
+    ]
+   },
+   {
+    "chain": "FIND(seg[*,Soda]) ?wrong:wrong-category → CMPvis(len) → ANSWER(True)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "the bar is bigger for Helsinki",
+    "trial_ids": [
+     "SBQ3_R_qxg0KknHF5gbXfH"
+    ]
+   },
+   {
+    "chain": "FIND(bar[Helsinki]), FIND(bar[Toronto]) → ANSWER(True) ?wrong:unspecified",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "i looked at the bar graph of the said country",
+    "trial_ids": [
+     "SBQ3_R_Td2pJ0stpB6hKo1"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "SBQ3_R_6AyfcLIRg3E9Cvf",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(seg[Helsinki,Vodka]) → FIND(seg[Toronto,Vodka]) → CMPvis(len(seg[Helsinki,Vodka]) < len(seg[Toronto,Vodka])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[Helsinki,Vodka]",
+     "seg[Toronto,Vodka]"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Vodka]",
+     "seg[Toronto,Vodka]"
+    ],
+    "sketch_gesture": "circles around Helsinki and Toronto vodka segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_241SEsUc9JJZ9ii",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "FIND(seg[Helsinki,Vodka]) → FIND(seg[Toronto,Vodka]) → PROJ(top(seg[Helsinki,Vodka]) → yaxis) → PROJ(top(seg[Toronto,Vodka]) → yaxis) → CMP(top-y Helsinki > Toronto) ?wrong:compared-cumulative-top-not-segment-length → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Vodka]",
+     "seg[Toronto,Vodka]",
+     "yaxis"
+    ],
+    "sketch_gesture": "circles on Helsinki and Toronto vodka segments; arrow at Helsinki top (~68.5) and long horizontal line from y-axis at ~55.5 to Toronto top",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_PwGfSrtGpqLD9vz",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "PROJ(top(bar[Helsinki]) → yaxis) → PROJ(top(bar[Toronto]) → yaxis) → CMP(≈68.5 > ≈56) ?wrong:compared-cumulative-top-not-segment-length → ANSWER(True)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(bar[Helsinki])",
+     "top(bar[Toronto])",
+     "yaxis"
+    ],
+    "sketch_gesture": "short horizontal line at Helsinki top (~68.5); long horizontal line at ~56 from y-axis to Toronto top",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SBQ3_R_2bIxvFjGgb8JirJ",
+    "accuracy": 0.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "FIND(seg[Helsinki,Vodka]) → FIND(seg[Toronto,Vodka]) → MAP(height(bar) → total cost of all items) → CONFUSED(vodka-only cost not shown) ?wrong:segment-length-does-encode-vodka-cost → ANSWER(Impossible)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "MAP",
+     "CONFUSED",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "bar[*]"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Vodka]",
+     "seg[Toronto,Vodka]"
+    ],
+    "sketch_gesture": "circles around Helsinki and Toronto vodka segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_1ILTvcjG8il5ivT",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(legend[Vodka]) → FIND(seg[Helsinki,Vodka]) → FIND(seg[Toronto,Vodka]) → CMPvis(len(seg[Helsinki,Vodka]) < len(seg[Toronto,Vodka])) → DOUBT(small differences hard to compare) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "FIND",
+     "CMPvis",
+     "DOUBT",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "bar[*]"
+    ],
+    "elements_sketch": [
+     "legend[Vodka]",
+     "seg[Helsinki,Vodka]",
+     "seg[Toronto,Vodka]"
+    ],
+    "sketch_gesture": "circles on Vodka legend entry and on Helsinki and Toronto vodka segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_6QpN86zEs2BsSyZ",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(seg[Helsinki,Vodka]) → FIND(seg[Toronto,Vodka]) → CMPvis(size(seg[Helsinki,Vodka]) < size(seg[Toronto,Vodka])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "bar[*]"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Vodka]",
+     "seg[Toronto,Vodka]"
+    ],
+    "sketch_gesture": "circles around Helsinki and Toronto vodka segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_1E7h0Cr6gK7k9Zg",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "PROJ(top(seg[Helsinki,Vodka]) → right) → PROJ(bottom(seg[Helsinki,Vodka]) → right) → PROJ(top(seg[Toronto,Vodka]) → right) → PROJ(bottom(seg[Toronto,Vodka]) → right) → CMP(len(seg[Helsinki,Vodka]) < len(seg[Toronto,Vodka])) → DOUBT(exact cost unreadable) → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "CMP",
+     "DOUBT",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "top(seg[Helsinki,Vodka])",
+     "bottom(seg[Helsinki,Vodka])",
+     "top(seg[Toronto,Vodka])",
+     "bottom(seg[Toronto,Vodka])"
+    ],
+    "sketch_gesture": "horizontal lines extended right from top and bottom of each vodka segment, with \"<\" and \">\" glyphs comparing the gaps",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_3KoNCnW4A4ISLZ8",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(seg[Helsinki,Vodka]) → FIND(seg[Toronto,Vodka]) → MAP(len(seg) → cost, ignoring baseline) → PROJ(extent(seg[Toronto,Vodka]) → across to Helsinki) → CMPvis(len(seg[Helsinki,Vodka]) < len(seg[Toronto,Vodka])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "MAP",
+     "PROJ",
+     "CMPvis",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[*,Vodka]",
+     "color[orange]"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Vodka]",
+     "seg[Toronto,Vodka]"
+    ],
+    "sketch_gesture": "box around Helsinki vodka segment with \"<\"; long box spanning Toronto vodka segment's y-range (~48-56) back across to Helsinki",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_3qlo0gTj7qX5NaV",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(seg[Helsinki,Vodka]) → FIND(seg[Toronto,Vodka]) → CMPvis(height(seg[Helsinki,Vodka]) < height(seg[Toronto,Vodka])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "bar[*]"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Vodka]",
+     "seg[Toronto,Vodka]"
+    ],
+    "sketch_gesture": "boxes drawn around Helsinki and Toronto vodka segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_OHJyjNK3dci47O9",
+    "accuracy": 0.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "PROJ(top(seg[Helsinki,Vodka])) → PROJ(bottom(seg[Helsinki,Vodka])) → PROJ(top(seg[Toronto,Vodka])) → PROJ(bottom(seg[Toronto,Vodka])) → CONFUSED(MAP(len(seg) → cost) vs MAP(top-y → cost)) ?wrong:segment-length-encodes-cost → ANSWER(Impossible)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "CONFUSED",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[*]",
+     "height(seg)"
+    ],
+    "elements_sketch": [
+     "top(seg[Helsinki,Vodka])",
+     "bottom(seg[Helsinki,Vodka])",
+     "top(seg[Toronto,Vodka])",
+     "bottom(seg[Toronto,Vodka])"
+    ],
+    "sketch_gesture": "tick marks at top and bottom of Helsinki and Toronto vodka segments with a mark between each pair",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_2zbWL29UVPi0v1e",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "FIND(legend[Vodka] → color) → FIND(seg[Helsinki,Vodka]) → FIND(seg[Toronto,Vodka]) → CMP(top-y Helsinki > Toronto) ?wrong:compared-cumulative-top-not-segment-length → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "FIND",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color",
+     "legend[Vodka]",
+     "xtick[Helsinki]",
+     "xtick[Toronto]"
+    ],
+    "elements_sketch": [
+     "legend[Vodka]",
+     "top(seg[Helsinki,Vodka])",
+     "top(seg[Toronto,Vodka])"
+    ],
+    "sketch_gesture": "underline at Vodka legend entry; arrows pointing at tops of Helsinki and Toronto bars",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_1ruyP2fs01EBume",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "FIND(seg[Helsinki,Vodka]) → FIND(seg[Toronto,Vodka]) → PROJ(seg → yaxis) → CMP(y-position Toronto < Helsinki) ?wrong:compared-cumulative-top-not-segment-length → CONFUSED(non-adjacent bars) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "CMP",
+     "CONFUSED",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "bar[*]",
+     "yaxis",
+     "color"
+    ],
+    "elements_sketch": [
+     "top(seg[Helsinki,Vodka])",
+     "bottom(seg[Helsinki,Vodka])",
+     "top(seg[Toronto,Vodka])",
+     "bottom(seg[Toronto,Vodka])"
+    ],
+    "sketch_gesture": "short horizontal strokes at top and bottom of Helsinki and Toronto vodka segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_3lDJ3gJlEx9bvdy",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "PROJ(top(bar[Helsinki]) → yaxis) → PROJ(top(bar[Toronto]) → yaxis) → CMP(H > T) ?wrong:compared-cumulative-top-not-segment-length → ANSWER(True)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "bar[Helsinki]",
+     "bar[Toronto]"
+    ],
+    "elements_sketch": [
+     "top(bar[Helsinki])",
+     "top(bar[Toronto])",
+     "yaxis"
+    ],
+    "sketch_gesture": "line at Helsinki top labelled \"H\"; line labelled \"T\" from y-axis at ~57 to Toronto top",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_2XnbILPqlz7EVfh",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(seg[Helsinki,Vodka] | color[red]) → FIND(seg[Toronto,Vodka]) → CMPvis(size(seg[Helsinki,Vodka]) < size(seg[Toronto,Vodka])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color[red]",
+     "seg[*,Vodka]"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Vodka]",
+     "seg[Toronto,Vodka]"
+    ],
+    "sketch_gesture": "circles around Helsinki and Toronto vodka segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_vYxQQ6kbWuIPPSV",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "FIND(legend[Vodka]) → FIND(top(bar[Helsinki])) → FIND(top(bar[Toronto])) → CMP(top-y Helsinki > Toronto) ?wrong:compared-cumulative-top-not-segment-length → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "FIND",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[*,Vodka]"
+    ],
+    "elements_sketch": [
+     "legend[Vodka]",
+     "top(bar[Helsinki])",
+     "top(bar[Toronto])"
+    ],
+    "sketch_gesture": "arrows pointing at Helsinki bar top, Toronto bar top, and Vodka legend entry",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_2RPteVShn9rbma8",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "PROJ(top(seg[Helsinki,Vodka]) → yaxis) → PROJ(bottom(seg[Helsinki,Vodka]) → yaxis) → PROJ(top(seg[Toronto,Vodka]) → yaxis) → PROJ(bottom(seg[Toronto,Vodka]) → yaxis) → READ(y)=v? → SEG(top − bottom) ×2 → CMP(Helsinki < Toronto) → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "SEG",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "top(seg[Helsinki,Vodka])",
+     "bottom(seg[Helsinki,Vodka])",
+     "top(seg[Toronto,Vodka])",
+     "bottom(seg[Toronto,Vodka])",
+     "yaxis"
+    ],
+    "sketch_gesture": "short ticks at y-axis for Helsinki vodka top/bottom (~68.5, ~63); long horizontal lines from y-axis at ~56 and ~47.5 to Toronto vodka top/bottom",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_qxg0KknHF5gbXfH",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "FIND(seg[Helsinki,Soda]) ?wrong:marked-Soda-not-Vodka → FIND(seg[Toronto,Soda]) → CMPvis(len(seg[Helsinki,Soda]) > len(seg[Toronto,Soda])) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "bar[Helsinki]"
+    ],
+    "elements_sketch": [
+     "top(seg[Helsinki,Soda])",
+     "bottom(seg[Helsinki,Soda])",
+     "top(seg[Toronto,Soda])",
+     "bottom(seg[Toronto,Soda])"
+    ],
+    "sketch_gesture": "short strokes at top and bottom of the green (soda) segments of Helsinki and Toronto",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_1OqMOqjFiKUVIda",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "MAP(legend → color) → FIND(xtick[Helsinki]) → FIND(xtick[Toronto]) → FIND(seg[Helsinki,Vodka]) → FIND(seg[Toronto,Vodka]) → READ(cost)=v? → ANSWER(False)",
+    "ops": [
+     "MAP",
+     "FIND",
+     "FIND",
+     "FIND",
+     "FIND",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "legend",
+     "color",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Vodka]",
+     "seg[Toronto,Vodka]",
+     "xtick[Helsinki]",
+     "xtick[Toronto]"
+    ],
+    "sketch_gesture": "circles on Helsinki and Toronto vodka segments, boxes on their x-labels, arrow to Toronto",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_6eSxIAherLvH4VH",
+    "accuracy": 0.0,
+    "answer": "I'm not sure",
+    "chain": "FIND(seg[Helsinki,Vodka]) → FIND(seg[Toronto,Vodka]) → CONFUSED(chart) → ANSWER(not sure)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CONFUSED",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Vodka]",
+     "seg[Toronto,Vodka]"
+    ],
+    "sketch_gesture": "circles around Helsinki and Toronto vodka segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_3HRhA2l19nQiHDq",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(seg[Helsinki,Vodka]) → FIND(seg[Toronto,Vodka]) → PROJ(top/bottom(seg[Helsinki,Vodka]) → yaxis) → PROJ(top/bottom(seg[Toronto,Vodka]) → yaxis) → SEG(top − bottom) ×2 → ARGMAX(len)=Toronto → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "SEG",
+     "ARGMAX",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[*]",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "top(seg[Helsinki,Vodka])",
+     "bottom(seg[Helsinki,Vodka])",
+     "top(seg[Toronto,Vodka])",
+     "bottom(seg[Toronto,Vodka])",
+     "yaxis"
+    ],
+    "sketch_gesture": "ticks at y-axis for Helsinki vodka top/bottom; horizontal lines from y-axis at ~55.5 and ~48 across to Toronto vodka top/bottom",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_bdrkvkZgo0WJVGV",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "FIND(seg[Helsinki,Vodka]) → FIND(seg[Toronto,Vodka]) → PROJ(center(seg[Helsinki,Vodka]) → yaxis)≈65 → PROJ(center(seg[Toronto,Vodka]) → yaxis)≈52 → CMP(y-position Helsinki > Toronto) ?wrong:compared-cumulative-top-not-segment-length → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "seg[Helsinki,Vodka]",
+     "seg[Toronto,Vodka]",
+     "yaxis"
+    ],
+    "sketch_gesture": "circles on both vodka segments; short line from y-axis at ~65 to Helsinki, long line from y-axis at ~52 to Toronto vodka",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SBQ3_R_3Ecgvll7yCxiSfq",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(seg[Helsinki,Vodka] | color[orange]) → FIND(seg[Toronto,Vodka]) → CMPvis(height(seg[Helsinki,Vodka]) < height(seg[Toronto,Vodka])) → DOUBT(exact figures) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis",
+     "DOUBT",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color[orange]",
+     "height(seg[*,Vodka])",
+     "seg[Helsinki,Vodka]"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Vodka]",
+     "seg[Toronto,Vodka]"
+    ],
+    "sketch_gesture": "brackets drawn spanning the Helsinki and Toronto vodka segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_1kGflyCImAFfv3L",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "LOOK(color) → FIND(bar[Helsinki]) → PROJ(top(bar[Helsinki]) → yaxis) ?wrong:used-total-bar-height → ANSWER(True)",
+    "ops": [
+     "LOOK",
+     "FIND",
+     "PROJ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "bar[Helsinki]",
+     "top(bar[Helsinki])"
+    ],
+    "sketch_gesture": "vertical line up the full Helsinki bar to its top with stroke to y-axis at ~68.5",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_Td2pJ0stpB6hKo1",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "FIND(bar[Helsinki]) → FIND(bar[Toronto]) → ANSWER(True) ?wrong:unspecified-(likely-whole-bar)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "bar[Helsinki]",
+     "bar[Toronto]"
+    ],
+    "elements_sketch": [],
+    "sketch_gesture": "blank",
+    "source": "text"
+   },
+   {
+    "trial_id": "SBQ3_R_3gZSXeLLnjuAoDA",
+    "accuracy": 0.0,
+    "answer": "I'm not sure",
+    "chain": "FIND(seg[Helsinki,Vodka]) → FIND(seg[Toronto,Vodka]) → CONFUSED(MAP(height(bar) → total) vs MAP(len(seg) → vodka)) → ANSWER(not sure)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CONFUSED",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "bar[*]",
+     "seg[*,Vodka]"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Vodka]",
+     "seg[Toronto,Vodka]"
+    ],
+    "sketch_gesture": "boxes around Helsinki and Toronto vodka segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_21b7may8A1p29mG",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "MAP(grid step → $5) → CMPvis(size(seg[Helsinki,Vodka]) < size(seg[Toronto,Vodka]) | color[orange]) → ANSWER(False)",
+    "ops": [
+     "MAP",
+     "CMPvis",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "grid",
+     "color[orange]",
+     "seg[*,Vodka]"
+    ],
+    "elements_sketch": [
+     "ytick[0]",
+     "ytick[5]",
+     "grid[y=5]"
+    ],
+    "sketch_gesture": "bracket on y-axis from 0 to 5 with arrow and \"5$\" written",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_2vY85VrJ5kA63mo",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "MAP(height(bar) → total cost) → MAP(len(seg) → per-category cost) → FIND(seg[Helsinki,Vodka]) → FIND(seg[Toronto,Vodka]) → CMPvis(len(seg[Toronto,Vodka]) > len(seg[Helsinki,Vodka])) → ANSWER(False)",
+    "ops": [
+     "MAP",
+     "MAP",
+     "FIND",
+     "FIND",
+     "CMPvis",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "bar[*]",
+     "seg[*]"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Vodka]",
+     "seg[Toronto,Vodka]"
+    ],
+    "sketch_gesture": "curved brackets alongside the Helsinki and Toronto vodka segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_3DwMwbbvKGck1j8",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "DOUBT(sum all items vs vodka only) → FIND(seg[Helsinki,Vodka]) → FIND(seg[Toronto,Vodka]) → CMPvis(len(seg[Helsinki,Vodka]) < len(seg[Toronto,Vodka])) → ANSWER(False)",
+    "ops": [
+     "DOUBT",
+     "FIND",
+     "FIND",
+     "CMPvis",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "bar[*]",
+     "seg[*,Vodka]"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Vodka]",
+     "seg[Toronto,Vodka]"
+    ],
+    "sketch_gesture": "vertical strokes tracing the length of Helsinki and Toronto vodka segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_2ARVdxy7i72DYgW",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "FIND(seg[Helsinki,Vodka]) → FIND(seg[Toronto,Vodka]) → CMPvis(len(seg[Helsinki,Vodka]) > len(seg[Toronto,Vodka])) ?wrong:misjudged-length(Helsinki≈5.5 < Toronto≈8) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[*,Vodka]",
+     "len(seg)"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Vodka]",
+     "seg[Toronto,Vodka]"
+    ],
+    "sketch_gesture": "small circle in Helsinki vodka segment; circle around Toronto vodka segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_2rqIKFQJrR5RqI4",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "READ(len(seg[Helsinki,Vodka]))≈5 → READ(len(seg[Toronto,Vodka]))≈8 → CMP(5 < 8) → ANSWER(False)",
+    "ops": [
+     "READ",
+     "READ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[Helsinki,Vodka]",
+     "seg[Toronto,Vodka]"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Vodka]",
+     "seg[Toronto,Vodka]"
+    ],
+    "sketch_gesture": "\"5\" written inside Helsinki vodka segment and \"8\" inside Toronto vodka segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_1mg5BeiiV66yolL",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "PROJ(top(bar[Helsinki]) → across to Toronto) → FIND(bar[Toronto]) → CMP(top-y Helsinki > Toronto) ?wrong:compared-cumulative-top-not-segment-length → ANSWER(True)",
+    "ops": [
+     "PROJ",
+     "FIND",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[*,Vodka]"
+    ],
+    "elements_sketch": [
+     "top(bar[Helsinki])",
+     "bar[Toronto]"
+    ],
+    "sketch_gesture": "horizontal line from Helsinki top (~68.5) across to Toronto, then vertical line down the Toronto bar",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_Uyc5ozKwAykkAiR",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "PROJ(top/bottom(seg[Helsinki,Vodka]) → yaxis) → PROJ(top/bottom(seg[Toronto,Vodka]) → yaxis) → SEG(top − bottom)≈5 (Helsinki) → SEG(top − bottom)>5 (Toronto) → CMP(Helsinki < Toronto) → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "SEG",
+     "SEG",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[Helsinki,Vodka]",
+     "seg[Toronto,Vodka]"
+    ],
+    "elements_sketch": [
+     "top(seg[Helsinki,Vodka])",
+     "bottom(seg[Helsinki,Vodka])",
+     "top(seg[Toronto,Vodka])",
+     "bottom(seg[Toronto,Vodka])",
+     "yaxis"
+    ],
+    "sketch_gesture": "ticks at y-axis at ~68.5 and ~63; long horizontal lines from y-axis at ~55.5 and ~47.5 to Toronto vodka",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_xc1B7hqJfIecigp",
+    "accuracy": 0.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "CONFUSED(chart, same as previous items) → ANSWER(Impossible)",
+    "ops": [
+     "CONFUSED",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [],
+    "sketch_gesture": "\"NAH\" written over the chart",
+    "source": "text"
+   },
+   {
+    "trial_id": "SBQ3_R_1Ea5ftRdqVjV65x",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "FIND(seg[Helsinki,Vodka]) → FIND(seg[Toronto,Vodka]) → CMP(price Helsinki > Toronto) ?wrong:misjudged-comparison → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[*,Vodka]"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Vodka]",
+     "seg[Toronto,Vodka]"
+    ],
+    "sketch_gesture": "circles around Helsinki and Toronto vodka segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_1g6nV97j3m0UrXN",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(xtick[Helsinki]) → FIND(xtick[Toronto]) → FIND(seg[Helsinki,Vodka]) → FIND(seg[Toronto,Vodka]) → READ(len(seg))=v? → CMP(Toronto > Helsinki) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "FIND",
+     "FIND",
+     "READ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick",
+     "seg[*,Vodka]"
+    ],
+    "elements_sketch": [
+     "xtick[Helsinki]",
+     "xtick[Toronto]",
+     "seg[Helsinki,Vodka]",
+     "seg[Toronto,Vodka]"
+    ],
+    "sketch_gesture": "underlines on Helsinki and Toronto labels; braces beside both vodka segments with digits written next to them",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_1rjN4TGyxMk2oDq",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "FIND(seg[Helsinki,Vodka]) → FIND(seg[Toronto,Vodka]) → CMP(y-position Helsinki \"sky up\" > Toronto) ?wrong:compared-cumulative-top-not-segment-length → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[Helsinki,Vodka]"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Vodka]",
+     "seg[Toronto,Vodka]"
+    ],
+    "sketch_gesture": "boxes/circles around Helsinki and Toronto vodka segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_3knQAl7GyjqPd14",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(seg[Helsinki,Vodka]) → FIND(seg[Toronto,Vodka]) → CMPvis(len(seg[Toronto,Vodka]) > len(seg[Helsinki,Vodka])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[*,Vodka]",
+     "len(seg)"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Vodka]",
+     "seg[Toronto,Vodka]"
+    ],
+    "sketch_gesture": "I-beam length markers drawn spanning Helsinki and Toronto vodka segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_PN8Fm084aWGMILf",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "LOOK(color) → PROJ(top(bar[Helsinki]) → yaxis) → PROJ(top(bar[Toronto]) → yaxis) → CMP(top-y Helsinki > Toronto) ?wrong:compared-cumulative-top-not-segment-length → ANSWER(True)",
+    "ops": [
+     "LOOK",
+     "PROJ",
+     "PROJ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "bar[Helsinki]",
+     "bar[Toronto]",
+     "top(bar[Helsinki])",
+     "top(bar[Toronto])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical lines up Helsinki and Toronto bars to their tops, joined to y-axis at ~68.5 and ~55.5",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_2AQYp4GVL23l9aY",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "FIND(top(seg[Helsinki,Vodka])) → PROJ(top(seg[Helsinki,Vodka]) → across to Toronto) → CMP(top-y Toronto < Helsinki) ?wrong:compared-cumulative-top-not-segment-length → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[Helsinki,Vodka]",
+     "seg[Toronto,Vodka]"
+    ],
+    "elements_sketch": [
+     "top(bar[Helsinki])",
+     "bar[*]"
+    ],
+    "sketch_gesture": "horizontal line at ~68.5 from Helsinki top across all bars",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_1FtyDyJ5x9l9fws",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "MAP(legend[Vodka] → color) → FIND(xtick[Helsinki]) → FIND(xtick[Toronto]) → PROJ(top(bar[Helsinki]) → yaxis) → PROJ(top(bar[Toronto]) → yaxis) → CMP(top-y Helsinki > Toronto) ?wrong:compared-cumulative-top-not-segment-length → ANSWER(True)",
+    "ops": [
+     "MAP",
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "yaxis",
+     "color",
+     "legend[Vodka]",
+     "xtick"
+    ],
+    "elements_sketch": [
+     "bar[Helsinki]",
+     "bar[Toronto]",
+     "top(bar[Helsinki])",
+     "top(bar[Toronto])",
+     "yaxis"
+    ],
+    "sketch_gesture": "line up Helsinki bar to its top (~68.5); line from y-axis at ~56 across to Toronto top and down the Toronto bar",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_3Rwr5F6bciAzuf4",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "PROJ(top(seg[Helsinki,Vodka]) → yaxis) → PROJ(bottom(seg[Helsinki,Vodka]) → yaxis) → PROJ(top(seg[Toronto,Vodka]) → right) → PROJ(bottom(seg[Toronto,Vodka]) → right) → CMPvis(size(seg[Toronto,Vodka]) > size(seg[Helsinki,Vodka])) → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "CMPvis",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "top(seg[Helsinki,Vodka])",
+     "bottom(seg[Helsinki,Vodka])",
+     "top(seg[Toronto,Vodka])",
+     "bottom(seg[Toronto,Vodka])",
+     "yaxis"
+    ],
+    "sketch_gesture": "ticks left of y-axis at ~69 and ~63; ticks right of Toronto at ~56 and ~47.5",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ3_R_8JvQ0RbjUMPV2zn",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(seg[Helsinki,Vodka]) → FIND(seg[Toronto,Vodka]) → CMPvis(size(seg[Toronto,Vodka]) > size(seg[Helsinki,Vodka])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[Toronto,Vodka]"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Vodka]",
+     "seg[Toronto,Vodka]"
+    ],
+    "sketch_gesture": "curved brackets alongside Helsinki and Toronto vodka segments",
+    "source": "both"
+   }
+  ]
+ },
+ "SBQ4": {
+  "qid": "SBQ4",
+  "chart": "SB",
+  "task": "make_comparison",
+  "question": "The ratio of the cost of Soda to the cost of Water is higher in N.Y.C than in Stockholm. True or False?",
+  "reference_chain": "FIND(seg[N.Y.C.,Soda], seg[N.Y.C.,Water], seg[Stockholm,Soda], seg[Stockholm,Water] | legend→color, xtick) → SEG(48.8−44.9)≈3.9, SEG(28.1−24.2)≈3.9 → RATIO≈1.0 (N.Y.C.) → SEG(53.3−43.8)≈9.5, SEG(32.5−28.4)≈4.1 → RATIO≈2.3 (Stockholm) → CMP(1.0 < 2.3) → ANSWER(False)",
+  "notes": "Most participants (28/42) got this right, largely because the item is forgiving: N.Y.C. soda and water segments look about equal while Stockholm soda is obviously longer, so a quick per-city visual length comparison (or an explicit 1:1 vs ~2-3:1 estimate) suffices. Several people reasoned with differences instead of ratios; this happens to give the right answer for Stockholm, but it misleads when the \"gap\" is the vertical distance between segments (the intervening peanut band), which led to True. Others projected cumulative segment tops to the axis, compared only one of the two items, or gave up (\"not sure\") because of the four operands across two non-adjacent bars. The pivotal elements are the lengths of the four soda/water segments, not their positions.",
+  "new_symbols": {
+   "DIFF-as-ratio": "(pattern) a difference used as a stand-in for a ratio; coded as DIFF(...) ?wrong:difference-not-ratio"
+  },
+  "strategies": [
+   {
+    "chain": "FIND(seg[Stockholm|N.Y.C., Soda|Water]) → CMPvis(len(soda) vs len(water) per city: N.Y.C. ≈, Stockholm >) → ANSWER(False)",
+    "n": 11,
+    "n_correct": 11,
+    "n_incorrect": 0,
+    "quote": "For NYC, both water and soda seem the same size, while in Stockholm it is obvious that the price if soda is higher than water.",
+    "trial_ids": [
+     "SBQ4_R_2bIxvFjGgb8JirJ",
+     "SBQ4_R_1ILTvcjG8il5ivT",
+     "SBQ4_R_6QpN86zEs2BsSyZ",
+     "SBQ4_R_1E7h0Cr6gK7k9Zg",
+     "SBQ4_R_3KoNCnW4A4ISLZ8",
+     "SBQ4_R_3gZSXeLLnjuAoDA",
+     "SBQ4_R_3DwMwbbvKGck1j8",
+     "SBQ4_R_1rjN4TGyxMk2oDq",
+     "SBQ4_R_1Ea5ftRdqVjV65x",
+     "SBQ4_R_1g6nV97j3m0UrXN",
+     "SBQ4_R_1OqMOqjFiKUVIda"
+    ]
+   },
+   {
+    "chain": "PROJ/SEG(len) ×4 → RATIO(soda,water | N.Y.C.)≈1 → RATIO(soda,water | Stockholm)≈2-3 → CMP → ANSWER(False)",
+    "n": 9,
+    "n_correct": 9,
+    "n_incorrect": 0,
+    "quote": "Ratio for Soda to Water in NYC is 4:4 and 9:5 for Stockholm, Stockholm ratio higher.",
+    "trial_ids": [
+     "SBQ4_R_OHJyjNK3dci47O9",
+     "SBQ4_R_1ruyP2fs01EBume",
+     "SBQ4_R_2XnbILPqlz7EVfh",
+     "SBQ4_R_2RPteVShn9rbma8",
+     "SBQ4_R_qxg0KknHF5gbXfH",
+     "SBQ4_R_bdrkvkZgo0WJVGV",
+     "SBQ4_R_2vY85VrJ5kA63mo",
+     "SBQ4_R_2ARVdxy7i72DYgW",
+     "SBQ4_R_2rqIKFQJrR5RqI4"
+    ]
+   },
+   {
+    "chain": "FIND(4 segs) → CONFUSED / DOUBT → ANSWER(not sure / Impossible)",
+    "n": 6,
+    "n_correct": 0,
+    "n_incorrect": 6,
+    "quote": "im not sure of this question as to where to watch or to look at",
+    "trial_ids": [
+     "SBQ4_R_6AyfcLIRg3E9Cvf",
+     "SBQ4_R_PwGfSrtGpqLD9vz",
+     "SBQ4_R_6eSxIAherLvH4VH",
+     "SBQ4_R_Td2pJ0stpB6hKo1",
+     "SBQ4_R_xc1B7hqJfIecigp",
+     "SBQ4_R_3Rwr5F6bciAzuf4"
+    ]
+   },
+   {
+    "chain": "PROJ(top(seg) → yaxis) on cumulative positions ?wrong:cumulative-tops → (RATIO/CMP) → ANSWER",
+    "n": 5,
+    "n_correct": 4,
+    "n_incorrect": 1,
+    "quote": "By comparing the figures on the side I found that the ratios were the same.",
+    "trial_ids": [
+     "SBQ4_R_3lDJ3gJlEx9bvdy",
+     "SBQ4_R_1mg5BeiiV66yolL",
+     "SBQ4_R_1FtyDyJ5x9l9fws",
+     "SBQ4_R_PN8Fm084aWGMILf",
+     "SBQ4_R_1kGflyCImAFfv3L"
+    ]
+   },
+   {
+    "chain": "DIFF(soda, water) or vertical gap ?wrong:difference-not-ratio → CMP(N.Y.C. > Stockholm) → ANSWER(True)",
+    "n": 4,
+    "n_correct": 0,
+    "n_incorrect": 4,
+    "quote": "there's a bigger gap between the cost of water and the cost of soda in NYC than in Stockholm",
+    "trial_ids": [
+     "SBQ4_R_241SEsUc9JJZ9ii",
+     "SBQ4_R_2zbWL29UVPi0v1e",
+     "SBQ4_R_3knQAl7GyjqPd14",
+     "SBQ4_R_2AQYp4GVL23l9aY"
+    ]
+   },
+   {
+    "chain": "SEG(len) ×4 → DIFF(soda, water) ×2 ?wrong:difference-not-ratio(lucky) → CMP(Stockholm > N.Y.C.) → ANSWER(False)",
+    "n": 3,
+    "n_correct": 3,
+    "n_incorrect": 0,
+    "quote": "Just compared each city and which had the greater difference, which was Stockholm.",
+    "trial_ids": [
+     "SBQ4_R_3HRhA2l19nQiHDq",
+     "SBQ4_R_3Ecgvll7yCxiSfq",
+     "SBQ4_R_8JvQ0RbjUMPV2zn"
+    ]
+   },
+   {
+    "chain": "compare only one item across cities (water only / soda only / crossed) ?wrong:partial-ratio → ANSWER",
+    "n": 3,
+    "n_correct": 1,
+    "n_incorrect": 2,
+    "quote": "Stockholm sell more Soder than N.Y.C meaning its the one with a high ratio",
+    "trial_ids": [
+     "SBQ4_R_3qlo0gTj7qX5NaV",
+     "SBQ4_R_Uyc5ozKwAykkAiR",
+     "SBQ4_R_vYxQQ6kbWuIPPSV"
+    ]
+   },
+   {
+    "chain": "PCT(soda, height(bar)) ×2 ?wrong:share-of-total → CMP → ANSWER(True)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "Just seeing the percentage of the soda according to the height of the full spectrum",
+    "trial_ids": [
+     "SBQ4_R_21b7may8A1p29mG"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "SBQ4_R_6AyfcLIRg3E9Cvf",
+    "accuracy": 0.0,
+    "answer": "I'm not sure",
+    "chain": "FIND(seg[Helsinki,Soda]) ?wrong:wrong-city(Helsinki-for-Stockholm) → FIND(seg[Helsinki,Water]) → FIND(seg[N.Y.C.,Soda]) → FIND(seg[N.Y.C.,Water]) → RATIO(soda,water)≈? ×2 → CMP(≈) → DOUBT(exact ratio) → ANSWER(not sure)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "FIND",
+     "FIND",
+     "RATIO",
+     "CMP",
+     "DOUBT",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "seg[Helsinki,Soda]",
+     "seg[Helsinki,Water]",
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]"
+    ],
+    "sketch_gesture": "circles on Helsinki soda and water segments and on N.Y.C. soda and water segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_241SEsUc9JJZ9ii",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "FIND(seg[Stockholm,Soda]) → FIND(seg[N.Y.C.,Soda]) → FIND(seg[Stockholm,Sandwich]) ?wrong:sandwich-segment-instead-of-water → FIND(seg[N.Y.C.,Sandwich]) → DIFF(soda, other) ×2 → MAP(DIFF → ratio) ?wrong:difference-not-ratio → CMP(NYC > Stockholm) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "FIND",
+     "FIND",
+     "DIFF",
+     "MAP",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "seg[Stockholm,Soda]",
+     "seg[N.Y.C.,Soda]",
+     "seg[Stockholm,Sandwich]",
+     "seg[N.Y.C.,Sandwich]"
+    ],
+    "sketch_gesture": "boxes around Stockholm and N.Y.C. soda segments and around their (blue) sandwich segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_PwGfSrtGpqLD9vz",
+    "accuracy": 0.0,
+    "answer": "I'm not sure",
+    "chain": "FIND(seg[Stockholm,Soda]) → FIND(seg[Stockholm,Water]) → FIND(seg[N.Y.C.,Soda]) → FIND(seg[N.Y.C.,Water]) → CMPvis(ratios) → DOUBT(slight discrepancy) → ANSWER(not sure)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "FIND",
+     "FIND",
+     "CMPvis",
+     "DOUBT",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "seg[Stockholm,Soda]",
+     "seg[Stockholm,Water]",
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]"
+    ],
+    "sketch_gesture": "circles on Stockholm and N.Y.C. soda and water segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_2bIxvFjGgb8JirJ",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(seg[N.Y.C.,Soda]) → FIND(seg[N.Y.C.,Water]) → CMPvis(len(seg[N.Y.C.,Soda]) ≈ len(seg[N.Y.C.,Water])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]"
+    ],
+    "elements_sketch": [
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]"
+    ],
+    "sketch_gesture": "circles on N.Y.C. soda and water segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_1ILTvcjG8il5ivT",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(seg[Stockholm,Soda]) → FIND(seg[Stockholm,Water]) → FIND(seg[N.Y.C.,Soda]) → FIND(seg[N.Y.C.,Water]) → CMPvis(len(seg[Stockholm,Water]) ≈ len(seg[N.Y.C.,Water])) → CMPvis(len(seg[Stockholm,Soda]) > len(seg[N.Y.C.,Soda])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "FIND",
+     "FIND",
+     "CMPvis",
+     "CMPvis",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[*,Water]",
+     "seg[Toronto,Soda] (misnamed Stockholm)"
+    ],
+    "elements_sketch": [
+     "seg[Stockholm,Soda]",
+     "seg[Stockholm,Water]",
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]"
+    ],
+    "sketch_gesture": "circles on Stockholm and N.Y.C. soda and water segments with connecting strokes and \"≈\" between waters",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_6QpN86zEs2BsSyZ",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(seg[Stockholm,Soda]) → FIND(seg[Stockholm,Water]) → FIND(seg[N.Y.C.,Soda]) → FIND(seg[N.Y.C.,Water]) → CMPvis(size(segments)) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "FIND",
+     "FIND",
+     "CMPvis",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[*]"
+    ],
+    "elements_sketch": [
+     "seg[Stockholm,Soda]",
+     "seg[Stockholm,Water]",
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]"
+    ],
+    "sketch_gesture": "circles on Stockholm and N.Y.C. soda and water segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_1E7h0Cr6gK7k9Zg",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "CMPvis(len(seg[Stockholm,Water]) ≈ len(seg[N.Y.C.,Water])) → CMPvis(len(seg[Stockholm,Soda]) > len(seg[N.Y.C.,Soda])) → DOUBT(exact values) → ANSWER(False)",
+    "ops": [
+     "CMPvis",
+     "CMPvis",
+     "DOUBT",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[*,Water]",
+     "seg[Stockholm,Soda]"
+    ],
+    "elements_sketch": [
+     "seg[Stockholm,Soda]",
+     "seg[N.Y.C.,Soda]",
+     "seg[Stockholm,Water]",
+     "seg[N.Y.C.,Water]"
+    ],
+    "sketch_gesture": "\">\" drawn between Stockholm and N.Y.C. soda levels; \"=\" drawn between their water segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_3KoNCnW4A4ISLZ8",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(seg[Stockholm,Soda]) → FIND(seg[Stockholm,Water]) → CMPvis(len(soda) > len(water) | Stockholm)=yes → FIND(seg[N.Y.C.,Soda]) → FIND(seg[N.Y.C.,Water]) → CMPvis(len(soda) > len(water) | N.Y.C.)=no → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis",
+     "FIND",
+     "FIND",
+     "CMPvis",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color[green]",
+     "color[yellow]",
+     "xtick[Stockholm]"
+    ],
+    "elements_sketch": [
+     "seg[Stockholm,Soda]",
+     "seg[Stockholm,Water]",
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]"
+    ],
+    "sketch_gesture": "circles on soda and water segments of Stockholm and N.Y.C., each pair joined by a vertical line",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_3qlo0gTj7qX5NaV",
+    "accuracy": 0.0,
+    "answer": "I'm not sure",
+    "chain": "FIND(seg[Stockholm,Water]) → FIND(seg[N.Y.C.,Water]) → CMPvis(len(seg[Stockholm,Water]) ≈ len(seg[N.Y.C.,Water])) ?wrong:ignored-soda → ANSWER(not sure)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "seg[Stockholm,Water]",
+     "seg[N.Y.C.,Water]"
+    ],
+    "sketch_gesture": "loops around Stockholm and N.Y.C. water segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_OHJyjNK3dci47O9",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "MAP(x = len(seg[*,Soda]), y = len(seg[*,Water])) → RATIO(x,y | Stockholm)=r1 → RATIO(x,y | N.Y.C.)=r2 → CMP(r1 > r2) → ANSWER(False)",
+    "ops": [
+     "MAP",
+     "RATIO",
+     "RATIO",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "len(bar)"
+    ],
+    "elements_sketch": [
+     "seg[Stockholm,Soda]",
+     "seg[Stockholm,Water]",
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]",
+     "annot[r=x/y]"
+    ],
+    "sketch_gesture": "\"x\" written on soda and \"y\" on water segments of both cities, \"1\" and \"2\" above the bars, \"r = x/y\" and \"1 > 2\" at right",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_2zbWL29UVPi0v1e",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "FIND(xtick[Stockholm]) → FIND(xtick[N.Y.C.]) → MAP(legend → color) → DIFF(center(seg[Stockholm,Soda]), center(seg[Stockholm,Water])) → DIFF(center(seg[N.Y.C.,Soda]), center(seg[N.Y.C.,Water])) ?wrong:vertical-gap-not-ratio → CMP(NYC gap > Stockholm gap) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "MAP",
+     "DIFF",
+     "DIFF",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick",
+     "color"
+    ],
+    "elements_sketch": [
+     "seg[Stockholm,Soda]",
+     "seg[Stockholm,Water]",
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]"
+    ],
+    "sketch_gesture": "brackets spanning from soda segment down to water segment in Stockholm (~48→31) and N.Y.C. (~47→26)",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_1ruyP2fs01EBume",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "PROJ(top/bottom of 4 segments) → SEG(top − bottom) ×4 → RATIO(soda,water | N.Y.C.)≈1 → RATIO(soda,water | Stockholm)>1 → CMP → CONFUSED(two products × two cities) → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "SEG",
+     "RATIO",
+     "RATIO",
+     "CMP",
+     "CONFUSED",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[*,Soda]",
+     "seg[*,Water]"
+    ],
+    "elements_sketch": [
+     "top(seg[Stockholm,Soda])",
+     "bottom(seg[Stockholm,Soda])",
+     "top(seg[Stockholm,Water])",
+     "bottom(seg[Stockholm,Water])",
+     "top(seg[N.Y.C.,Soda])",
+     "bottom(seg[N.Y.C.,Soda])",
+     "top(seg[N.Y.C.,Water])",
+     "bottom(seg[N.Y.C.,Water])"
+    ],
+    "sketch_gesture": "short horizontal strokes at top and bottom of each soda and water segment in Stockholm and N.Y.C.",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_3lDJ3gJlEx9bvdy",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "PROJ(top(seg[Stockholm,Soda]) → yaxis) → PROJ(top(seg[N.Y.C.,Soda]) → yaxis) → PROJ(top(seg[Stockholm,Water]) → yaxis) → PROJ(top(seg[N.Y.C.,Water]) → yaxis) ?wrong:cumulative-tops → DOUBT(own reasoning) → GUESS → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "DOUBT",
+     "GUESS",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(seg[Stockholm,Soda])",
+     "top(seg[N.Y.C.,Soda])",
+     "top(seg[Stockholm,Water])",
+     "top(seg[N.Y.C.,Water])",
+     "yaxis"
+    ],
+    "sketch_gesture": "four lines from y-axis to tops of Stockholm/N.Y.C. soda (~53.5, ~48.5) and water (~32.5, ~28) segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_2XnbILPqlz7EVfh",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "PROJ(top/bottom of soda & water segments, Stockholm & N.Y.C. → yaxis) → READ(y)=v? → SEG(top − bottom) ×4 → RATIO(soda,water) ×2 → CMP(ratios) → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "READ",
+     "SEG",
+     "RATIO",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[*]",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "top(seg[Stockholm,Soda])",
+     "top(seg[N.Y.C.,Soda])",
+     "bottom(seg[N.Y.C.,Soda])",
+     "bottom(seg[Stockholm,Water])",
+     "bottom(seg[N.Y.C.,Water])",
+     "yaxis"
+    ],
+    "sketch_gesture": "five horizontal lines from y-axis (~53.5, ~49, ~45, ~28, ~23.5) to segment edges of Stockholm and N.Y.C.",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_vYxQQ6kbWuIPPSV",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "FIND(seg[Stockholm,Water]) → FIND(seg[N.Y.C.,Soda]) → CMP(soda vs water, N.Y.C. vs Stockholm) ?wrong:misjudged(N.Y.C.-soda≈water) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[*,Soda]",
+     "seg[*,Water]"
+    ],
+    "elements_sketch": [
+     "seg[Stockholm,Water]",
+     "seg[N.Y.C.,Soda]"
+    ],
+    "sketch_gesture": "curved arrows pointing at Stockholm water segment and N.Y.C. soda segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_2RPteVShn9rbma8",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "PROJ(segment edges, Stockholm & N.Y.C. → yaxis) → SEG(top − bottom) → RATIO(soda,water) ×2 → CMP → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "SEG",
+     "RATIO",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(seg[Stockholm,Soda])",
+     "bottom(seg[Stockholm,Soda])",
+     "top(seg[N.Y.C.,Soda])",
+     "bottom(seg[N.Y.C.,Soda])",
+     "bottom(seg[Stockholm,Water])",
+     "bottom(seg[N.Y.C.,Water])",
+     "yaxis"
+    ],
+    "sketch_gesture": "six horizontal lines from y-axis to soda and water segment edges of Stockholm and N.Y.C.",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_qxg0KknHF5gbXfH",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "PROJ(top/bottom of 4 segments) → SEG(top − bottom) ×4 → RATIO(soda,water | N.Y.C.)=1:1 → RATIO(soda,water | Stockholm) → CMP → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "SEG",
+     "RATIO",
+     "RATIO",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[*]"
+    ],
+    "elements_sketch": [
+     "top(seg[Stockholm,Soda])",
+     "bottom(seg[Stockholm,Soda])",
+     "top(seg[Stockholm,Water])",
+     "bottom(seg[Stockholm,Water])",
+     "top(seg[N.Y.C.,Soda])",
+     "bottom(seg[N.Y.C.,Soda])",
+     "top(seg[N.Y.C.,Water])",
+     "bottom(seg[N.Y.C.,Water])",
+     "annot[1:1]"
+    ],
+    "sketch_gesture": "strokes at top and bottom of each soda and water segment; \"1:1\" written above N.Y.C.",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_1OqMOqjFiKUVIda",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "MAP(legend[Soda], legend[Water] → color) → FIND(xtick[Stockholm]) → FIND(xtick[N.Y.C.]) → FIND(seg[Stockholm,Soda]) → FIND(seg[Stockholm,Water]) → FIND(seg[N.Y.C.,Soda]) → FIND(seg[N.Y.C.,Water]) → ANSWER(False)",
+    "ops": [
+     "MAP",
+     "FIND",
+     "FIND",
+     "FIND",
+     "FIND",
+     "FIND",
+     "FIND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "legend",
+     "color"
+    ],
+    "elements_sketch": [
+     "legend[Soda]",
+     "legend[Water]",
+     "xtick[Stockholm]",
+     "xtick[N.Y.C.]",
+     "seg[Stockholm,Soda]",
+     "seg[Stockholm,Water]",
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]"
+    ],
+    "sketch_gesture": "boxes on the four soda/water segments and on Stockholm and N.Y.C. labels; underlines on Soda and Water legend entries",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_6eSxIAherLvH4VH",
+    "accuracy": 0.0,
+    "answer": "I'm not sure",
+    "chain": "FIND(seg[Stockholm,Soda]) → FIND(seg[Stockholm,Water]) → FIND(seg[N.Y.C.,Soda]) → FIND(seg[N.Y.C.,Water]) → CONFUSED(chart type) → ANSWER(not sure)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "FIND",
+     "FIND",
+     "CONFUSED",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "seg[Stockholm,Soda]",
+     "seg[Stockholm,Water]",
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]"
+    ],
+    "sketch_gesture": "circles on Stockholm and N.Y.C. soda and water segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_3HRhA2l19nQiHDq",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "PROJ(segment edges, Stockholm & N.Y.C.) → SEG(top − bottom) → DIFF(soda, water) ×2 ?wrong:difference-not-ratio(lucky-correct) → CMP(Stockholm > N.Y.C.) → DOUBT(no sub-divisions on axis) → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "SEG",
+     "DIFF",
+     "CMP",
+     "DOUBT",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "top(seg[Stockholm,Soda])",
+     "bottom(seg[Stockholm,Soda])",
+     "top(seg[N.Y.C.,Soda])",
+     "bottom(seg[N.Y.C.,Soda])",
+     "bottom(seg[Stockholm,Water])",
+     "bottom(seg[N.Y.C.,Water])"
+    ],
+    "sketch_gesture": "short strokes at soda top/bottom and water bottom in Stockholm and N.Y.C.",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_bdrkvkZgo0WJVGV",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(seg[Stockholm,Soda]) → FIND(seg[Stockholm,Water]) → FIND(seg[N.Y.C.,Soda]) → FIND(seg[N.Y.C.,Water]) → RATIO(soda,water | N.Y.C.)≈1:1 → RATIO(soda,water | Stockholm)≠1:1 → CMP → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "FIND",
+     "FIND",
+     "RATIO",
+     "RATIO",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]",
+     "xtick[Stockholm]"
+    ],
+    "elements_sketch": [
+     "seg[Stockholm,Soda]",
+     "seg[Stockholm,Water]",
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]"
+    ],
+    "sketch_gesture": "circles on Stockholm and N.Y.C. soda and water segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_3Ecgvll7yCxiSfq",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "LOOK(color) → SEG(len) ×4 → DIFF(soda, water) ×2 ?wrong:difference-not-ratio(lucky-correct) → CMP(Stockholm > N.Y.C.) → ANSWER(False)",
+    "ops": [
+     "LOOK",
+     "SEG",
+     "DIFF",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color",
+     "seg[Stockholm,*]"
+    ],
+    "elements_sketch": [
+     "seg[Stockholm,Soda]",
+     "seg[Stockholm,Water]",
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]"
+    ],
+    "sketch_gesture": "square brackets spanning Stockholm and N.Y.C. soda and water segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_1kGflyCImAFfv3L",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "LOOK(color) → FIND(bar[Stockholm]) → PROJ(top(seg[Stockholm,Soda]) → yaxis) → ANSWER(False)",
+    "ops": [
+     "LOOK",
+     "FIND",
+     "PROJ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "bar[Stockholm]",
+     "top(seg[Stockholm,Soda])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line up the Stockholm bar to soda top (~53) then horizontal line left to y-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_Td2pJ0stpB6hKo1",
+    "accuracy": 0.0,
+    "answer": "I'm not sure",
+    "chain": "CONFUSED(where to look) → LOOK(seg[Stockholm,Soda]) → ANSWER(not sure)",
+    "ops": [
+     "CONFUSED",
+     "LOOK",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "question"
+    ],
+    "elements_sketch": [
+     "seg[Stockholm,Soda]"
+    ],
+    "sketch_gesture": "short arrow from Seoul vodka segment toward Stockholm soda segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_3gZSXeLLnjuAoDA",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(seg[Stockholm,Soda]) → FIND(seg[Stockholm,Water]) → FIND(seg[N.Y.C.,Soda]) → FIND(seg[N.Y.C.,Water]) → CMPvis(size(seg[N.Y.C.,Water]) ≈ size(seg[N.Y.C.,Soda])) → CMPvis(size(seg[Stockholm,Soda]) > size(seg[Stockholm,Water])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "FIND",
+     "FIND",
+     "CMPvis",
+     "CMPvis",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]",
+     "seg[Stockholm,Soda]",
+     "seg[Stockholm,Water]"
+    ],
+    "elements_sketch": [
+     "seg[Stockholm,Soda]",
+     "seg[Stockholm,Water]",
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]"
+    ],
+    "sketch_gesture": "boxes around Stockholm and N.Y.C. soda and water segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_21b7may8A1p29mG",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "FIND(seg[Stockholm,Soda]) → FIND(seg[N.Y.C.,Soda]) → PCT(soda, height(bar)) ×2 ?wrong:share-of-total-not-soda-to-water → CMP(N.Y.C. > Stockholm) ?wrong:misjudged → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PCT",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[*,Soda]",
+     "height(bar)"
+    ],
+    "elements_sketch": [
+     "seg[Stockholm,Soda]",
+     "seg[N.Y.C.,Soda]",
+     "bar[Stockholm]",
+     "bar[N.Y.C.]"
+    ],
+    "sketch_gesture": "circles on Stockholm and N.Y.C. soda segments; horizontal span line drawn above the two bars",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_2vY85VrJ5kA63mo",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "SEG(len) ×4 → RATIO(soda,water | N.Y.C.)≈1:1 → RATIO(soda,water | Stockholm)≈3:1 → CMP(Stockholm > N.Y.C.) → DOUBT(which ratio is bigger) → ANSWER(False)",
+    "ops": [
+     "SEG",
+     "RATIO",
+     "RATIO",
+     "CMP",
+     "DOUBT",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]",
+     "seg[Stockholm,Soda]",
+     "seg[Stockholm,Water]"
+    ],
+    "elements_sketch": [
+     "seg[Stockholm,Soda]",
+     "seg[Stockholm,Water]",
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]"
+    ],
+    "sketch_gesture": "curved brackets alongside Stockholm and N.Y.C. soda and water segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_3DwMwbbvKGck1j8",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(seg[Stockholm,Soda]) → FIND(seg[Stockholm,Water]) → FIND(seg[N.Y.C.,Soda]) → FIND(seg[N.Y.C.,Water]) → CMPvis(len(levels) per city) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "FIND",
+     "FIND",
+     "CMPvis",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[*] (levels)"
+    ],
+    "elements_sketch": [
+     "seg[Stockholm,Soda]",
+     "seg[Stockholm,Water]",
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]"
+    ],
+    "sketch_gesture": "vertical strokes tracing the length of each Stockholm and N.Y.C. soda and water segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_2ARVdxy7i72DYgW",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(seg[Stockholm,Soda]) → FIND(seg[Stockholm,Water]) → FIND(seg[N.Y.C.,Soda]) → FIND(seg[N.Y.C.,Water]) → RATIO(soda,water | N.Y.C.)≈1 → RATIO(soda,water | Stockholm)>1 → CMP → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "FIND",
+     "FIND",
+     "RATIO",
+     "RATIO",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[N.Y.C.]",
+     "xtick[Stockholm]"
+    ],
+    "elements_sketch": [
+     "seg[Stockholm,Soda]",
+     "seg[Stockholm,Water]",
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]"
+    ],
+    "sketch_gesture": "loops on Stockholm and N.Y.C. soda and water segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_2rqIKFQJrR5RqI4",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "READ(len(seg[N.Y.C.,Soda]))≈4 → READ(len(seg[N.Y.C.,Water]))≈4 → READ(len(seg[Stockholm,Soda]))≈9 → READ(len(seg[Stockholm,Water]))≈5 → RATIO(4,4) → RATIO(9,5) → CMP(9:5 > 4:4) → ANSWER(False)",
+    "ops": [
+     "READ",
+     "READ",
+     "READ",
+     "READ",
+     "RATIO",
+     "RATIO",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[Stockholm,Soda]",
+     "seg[Stockholm,Water]",
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]"
+    ],
+    "elements_sketch": [
+     "seg[Stockholm,Soda]",
+     "seg[Stockholm,Water]",
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]"
+    ],
+    "sketch_gesture": "digits written inside segments: \"9\" Stockholm soda, \"5\" Stockholm water, \"1\" N.Y.C. soda and water",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_1mg5BeiiV66yolL",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "PROJ(edges of soda & water, Stockholm & N.Y.C. → yaxis) ?wrong:cumulative-positions → FIND(bar[Stockholm]) → FIND(bar[N.Y.C.]) → CMP(“longest ratio”) ?wrong:misjudged → ANSWER(True)",
+    "ops": [
+     "PROJ",
+     "FIND",
+     "FIND",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "bar[*]"
+    ],
+    "elements_sketch": [
+     "bottom(seg[Stockholm,Soda])",
+     "bottom(seg[N.Y.C.,Soda])",
+     "top(seg[Stockholm,Water])",
+     "top(seg[N.Y.C.,Water])",
+     "yaxis",
+     "bar[Stockholm]",
+     "bar[N.Y.C.]"
+    ],
+    "sketch_gesture": "four horizontal lines from y-axis (~44.5, ~42, ~32.5, ~28) plus vertical lines down Stockholm and N.Y.C. bars",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_Uyc5ozKwAykkAiR",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "READ(len(seg[Stockholm,Soda]))=v? → READ(len(seg[N.Y.C.,Soda]))=v? → CMP(Stockholm soda > N.Y.C. soda) ?wrong:ignored-water-denominator → ANSWER(False)",
+    "ops": [
+     "READ",
+     "READ",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[Stockholm,Soda]",
+     "seg[N.Y.C.,Soda]"
+    ],
+    "elements_sketch": [
+     "seg[Stockholm,Soda]",
+     "seg[Stockholm,Water]",
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]"
+    ],
+    "sketch_gesture": "numbers scribbled on Stockholm and N.Y.C. soda and water segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_xc1B7hqJfIecigp",
+    "accuracy": 0.0,
+    "answer": "Impossible to answer with this visualization.",
+    "chain": "CONFUSED(chart, same as previous items) → ANSWER(Impossible)",
+    "ops": [
+     "CONFUSED",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [],
+    "sketch_gesture": "\"I DIDN'T\" written across the chart",
+    "source": "text"
+   },
+   {
+    "trial_id": "SBQ4_R_1Ea5ftRdqVjV65x",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(seg[Stockholm,Soda]) → FIND(seg[Stockholm,Water]) → FIND(seg[N.Y.C.,Soda]) → FIND(seg[N.Y.C.,Water]) → CMP(soda vs water, N.Y.C. and Stockholm) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "FIND",
+     "FIND",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[Stockholm,Soda]",
+     "seg[Stockholm,Water]",
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]"
+    ],
+    "elements_sketch": [
+     "seg[Stockholm,Soda]",
+     "seg[Stockholm,Water]",
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]"
+    ],
+    "sketch_gesture": "circles on Stockholm and N.Y.C. soda and water segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_1g6nV97j3m0UrXN",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "FIND(xtick[Stockholm]) → FIND(xtick[N.Y.C.]) → CMPvis(len(seg[Stockholm,Water]) ≈ len(seg[N.Y.C.,Water])) → CMPvis(len(seg[Stockholm,Soda]) > len(seg[N.Y.C.,Soda])) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis",
+     "CMPvis",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick",
+     "seg[*,Water]",
+     "seg[*,Soda]"
+    ],
+    "elements_sketch": [
+     "seg[Stockholm,Soda]",
+     "seg[Stockholm,Water]",
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]",
+     "xtick[Stockholm]",
+     "xtick[N.Y.C.]"
+    ],
+    "sketch_gesture": "circles on the four soda/water segments with digits (3, 3, 2, 2) written beside them; underlines on Stockholm and N.Y.C. labels",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_1rjN4TGyxMk2oDq",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "SEG(len) ×4 → CMPvis(ratio Stockholm > N.Y.C.) → ANSWER(False)",
+    "ops": [
+     "SEG",
+     "CMPvis",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[Stockholm]",
+     "xtick[N.Y.C.]"
+    ],
+    "elements_sketch": [
+     "seg[Stockholm,Soda]",
+     "seg[Stockholm,Water]",
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]"
+    ],
+    "sketch_gesture": "curly brackets spanning Stockholm and N.Y.C. soda and water segments",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_3knQAl7GyjqPd14",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "DIFF(bottom(seg[*,Soda]), top(seg[*,Water])) ×2 ?wrong:measured-gap-(peanut-segment)-not-ratio → CMP(N.Y.C. gap > Stockholm gap) → ANSWER(True)",
+    "ops": [
+     "DIFF",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[*,Water]",
+     "seg[*,Soda]"
+    ],
+    "elements_sketch": [
+     "seg[Stockholm,Peanut]",
+     "seg[N.Y.C.,Peanut]"
+    ],
+    "sketch_gesture": "double-headed arrows spanning the peanut segments between water top and soda bottom in Stockholm and N.Y.C.",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_PN8Fm084aWGMILf",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "LOOK(color) → PROJ(top(seg[Stockholm,Soda]) → yaxis) → PROJ(top(seg[N.Y.C.,Soda]) → yaxis) → READ(y)=v? → ANSWER(False)",
+    "ops": [
+     "LOOK",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "top(seg[Stockholm,Soda])",
+     "top(seg[N.Y.C.,Soda])",
+     "bar[Stockholm]",
+     "bar[N.Y.C.]",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal lines from y-axis at ~53 and ~48 to Stockholm and N.Y.C. soda tops, then vertical lines down both bars",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_2AQYp4GVL23l9aY",
+    "accuracy": 0.0,
+    "answer": "True",
+    "chain": "PROJ(top/bottom(water segments) → yaxis) → DIFF(highest, lowest) per city ?wrong:difference-of-positions-not-ratio → ANSWER(True) → FIX(says correct answer is False)",
+    "ops": [
+     "PROJ",
+     "DIFF",
+     "ANSWER",
+     "FIX"
+    ],
+    "elements_text": [
+     "bar[*]"
+    ],
+    "elements_sketch": [
+     "top(seg[Stockholm,Water])",
+     "top(seg[N.Y.C.,Water])",
+     "bottom(seg[N.Y.C.,Water])",
+     "yaxis"
+    ],
+    "sketch_gesture": "three horizontal lines from y-axis at ~33, ~28 and ~24 to Stockholm/N.Y.C. water edges",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_1FtyDyJ5x9l9fws",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "PROJ(top(seg[Stockholm,Soda]), top(seg[N.Y.C.,Soda]), top(seg[Stockholm,Water]), top(seg[N.Y.C.,Water]) → yaxis) ?wrong:cumulative-tops → READ(y)=v? → RATIO ×2 → CMP(=) → ANSWER(False)",
+    "ops": [
+     "PROJ",
+     "READ",
+     "RATIO",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "top(seg[Stockholm,Soda])",
+     "top(seg[N.Y.C.,Soda])",
+     "top(seg[Stockholm,Water])",
+     "top(seg[N.Y.C.,Water])",
+     "yaxis"
+    ],
+    "sketch_gesture": "four horizontal lines from y-axis (~53, ~50, ~33, ~28) to Stockholm and N.Y.C. segment tops joined into boxes",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ4_R_3Rwr5F6bciAzuf4",
+    "accuracy": 0.0,
+    "answer": "I'm not sure",
+    "chain": "CONFUSED(how to answer) → ANSWER(not sure)",
+    "ops": [
+     "CONFUSED",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "question"
+    ],
+    "elements_sketch": [],
+    "sketch_gesture": "P-shaped scribble over Stockholm/Paris/N.Y.C.",
+    "source": "text"
+   },
+   {
+    "trial_id": "SBQ4_R_8JvQ0RbjUMPV2zn",
+    "accuracy": 1.0,
+    "answer": "False",
+    "chain": "LOOK(color) → CMPvis(size(soda), size(water)) ×2 → DIFF(soda, water) ×2 ?wrong:difference-not-ratio(lucky-correct) → CMP(Stockholm > N.Y.C.) → ANSWER(False)",
+    "ops": [
+     "LOOK",
+     "CMPvis",
+     "DIFF",
+     "CMP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color",
+     "seg[*,Water]",
+     "seg[*,Soda]"
+    ],
+    "elements_sketch": [
+     "seg[Stockholm,Soda]",
+     "seg[Stockholm,Water]",
+     "seg[N.Y.C.,Soda]",
+     "seg[N.Y.C.,Water]"
+    ],
+    "sketch_gesture": "curved brackets beside Stockholm and N.Y.C. soda and water segments",
+    "source": "both"
+   }
+  ]
+ },
+ "SBQ5": {
+  "qid": "SBQ5",
+  "chart": "SB",
+  "task": "retrieve_value",
+  "question": "What is the cost of peanuts in room service in Seoul?",
+  "reference_chain": "FIND(seg[Seoul,Peanut] | legend[Peanut]→color[purple], xtick[Seoul]) → PROJ(top → yaxis) → READ(y)≈40.9 → PROJ(bottom → yaxis) → READ(y)≈34.8 → SEG(40.9 − 34.8)≈6.1 → ANSWER(6.1)",
+  "notes": "No one in this group answered correctly (target 6.1). Half (14/28) projected the top of the purple Seoul segment to the y-axis and reported its cumulative position (~40-42), a horizontal line from the y-axis being the typical sketch. Others reported the bottom edge (35, read as a \"minimum price\"), the midpoint (37-40), or a range, and several said outright that they could not tell whether a segment's cost is its start, end, or length. The few who did subtract (top − bottom) snapped to the 35 and 40 ticks and got 5, or misread the 5-unit gridline step and got 11. The pivotal operation is SEG(top − bottom) on a floating segment, and nearly everyone skipped it.",
+  "new_symbols": {
+   "MAP(bottom → minimum cost) / MAP(top → highest possible price)": "reading segment edges as a min/max price range instead of reading length as the value"
+  },
+  "strategies": [
+   {
+    "chain": "FIND(seg[Seoul,Peanut]) → PROJ(top → yaxis) → READ(y)≈40-42 ?wrong:read-cumulative-top-not-segment-length → ANSWER",
+    "n": 14,
+    "n_correct": 0,
+    "n_incorrect": 14,
+    "quote": "Just drew thw line on the highest point of the peanut box",
+    "trial_ids": [
+     "SBQ5_R_241SEsUc9JJZ9ii",
+     "SBQ5_R_PwGfSrtGpqLD9vz",
+     "SBQ5_R_1E7h0Cr6gK7k9Zg",
+     "SBQ5_R_3lDJ3gJlEx9bvdy",
+     "SBQ5_R_vYxQQ6kbWuIPPSV",
+     "SBQ5_R_1kGflyCImAFfv3L",
+     "SBQ5_R_Td2pJ0stpB6hKo1",
+     "SBQ5_R_3DwMwbbvKGck1j8",
+     "SBQ5_R_1mg5BeiiV66yolL",
+     "SBQ5_R_Uyc5ozKwAykkAiR",
+     "SBQ5_R_1rjN4TGyxMk2oDq",
+     "SBQ5_R_PN8Fm084aWGMILf",
+     "SBQ5_R_2AQYp4GVL23l9aY",
+     "SBQ5_R_1FtyDyJ5x9l9fws"
+    ]
+   },
+   {
+    "chain": "FIND(seg[Seoul,Peanut]) → PROJ(top & bottom → yaxis) → SEG(top − bottom)≈5 or 11 ?wrong:imprecise/scale-error → ANSWER",
+    "n": 4,
+    "n_correct": 0,
+    "n_incorrect": 4,
+    "quote": "The purple bar on seoul - which indicates the peanuts- fits between 35-40 so the answer is 5",
+    "trial_ids": [
+     "SBQ5_R_6AyfcLIRg3E9Cvf",
+     "SBQ5_R_3Ecgvll7yCxiSfq",
+     "SBQ5_R_3HRhA2l19nQiHDq",
+     "SBQ5_R_3qlo0gTj7qX5NaV"
+    ]
+   },
+   {
+    "chain": "PROJ(bottom → yaxis)=35 (and top ≈41) → RANGE / MAP(bottom → min cost) ?wrong:position-not-length → ANSWER(35 or 40)",
+    "n": 3,
+    "n_correct": 0,
+    "n_incorrect": 3,
+    "quote": "The minimum cost of peanuts in Seoul according to this chart is $35",
+    "trial_ids": [
+     "SBQ5_R_1ILTvcjG8il5ivT",
+     "SBQ5_R_1ruyP2fs01EBume",
+     "SBQ5_R_3knQAl7GyjqPd14"
+    ]
+   },
+   {
+    "chain": "READ(center(seg[Seoul,Peanut]) or AVG(position))≈37-40 ?wrong:midpoint-position → ANSWER",
+    "n": 3,
+    "n_correct": 0,
+    "n_incorrect": 3,
+    "quote": "I did not know if I had to do the overall medium value (37) or take into account only the peanut value (5)",
+    "trial_ids": [
+     "SBQ5_R_bdrkvkZgo0WJVGV",
+     "SBQ5_R_3gZSXeLLnjuAoDA",
+     "SBQ5_R_1Ea5ftRdqVjV65x"
+    ]
+   },
+   {
+    "chain": "CONFUSED(encoding / room service) → ANSWER(0, 5, 49)",
+    "n": 3,
+    "n_correct": 0,
+    "n_incorrect": 3,
+    "quote": "I am not sure if the cost start where the section for peanuts starts or ends.",
+    "trial_ids": [
+     "SBQ5_R_6eSxIAherLvH4VH",
+     "SBQ5_R_2ARVdxy7i72DYgW",
+     "SBQ5_R_2zbWL29UVPi0v1e"
+    ]
+   },
+   {
+    "chain": "READ(top(bar[Seoul]))=58 → READ(len(seg))≈7 → PCT ?wrong:percent-share → ANSWER(11)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "Same problem as last time.",
+    "trial_ids": [
+     "SBQ5_R_xc1B7hqJfIecigp"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "SBQ5_R_6AyfcLIRg3E9Cvf",
+    "accuracy": 0.0,
+    "answer": "5",
+    "chain": "FIND(seg[Seoul,Peanut]) → MAP(len(seg) → cost) → SEG(top − bottom)≈5 ?wrong:underestimated-length(≈6.1) → ANSWER(5)",
+    "ops": [
+     "FIND",
+     "MAP",
+     "SEG",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[Seoul,Peanut]",
+     "len(seg)"
+    ],
+    "elements_sketch": [
+     "seg[Seoul,Peanut]"
+    ],
+    "sketch_gesture": "circle around Seoul peanut segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ5_R_241SEsUc9JJZ9ii",
+    "accuracy": 0.0,
+    "answer": "40",
+    "chain": "FIND(seg[Seoul,Peanut]) → PROJ(top(seg[Seoul,Peanut]) → yaxis) → READ(y)≈40 ?wrong:read-cumulative-top-not-segment-length → ANSWER(40)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "seg[Seoul,Peanut]",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at ~40 to circled Seoul peanut segment",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SBQ5_R_PwGfSrtGpqLD9vz",
+    "accuracy": 0.0,
+    "answer": "41",
+    "chain": "PROJ(top(seg[Seoul,Peanut]) → yaxis) → READ(y)≈41 ?wrong:read-cumulative-top-not-segment-length → ANSWER(41)",
+    "ops": [
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(seg[Seoul,Peanut])",
+     "yaxis"
+    ],
+    "sketch_gesture": "arrow from Seoul peanut top (~41) left to y-axis",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "SBQ5_R_1ILTvcjG8il5ivT",
+    "accuracy": 0.0,
+    "answer": "40",
+    "chain": "FIND(legend[Peanut]) → FIND(seg[Seoul,Peanut]) → PROJ(top(seg[Seoul,Peanut]) → yaxis)≈41 → PROJ(bottom(seg[Seoul,Peanut]) → yaxis)≈35 → RANGE(35,41) ?wrong:reported-position-not-length → DOUBT(exact number) → ANSWER(40)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "RANGE",
+     "DOUBT",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[Seoul,Peanut]"
+    ],
+    "elements_sketch": [
+     "legend[Peanut]",
+     "seg[Seoul,Peanut]",
+     "top(seg[Seoul,Peanut])",
+     "bottom(seg[Seoul,Peanut])",
+     "yaxis"
+    ],
+    "sketch_gesture": "lines from y-axis at ~41 and ~35 to Seoul; loop around Seoul peanut/water; underline at Peanut legend entry",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ5_R_1E7h0Cr6gK7k9Zg",
+    "accuracy": 0.0,
+    "answer": "41",
+    "chain": "PROJ(bottom(seg[Seoul,Peanut]) → yaxis)=35 → PROJ(top(seg[Seoul,Peanut]) → yaxis) → READ(y)≈41 ?wrong:read-cumulative-top-not-segment-length → ANSWER(41)",
+    "ops": [
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "bottom(seg[Seoul,Peanut])",
+     "ytick[35]"
+    ],
+    "elements_sketch": [
+     "bottom(seg[Seoul,Peanut])",
+     "top(seg[Seoul,Peanut])",
+     "yaxis"
+    ],
+    "sketch_gesture": "solid line from y-axis at ~35 and dotted line at ~41 to Seoul peanut segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ5_R_3qlo0gTj7qX5NaV",
+    "accuracy": 0.0,
+    "answer": "11",
+    "chain": "FIND(seg[Seoul,Peanut]) → MAP(grid step → 10) ?wrong:misread-axis-increment(5) → READ(len(seg[Seoul,Peanut]))≈11 → ANSWER(11) → FIX(increment is 5)",
+    "ops": [
+     "FIND",
+     "MAP",
+     "READ",
+     "ANSWER",
+     "FIX"
+    ],
+    "elements_text": [
+     "grid",
+     "ytick"
+    ],
+    "elements_sketch": [
+     "seg[Seoul,Peanut]"
+    ],
+    "sketch_gesture": "box around Seoul peanut segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ5_R_2zbWL29UVPi0v1e",
+    "accuracy": 0.0,
+    "answer": "0",
+    "chain": "FIND(question[room service] | chart)=∅ ?wrong:title-says-Room-Service-Prices → CONFUSED(room service) → ANSWER(0)",
+    "ops": [
+     "FIND",
+     "CONFUSED",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "question[room service]",
+     "chart"
+    ],
+    "elements_sketch": [],
+    "sketch_gesture": "question mark drawn over Paris bar",
+    "source": "text"
+   },
+   {
+    "trial_id": "SBQ5_R_1ruyP2fs01EBume",
+    "accuracy": 0.0,
+    "answer": "35",
+    "chain": "FIND(legend[Peanut] → color) → FIND(xtick[Seoul]) → FIND(seg[Seoul,Peanut]) → PROJ(bottom(seg[Seoul,Peanut]) → yaxis)≈35 → RANGE(35,42) → CONFUSED(single number wanted) → ANSWER(35) ?wrong:reported-bottom-position-not-length",
+    "ops": [
+     "FIND",
+     "FIND",
+     "FIND",
+     "PROJ",
+     "RANGE",
+     "CONFUSED",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color",
+     "legend[Peanut]",
+     "xtick[Seoul]",
+     "ytick[35]",
+     "ytick[42]"
+    ],
+    "elements_sketch": [
+     "legend[Peanut]",
+     "xtick[Seoul]",
+     "seg[Seoul,Peanut]",
+     "bottom(seg[Seoul,Peanut])",
+     "yaxis"
+    ],
+    "sketch_gesture": "circles on Peanut legend, Seoul label and Seoul peanut segment; line from y-axis at ~35",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ5_R_3lDJ3gJlEx9bvdy",
+    "accuracy": 0.0,
+    "answer": "41",
+    "chain": "PROJ(top(seg[Seoul,Peanut]) → yaxis) → READ(y)≈41 ?wrong:read-cumulative-top-not-segment-length → ANSWER(41)",
+    "ops": [
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(seg[Seoul,Peanut])",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at ~41 to Seoul",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ5_R_vYxQQ6kbWuIPPSV",
+    "accuracy": 0.0,
+    "answer": "41",
+    "chain": "FIND(legend[Peanut] → color) → FIND(seg[Seoul,Peanut]) → READ(top, y)≈41 ?wrong:read-cumulative-top-not-segment-length → ANSWER(41)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "legend[Peanut]",
+     "seg[Seoul,Peanut]"
+    ],
+    "sketch_gesture": "circle around Seoul peanut segment; arrow pointing to Peanut legend entry",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ5_R_6eSxIAherLvH4VH",
+    "accuracy": 0.0,
+    "answer": "5",
+    "chain": "FIND(seg[Seoul,Peanut]) → CONFUSED(chart) → ANSWER(5) ?wrong:underestimated-length",
+    "ops": [
+     "FIND",
+     "CONFUSED",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "seg[Seoul,Peanut]"
+    ],
+    "sketch_gesture": "small circle on Seoul peanut segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ5_R_3HRhA2l19nQiHDq",
+    "accuracy": 0.0,
+    "answer": "11",
+    "chain": "FIND(seg[Seoul,Peanut] | color) → PROJ(top(seg[Seoul,Peanut]) → yaxis)≈41 → PROJ(bottom(seg[Seoul,Peanut]) → yaxis)≈35 → SEG(top − bottom)=11 ?wrong:subtraction/scale-error → DOUBT(sandwich looks expensive) → ANSWER(11)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "SEG",
+     "DOUBT",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color",
+     "seg[*,Sandwich]"
+    ],
+    "elements_sketch": [
+     "top(seg[Seoul,Peanut])",
+     "bottom(seg[Seoul,Peanut])",
+     "yaxis"
+    ],
+    "sketch_gesture": "two horizontal lines from y-axis at ~41 and ~35 to Seoul",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ5_R_bdrkvkZgo0WJVGV",
+    "accuracy": 0.0,
+    "answer": "38",
+    "chain": "FIND(seg[Seoul,Peanut]) → READ(center(seg[Seoul,Peanut]), y)≈38 ?wrong:read-position-not-length → DOUBT(scale imprecise) → ANSWER(38)",
+    "ops": [
+     "FIND",
+     "READ",
+     "DOUBT",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "yaxis",
+     "chart"
+    ],
+    "elements_sketch": [
+     "seg[Seoul,Peanut]"
+    ],
+    "sketch_gesture": "small loop on Seoul peanut segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ5_R_3Ecgvll7yCxiSfq",
+    "accuracy": 0.0,
+    "answer": "5",
+    "chain": "FIND(seg[Seoul,Peanut] | color[purple]) → PROJ(bottom → yaxis)≈35 → PROJ(top → yaxis)≈40 → SEG(40 − 35)=5 ?wrong:snapped-to-ticks(≈6.1) → ANSWER(5)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "SEG",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color[purple]",
+     "ytick[35]",
+     "ytick[40]"
+    ],
+    "elements_sketch": [
+     "seg[Seoul,Peanut]",
+     "top(seg[Seoul,Peanut])",
+     "bottom(seg[Seoul,Peanut])"
+    ],
+    "sketch_gesture": "bracket drawn beside Seoul peanut segment spanning ~34-41",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ5_R_1kGflyCImAFfv3L",
+    "accuracy": 0.0,
+    "answer": "40",
+    "chain": "LOOK(color) → FIND(bar[Seoul]) → PROJ(top(seg[Seoul,Peanut]) → yaxis) → READ(y)≈40 ?wrong:read-cumulative-top-not-segment-length → ANSWER(40)",
+    "ops": [
+     "LOOK",
+     "FIND",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color"
+    ],
+    "elements_sketch": [
+     "bar[Seoul]",
+     "top(seg[Seoul,Peanut])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line up the Seoul bar to peanut top, then horizontal line left to y-axis at ~40",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ5_R_Td2pJ0stpB6hKo1",
+    "accuracy": 0.0,
+    "answer": "40",
+    "chain": "LOOK(bar[Seoul]) → PROJ(top(seg[Seoul,Peanut]) → yaxis) → READ(y)≈40 ?wrong:read-cumulative-top-not-segment-length → ANSWER(40)",
+    "ops": [
+     "LOOK",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "bar[*]"
+    ],
+    "elements_sketch": [
+     "top(seg[Seoul,Peanut])",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at ~40 to Seoul peanut top",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ5_R_3gZSXeLLnjuAoDA",
+    "accuracy": 0.0,
+    "answer": "37",
+    "chain": "FIND(xtick[Seoul]) → FIND(seg[Seoul,Peanut]) → PROJ(center(seg[Seoul,Peanut]) → yaxis)≈37 → SEG(top − bottom)≈5 → CONFUSED(position vs length) → ANSWER(37) ?wrong:chose-midpoint-position-over-length",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "SEG",
+     "CONFUSED",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "xtick[Seoul]",
+     "seg[Seoul,Peanut]",
+     "center(seg[Seoul,Peanut])",
+     "yaxis"
+    ],
+    "sketch_gesture": "line from y-axis at ~38 to a box around Seoul peanut segment; underline under Seoul label",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ5_R_3DwMwbbvKGck1j8",
+    "accuracy": 0.0,
+    "answer": "41",
+    "chain": "LOOK(bar[Seoul]) → PROJ(top(seg[Seoul,Peanut]) → yaxis) → READ(y)≈41 ?wrong:read-cumulative-top-not-segment-length → ANSWER(41)",
+    "ops": [
+     "LOOK",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "bar[Seoul]"
+    ],
+    "elements_sketch": [
+     "top(seg[Seoul,Peanut])",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at ~41 to Seoul",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ5_R_2ARVdxy7i72DYgW",
+    "accuracy": 0.0,
+    "answer": "49",
+    "chain": "FIND(bar[Seoul]) → PROJ(segment boundaries → yaxis)≈41, ≈44 → CONFUSED(cost at start or end of segment) → ANSWER(49) ?wrong:read-boundary-position(≈soda-top)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "CONFUSED",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[Seoul,Peanut]"
+    ],
+    "elements_sketch": [
+     "bar[Seoul]",
+     "top(seg[Seoul,Peanut])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line up the Seoul bar; two short horizontal lines from y-axis at ~44 and ~41",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ5_R_1mg5BeiiV66yolL",
+    "accuracy": 0.0,
+    "answer": "40",
+    "chain": "FIND(bar[Seoul]) → PROJ(top(seg[Seoul,Peanut]) → yaxis) → READ(y)≈40 ?wrong:read-cumulative-top-not-segment-length → ANSWER(40)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[Seoul,Peanut]"
+    ],
+    "elements_sketch": [
+     "bar[Seoul]",
+     "top(seg[Seoul,Peanut])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line up the Seoul bar to peanut top and across to y-axis at ~40",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ5_R_Uyc5ozKwAykkAiR",
+    "accuracy": 0.0,
+    "answer": "41",
+    "chain": "PROJ(top(seg[Seoul,Peanut]) → yaxis) → MAP(top → highest possible price) ?wrong:read-cumulative-top-not-segment-length → READ(y)≈41 → ANSWER(41)",
+    "ops": [
+     "PROJ",
+     "MAP",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(seg[Seoul,Peanut])",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at ~41 to Seoul",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ5_R_xc1B7hqJfIecigp",
+    "accuracy": 0.0,
+    "answer": "11",
+    "chain": "READ(top(bar[Seoul]), y)=58 → MAP(58 → 100%) → READ(len(seg[Seoul,Peanut]))≈7 → PCT(7, 58)≈12% ?wrong:reported-percent-share-not-$-cost → ANSWER(11)",
+    "ops": [
+     "READ",
+     "MAP",
+     "READ",
+     "PCT",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "top(bar[Seoul])",
+     "seg[Seoul,Peanut]",
+     "annot[58-100%]",
+     "annot[7 out of 58]"
+    ],
+    "sketch_gesture": "tick at Seoul bar top; written \"58 - 100%\", \"7\" near the peanut segment and \"7 out of 58 = ...%\"",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ5_R_1Ea5ftRdqVjV65x",
+    "accuracy": 0.0,
+    "answer": "40",
+    "chain": "FIND(seg[Seoul,Peanut] | color[purple]) → AVG(seg[Seoul,Peanut] position)≈40 ?wrong:averaged-position-not-length → ANSWER(40)",
+    "ops": [
+     "FIND",
+     "AVG",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color[purple]"
+    ],
+    "elements_sketch": [
+     "seg[Seoul,Peanut]"
+    ],
+    "sketch_gesture": "circle around Seoul peanut segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ5_R_1rjN4TGyxMk2oDq",
+    "accuracy": 0.0,
+    "answer": "41",
+    "chain": "FIND(seg[Seoul,Peanut]) → READ(top(seg[Seoul,Peanut]), y)≈41 ?wrong:read-cumulative-top-not-segment-length → DOUBT(accuracy) → ANSWER(41)",
+    "ops": [
+     "FIND",
+     "READ",
+     "DOUBT",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "seg[Seoul,Peanut]"
+    ],
+    "sketch_gesture": "D-shaped outline around Seoul peanut segment",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ5_R_3knQAl7GyjqPd14",
+    "accuracy": 0.0,
+    "answer": "35",
+    "chain": "FIND(bar[Seoul]) → PROJ(bottom(seg[Seoul,Peanut]) → yaxis)=35 → MAP(bottom → minimum cost) ?wrong:read-position-not-length → ANSWER(35)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "MAP",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "seg[Seoul,Peanut]"
+    ],
+    "elements_sketch": [
+     "bar[Seoul]",
+     "bottom(seg[Seoul,Peanut])",
+     "yaxis"
+    ],
+    "sketch_gesture": "line from Seoul x-axis up to peanut bottom (~35) then arrow left to y-axis at 35",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ5_R_PN8Fm084aWGMILf",
+    "accuracy": 0.0,
+    "answer": "41",
+    "chain": "LOOK(color) → FIND(bar[Seoul]) → PROJ(top(seg[Seoul,Peanut]) → yaxis) → READ(y)≈41 ?wrong:read-cumulative-top-not-segment-length → ANSWER(41)",
+    "ops": [
+     "LOOK",
+     "FIND",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "bar[Seoul]",
+     "top(seg[Seoul,Peanut])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line up the Seoul bar to peanut top, then across to y-axis at ~40.5",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ5_R_2AQYp4GVL23l9aY",
+    "accuracy": 0.0,
+    "answer": "42",
+    "chain": "FIND(top(seg[Seoul,Peanut])) → PROJ(top → yaxis) → READ(y)≈42 ?wrong:read-cumulative-top-not-segment-length → ANSWER(42)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "top(seg[Seoul,Peanut])"
+    ],
+    "elements_sketch": [
+     "top(seg[Seoul,Peanut])",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at ~41.5 to Seoul peanut top",
+    "source": "both"
+   },
+   {
+    "trial_id": "SBQ5_R_1FtyDyJ5x9l9fws",
+    "accuracy": 0.0,
+    "answer": "41",
+    "chain": "FIND(bar[Seoul]) → PROJ(top(seg[Seoul,Peanut]) → yaxis) ?wrong:read-cumulative-top-not-segment-length → READ(y)≈41 → ANSWER(41)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "color[blue] (misnamed)",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "bar[Seoul]",
+     "top(seg[Seoul,Peanut])",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line up the Seoul bar to ~41 and horizontal line across to y-axis",
+    "source": "both"
+   }
+  ]
+ }
+}

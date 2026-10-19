@@ -1,0 +1,4048 @@
+{
+ "BuCQ2": {
+  "qid": "BuCQ2",
+  "chart": "BuC",
+  "task": "determine_range",
+  "question": "What is the range of metro system lengths  in the data shown in this chart?",
+  "reference_chain": "ARGMAX({bubble[*]}, y)=bubble[N.Y.C] → PROJ(center(bubble[N.Y.C]) → yaxis) → READ(y)≈458 → ARGMIN({bubble[*]}, y)=bubble[Mexico City] → PROJ(center(bubble[Mexico City]) → yaxis) → READ(y)≈163 → RANGE(163,458) → ANSWER(163–458)",
+  "notes": "The dominant strategy (16/22) was to read the y-axis end ticks (500 and 150) as the data range: the sketches overwhelmingly circle or trace the axis limits rather than any bubble, so the axis extent was confused with the data extent. Only 4 participants projected from the extreme bubbles (N.Y.C top, Mexico City bottom) to the y-axis, and one picked the right extremes but the wrong axis (stations). Note that all 22 trials are scored 0, including the data-extent answers 160–460 / 170–460 that fall within tolerance; this looks like a lower/upper field-order issue in the scoring (one participant flags the inverted labels), so accuracy here is unreliable.",
+  "new_symbols": {
+   "READ(yaxis extent)": "READ(yaxis extent)=a..b — reading the axis span itself (first/last tick) as a value pair, typically shown by tracing the whole axis"
+  },
+  "strategies": [
+   {
+    "chain": "READ(ytick[max])=500 → READ(ytick[min])=150 → RANGE(150,500) ?wrong:axis-extent-not-data-extent  [axis end-ticks taken as data range; via LOOK(yaxis)/LOOK(ytitle)/GIST]",
+    "n": 14,
+    "n_correct": 0,
+    "n_incorrect": 14,
+    "quote": "I just looked at the y axis",
+    "trial_ids": [
+     "BuCQ2_R_yDE3uwv04ZnHOpP",
+     "BuCQ2_R_2YFI0HJHbxlYEle",
+     "BuCQ2_R_1CfNOq4BP1ODnXy",
+     "BuCQ2_R_t0CD8Sjo20owQE1",
+     "BuCQ2_R_2zbWL29UVPi0v1e",
+     "BuCQ2_R_2XnbILPqlz7EVfh",
+     "BuCQ2_R_vYxQQ6kbWuIPPSV",
+     "BuCQ2_R_31TW6MZyafbLjOs",
+     "BuCQ2_R_bdrkvkZgo0WJVGV",
+     "BuCQ2_R_xsaKUVdTdetngd3",
+     "BuCQ2_R_1GH7NAokHW4iM4G",
+     "BuCQ2_R_3knQAl7GyjqPd14",
+     "BuCQ2_R_2AQYp4GVL23l9aY",
+     "BuCQ2_R_2SozfrY7GG4R8qB"
+    ]
+   },
+   {
+    "chain": "ARGMAX/ARGMIN({bubble[*]}, y)=N.Y.C/Mexico City → PROJ(→ yaxis) → READ(y)≈460/≈160 → RANGE(160,460)  [data extent; scored 0 in data]",
+    "n": 3,
+    "n_correct": 0,
+    "n_incorrect": 3,
+    "quote": "I have only looked at the y axis and selected the lowest and the highest point.",
+    "trial_ids": [
+     "BuCQ2_R_VI12BPzRmJrIXVn",
+     "BuCQ2_R_O9Xc4cu0X7El0Ep",
+     "BuCQ2_R_2ZCWA6Wf2jsOGIb"
+    ]
+   },
+   {
+    "chain": "READ(yaxis extent) (traced whole axis) → RANGE(150,500) ?wrong:axis-extent-not-data-extent",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "we just read the y axis",
+    "trial_ids": [
+     "BuCQ2_R_3HjF7OuUrwLsqvT",
+     "BuCQ2_R_3hokieevT5vHr8Y"
+    ]
+   },
+   {
+    "chain": "ANSWER(150–500) ?wrong:axis-extent → FIX(→ data extent via PROJ(N.Y.C, Mexico City → yaxis)) → RANGE(155,455)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "actually i made a mistake its between 155 and 455",
+    "trial_ids": [
+     "BuCQ2_R_Uyc5ozKwAykkAiR"
+    ]
+   },
+   {
+    "chain": "FIND(bubble[Shanghai], bubble[Mexico City]) → PROJ(→ xaxis) → READ(x)≈750/≈200 ?wrong:wrong-axis(stations-not-length) → RANGE(200,750)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "I looked at the number of stations",
+    "trial_ids": [
+     "BuCQ2_R_1i58c2WHUP6VpcD"
+    ]
+   },
+   {
+    "chain": "∅-ish: RANGE(150,500)? ?wrong → CONFUSED(lower vs upper)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "sorry, I made mistakes in identifying lower and upper range",
+    "trial_ids": [
+     "BuCQ2_R_2tA4SBEuaVuTjvn"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "BuCQ2_R_yDE3uwv04ZnHOpP",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ2_4": "500",
+     "BuCQ2_5": "150"
+    },
+    "chain": "LOOK(yaxis) → READ(ytick[500])=500 → READ(ytick[150])=150 → RANGE(150,500) ?wrong:axis-extent-not-data-extent → ANSWER(150–500)",
+    "ops": [
+     "LOOK",
+     "READ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "ytick[500]",
+     "ytick[150]"
+    ],
+    "sketch_gesture": "scribbles over y tick labels 500 and 150",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ2_R_3HjF7OuUrwLsqvT",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ2_4": "500",
+     "BuCQ2_5": "150"
+    },
+    "chain": "LOOK(yaxis) → READ(yaxis extent)=150..500 → RANGE(150,500) ?wrong:axis-extent-not-data-extent → ANSWER(150–500)",
+    "ops": [
+     "LOOK",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line traced along whole y-axis from 500 to 150",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ2_R_2YFI0HJHbxlYEle",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ2_4": "500",
+     "BuCQ2_5": "150"
+    },
+    "chain": "READ(ytick[500])=500 → READ(ytick[150])=150 → DOUBT(data beyond axis) → KNOW(assume axis limits = data min/max) → RANGE(150,500) ?wrong:axis-extent-not-data-extent → ANSWER(150–500)",
+    "ops": [
+     "READ",
+     "READ",
+     "DOUBT",
+     "KNOW",
+     "RANGE"
+    ],
+    "elements_text": [
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "ytick[500]",
+     "ytick[150]"
+    ],
+    "sketch_gesture": "circles on y tick labels 500 and 150",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ2_R_1i58c2WHUP6VpcD",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ2_4": "750",
+     "BuCQ2_5": "200"
+    },
+    "chain": "LOOK(xtitle) ?wrong:wrong-axis(stations-not-length) → FIND(bubble[Shanghai]) → PROJ(bubble[Shanghai] → xaxis) → READ(x)≈750 → FIND(bubble[Mexico City]) → PROJ(→ xaxis) → READ(x)≈200 → RANGE(200,750) → ANSWER(200–750)",
+    "ops": [
+     "LOOK",
+     "FIND",
+     "PROJ",
+     "READ",
+     "FIND",
+     "PROJ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [
+     "xtitle"
+    ],
+    "elements_sketch": [
+     "bubble[Shanghai]",
+     "bubble[Mexico City]",
+     "xtick[750]",
+     "xtick[200]"
+    ],
+    "sketch_gesture": "vertical line from Shanghai bubble down to x-axis ~750; short tick from Mexico City bubble to x-axis ~200",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ2_R_1CfNOq4BP1ODnXy",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ2_4": "500",
+     "BuCQ2_5": "150"
+    },
+    "chain": "LOOK(ytitle) → LOOK(yaxis) → READ(ytick[500])=500 → READ(ytick[150])=150 → RANGE(150,500) ?wrong:axis-extent-not-data-extent → ANSWER(150–500)",
+    "ops": [
+     "LOOK",
+     "LOOK",
+     "READ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [
+     "ytitle"
+    ],
+    "elements_sketch": [
+     "yaxis",
+     "ytitle"
+    ],
+    "sketch_gesture": "tall rectangle enclosing the y-axis ticks and title",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ2_R_t0CD8Sjo20owQE1",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ2_4": "500",
+     "BuCQ2_5": "150"
+    },
+    "chain": "LOOK(ytitle) → LOOK(yaxis) → READ(ytick[500])=500 → READ(ytick[150])=150 → RANGE(150,500) ?wrong:axis-extent-not-data-extent → ANSWER(150–500)",
+    "ops": [
+     "LOOK",
+     "LOOK",
+     "READ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [
+     "ytitle",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "ytick[500]",
+     "ytick[150]"
+    ],
+    "sketch_gesture": "circles on y tick labels 500 and 150",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ2_R_2zbWL29UVPi0v1e",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ2_4": "500",
+     "BuCQ2_5": "150"
+    },
+    "chain": "LOOK(ytitle) → READ(ytick[500])=500 → READ(ytick[150])=150 → RANGE(150,500) ?wrong:axis-extent-not-data-extent → ANSWER(150–500)",
+    "ops": [
+     "LOOK",
+     "READ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [
+     "ytitle",
+     "xtitle"
+    ],
+    "elements_sketch": [
+     "ytick[500]",
+     "ytick[150]",
+     "ytitle"
+    ],
+    "sketch_gesture": "circles on y tick labels 500 and 150, small stroke on y-axis title",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ2_R_2XnbILPqlz7EVfh",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ2_4": "500",
+     "BuCQ2_5": "150"
+    },
+    "chain": "LOOK(yaxis) → MAX/MIN({ytick[*]}) → READ(ytick[500])=500 → READ(ytick[150])=150 → RANGE(150,500) ?wrong:axis-extent-not-data-extent → ANSWER(150–500)",
+    "ops": [
+     "LOOK",
+     "MAX/MIN",
+     "READ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "ytick[500]",
+     "ytick[150]"
+    ],
+    "sketch_gesture": "circles on y tick labels 500 and 150",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ2_R_vYxQQ6kbWuIPPSV",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ2_4": "500",
+     "BuCQ2_5": "150"
+    },
+    "chain": "GIST(chart) → READ(ytick[500])=500 → READ(ytick[150])=150 → RANGE(150,500) ?wrong:axis-extent-not-data-extent → ANSWER(150–500)",
+    "ops": [
+     "GIST",
+     "READ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "ytick[500]",
+     "ytick[150]"
+    ],
+    "sketch_gesture": "arrows pointing at y tick labels 500 and 150",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ2_R_31TW6MZyafbLjOs",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ2_4": "500",
+     "BuCQ2_5": "150"
+    },
+    "chain": "GIST(chart) → READ(ytick[500])=500 → READ(ytick[150])=150 → RANGE(150,500) ?wrong:axis-extent-not-data-extent → ANSWER(150–500)",
+    "ops": [
+     "GIST",
+     "READ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "ytick[500]",
+     "ytick[150]"
+    ],
+    "sketch_gesture": "loops around y tick labels 500 and 150",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ2_R_2tA4SBEuaVuTjvn",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ2_4": "500",
+     "BuCQ2_5": "150"
+    },
+    "chain": "RANGE(150,500)? ?wrong:axis-extent-not-data-extent → CONFUSED(lower vs upper) → ANSWER(150–500)",
+    "ops": [
+     "RANGE",
+     "CONFUSED"
+    ],
+    "elements_text": [],
+    "elements_sketch": [],
+    "sketch_gesture": "blank (stray dot)",
+    "source": "text"
+   },
+   {
+    "trial_id": "BuCQ2_R_VI12BPzRmJrIXVn",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ2_4": "160",
+     "BuCQ2_5": "460"
+    },
+    "chain": "LOOK(yaxis) → ARGMAX({bubble[*]}, y)=bubble[N.Y.C] → PROJ(bubble[N.Y.C] → yaxis) → READ(y)≈460 → ARGMIN({bubble[*]}, y)=bubble[Mexico City] → PROJ(bubble[Mexico City] → yaxis) → READ(y)≈160 → RANGE(160,460) → ANSWER(160–460)",
+    "ops": [
+     "LOOK",
+     "ARGMAX",
+     "PROJ",
+     "READ",
+     "ARGMIN",
+     "PROJ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [
+     "yaxis",
+     "pt[highest]",
+     "pt[lowest]"
+    ],
+    "elements_sketch": [
+     "bubble[N.Y.C]",
+     "bubble[Mexico City]",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal lines from N.Y.C bubble and Mexico City bubble left to the y-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ2_R_bdrkvkZgo0WJVGV",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ2_4": "500",
+     "BuCQ2_5": "150"
+    },
+    "chain": "READ(ytick[500])=500 → READ(ytick[150])=150 → RANGE(150,500) ?wrong:axis-extent-not-data-extent → CONFUSED(lower/upper field order) → ANSWER(150–500)",
+    "ops": [
+     "READ",
+     "READ",
+     "RANGE",
+     "CONFUSED"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "ytick[500]",
+     "ytick[150]"
+    ],
+    "sketch_gesture": "circles on y tick labels 500 and 150",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "BuCQ2_R_xsaKUVdTdetngd3",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ2_4": "500",
+     "BuCQ2_5": "150"
+    },
+    "chain": "READ(grid[y=500])=500 → READ(grid[y=150])=150 → RANGE(150,500) ?wrong:axis-extent-not-data-extent → ANSWER(150–500)",
+    "ops": [
+     "READ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "grid[y=500]",
+     "grid[y=150]"
+    ],
+    "sketch_gesture": "horizontal lines traced along the top (500) and bottom (150) chart borders",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ2_R_1GH7NAokHW4iM4G",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ2_4": "500",
+     "BuCQ2_5": "150"
+    },
+    "chain": "LOOK(ytitle) → MAX/MIN({ytick[*]}) → READ(ytick[500])=500 → READ(ytick[150])=150 → RANGE(150,500) ?wrong:axis-extent-not-data-extent → ANSWER(150–500)",
+    "ops": [
+     "LOOK",
+     "MAX/MIN",
+     "READ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [
+     "ytitle"
+    ],
+    "elements_sketch": [
+     "ytick[500]",
+     "ytick[150]"
+    ],
+    "sketch_gesture": "circles on y tick labels 500 and 150",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ2_R_Uyc5ozKwAykkAiR",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ2_4": "500",
+     "BuCQ2_5": "150"
+    },
+    "chain": "ANSWER(150–500) ?wrong:axis-extent-not-data-extent → FIX(→ data extent) → ARGMAX({bubble[*]}, y)=bubble[N.Y.C] → PROJ(bubble[N.Y.C] → yaxis) → READ(y)≈455 → ARGMIN({bubble[*]}, y)=bubble[Mexico City] → PROJ(bubble[Mexico City] → yaxis) → READ(y)≈155 → RANGE(155,455)",
+    "ops": [
+     "FIX",
+     "ARGMAX",
+     "PROJ",
+     "READ",
+     "ARGMIN",
+     "PROJ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bubble[N.Y.C]",
+     "bubble[Mexico City]",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal lines from N.Y.C and Mexico City bubbles left to the y-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ2_R_3knQAl7GyjqPd14",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ2_4": "500",
+     "BuCQ2_5": "150"
+    },
+    "chain": "LOOK(ytitle) → LOOK(yaxis) → MAX/MIN({ytick[*]}) → READ(ytick[500])=500 → READ(ytick[150])=150 → RANGE(150,500) ?wrong:axis-extent-not-data-extent → ANSWER(150–500)",
+    "ops": [
+     "LOOK",
+     "LOOK",
+     "MAX/MIN",
+     "READ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "yaxis",
+     "ytick[500]",
+     "ytick[150]",
+     "ytick[300]",
+     "ytitle"
+    ],
+    "sketch_gesture": "vertical line along y-axis with arrowheads at 500 and 150, extra marks at 300 and along the y-title",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "BuCQ2_R_O9Xc4cu0X7El0Ep",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ2_4": "170",
+     "BuCQ2_5": "460"
+    },
+    "chain": "ARGMIN({bubble[*]}, y)=bubble[Mexico City] → PROJ(bubble[Mexico City] → yaxis) → READ(y)≈170 → ARGMAX({bubble[*]}, y)=bubble[N.Y.C] → PROJ(bubble[N.Y.C] → yaxis) → READ(y)≈460 → RANGE(170,460) → ANSWER(170–460)",
+    "ops": [
+     "ARGMIN",
+     "PROJ",
+     "READ",
+     "ARGMAX",
+     "PROJ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [
+     "pt[lowest]",
+     "label[city]",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "bubble[N.Y.C]",
+     "bubble[Mexico City]",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal lines from N.Y.C and Mexico City bubbles left to the y-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ2_R_2ZCWA6Wf2jsOGIb",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ2_4": "160",
+     "BuCQ2_5": "460"
+    },
+    "chain": "ARGMAX({bubble[*]}, y)=bubble[N.Y.C] → PROJ(bubble[N.Y.C] → yaxis) → READ(y)≈460 → ARGMIN({bubble[*]}, y)=bubble[Mexico City] → PROJ(bubble[Mexico City] → yaxis) → READ(y)≈160 → RANGE(160,460) → CONFUSED(how to read chart) → ANSWER(160–460)",
+    "ops": [
+     "ARGMAX",
+     "PROJ",
+     "READ",
+     "ARGMIN",
+     "PROJ",
+     "READ",
+     "RANGE",
+     "CONFUSED"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bubble[N.Y.C]",
+     "bubble[Mexico City]",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal lines from N.Y.C and Mexico City bubbles to y-axis, plus vertical line from N.Y.C down to x-axis at ~440",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "BuCQ2_R_2AQYp4GVL23l9aY",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ2_4": "500",
+     "BuCQ2_5": "150"
+    },
+    "chain": "MAX/MIN(yaxis) → READ(ytick[500])=500 → READ(ytick[150])=150 → RANGE(150,500) ?wrong:axis-extent-not-data-extent → ANSWER(150–500)",
+    "ops": [
+     "MAX/MIN",
+     "READ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "yaxis",
+     "ytick[500]",
+     "ytick[150]"
+    ],
+    "sketch_gesture": "wavy vertical line traced along y-axis from 500 to 150",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ2_R_3hokieevT5vHr8Y",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ2_4": "500",
+     "BuCQ2_5": "150"
+    },
+    "chain": "READ(yaxis extent)=150..500 → RANGE(150,500) ?wrong:axis-extent-not-data-extent → ANSWER(150–500)",
+    "ops": [
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "yaxis",
+     "ytick[500]",
+     "ytick[150]"
+    ],
+    "sketch_gesture": "double-headed arrow along the y-axis from 150 to 500",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "BuCQ2_R_2SozfrY7GG4R8qB",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ2_4": "500",
+     "BuCQ2_5": "150"
+    },
+    "chain": "LOOK(yaxis) → READ(ytick[500])=500 → READ(ytick[150])=150 → RANGE(150,500) ?wrong:axis-extent-not-data-extent → ANSWER(150–500)",
+    "ops": [
+     "LOOK",
+     "READ",
+     "READ",
+     "RANGE"
+    ],
+    "elements_text": [
+     "ytick[top]",
+     "ytick[bottom]"
+    ],
+    "elements_sketch": [
+     "ytick[500]",
+     "ytick[150]"
+    ],
+    "sketch_gesture": "large circles around y tick labels 500 and 150",
+    "source": "both"
+   }
+  ]
+ },
+ "BuCQ3": {
+  "qid": "BuCQ3",
+  "chart": "BuC",
+  "task": "make_comparison",
+  "question": "Tokyo has a bigger ridership than Guangzhow. True or False?",
+  "reference_chain": "MAP(size(bubble) → ridership | legend) → FIND(bubble[Tokyo] | label[Tokyo]) → FIND(bubble[Guangzhow] | label[Guangzhow]) → CMPvis(size(bubble[Tokyo]) > size(bubble[Guangzhow])) → (optional READ via legend: ≈3.5 vs ≈3.0) → ANSWER(True)",
+  "notes": "Nearly everyone (37/40) succeeded by comparing the two bubbles directly; the sketch is mostly two circles on Tokyo and Guangzhow. About a quarter went further and anchored each bubble to a legend circle (lines or arrows from Tokyo to 3.5 and Guangzhow to 3.0), turning the visual comparison into a value comparison. The pivotal elements are size(bubble) and the size legend. The 3 errors are not perceptual: one participant self-reported a misclick, one wrote a correct comparison but answered False, and one projected the bubbles to the x/y position axes instead of using size.",
+  "new_symbols": {
+   "area(m)": "mark part: the 2-D area of a mark, used when a participant says a bubble takes up more space",
+   "legend[v]": "a specific legend entry, here a reference circle of the size legend (legend[3.5], legend[3.0], legend[2.5])"
+  },
+  "strategies": [
+   {
+    "chain": "FIND(bubble[Tokyo]) → FIND(bubble[Guangzhow]) → CMPvis(size(Tokyo) > size(Guangzhow)) → ANSWER(True)  [direct size comparison, no legend]",
+    "n": 14,
+    "n_correct": 14,
+    "n_incorrect": 0,
+    "quote": "Size of tokyo circle is bigger than of guangzhow circle",
+    "trial_ids": [
+     "BuCQ3_R_yDE3uwv04ZnHOpP",
+     "BuCQ3_R_6AyfcLIRg3E9Cvf",
+     "BuCQ3_R_ve3Zl5hskrLWzdf",
+     "BuCQ3_R_2YFI0HJHbxlYEle",
+     "BuCQ3_R_1i58c2WHUP6VpcD",
+     "BuCQ3_R_2vhPlLuWjhQSOuF",
+     "BuCQ3_R_2dSKNTMDrpOIGb1",
+     "BuCQ3_R_2XnbILPqlz7EVfh",
+     "BuCQ3_R_2tA4SBEuaVuTjvn",
+     "BuCQ3_R_3MPZlfAYK0vAJyJ",
+     "BuCQ3_R_2t5U2hVrti4y8IC",
+     "BuCQ3_R_2Uge8H6SyoVmGK7",
+     "BuCQ3_R_Uyc5ozKwAykkAiR",
+     "BuCQ3_R_2t5Ki7bfT2GvV0H"
+    ]
+   },
+   {
+    "chain": "MAP(size(bubble) → ridership | legend) / LOOK(legend) → CMPvis(size(Tokyo) > size(Guangzhow)) → ANSWER(True)",
+    "n": 12,
+    "n_correct": 12,
+    "n_incorrect": 0,
+    "quote": "The key helped find the answer - it showed that the bigger the circle, the bigger the ridership.",
+    "trial_ids": [
+     "BuCQ3_R_3HjF7OuUrwLsqvT",
+     "BuCQ3_R_1ILTvcjG8il5ivT",
+     "BuCQ3_R_1CfNOq4BP1ODnXy",
+     "BuCQ3_R_t0CD8Sjo20owQE1",
+     "BuCQ3_R_2wNv3TVT6WyZtEv",
+     "BuCQ3_R_vHJZLdwKhmAzoLn",
+     "BuCQ3_R_2YgGlmdIRITklxf",
+     "BuCQ3_R_VI12BPzRmJrIXVn",
+     "BuCQ3_R_bdrkvkZgo0WJVGV",
+     "BuCQ3_R_O9Xc4cu0X7El0Ep",
+     "BuCQ3_R_2AQYp4GVL23l9aY",
+     "BuCQ3_R_3hokieevT5vHr8Y"
+    ]
+   },
+   {
+    "chain": "FIND(bubble) → READ(size | legend[3.5])≈3.5 (Tokyo), READ(size | legend[3.0])≈3.0 (Guangzhow) → CMP(3.5 > 3.0) → ANSWER(True)",
+    "n": 10,
+    "n_correct": 10,
+    "n_incorrect": 0,
+    "quote": "The Toyko ridership is 3.5 and Guangzhow is 3.0",
+    "trial_ids": [
+     "BuCQ3_R_2zbWL29UVPi0v1e",
+     "BuCQ3_R_rfNBQrIzVvs2tPz",
+     "BuCQ3_R_31TW6MZyafbLjOs",
+     "BuCQ3_R_1Sz5EK9PgAFUldT",
+     "BuCQ3_R_1P1APSbf9y0uGtL",
+     "BuCQ3_R_3G94sLKEDU4CAIr",
+     "BuCQ3_R_1GH7NAokHW4iM4G",
+     "BuCQ3_R_3knQAl7GyjqPd14",
+     "BuCQ3_R_2ZCWA6Wf2jsOGIb",
+     "BuCQ3_R_2SozfrY7GG4R8qB"
+    ]
+   },
+   {
+    "chain": "FIND both → PROJ(→ xaxis/yaxis) → MAP(size → ridership) → CMPvis → ANSWER(True)  [detour via position axes]",
+    "n": 1,
+    "n_correct": 1,
+    "n_incorrect": 0,
+    "quote": "drawing on the graph will make you establish the number of stations of Tokyo and Guangzhou, but the size of the circle enabled me to identify the bigger ridership",
+    "trial_ids": [
+     "BuCQ3_R_24IBNfNMWz4DNnw"
+    ]
+   },
+   {
+    "chain": "FIND both → PROJ(→ xaxis, yaxis) → ANSWER(False) ?wrong:used-position-not-size",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "nothing was confusing",
+    "trial_ids": [
+     "BuCQ3_R_xsaKUVdTdetngd3"
+    ]
+   },
+   {
+    "chain": "CMPvis(size(Guangzhow) < size(Tokyo)) → ANSWER(False) ?wrong:response-contradicts-own-comparison",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "the sixe of guangzhow is smaller than tokyo",
+    "trial_ids": [
+     "BuCQ3_R_vYxQQ6kbWuIPPSV"
+    ]
+   },
+   {
+    "chain": "LOOK(legend) → ANSWER(False) ?wrong:misclick",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "Actually I wanted to click \"True\" but I missclicked!",
+    "trial_ids": [
+     "BuCQ3_R_2QGUeAYb1lmdcHL"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "BuCQ3_R_yDE3uwv04ZnHOpP",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "FIND(bubble[Tokyo]) → FIND(bubble[Guangzhow]) → CMPvis(size(bubble[Tokyo]) > size(bubble[Guangzhow])) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bubble[Tokyo]",
+     "size(bubble[Tokyo])"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]"
+    ],
+    "sketch_gesture": "circles around Tokyo and Guangzhow bubbles",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_3HjF7OuUrwLsqvT",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "MAP(size(bubble) → ridership) → CMPvis(size(bubble[Tokyo]) > size(bubble[Guangzhow])) → ANSWER(True)",
+    "ops": [
+     "MAP",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "size(bubble[Tokyo])"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]"
+    ],
+    "sketch_gesture": "circles around Tokyo and Guangzhow bubbles",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_6AyfcLIRg3E9Cvf",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "FIND(bubble[Tokyo]) → FIND(bubble[Guangzhow]) → CMPvis(size(bubble[Tokyo]) > size(bubble[Guangzhow])) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "size(bubble[Tokyo])",
+     "size(bubble[Guangzhow])"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]",
+     "label[Guangzhow]"
+    ],
+    "sketch_gesture": "loops around Tokyo bubble and around Guangzhow bubble+label",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_ve3Zl5hskrLWzdf",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "FIND(bubble[Tokyo]) → FIND(bubble[Guangzhow]) → CMPvis(size(bubble[Tokyo]) > size(bubble[Guangzhow])) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]"
+    ],
+    "sketch_gesture": "tight circles over Tokyo and Guangzhow bubbles",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_2YFI0HJHbxlYEle",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "FIND(bubble[Tokyo]) → FIND(bubble[Guangzhow]) → CMPvis(size(bubble[Tokyo]) > size(bubble[Guangzhow])) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "size(bubble)"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]"
+    ],
+    "sketch_gesture": "circles around Tokyo and Guangzhow bubbles",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_1i58c2WHUP6VpcD",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "FIND(bubble[Tokyo]) → FIND(bubble[Guangzhow]) → CMPvis(size(bubble[Tokyo]) > size(bubble[Guangzhow])) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "size(bubble[*])"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]"
+    ],
+    "sketch_gesture": "horizontal line connecting Tokyo bubble to Guangzhow bubble",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_1ILTvcjG8il5ivT",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "LOOK(legend) → FIND(bubble[Tokyo]) → FIND(bubble[Guangzhow]) → CMPvis(size(bubble[Tokyo]) > size(bubble[Guangzhow])) → ANSWER(True)",
+    "ops": [
+     "LOOK",
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "size(bubble[*])"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]",
+     "legend[3.5]"
+    ],
+    "sketch_gesture": "single loop enclosing Tokyo and Guangzhow, with a line running up to the 3.5 legend circle",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_24IBNfNMWz4DNnw",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "FIND(bubble[Tokyo]) → FIND(bubble[Guangzhow]) → PROJ(bubble[Tokyo] → xaxis) → PROJ(bubble[Guangzhow] → xaxis) → PROJ(→ yaxis) → MAP(size(bubble) → ridership) → CMPvis(size(bubble[Tokyo]) > size(bubble[Guangzhow])) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "PROJ",
+     "MAP",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "xtitle",
+     "size(bubble[*])"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]",
+     "xaxis",
+     "yaxis"
+    ],
+    "sketch_gesture": "circles on both bubbles, arrows from each down to x-axis and a horizontal arrow to y-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_1CfNOq4BP1ODnXy",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "LOOK(chart) → CONFUSED(irrelevant info) → LOOK(legend) → CMPvis(size(bubble[Tokyo]) > size(bubble[Guangzhow])) → ANSWER(True)",
+    "ops": [
+     "LOOK",
+     "CONFUSED",
+     "LOOK",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "chart",
+     "size(bubble[*])"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]",
+     "legend"
+    ],
+    "sketch_gesture": "circles on Tokyo and Guangzhow, box around the ridership legend",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_t0CD8Sjo20owQE1",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "FIND(bubble[Tokyo]) → FIND(bubble[Guangzhow]) → LOOK(legend) → CMPvis(size(bubble[Tokyo]) > size(bubble[Guangzhow])) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "LOOK",
+     "CMPvis"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]",
+     "legend"
+    ],
+    "sketch_gesture": "circles numbered 1 (Tokyo) and 2 (Guangzhow) joined by arrow; numbers 1-3 beside legend circles",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "BuCQ3_R_2vhPlLuWjhQSOuF",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "FIND(bubble[Tokyo]) → FIND(bubble[Guangzhow]) → CMPvis(size(bubble[Tokyo]) > size(bubble[Guangzhow])) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]"
+    ],
+    "elements_sketch": [
+     "top(bubble[Tokyo])",
+     "bottom(bubble[Tokyo])",
+     "bubble[Guangzhow]"
+    ],
+    "sketch_gesture": "two horizontal lines tangent to top and bottom of Tokyo, extended across Guangzhow",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_2wNv3TVT6WyZtEv",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "MAP(size(bubble) → ridership) → FIND(bubble[Tokyo]) → FIND(bubble[Guangzhow]) → CMPvis(size(bubble[Tokyo]) > size(bubble[Guangzhow])) → ANSWER(True)",
+    "ops": [
+     "MAP",
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "size(bubble[Tokyo])"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]"
+    ],
+    "sketch_gesture": "circles over Tokyo and Guangzhow",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_2dSKNTMDrpOIGb1",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "FIND(bubble[Tokyo]) → CMPvis(size(bubble[Tokyo]) > size(bubble[Guangzhow])) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "size(bubble[Tokyo])"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]"
+    ],
+    "sketch_gesture": "loop around Tokyo (and Delhi)",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_2zbWL29UVPi0v1e",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "FIND(bubble[Tokyo]) → FIND(bubble[Guangzhow]) → READ(size(bubble[Tokyo]) | legend[3.5])≈3.5 → READ(size(bubble[Guangzhow]) | legend[3.0])≈3.0 → CMP(3.5 > 3.0) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "READ",
+     "READ",
+     "CMP"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]",
+     "legend[3.5]",
+     "legend[3.0]"
+    ],
+    "sketch_gesture": "arrows pointing at Tokyo and Guangzhow, and arrows pointing at legend circles 3.5 and 3.0",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "BuCQ3_R_vHJZLdwKhmAzoLn",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "MAP(size(bubble) → ridership | legend) → FIND(bubble[Tokyo]) → FIND(bubble[Guangzhow]) → CMPvis(size(bubble[Tokyo]) > size(bubble[Guangzhow])) → ANSWER(True)",
+    "ops": [
+     "MAP",
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "size(bubble[Tokyo])",
+     "legend"
+    ],
+    "elements_sketch": [],
+    "sketch_gesture": "blank (tiny specks)",
+    "source": "text"
+   },
+   {
+    "trial_id": "BuCQ3_R_2YgGlmdIRITklxf",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "MAP(size(bubble) → ridership | legend) → FIND(bubble[Tokyo]) → FIND(bubble[Guangzhow]) → CMPvis(size(bubble[Tokyo]) > size(bubble[Guangzhow])) → ANSWER(True)",
+    "ops": [
+     "MAP",
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "legend",
+     "size(bubble[*])"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]",
+     "legend"
+    ],
+    "sketch_gesture": "circles around Tokyo, Guangzhow and the whole legend",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_rfNBQrIzVvs2tPz",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "LOOK(size(bubble[*])) → READ(size(bubble[Tokyo]) | legend[3.5])≈3.5 → READ(size(bubble[Guangzhow]) | legend[3.0])≈3.0 → CMP(3.5 > 3.0) → ANSWER(True)",
+    "ops": [
+     "LOOK",
+     "READ",
+     "READ",
+     "CMP"
+    ],
+    "elements_text": [
+     "size(bubble[*])"
+    ],
+    "elements_sketch": [
+     "legend[3.5]",
+     "legend[3.0]",
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]"
+    ],
+    "sketch_gesture": "marks inside legend circles 3.5 and 3.0, scribbled marks next to Tokyo and Guangzhow",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_2XnbILPqlz7EVfh",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "FIND(bubble[Tokyo]) → FIND(bubble[Guangzhow]) → CMPvis(size(bubble[Tokyo]) > size(bubble[Guangzhow])) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "size(bubble[Tokyo])"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]"
+    ],
+    "sketch_gesture": "loops around Tokyo and Guangzhow",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_vYxQQ6kbWuIPPSV",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ3": "False"
+    },
+    "chain": "FIND(bubble[Guangzhow]) → LOOK(legend) → CMPvis(size(bubble[Guangzhow]) < size(bubble[Tokyo])) → ANSWER(False) ?wrong:response-contradicts-own-comparison",
+    "ops": [
+     "FIND",
+     "LOOK",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "size(bubble[Guangzhow])",
+     "bubble[Tokyo]"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]",
+     "legend[3.0]"
+    ],
+    "sketch_gesture": "word \"bigger\" with arrow to Tokyo; arrow from Guangzhow up toward the 3.0 legend circle",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_31TW6MZyafbLjOs",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "FIND(bubble[Tokyo]) → READ(size(bubble[Tokyo]) | legend[3.5])≈3.5 → FIND(bubble[Guangzhow]) → READ(size(bubble[Guangzhow]) | legend[3.0])≈3.0 → CMP(3.5 > 3.0) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "READ",
+     "FIND",
+     "READ",
+     "CMP"
+    ],
+    "elements_text": [
+     "legend"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]",
+     "legend[3.5]",
+     "legend[3.0]"
+    ],
+    "sketch_gesture": "lines from Tokyo to legend 3.5 and from Guangzhow to legend 3.0",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_2tA4SBEuaVuTjvn",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "FIND(bubble[Tokyo]) → FIND(bubble[Guangzhow]) → CMPvis(width(bubble[Tokyo]) > size(bubble[Guangzhow])) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "width(bubble[Tokyo])",
+     "width(bubble[Guangzhow])"
+    ],
+    "elements_sketch": [],
+    "sketch_gesture": "blank (tiny specks inside both bubbles)",
+    "source": "text"
+   },
+   {
+    "trial_id": "BuCQ3_R_1Sz5EK9PgAFUldT",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "FIND(bubble[Tokyo]) → READ(size(bubble[Tokyo]) | legend[3.5])≈3.5 → FIND(bubble[Guangzhow]) → READ(size(bubble[Guangzhow]) | legend[3.0])≈3.0 → CMP(3.5 > 3.0) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "READ",
+     "FIND",
+     "READ",
+     "CMP"
+    ],
+    "elements_text": [
+     "legend"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]",
+     "legend[3.5]",
+     "legend[3.0]"
+    ],
+    "sketch_gesture": "lines from Tokyo to legend 3.5 and from Guangzhow to legend 3.0/2.5",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_2QGUeAYb1lmdcHL",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ3": "False"
+    },
+    "chain": "LOOK(legend) → ANSWER(False) ?wrong:misclick(self-reported)",
+    "ops": [
+     "LOOK"
+    ],
+    "elements_text": [
+     "legend"
+    ],
+    "elements_sketch": [
+     "legend"
+    ],
+    "sketch_gesture": "box around ridership legend",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_3MPZlfAYK0vAJyJ",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "FIND(top(bubble[Tokyo])) → FIND(top(bubble[Guangzhow])) → CMPvis(size(bubble[Tokyo]) > size(bubble[Guangzhow])) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "top(bubble[Tokyo])",
+     "top(bubble[Guangzhow])"
+    ],
+    "sketch_gesture": "short horizontal bars over the tops of Tokyo and Guangzhow",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "BuCQ3_R_VI12BPzRmJrIXVn",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "FIND(bubble[Tokyo]) → FIND(bubble[Guangzhow]) → CMPvis(size(bubble[Tokyo]) > size(bubble[Guangzhow])) → LOOK(legend) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis",
+     "LOOK"
+    ],
+    "elements_text": [
+     "size(bubble[Tokyo])"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]",
+     "legend"
+    ],
+    "sketch_gesture": "\">\" sign drawn between Tokyo and Guangzhow; arrow pointing up toward legend",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_bdrkvkZgo0WJVGV",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "MAP(size(bubble) → ridership) → FIND(bubble[Tokyo]) → FIND(bubble[Guangzhow]) → CMPvis(size(bubble[Tokyo]) > size(bubble[Guangzhow])) → ANSWER(True)",
+    "ops": [
+     "MAP",
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "size(bubble[*])"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]"
+    ],
+    "sketch_gesture": "circles around Tokyo and Guangzhow",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_2t5U2hVrti4y8IC",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "FIND(bubble[Tokyo]) → CMPvis(size(bubble[Tokyo]) > size(bubble[Guangzhow])) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bubble[Tokyo]"
+    ],
+    "sketch_gesture": "loop around Tokyo bubble",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "BuCQ3_R_1P1APSbf9y0uGtL",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "FIND(bubble[Tokyo]) → READ(size(bubble[Tokyo]) | legend[3.5])≈3.5 → FIND(bubble[Guangzhow]) → READ(size(bubble[Guangzhow]) | legend[3.0])≈3.0 → CMP(3.5 > 3.0) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "READ",
+     "FIND",
+     "READ",
+     "CMP"
+    ],
+    "elements_text": [
+     "size(bubble[*])"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]",
+     "legend[3.5]",
+     "legend[3.0]"
+    ],
+    "sketch_gesture": "arrows from Tokyo to legend 3.5 and from Guangzhow to legend 3.0",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_xsaKUVdTdetngd3",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ3": "False"
+    },
+    "chain": "FIND(bubble[Tokyo]) → FIND(bubble[Guangzhow]) → PROJ(bubble[Tokyo] → xaxis)≈350 → PROJ(bubble[Guangzhow] → xaxis)≈550 → PROJ(→ yaxis)≈250 → ANSWER(False) ?wrong:used-position(stations)-not-size(ridership)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "PROJ"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]",
+     "xtick[350]",
+     "xtick[550]",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal line through Tokyo and Guangzhow to y-axis at 250, vertical lines from each down to x-axis (~350, ~550)",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "BuCQ3_R_3G94sLKEDU4CAIr",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "FIND(bubble[Tokyo]) → READ(size(bubble[Tokyo]) | legend[3.5])≈3.5 → FIND(bubble[Guangzhow]) → READ(size(bubble[Guangzhow]) | legend[3.0])≈3.0 → CMP(3.5 > 3.0) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "READ",
+     "FIND",
+     "READ",
+     "CMP"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]",
+     "legend[3.5]",
+     "legend[3.0]"
+    ],
+    "sketch_gesture": "lines from Tokyo to legend 3.5 and Guangzhow to legend 3.0, plus a line connecting Tokyo and Guangzhow",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "BuCQ3_R_2Uge8H6SyoVmGK7",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "FIND(bubble[Tokyo]) → FIND(bubble[Guangzhow]) → CMPvis(size(bubble[Tokyo]) > size(bubble[Guangzhow])) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "size(bubble[Tokyo])"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]"
+    ],
+    "sketch_gesture": "tight circles over Tokyo and Guangzhow",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_1GH7NAokHW4iM4G",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "MAP(size(bubble) → ridership | legend) → FIND(bubble[Tokyo]) → READ(size(bubble[Tokyo]) | legend[3.5])≈3.5 → FIND(bubble[Guangzhow]) → READ(size(bubble[Guangzhow]) | legend[3.0])≈3.0 → CMP(3.5 > 3.0) → ANSWER(True)",
+    "ops": [
+     "MAP",
+     "FIND",
+     "READ",
+     "FIND",
+     "READ",
+     "CMP"
+    ],
+    "elements_text": [
+     "legend",
+     "size(bubble[*])"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]",
+     "legend[3.5]",
+     "legend[3.0]"
+    ],
+    "sketch_gesture": "lines from Tokyo to legend 3.5 and Guangzhow to legend 3.0",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_Uyc5ozKwAykkAiR",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "FIND(bubble[Tokyo]) → FIND(bubble[Guangzhow]) → CMPvis(area(bubble[Tokyo]) > area(bubble[Guangzhow])) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "area(bubble[Tokyo])"
+    ],
+    "elements_sketch": [
+     "top(bubble[Tokyo])",
+     "bottom(bubble[Tokyo])",
+     "bubble[Guangzhow]"
+    ],
+    "sketch_gesture": "two horizontal lines tangent to the top and bottom of Tokyo, extended past Guangzhow",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_3knQAl7GyjqPd14",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "MAP(size(bubble) → ridership) → FIND(bubble[Tokyo]) → READ(size(bubble[Tokyo]) | legend[3.5])≈3.5 → FIND(bubble[Guangzhow]) → READ(size(bubble[Guangzhow]) | legend[3.0])≈3.0 → CMP(3.5 > 3.0) → ANSWER(True)",
+    "ops": [
+     "MAP",
+     "FIND",
+     "READ",
+     "FIND",
+     "READ",
+     "CMP"
+    ],
+    "elements_text": [
+     "size(bubble[Tokyo])"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]",
+     "legend[3.5]",
+     "legend[3.0]"
+    ],
+    "sketch_gesture": "arrows from legend 3.5 to Tokyo and legend 3.0 to Guangzhow",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_O9Xc4cu0X7El0Ep",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "MAP(size(bubble) → ridership | legend) → FIND(bubble[Tokyo]) → FIND(bubble[Guangzhow]) → CMPvis(size(bubble[Tokyo]) > size(bubble[Guangzhow])) → ANSWER(True) ",
+    "ops": [
+     "MAP",
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "size(bubble[Tokyo])",
+     "legend"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]"
+    ],
+    "sketch_gesture": "circles around Tokyo and Guangzhow joined by a line",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_2ZCWA6Wf2jsOGIb",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "FIND(bubble[Tokyo]) → READ(size(bubble[Tokyo]) | legend[3.5])≈3.5 → FIND(bubble[Guangzhow]) → READ(size(bubble[Guangzhow]) | legend[3.0])≈3.0 → CMP(3.5 > 3.0) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "READ",
+     "FIND",
+     "READ",
+     "CMP"
+    ],
+    "elements_text": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]"
+    ],
+    "sketch_gesture": "tight circles over Tokyo and Guangzhow",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_2AQYp4GVL23l9aY",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "LOOK(chart) → LOOK(legend) → CMPvis(size(bubble[Tokyo]) > size(bubble[Guangzhow])) → ANSWER(True)",
+    "ops": [
+     "LOOK",
+     "LOOK",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "chart",
+     "size(bubble[Tokyo])"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]",
+     "legend"
+    ],
+    "sketch_gesture": "circles over Tokyo, Guangzhow and around the legend",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_3hokieevT5vHr8Y",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "LOOK(legend) → CMPvis(size(bubble[Tokyo]) > size(bubble[Guangzhow])) → ANSWER(True)",
+    "ops": [
+     "LOOK",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bubble[*]"
+    ],
+    "elements_sketch": [
+     "legend"
+    ],
+    "sketch_gesture": "loop around legend circles 3.5 and 3.0",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_2SozfrY7GG4R8qB",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "FIND(bubble[Guangzhow]) → READ(size(bubble[Guangzhow]) | legend[3.0])≈3.0 → CMPvis(size(bubble[Guangzhow]) < size(bubble[Tokyo])) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "READ",
+     "CMPvis"
+    ],
+    "elements_text": [
+     "bubble[Tokyo]"
+    ],
+    "elements_sketch": [
+     "bubble[Guangzhow]",
+     "legend[3.0]"
+    ],
+    "sketch_gesture": "loop around Guangzhow bubble+label and around legend circle 3.0",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ3_R_2t5Ki7bfT2GvV0H",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ3": "True"
+    },
+    "chain": "FIND(bubble[Tokyo]) → FIND(bubble[Guangzhow]) → CMPvis(size(bubble[Tokyo]) > size(bubble[Guangzhow])) → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CMPvis"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]"
+    ],
+    "sketch_gesture": "loops around Tokyo and Guangzhow",
+    "source": "sketch"
+   }
+  ]
+ },
+ "BuCQ4": {
+  "qid": "BuCQ4",
+  "chart": "BuC",
+  "task": "find_correlation",
+  "question": "In general, the ridership of the metro system increases as the number of stations increases. True or False?",
+  "reference_chain": "MAP(size(bubble) → ridership | legend) → MAP(x → stations) → SCAN({bubble[*]} along xaxis) → CORR(x, size(bubble)) ≈ 0 (e.g. OUTLIER: bubble[Beijing] high-x small; bubble[Tokyo] low-x largest) → ANSWER(False)",
+  "notes": "This item requires relating a position channel (x = stations) to a size channel (ridership). The successful path was usually a counterexample: Beijing (far right, tiny) and Tokyo (left, largest) are the pivotal bubbles, often marked by dropping vertical lines from the bubbles to the x-axis. A smaller group scanned along x and reported no pattern. Errors came from prior-knowledge reasoning, perceiving an upward trend while dismissing exceptions, tracing a position trendline (length against stations) instead of using size, or deciding that no relation meant the question was unanswerable. Two participants reasoned correctly but said they mis-clicked True.",
+  "new_symbols": {
+   "trendline": "(spec) used for a line the participant draws through bubble positions",
+   "region[quadrants]": "a partition of the plot into regions by drawn cross-hair lines"
+  },
+  "strategies": [
+   {
+    "chain": "FIND(counterexample: bubble high-x & small, e.g. Beijing / bubble low-x & large, e.g. Tokyo) → PROJ(→ xaxis) → CMP(size vs x) → CORR≠+ → ANSWER(False)",
+    "n": 16,
+    "n_correct": 16,
+    "n_incorrect": 0,
+    "quote": "Beijing has a small bubble and is far to the right, whereas Tokyo is closer to the left (low number of stations) yet has a large bubble",
+    "trial_ids": [
+     "BuCQ4_R_3HjF7OuUrwLsqvT",
+     "BuCQ4_R_2YFI0HJHbxlYEle",
+     "BuCQ4_R_1ILTvcjG8il5ivT",
+     "BuCQ4_R_24IBNfNMWz4DNnw",
+     "BuCQ4_R_2wNv3TVT6WyZtEv",
+     "BuCQ4_R_2YgGlmdIRITklxf",
+     "BuCQ4_R_vYxQQ6kbWuIPPSV",
+     "BuCQ4_R_1Sz5EK9PgAFUldT",
+     "BuCQ4_R_2QGUeAYb1lmdcHL",
+     "BuCQ4_R_VI12BPzRmJrIXVn",
+     "BuCQ4_R_2t5U2hVrti4y8IC",
+     "BuCQ4_R_2Uge8H6SyoVmGK7",
+     "BuCQ4_R_1GH7NAokHW4iM4G",
+     "BuCQ4_R_3knQAl7GyjqPd14",
+     "BuCQ4_R_2AQYp4GVL23l9aY",
+     "BuCQ4_R_2t5Ki7bfT2GvV0H"
+    ]
+   },
+   {
+    "chain": "SCAN({bubble[*]} along xaxis) → TREND(size, x)=~/↓ → CORR=0 → ANSWER(False)",
+    "n": 6,
+    "n_correct": 6,
+    "n_incorrect": 0,
+    "quote": "there is no relation between this two, its very uneven",
+    "trial_ids": [
+     "BuCQ4_R_t0CD8Sjo20owQE1",
+     "BuCQ4_R_2vhPlLuWjhQSOuF",
+     "BuCQ4_R_2dSKNTMDrpOIGb1",
+     "BuCQ4_R_2zbWL29UVPi0v1e",
+     "BuCQ4_R_rfNBQrIzVvs2tPz",
+     "BuCQ4_R_2XnbILPqlz7EVfh"
+    ]
+   },
+   {
+    "chain": "SCAN/GROUP → CORR unclear → DOUBT → ANSWER(Not sure / Impossible) ?wrong:no-relation-read-as-unanswerable",
+    "n": 3,
+    "n_correct": 0,
+    "n_incorrect": 3,
+    "quote": "The ridership, I think does not have a patterns, that is why I am not sure",
+    "trial_ids": [
+     "BuCQ4_R_yDE3uwv04ZnHOpP",
+     "BuCQ4_R_vHJZLdwKhmAzoLn",
+     "BuCQ4_R_2ZCWA6Wf2jsOGIb"
+    ]
+   },
+   {
+    "chain": "sketch-only: FIND/PROJ a few bubbles (→ xaxis or → legend) → ANSWER(False)",
+    "n": 3,
+    "n_correct": 3,
+    "n_incorrect": 0,
+    "quote": "(no process in text)",
+    "trial_ids": [
+     "BuCQ4_R_3MPZlfAYK0vAJyJ",
+     "BuCQ4_R_xsaKUVdTdetngd3",
+     "BuCQ4_R_3G94sLKEDU4CAIr"
+    ]
+   },
+   {
+    "chain": "∅/CONFUSED → ANSWER(Not sure)",
+    "n": 3,
+    "n_correct": 0,
+    "n_incorrect": 3,
+    "quote": "I'm a bit confused by this representation",
+    "trial_ids": [
+     "BuCQ4_R_31TW6MZyafbLjOs",
+     "BuCQ4_R_2tA4SBEuaVuTjvn",
+     "BuCQ4_R_3hokieevT5vHr8Y"
+    ]
+   },
+   {
+    "chain": "GROUP({bubble: same x}) → CMPvis(size differs at same x) → CORR≠+",
+    "n": 2,
+    "n_correct": 1,
+    "n_incorrect": 1,
+    "quote": "Cities close together in number of stations but with great differences in ridership indicate that the affirmation is not true.",
+    "trial_ids": [
+     "BuCQ4_R_1CfNOq4BP1ODnXy",
+     "BuCQ4_R_O9Xc4cu0X7El0Ep"
+    ]
+   },
+   {
+    "chain": "SCAN → TREND(size, x)≠↑ → ANSWER(True) ?wrong:response-contradicts-reasoning(self-reported)",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "I just realizeth the answer should be false - size of circles does not get bigger the higher the number of stations, my bad.",
+    "trial_ids": [
+     "BuCQ4_R_6AyfcLIRg3E9Cvf",
+     "BuCQ4_R_ve3Zl5hskrLWzdf"
+    ]
+   },
+   {
+    "chain": "GIST/GROUP → TREND(size, x)=↑ ?wrong:perceived-positive-trend (exceptions dismissed) → ANSWER(True)",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "There area  few exceptions, but yeah, in general it seems like the ridership of the metro system increases",
+    "trial_ids": [
+     "BuCQ4_R_1P1APSbf9y0uGtL",
+     "BuCQ4_R_2SozfrY7GG4R8qB"
+    ]
+   },
+   {
+    "chain": "KNOW(more stations → more riders) ?wrong:prior-belief → ANSWER(True)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "the more stations you have the more people you can reach hence making the number of riders to increase",
+    "trial_ids": [
+     "BuCQ4_R_Uyc5ozKwAykkAiR"
+    ]
+   },
+   {
+    "chain": "LOOK(trendline through bubble positions) ?wrong:position-trend-not-size → DOUBT → ANSWER(Not sure)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "I wasn't quite sure of my answer",
+    "trial_ids": [
+     "BuCQ4_R_1i58c2WHUP6VpcD"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "BuCQ4_R_yDE3uwv04ZnHOpP",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ4": "Impossible to answer with this visualization."
+    },
+    "chain": "FIND({bubble[Seoul],bubble[Tokyo],bubble[Mexico City]}) → PROJ(→ xaxis) → PROJ(→ yaxis) → CORR(stations, ridership)=0 → ANSWER(Impossible) ?wrong:no-relation-read-as-unanswerable",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "CORR"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bubble[Seoul]",
+     "bubble[Tokyo]",
+     "bubble[Mexico City]",
+     "xaxis",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal lines from Seoul, Tokyo, Mexico City to y-axis and vertical lines down to x-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_3HjF7OuUrwLsqvT",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ4": "False"
+    },
+    "chain": "ARGMAX({bubble[*]}, size)=bubble[Tokyo] → CMP(x(Tokyo) < max x) → CORR(stations, ridership)≠+ → ANSWER(False)",
+    "ops": [
+     "ARGMAX",
+     "CMP",
+     "CORR"
+    ],
+    "elements_text": [
+     "size(bubble[max])",
+     "xaxis"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]"
+    ],
+    "sketch_gesture": "loop around Tokyo bubble",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_6AyfcLIRg3E9Cvf",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ4": "True"
+    },
+    "chain": "SCAN({bubble[*]} along xaxis ↑) → TREND(size(bubble), x)≠↑ → ANSWER(True) ?wrong:response-contradicts-own-reasoning(self-reported)",
+    "ops": [
+     "SCAN",
+     "TREND"
+    ],
+    "elements_text": [
+     "size(bubble[*])",
+     "xaxis"
+    ],
+    "elements_sketch": [
+     "xaxis"
+    ],
+    "sketch_gesture": "long left-to-right arrow across the lower chart (direction of increasing stations)",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_ve3Zl5hskrLWzdf",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ4": "True"
+    },
+    "chain": "SCAN({bubble[*]} along xaxis ↑) → TREND(size(bubble), x)≠↑ → ANSWER(True) ?wrong:response-contradicts-own-reasoning(self-reported)",
+    "ops": [
+     "SCAN",
+     "TREND"
+    ],
+    "elements_text": [
+     "xaxis",
+     "size(bubble[*])"
+    ],
+    "elements_sketch": [],
+    "sketch_gesture": "blank (specks)",
+    "source": "text"
+   },
+   {
+    "trial_id": "BuCQ4_R_2YFI0HJHbxlYEle",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ4": "False"
+    },
+    "chain": "FIND({bubble[Paris],bubble[Tokyo],bubble[Delhi],bubble[N.Y.C],bubble[London],bubble[Guangzhow],bubble[Beijing]}) → PROJ(each → xaxis) → CMP(size(fewer-station bubbles) > size(more-station bubbles)) → CORR≠+ → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "CMP",
+     "CORR"
+    ],
+    "elements_text": [
+     "bubble[*]",
+     "xaxis",
+     "size(bubble[*])"
+    ],
+    "elements_sketch": [
+     "bubble[Paris]",
+     "bubble[Tokyo]",
+     "bubble[Delhi]",
+     "bubble[N.Y.C]",
+     "bubble[London]",
+     "bubble[Guangzhow]",
+     "bubble[Beijing]",
+     "xaxis"
+    ],
+    "sketch_gesture": "loops on seven bubbles, each with a vertical line dropped to the x-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_1i58c2WHUP6VpcD",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ4": "I'm not sure"
+    },
+    "chain": "LOOK(trendline: bubble[Mexico City]→bubble[Tokyo]→bubble[London]→bubble[Shanghai]) ?wrong:traced-position-trend(length~stations)-not-size → DOUBT → ANSWER(Not sure)",
+    "ops": [
+     "LOOK",
+     "DOUBT"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "trendline",
+     "bubble[Mexico City]",
+     "bubble[Tokyo]",
+     "bubble[London]",
+     "bubble[Shanghai]"
+    ],
+    "sketch_gesture": "rising line drawn through Mexico City, Tokyo, London to Shanghai",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "BuCQ4_R_1ILTvcjG8il5ivT",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ4": "False"
+    },
+    "chain": "SCAN({bubble[*]}) → TREND(size(bubble), x)=~ → ARGMAX(size)=bubble[Tokyo] → ARGMIN(size)=bubble[London] → PROJ(→ xaxis) → CMP(x(Tokyo)≈315 < x(London)≈440) → CORR≠+ → ANSWER(False)",
+    "ops": [
+     "SCAN",
+     "TREND",
+     "ARGMAX",
+     "ARGMIN",
+     "PROJ",
+     "CMP",
+     "CORR"
+    ],
+    "elements_text": [
+     "size(bubble[*])",
+     "bubble[smallest]",
+     "bubble[biggest]"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[London]",
+     "xaxis"
+    ],
+    "sketch_gesture": "loops on Tokyo(+Delhi) and London with vertical lines to x-axis (~315, ~440)",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_24IBNfNMWz4DNnw",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ4": "False"
+    },
+    "chain": "FIND(bubble[Beijing]) → PROJ(bubble[Beijing] → xaxis) → READ(x)≈750 → READ(size(bubble[Beijing]) | legend)≈2.1 → CMP(2.1 small) → CORR≠+ → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "READ",
+     "READ",
+     "CMP",
+     "CORR"
+    ],
+    "elements_text": [
+     "bubble[Beijing]",
+     "xaxis",
+     "legend"
+    ],
+    "elements_sketch": [
+     "bubble[Beijing]",
+     "xtick[~730]"
+    ],
+    "sketch_gesture": "arrow from Beijing straight down to x-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_1CfNOq4BP1ODnXy",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ4": "False"
+    },
+    "chain": "GROUP({bubble: similar x}) → FIND(bubble[Tokyo],bubble[Delhi]) → FIND(bubble[Shanghai],bubble[Beijing]) → CMPvis(size differs within same x) → CORR≠+ → ANSWER(False)",
+    "ops": [
+     "GROUP",
+     "FIND",
+     "FIND",
+     "CMPvis",
+     "CORR"
+    ],
+    "elements_text": [
+     "xaxis",
+     "size(bubble[*])"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Delhi]",
+     "region[x=700–800]",
+     "bubble[Shanghai]",
+     "bubble[Beijing]"
+    ],
+    "sketch_gesture": "loop around Tokyo+Delhi; tall box over x 700–800 enclosing Shanghai and Beijing",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_t0CD8Sjo20owQE1",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ4": "False"
+    },
+    "chain": "LOOK(xaxis) → GROUP(chart by x=400, y=250 → quadrants) → SCAN(quadrants) → CORR(stations, ridership)=0 → ANSWER(False)",
+    "ops": [
+     "LOOK",
+     "GROUP",
+     "SCAN",
+     "CORR"
+    ],
+    "elements_text": [
+     "xaxis"
+    ],
+    "elements_sketch": [
+     "grid[x=400]",
+     "grid[y=250]",
+     "region[quadrants]"
+    ],
+    "sketch_gesture": "cross-hair: vertical line at x=400, horizontal arrow at y=250, quadrants numbered 1–4",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_2vhPlLuWjhQSOuF",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ4": "False"
+    },
+    "chain": "SCAN({bubble[*]} along xaxis) → TREND(size(bubble), x)=↓ → CORR≠+ → ANSWER(False)",
+    "ops": [
+     "SCAN",
+     "TREND",
+     "CORR"
+    ],
+    "elements_text": [
+     "bubble[*]",
+     "size(bubble[*])"
+    ],
+    "elements_sketch": [
+     "bubble[Paris]",
+     "bubble[Tokyo]",
+     "bubble[Delhi]",
+     "bubble[Guangzhow]",
+     "bubble[N.Y.C]",
+     "bubble[Beijing]",
+     "bubble[Seoul]",
+     "bubble[Shanghai]",
+     "xaxis"
+    ],
+    "sketch_gesture": "loops on Paris, Tokyo, Delhi, Guangzhow with lines to x-axis; arrows N.Y.C→Beijing and Seoul↔Shanghai",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_2wNv3TVT6WyZtEv",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ4": "False"
+    },
+    "chain": "ARGMAX({bubble[*]}, size)=bubble[Tokyo] → PROJ(bubble[Tokyo] → xaxis)≈300 → CMP(x(Tokyo) among lowest) → CORR≠+ → ANSWER(False)",
+    "ops": [
+     "ARGMAX",
+     "PROJ",
+     "CMP",
+     "CORR"
+    ],
+    "elements_text": [
+     "bubble[Tokyo]",
+     "xaxis"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "xaxis",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal line from Tokyo to y-axis and vertical line down to x-axis ~300",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_2dSKNTMDrpOIGb1",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ4": "False"
+    },
+    "chain": "SCAN({bubble[*]}) → FIND({bubble[N.Y.C],bubble[London],bubble[Beijing]} small, interspersed) → CORR≠+ → ANSWER(False)",
+    "ops": [
+     "SCAN",
+     "FIND",
+     "CORR"
+    ],
+    "elements_text": [
+     "bubble[small]"
+    ],
+    "elements_sketch": [
+     "bubble[N.Y.C]",
+     "bubble[London]",
+     "bubble[Beijing]"
+    ],
+    "sketch_gesture": "loops around the small N.Y.C, London and Beijing bubbles",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_2zbWL29UVPi0v1e",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ4": "False"
+    },
+    "chain": "SCAN({bubble[*]} along xaxis →right) → CORR(size(bubble), x)=0 → ANSWER(False)",
+    "ops": [
+     "SCAN",
+     "CORR"
+    ],
+    "elements_text": [
+     "size(bubble[*])",
+     "xaxis"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]"
+    ],
+    "sketch_gesture": "arrow pointing at Tokyo",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_vHJZLdwKhmAzoLn",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ4": "I'm not sure"
+    },
+    "chain": "SCAN({bubble[*]}) → GROUP(large bubbles at low x: Tokyo, Paris…) → GROUP(mid-x bubbles) → FIND(large bubble at high x: Shanghai) → DOUBT(pattern) → ANSWER(Not sure)",
+    "ops": [
+     "SCAN",
+     "GROUP",
+     "GROUP",
+     "FIND",
+     "DOUBT"
+    ],
+    "elements_text": [
+     "bubble[large]",
+     "xaxis"
+    ],
+    "elements_sketch": [
+     "bubble[Paris]",
+     "bubble[Tokyo]",
+     "bubble[Delhi]",
+     "bubble[Guangzhow]",
+     "bubble[Seoul]",
+     "bubble[Shanghai]",
+     "bubble[Beijing]"
+    ],
+    "sketch_gesture": "loop around Paris/Tokyo/Delhi/Guangzhow group; curve from Seoul to Shanghai with stroke near Beijing",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_2YgGlmdIRITklxf",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ4": "False"
+    },
+    "chain": "MAP(size(bubble) → ridership | legend) → KNOW(if true, right bubbles bigger) → FIND(bubble[Beijing]: high x, small) → FIND(bubble[Tokyo]: low x, large) → CMP → CORR≠+ → ANSWER(False)",
+    "ops": [
+     "MAP",
+     "KNOW",
+     "FIND",
+     "FIND",
+     "CMP",
+     "CORR"
+    ],
+    "elements_text": [
+     "size(bubble[*])",
+     "bubble[Beijing]",
+     "bubble[Tokyo]",
+     "xaxis"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Beijing]",
+     "legend",
+     "xtitle"
+    ],
+    "sketch_gesture": "loops on Tokyo, Beijing and the legend; underline/bracket on the x-axis title",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_rfNBQrIzVvs2tPz",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ4": "False"
+    },
+    "chain": "SCAN({bubble[*]}) → CORR(stations, ridership)=0 (\"very uneven\") → ANSWER(False)",
+    "ops": [
+     "SCAN",
+     "CORR"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bubble[N.Y.C]",
+     "bubble[London]",
+     "bubble[Beijing]",
+     "bubble[Tokyo]",
+     "bubble[Mexico City]"
+    ],
+    "sketch_gesture": "small tick marks beside N.Y.C, London, Beijing, Tokyo and Mexico City",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_2XnbILPqlz7EVfh",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ4": "False"
+    },
+    "chain": "KNOW(if true, circles smaller on right ?wrong:inverted-expectation) → SCAN({bubble[*]} along xaxis) → CORR=0 → ANSWER(False)",
+    "ops": [
+     "KNOW",
+     "SCAN",
+     "CORR"
+    ],
+    "elements_text": [
+     "bubble[*]",
+     "xaxis"
+    ],
+    "elements_sketch": [
+     "xaxis"
+    ],
+    "sketch_gesture": "left-to-right arrow across the chart at y≈290",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_vYxQQ6kbWuIPPSV",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ4": "False"
+    },
+    "chain": "FIND(bubble[Mexico City]) → READ(x)≈200 → FIND(bubble[London]) → CMP(x(London) > x(Mexico City)) → CMPvis(size(Mexico City) > size(London)) → CORR≠+ → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "READ",
+     "FIND",
+     "CMP",
+     "CMPvis",
+     "CORR"
+    ],
+    "elements_text": [
+     "bubble[Mexico City]",
+     "bubble[London]"
+    ],
+    "elements_sketch": [
+     "bubble[N.Y.C]",
+     "bubble[Paris]",
+     "bubble[London]",
+     "bubble[Tokyo]",
+     "bubble[Mexico City]"
+    ],
+    "sketch_gesture": "loops around N.Y.C, Paris, London, Tokyo, Mexico City",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_31TW6MZyafbLjOs",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ4": "I'm not sure"
+    },
+    "chain": "FIND(bubble[N.Y.C]→bubble[Seoul]) → FIND(bubble[Paris]→bubble[London]) → CONFUSED → ANSWER(Not sure)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CONFUSED"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bubble[N.Y.C]",
+     "bubble[Seoul]",
+     "bubble[Paris]",
+     "bubble[London]"
+    ],
+    "sketch_gesture": "lines connecting N.Y.C to Seoul and Paris to London",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_2tA4SBEuaVuTjvn",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ4": "I'm not sure"
+    },
+    "chain": "CONFUSED(representation) → ANSWER(Not sure)",
+    "ops": [
+     "CONFUSED"
+    ],
+    "elements_text": [],
+    "elements_sketch": [],
+    "sketch_gesture": "blank",
+    "source": "text"
+   },
+   {
+    "trial_id": "BuCQ4_R_1Sz5EK9PgAFUldT",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ4": "False"
+    },
+    "chain": "FIND(bubble[Tokyo]) → READ(size | legend[3.5])≈3.5 → PROJ(→ xaxis)≈300 → FIND(bubble[Guangzhow]/bubble[Seoul]) → READ(size | legend[3.0])≈3.0 → PROJ(→ xaxis)≈550 → CMP(more stations, less ridership) → CORR≠+ → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "READ",
+     "PROJ",
+     "FIND",
+     "READ",
+     "PROJ",
+     "CMP",
+     "CORR"
+    ],
+    "elements_text": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Seoul]",
+     "legend[3.5]",
+     "legend[3.0]",
+     "xaxis"
+    ],
+    "sketch_gesture": "lines from Tokyo to legend 3.5 and Seoul to legend 3.0; vertical lines from Tokyo and Seoul/Guangzhow to x-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_2QGUeAYb1lmdcHL",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ4": "False"
+    },
+    "chain": "FIND({bubble[Paris],bubble[Tokyo]}: few stations, large) → FIND({bubble[Beijing],bubble[N.Y.C],bubble[London]}: many stations, small) → PROJ(each → xaxis) → CMP → CORR≠+ → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "CMP",
+     "CORR"
+    ],
+    "elements_text": [
+     "bubble[Paris]",
+     "bubble[Tokyo]",
+     "bubble[Beijing]",
+     "bubble[N.Y.C]",
+     "bubble[London]"
+    ],
+    "elements_sketch": [
+     "bubble[Paris]",
+     "bubble[Tokyo]",
+     "bubble[N.Y.C]",
+     "bubble[London]",
+     "bubble[Beijing]",
+     "xaxis"
+    ],
+    "sketch_gesture": "loops on Paris, Tokyo, N.Y.C, London, Beijing with vertical lines dropped to the x-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_3MPZlfAYK0vAJyJ",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ4": "False"
+    },
+    "chain": "FIND(bubble[Beijing]) → ANSWER(False)",
+    "ops": [
+     "FIND"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bubble[Beijing]"
+    ],
+    "sketch_gesture": "short stroke under Beijing",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "BuCQ4_R_VI12BPzRmJrIXVn",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ4": "False"
+    },
+    "chain": "ARGMAX({bubble[*]}, size)=bubble[Tokyo] → READ(x(Tokyo))≈300–350 → CMP(low x) → CORR≠+ → ANSWER(False)",
+    "ops": [
+     "ARGMAX",
+     "READ",
+     "CMP",
+     "CORR"
+    ],
+    "elements_text": [
+     "bubble[Tokyo]"
+    ],
+    "elements_sketch": [
+     "bubble[Paris]",
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]",
+     "bubble[Moscow]",
+     "bubble[Beijing]"
+    ],
+    "sketch_gesture": "loops around Paris, Tokyo, Guangzhow, Moscow, Beijing",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_2t5U2hVrti4y8IC",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ4": "False"
+    },
+    "chain": "FIND(bubble[Tokyo]) → FIND(bubble[Beijing]) → CONFUSED → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "CONFUSED"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Beijing]"
+    ],
+    "sketch_gesture": "loops around Tokyo(+Delhi) and Beijing",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "BuCQ4_R_1P1APSbf9y0uGtL",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ4": "True"
+    },
+    "chain": "SCAN({bubble[*]} along xaxis) → GIST(chart) → TREND(size(bubble), x)=↑ \"few exceptions\" ?wrong:perceived-positive-trend → ANSWER(True)",
+    "ops": [
+     "SCAN",
+     "GIST",
+     "TREND"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "xaxis"
+    ],
+    "sketch_gesture": "left-to-right arrow along the bottom of the plot",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_xsaKUVdTdetngd3",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ4": "False"
+    },
+    "chain": "FIND(bubble[Paris]) → PROJ(→ xaxis)≈200 → FIND(bubble[Moscow]) → PROJ(→ xaxis)≈400 → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "FIND",
+     "PROJ"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bubble[Paris]",
+     "bubble[Moscow]",
+     "xtick[200]",
+     "xtick[400]"
+    ],
+    "sketch_gesture": "vertical lines from Paris and Moscow down to x-axis (~200, ~400)",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "BuCQ4_R_3G94sLKEDU4CAIr",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ4": "False"
+    },
+    "chain": "FIND(bubble[N.Y.C]) → READ(size | legend[3.5]) → FIND(bubble[Seoul]) → READ(size | legend[3.0]) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "READ",
+     "FIND",
+     "READ"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bubble[N.Y.C]",
+     "bubble[Seoul]",
+     "legend[3.5]",
+     "legend[3.0]"
+    ],
+    "sketch_gesture": "lines from N.Y.C to legend 3.5 and from Seoul to legend 3.0",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "BuCQ4_R_2Uge8H6SyoVmGK7",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ4": "False"
+    },
+    "chain": "FIND(bubble[Beijing]) → PROJ(→ xaxis) → READ(x)≈740 → CMPvis(size small) → CORR≠+ → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "READ",
+     "CMPvis",
+     "CORR"
+    ],
+    "elements_text": [
+     "bubble[Beijing]",
+     "xtick[740]"
+    ],
+    "elements_sketch": [
+     "bubble[Beijing]",
+     "xaxis"
+    ],
+    "sketch_gesture": "vertical line from Beijing down to x-axis ~740",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_1GH7NAokHW4iM4G",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ4": "False"
+    },
+    "chain": "FIND(bubble[Tokyo]) → PROJ(→ xaxis)≈300 → FIND(bubble[Beijing]) → PROJ(→ xaxis)≈740 → CMP(size vs x) → CORR≠+ → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "FIND",
+     "PROJ",
+     "CMP",
+     "CORR"
+    ],
+    "elements_text": [
+     "size(bubble[*])",
+     "xaxis"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Beijing]",
+     "xaxis"
+    ],
+    "sketch_gesture": "loops on Tokyo and Beijing, each with a vertical line to the x-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_Uyc5ozKwAykkAiR",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ4": "True"
+    },
+    "chain": "KNOW(more stations → more riders) ?wrong:prior-belief-not-data → ANSWER(True)",
+    "ops": [
+     "KNOW"
+    ],
+    "elements_text": [],
+    "elements_sketch": [],
+    "sketch_gesture": "blank (speck)",
+    "source": "text"
+   },
+   {
+    "trial_id": "BuCQ4_R_3knQAl7GyjqPd14",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ4": "False"
+    },
+    "chain": "FIND(bubble[Beijing]: many stations, small) → FIND(bubble[Tokyo]: fewer stations, largest) → FIND({bubble[London],bubble[N.Y.C]}) → PROJ(each → xaxis) → CMP → CORR≠+ → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "FIND",
+     "PROJ",
+     "CMP",
+     "CORR"
+    ],
+    "elements_text": [
+     "bubble[Beijing]",
+     "bubble[Tokyo]",
+     "bubble[London]",
+     "bubble[N.Y.C]"
+    ],
+    "elements_sketch": [
+     "bubble[N.Y.C]",
+     "bubble[London]",
+     "bubble[Beijing]",
+     "bubble[Tokyo]",
+     "xaxis"
+    ],
+    "sketch_gesture": "loops on N.Y.C, London, Beijing; arrows from them and from Tokyo down to the x-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_O9Xc4cu0X7El0Ep",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ4": "I'm not sure"
+    },
+    "chain": "CONFUSED(chart) → GROUP({bubble: same x}) → FIND(bubble[Shanghai], bubble[Beijing]) → CMPvis(size differs at same x) → DOUBT → ANSWER(Not sure)",
+    "ops": [
+     "CONFUSED",
+     "GROUP",
+     "FIND",
+     "CMPvis",
+     "DOUBT"
+    ],
+    "elements_text": [
+     "xaxis"
+    ],
+    "elements_sketch": [
+     "bubble[Shanghai]",
+     "bubble[Beijing]"
+    ],
+    "sketch_gesture": "loops around Shanghai and Beijing",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_2ZCWA6Wf2jsOGIb",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ4": "I'm not sure"
+    },
+    "chain": "FIND(bubble[N.Y.C]) → PROJ(→ yaxis) → PROJ(→ xaxis) → FIND(bubble[Guangzhow]) → PROJ(→ yaxis) → PROJ(→ xaxis) → TREND(ridership)=~ → DOUBT → ANSWER(Not sure)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "TREND",
+     "DOUBT"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bubble[N.Y.C]",
+     "bubble[Guangzhow]",
+     "bubble[Tokyo]",
+     "xaxis",
+     "yaxis"
+    ],
+    "sketch_gesture": "arrows from N.Y.C and Guangzhow(through Tokyo) left to y-axis and down to x-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_2AQYp4GVL23l9aY",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ4": "False"
+    },
+    "chain": "ARGMAX({bubble[*]}, x)=bubble[Beijing] → ARGMIN({bubble[*]}, x)=bubble[Mexico City] → CMPvis(size(Beijing) vs size(Mexico City)) → CORR≠+ → ANSWER(False)",
+    "ops": [
+     "ARGMAX",
+     "ARGMIN",
+     "CMPvis",
+     "CORR"
+    ],
+    "elements_text": [
+     "xaxis",
+     "size(bubble[*])"
+    ],
+    "elements_sketch": [
+     "bubble[Beijing]",
+     "bubble[Mexico City]"
+    ],
+    "sketch_gesture": "loops around Beijing and Mexico City",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_3hokieevT5vHr8Y",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ4": "I'm not sure"
+    },
+    "chain": "CONFUSED → FIND(bubble[Tokyo]) → ANSWER(Not sure)",
+    "ops": [
+     "CONFUSED",
+     "FIND"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bubble[Tokyo]"
+    ],
+    "sketch_gesture": "loop around Tokyo",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_2SozfrY7GG4R8qB",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ4": "True"
+    },
+    "chain": "GROUP({bubble[Seoul],bubble[N.Y.C]}) → GROUP({bubble[Shanghai],bubble[Beijing]}) → GROUP({bubble[Guangzhow],bubble[Moscow]}) → TREND(size, x)=↑ ?wrong:perceived-positive-trend → OUTLIER=bubble[Tokyo] (≈300 stations) → ANSWER(True)",
+    "ops": [
+     "GROUP",
+     "GROUP",
+     "GROUP",
+     "TREND",
+     "OUTLIER"
+    ],
+    "elements_text": [
+     "size(bubble[*])",
+     "bubble[Tokyo]"
+    ],
+    "elements_sketch": [
+     "bubble[Seoul]",
+     "bubble[N.Y.C]",
+     "bubble[Shanghai]",
+     "bubble[Beijing]",
+     "bubble[Guangzhow]",
+     "bubble[Moscow]"
+    ],
+    "sketch_gesture": "three large loops around Seoul/N.Y.C, Shanghai/Beijing and Guangzhow/Moscow",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ4_R_2t5Ki7bfT2GvV0H",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ4": "False"
+    },
+    "chain": "FIND(bubble[Beijing]) → CORR≠+ → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "CORR"
+    ],
+    "elements_text": [
+     "bubble[Beijing]"
+    ],
+    "elements_sketch": [
+     "bubble[Beijing]"
+    ],
+    "sketch_gesture": "loop around Beijing bubble+label",
+    "source": "both"
+   }
+  ]
+ },
+ "BuCQ5": {
+  "qid": "BuCQ5",
+  "chart": "BuC",
+  "task": "compute_derived_value",
+  "question": "The average metro system in this chart has approximately 300 stations 200km in length",
+  "reference_chain": "SCAN({bubble[*]}) → READ(x) per bubble (≈200…740) → AVG(x)≈440 → READ(y) per bubble → AVG(y)≈310 → CMP((440,310) vs (300,200)) → ANSWER(False)  [shortcut: COUNT({bubble: x>300 ∧ y>200}) = most, so the mean is above both targets]",
+  "notes": "This item asks for the mean of 11 points, and the chart shows no average, so a quarter of participants said it was impossible or unclear. The most common sketch is a cross-hair to the target point (300 stations, 200 km). From there people split: those who noticed the bubbles sit mostly above and to the right of it said False, while those who looked for a bubble at exactly that point and found none answered Not sure or Impossible. Correct reasoners counted bubbles beyond the thresholds or estimated and averaged x-values (one wrote out 4440/11 = 444). Wrong True answers came from substitutes for the mean: majority counts, a diagonal centre line, the midrange of extremes, or a single bubble near the target (Tokyo).",
+  "new_symbols": {
+   "pt[x,y]": "a location in data space (not a mark), e.g. the target point pt[300,200] formed by projecting from two ticks",
+   "annot[?]": "a question mark or other note written by the participant (used here for participant-written annotations)",
+   "region[x<a,y<b]": "a region of the plot defined by thresholds"
+  },
+  "strategies": [
+   {
+    "chain": "∅/CONFUSED/GIST(\"no average shown\") → ANSWER(Impossible / Not sure) ?wrong:average-is-estimable",
+    "n": 10,
+    "n_correct": 0,
+    "n_incorrect": 10,
+    "quote": "I couldn't find an answer because I don't see the average shown in this graphic",
+    "trial_ids": [
+     "BuCQ5_R_yDE3uwv04ZnHOpP",
+     "BuCQ5_R_3HjF7OuUrwLsqvT",
+     "BuCQ5_R_ve3Zl5hskrLWzdf",
+     "BuCQ5_R_1i58c2WHUP6VpcD",
+     "BuCQ5_R_2wNv3TVT6WyZtEv",
+     "BuCQ5_R_2dSKNTMDrpOIGb1",
+     "BuCQ5_R_2zbWL29UVPi0v1e",
+     "BuCQ5_R_rfNBQrIzVvs2tPz",
+     "BuCQ5_R_bdrkvkZgo0WJVGV",
+     "BuCQ5_R_2t5U2hVrti4y8IC"
+    ]
+   },
+   {
+    "chain": "FIND(pt[300,200]) → PROJ → CMP(no bubble at target) → ANSWER(Not sure/Impossible) ?wrong:needs-centroid-not-matching-point",
+    "n": 6,
+    "n_correct": 0,
+    "n_incorrect": 6,
+    "quote": "the average 300 stations 200 km length does not coincide with any location.",
+    "trial_ids": [
+     "BuCQ5_R_1ILTvcjG8il5ivT",
+     "BuCQ5_R_24IBNfNMWz4DNnw",
+     "BuCQ5_R_t0CD8Sjo20owQE1",
+     "BuCQ5_R_vYxQQ6kbWuIPPSV",
+     "BuCQ5_R_1Sz5EK9PgAFUldT",
+     "BuCQ5_R_2ZCWA6Wf2jsOGIb"
+    ]
+   },
+   {
+    "chain": "FIND(pt[300,200]) → PROJ(from x=300 and y=200 ticks) → CMP(no/few bubbles near target) → ANSWER(False)",
+    "n": 5,
+    "n_correct": 5,
+    "n_incorrect": 0,
+    "quote": "Just by locating where 300 stations and 200km are in the chart, you can see none of them are close to that range.",
+    "trial_ids": [
+     "BuCQ5_R_6AyfcLIRg3E9Cvf",
+     "BuCQ5_R_1CfNOq4BP1ODnXy",
+     "BuCQ5_R_3MPZlfAYK0vAJyJ",
+     "BuCQ5_R_1GH7NAokHW4iM4G",
+     "BuCQ5_R_O9Xc4cu0X7El0Ep"
+    ]
+   },
+   {
+    "chain": "FIND(threshold x=300 / y=200) → COUNT({bubble above}) = most → CMP(mean > target) → ANSWER(False)",
+    "n": 5,
+    "n_correct": 5,
+    "n_incorrect": 0,
+    "quote": "9 out of 11 cities has more than 200km system length, therefore this cannot be the average.",
+    "trial_ids": [
+     "BuCQ5_R_2QGUeAYb1lmdcHL",
+     "BuCQ5_R_VI12BPzRmJrIXVn",
+     "BuCQ5_R_3knQAl7GyjqPd14",
+     "BuCQ5_R_2AQYp4GVL23l9aY",
+     "BuCQ5_R_3hokieevT5vHr8Y"
+    ]
+   },
+   {
+    "chain": "READ(x) for every bubble → SUM/COUNT → AVG≈444 → CMP(≠300) → ANSWER(False)",
+    "n": 2,
+    "n_correct": 2,
+    "n_incorrect": 0,
+    "quote": "I calculated c. 445 which was a fair bit more than 300",
+    "trial_ids": [
+     "BuCQ5_R_2YFI0HJHbxlYEle",
+     "BuCQ5_R_2YgGlmdIRITklxf"
+    ]
+   },
+   {
+    "chain": "COUNT(above/below 300)=6/5 → ANSWER(True) ?wrong:majority-or-split-count-not-mean",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "6 of the 11  metro systems are above 300",
+    "trial_ids": [
+     "BuCQ5_R_31TW6MZyafbLjOs",
+     "BuCQ5_R_2SozfrY7GG4R8qB"
+    ]
+   },
+   {
+    "chain": "KNOW(centre line)/AVG(min,max) → READ(centre)≈target ?wrong:centre-line-or-midrange-not-mean → ANSWER(True)",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "From my memory of maths you should draw a centre line and then the cluster will show you the average",
+    "trial_ids": [
+     "BuCQ5_R_vHJZLdwKhmAzoLn",
+     "BuCQ5_R_Uyc5ozKwAykkAiR"
+    ]
+   },
+   {
+    "chain": "FIND(single bubble near target, e.g. Tokyo / mid-y bubble) → ANSWER(True) ?wrong:single-bubble-as-average",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "I paid attention to the blue circle at the half of y axis",
+    "trial_ids": [
+     "BuCQ5_R_2tA4SBEuaVuTjvn",
+     "BuCQ5_R_xsaKUVdTdetngd3"
+    ]
+   },
+   {
+    "chain": "MAX(x), MAX(y) extents ≈750/460 ?wrong:extremes-not-mean → ANSWER(False); or sketch-only PROJ of one bubble",
+    "n": 2,
+    "n_correct": 2,
+    "n_incorrect": 0,
+    "quote": "There are about 750 stations and the total length of 460km",
+    "trial_ids": [
+     "BuCQ5_R_3G94sLKEDU4CAIr",
+     "BuCQ5_R_2Uge8H6SyoVmGK7"
+    ]
+   },
+   {
+    "chain": "GROUP → FIND(visual centre via crossed lines) → AVG≈(375,265) → CMP → ANSWER(False)",
+    "n": 1,
+    "n_correct": 1,
+    "n_incorrect": 0,
+    "quote": "The crossed lines, for me, simbolized the average of both parameters",
+    "trial_ids": [
+     "BuCQ5_R_2vhPlLuWjhQSOuF"
+    ]
+   },
+   {
+    "chain": "AVG(two largest bubbles Tokyo, Shanghai)≈(550,325) ?wrong → DOUBT → ANSWER(Not sure)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "I think it would be somewhere between Tokyo and Shanghai values since they are the biggest.",
+    "trial_ids": [
+     "BuCQ5_R_2XnbILPqlz7EVfh"
+    ]
+   },
+   {
+    "chain": "FIND(grid[x=300]) → SCAN → AVG(x)>300 → DOUBT → ANSWER(Not sure)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "The average seems to be more than 300 sations.",
+    "trial_ids": [
+     "BuCQ5_R_1P1APSbf9y0uGtL"
+    ]
+   },
+   {
+    "chain": "sketch PROJ of a point → ANSWER(True) ?wrong:response-contradicts-belief(self-reported)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "I think the correct answer is false.",
+    "trial_ids": [
+     "BuCQ5_R_2t5Ki7bfT2GvV0H"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "BuCQ5_R_yDE3uwv04ZnHOpP",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ5": "Impossible to answer with this visualization"
+    },
+    "chain": "FIND({bubble[Tokyo],bubble[Guangzhow],bubble[Mexico City]}) → PROJ(each → xaxis) → GIST(chart) → ANSWER(Impossible) ?wrong:average-is-estimable",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "GIST"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Guangzhow]",
+     "bubble[Mexico City]",
+     "xaxis"
+    ],
+    "sketch_gesture": "vertical lines from Tokyo, Guangzhow and Mexico City down to the x-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_3HjF7OuUrwLsqvT",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ5": "Impossible to answer with this visualization"
+    },
+    "chain": "FIND(pt[200,200]) ?wrong:misplaced-target → GIST(no clear data) → ANSWER(Impossible) ?wrong:average-is-estimable",
+    "ops": [
+     "FIND",
+     "GIST"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "pt[~200,~200]"
+    ],
+    "sketch_gesture": "X mark near (200 stations, 200 km)",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_6AyfcLIRg3E9Cvf",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ5": "False"
+    },
+    "chain": "FIND(pt[200,200] | ytick[200], xtick[200]) ?wrong:misread-300-as-200 → PROJ(ytick[200] →, xtick[200] ↑) → SCAN({bubble[*]}) → CMP(most bubbles not near target) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "SCAN",
+     "CMP"
+    ],
+    "elements_text": [
+     "bubble[*]",
+     "pt[200,200]",
+     "size(bubble)"
+    ],
+    "elements_sketch": [
+     "ytick[200]",
+     "xtick[200]",
+     "pt[200,200]",
+     "bubble[Mexico City]"
+    ],
+    "sketch_gesture": "horizontal line from y=200 joined to vertical line at x≈200 (near Mexico City)",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_ve3Zl5hskrLWzdf",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ5": "I'm not sure"
+    },
+    "chain": "CONFUSED(question) → ANSWER(Not sure)",
+    "ops": [
+     "CONFUSED"
+    ],
+    "elements_text": [
+     "question"
+    ],
+    "elements_sketch": [
+     "annot[?]"
+    ],
+    "sketch_gesture": "question mark drawn in plot",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_2YFI0HJHbxlYEle",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ5": "False"
+    },
+    "chain": "SCAN({bubble[*]}) → PROJ(each bubble → xaxis) → READ(x) for 11 bubbles → SUM≈4440 → COUNT=11 → AVG≈444 → CMP(444 ≠ 300) → ANSWER(False)",
+    "ops": [
+     "SCAN",
+     "PROJ",
+     "READ",
+     "SUM",
+     "COUNT",
+     "AVG",
+     "CMP"
+    ],
+    "elements_text": [
+     "bubble[*]",
+     "xaxis"
+    ],
+    "elements_sketch": [
+     "{bubble[*]}",
+     "xaxis",
+     "annot[11 station est 4440 sht /11 = 444]"
+    ],
+    "sketch_gesture": "vertical lines from every bubble down to x-axis; wrote \"11 station, est 4440 sht, /11 = 444\"",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_1i58c2WHUP6VpcD",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ5": "I'm not sure"
+    },
+    "chain": "SCAN({bubble[*]} path Mexico City→Paris→Tokyo→Delhi→Moscow→London→N.Y.C→Seoul→Shanghai→Beijing) → CONFUSED → ANSWER(Not sure)",
+    "ops": [
+     "SCAN",
+     "CONFUSED"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "{bubble[*]}"
+    ],
+    "sketch_gesture": "one continuous path connecting nearly all bubbles",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "BuCQ5_R_1ILTvcjG8il5ivT",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ5": "Impossible to answer with this visualization"
+    },
+    "chain": "FIND(pt[300,200] | xtick[300], ytick[200]) → PROJ(xtick[300] ↑, ytick[200] →) → CMP(no bubble at target) → KNOW(needs calculation) → ANSWER(Impossible) ?wrong:average-is-estimable",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "CMP",
+     "KNOW"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "grid[x=300]",
+     "grid[y=200]",
+     "pt[300,200]"
+    ],
+    "sketch_gesture": "horizontal line at y=200 and vertical line at x=300 meeting at (300,200)",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_24IBNfNMWz4DNnw",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ5": "I'm not sure"
+    },
+    "chain": "FIND(pt[300,200] | xtick[300], ytick[200]) → PROJ(xtick[300] ↑, ytick[200] →) → CMP(no bubble at target) → AVG? → ANSWER(Not sure) ?wrong:response-contradicts-own-conclusion(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "CMP",
+     "AVG"
+    ],
+    "elements_text": [
+     "ytick[200]",
+     "xtick[300]"
+    ],
+    "elements_sketch": [
+     "grid[x=300]",
+     "grid[y=200]",
+     "pt[300,200]"
+    ],
+    "sketch_gesture": "arrows from (300,200) to y-axis at 200 and to x-axis at 300",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_1CfNOq4BP1ODnXy",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ5": "False"
+    },
+    "chain": "FIND(pt[300,200] | xtick[300], ytick[200]) → PROJ(xtick[300] ↑, ytick[200] →) → SCAN({bubble[*]}) → CMP(no bubble near target) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "SCAN",
+     "CMP"
+    ],
+    "elements_text": [
+     "xtick[300]",
+     "ytick[200]"
+    ],
+    "elements_sketch": [
+     "grid[x=300]",
+     "grid[y=200]"
+    ],
+    "sketch_gesture": "full-height vertical line at x=300 and full-width horizontal line at y=200",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_t0CD8Sjo20owQE1",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ5": "Impossible to answer with this visualization"
+    },
+    "chain": "FIND(bubble[Paris]) → PROJ(→ yaxis, xaxis) → FIND(pt[300,200] | xtick[300], ytick[200]) → PROJ(xtick[300] ↑, ytick[200] →) → KNOW(must calculate from all points) → ANSWER(Impossible) ?wrong:average-is-estimable",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "FIND",
+     "PROJ",
+     "KNOW"
+    ],
+    "elements_text": [
+     "{bubble[*]}"
+    ],
+    "elements_sketch": [
+     "bubble[Paris]",
+     "pt[300,200]",
+     "yaxis",
+     "xaxis"
+    ],
+    "sketch_gesture": "arrows from Paris to the y-axis (300) and x-axis (200), and from (300,200) to both axes",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_2vhPlLuWjhQSOuF",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ5": "False"
+    },
+    "chain": "GROUP({bubble[*]}) → FIND(center(chart) | crossed lines x≈350–400, y≈250–280) → AVG≈(375, 265) → CMP(≠ (300,200)) → ANSWER(False)",
+    "ops": [
+     "GROUP",
+     "FIND",
+     "AVG",
+     "CMP"
+    ],
+    "elements_text": [
+     "annot[crossed lines]"
+    ],
+    "elements_sketch": [
+     "grid[x≈350]",
+     "grid[x≈400]",
+     "grid[y≈280]",
+     "grid[y≈250]",
+     "region[centre]"
+    ],
+    "sketch_gesture": "two vertical lines (x≈350, 400) and two horizontal lines (y≈280, 250) crossing, with the intersection hatched",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_2wNv3TVT6WyZtEv",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ5": "I'm not sure"
+    },
+    "chain": "CONFUSED → ANSWER(Not sure)",
+    "ops": [
+     "CONFUSED"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "annot[?]"
+    ],
+    "sketch_gesture": "large question mark",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_2dSKNTMDrpOIGb1",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ5": "I'm not sure"
+    },
+    "chain": "CONFUSED → ANSWER(Not sure)",
+    "ops": [
+     "CONFUSED"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "annot[?]"
+    ],
+    "sketch_gesture": "question mark",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_2zbWL29UVPi0v1e",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ5": "Impossible to answer with this visualization"
+    },
+    "chain": "FIND(annot[average]) → CMP(not shown) → ANSWER(Impossible) ?wrong:expects-explicit-average",
+    "ops": [
+     "FIND",
+     "CMP"
+    ],
+    "elements_text": [
+     "annot[average]"
+    ],
+    "elements_sketch": [
+     "annot[?]"
+    ],
+    "sketch_gesture": "question mark",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_vHJZLdwKhmAzoLn",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ5": "True"
+    },
+    "chain": "KNOW(centre line through cluster = average) → LOOK(trendline: diagonal through bubbles) → READ(center)≈(300, 250) ?wrong:centre-line-not-centroid → CMP(≈ 300, 200) → ANSWER(True)",
+    "ops": [
+     "KNOW",
+     "LOOK",
+     "READ",
+     "CMP"
+    ],
+    "elements_text": [
+     "trendline",
+     "cluster"
+    ],
+    "elements_sketch": [
+     "trendline",
+     "bubble[Tokyo]"
+    ],
+    "sketch_gesture": "diagonal line from lower-left to upper-right through Tokyo, London, Seoul",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_2YgGlmdIRITklxf",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ5": "False"
+    },
+    "chain": "SCAN({bubble[*]}) → READ(x) for each of 11 bubbles → AVG≈445 → CMP(445 > 300) → ANSWER(False)",
+    "ops": [
+     "SCAN",
+     "READ",
+     "AVG",
+     "CMP"
+    ],
+    "elements_text": [
+     "{bubble[*]}"
+    ],
+    "elements_sketch": [
+     "{bubble[*]}"
+    ],
+    "sketch_gesture": "convex hull drawn around all bubbles",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_rfNBQrIzVvs2tPz",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ5": "Impossible to answer with this visualization"
+    },
+    "chain": "GIST(chart) → ANSWER(Impossible) ?wrong:average-is-estimable",
+    "ops": [
+     "GIST"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "annot[?]"
+    ],
+    "sketch_gesture": "question mark",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_2XnbILPqlz7EVfh",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ5": "I'm not sure"
+    },
+    "chain": "ARGMAX(size)={bubble[Tokyo],bubble[Shanghai]} → AVG(Tokyo, Shanghai)≈(550, 325) ?wrong:midpoint-of-largest-bubbles-not-mean → DOUBT → ANSWER(Not sure)",
+    "ops": [
+     "ARGMAX",
+     "AVG",
+     "DOUBT"
+    ],
+    "elements_text": [
+     "bubble[Tokyo]",
+     "bubble[Shanghai]"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Shanghai]"
+    ],
+    "sketch_gesture": "line connecting Tokyo to Shanghai",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_vYxQQ6kbWuIPPSV",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ5": "Impossible to answer with this visualization"
+    },
+    "chain": "FIND(pt[300,200] | xtick[300], ytick[200]) → PROJ(xtick[300] ↑, ytick[200] →) → KNOW(most circles must be near target) → ANSWER(Impossible) ?wrong:criterion-not-applied",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "KNOW"
+    ],
+    "elements_text": [
+     "annot[arrows]",
+     "{bubble[*]}"
+    ],
+    "elements_sketch": [
+     "grid[x=300]",
+     "grid[y=200]",
+     "pt[300,200]"
+    ],
+    "sketch_gesture": "arrow along y=200 and arrow up from x=300 meeting at (300,200)",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_31TW6MZyafbLjOs",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ5": "True"
+    },
+    "chain": "COUNT({bubble: y>300})=6 of 11 → CMP(majority above 300) ?wrong:majority-count-not-mean ?wrong:mixed-km-and-stations → ANSWER(True)",
+    "ops": [
+     "COUNT",
+     "CMP"
+    ],
+    "elements_text": [
+     "{bubble[*]}"
+    ],
+    "elements_sketch": [
+     "bubble[Paris]",
+     "bubble[N.Y.C]",
+     "bubble[Seoul]",
+     "bubble[Shanghai]",
+     "bubble[Beijing]",
+     "bubble[London]"
+    ],
+    "sketch_gesture": "numbers 1–6 written beside Paris, N.Y.C, Seoul, Shanghai, Beijing, London",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_2tA4SBEuaVuTjvn",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ5": "True"
+    },
+    "chain": "FIND(bubble at mid-y) → READ(y)≈half of yaxis ?wrong:single-bubble-as-average → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "READ"
+    ],
+    "elements_text": [
+     "bubble",
+     "yaxis"
+    ],
+    "elements_sketch": [],
+    "sketch_gesture": "blank (speck on Paris)",
+    "source": "text"
+   },
+   {
+    "trial_id": "BuCQ5_R_1Sz5EK9PgAFUldT",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ5": "I'm not sure"
+    },
+    "chain": "FIND(pt[300,200] | xtick[300], ytick[200]) → PROJ(xtick[300] ↑, ytick[200] →) → CMP(no bubble at target) → ANSWER(Not sure) ?wrong:needs-centroid-not-matching-point",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "CMP"
+    ],
+    "elements_text": [
+     "pt[300,200]"
+    ],
+    "elements_sketch": [
+     "grid[x=300]",
+     "grid[y=200]",
+     "pt[300,200]"
+    ],
+    "sketch_gesture": "line from y=200 across and down at x=300 to the x-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_2QGUeAYb1lmdcHL",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ5": "False"
+    },
+    "chain": "FIND(pt[300,200] | xtick[300], ytick[200]) → PROJ(xtick[300] ↑, ytick[200] →) → COUNT({bubble: y>200, x>300}) = most → CMP(mean > target) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "COUNT",
+     "CMP"
+    ],
+    "elements_text": [
+     "{bubble[*]}",
+     "ytitle",
+     "xtitle"
+    ],
+    "elements_sketch": [
+     "grid[x=300]",
+     "grid[y=200]",
+     "pt[300,200]"
+    ],
+    "sketch_gesture": "lines from y=200 and x=300 meeting at (300,200), with a loop at the intersection",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_3MPZlfAYK0vAJyJ",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ5": "False"
+    },
+    "chain": "FIND(pt[300,200] | xtick[300], ytick[200]) → PROJ(xtick[300] ↑, ytick[200] →) → CMP(bubbles away from target) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "CMP"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "grid[x=300]",
+     "grid[y=200]",
+     "pt[300,200]"
+    ],
+    "sketch_gesture": "lines from y=200 and x=300 meeting at (300,200)",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "BuCQ5_R_VI12BPzRmJrIXVn",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ5": "False"
+    },
+    "chain": "FIND(pt[300,200] | xtick[300], ytick[200]) → PROJ(xtick[300] ↑, ytick[200] →) → COUNT({bubble: y>200})=9 of 11 (numbered 1–9) → CMP(mean > 200) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "COUNT",
+     "CMP"
+    ],
+    "elements_text": [
+     "{bubble[*]}"
+    ],
+    "elements_sketch": [
+     "grid[x=300]",
+     "grid[y=200]",
+     "pt[300,200]",
+     "{bubble: y>200}"
+    ],
+    "sketch_gesture": "lines to (300,200) extended to Moscow; numbers 1–9 written next to bubbles above 200 km",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_bdrkvkZgo0WJVGV",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ5": "Impossible to answer with this visualization"
+    },
+    "chain": "CONFUSED(term \"average\") → ANSWER(Impossible)",
+    "ops": [
+     "CONFUSED"
+    ],
+    "elements_text": [
+     "question"
+    ],
+    "elements_sketch": [
+     "annot[?]"
+    ],
+    "sketch_gesture": "question mark",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_2t5U2hVrti4y8IC",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ5": "Impossible to answer with this visualization"
+    },
+    "chain": "GROUP({bubble[Tokyo],bubble[Delhi],bubble[Guangzhow],bubble[Moscow]}) → FIND(annot[average]) → CMP(not identifiable) → ANSWER(Impossible) ?wrong:average-is-estimable",
+    "ops": [
+     "GROUP",
+     "FIND",
+     "CMP"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "cluster[Tokyo,Delhi,Guangzhow,Moscow]"
+    ],
+    "sketch_gesture": "loop around the Tokyo/Delhi/Guangzhow/Moscow cluster",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_1P1APSbf9y0uGtL",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ5": "I'm not sure"
+    },
+    "chain": "FIND(grid[x=300]) → SCAN({bubble[*]} vs x=300) → AVG(x)>300 → DOUBT → ANSWER(Not sure)",
+    "ops": [
+     "FIND",
+     "SCAN",
+     "AVG",
+     "DOUBT"
+    ],
+    "elements_text": [
+     "xtick[300]"
+    ],
+    "elements_sketch": [
+     "grid[x=300]"
+    ],
+    "sketch_gesture": "vertical line near x=300 from top to bottom",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_xsaKUVdTdetngd3",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ5": "True"
+    },
+    "chain": "FIND(bubble[Tokyo]) → PROJ(→ yaxis)≈240 → PROJ(→ xaxis)≈300 → CMP(≈ target) ?wrong:single-bubble-as-average → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "CMP"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "yaxis",
+     "xtick[300]"
+    ],
+    "sketch_gesture": "horizontal line from y≈240 to Tokyo and vertical line from Tokyo down to x≈300",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "BuCQ5_R_3G94sLKEDU4CAIr",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ5": "False"
+    },
+    "chain": "FIND(bubble[N.Y.C]) → PROJ(→ yaxis)≈455 → PROJ(→ xaxis)≈440 → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bubble[N.Y.C]",
+     "yaxis",
+     "xaxis"
+    ],
+    "sketch_gesture": "line from y-axis at ~455 to N.Y.C then straight down to x-axis at ~440",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "BuCQ5_R_2Uge8H6SyoVmGK7",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ5": "False"
+    },
+    "chain": "MAX(y)≈460 → MAX(x)≈750 → READ(extents) ?wrong:extremes-not-mean → CMP(≠ 300,200) → ANSWER(False)",
+    "ops": [
+     "MAX",
+     "MAX",
+     "READ",
+     "CMP"
+    ],
+    "elements_text": [
+     "xtick[750]",
+     "ytick[460]"
+    ],
+    "elements_sketch": [
+     "grid[y≈460]",
+     "grid[x≈775]",
+     "bubble[N.Y.C]",
+     "bubble[Shanghai]"
+    ],
+    "sketch_gesture": "horizontal line across top at ~460 km joined to vertical line at x≈775 down to the axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_1GH7NAokHW4iM4G",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ5": "False"
+    },
+    "chain": "FIND(pt[300,200] | xtick[300], ytick[200]) → PROJ(xtick[300] ↑, ytick[200] →) → CMP(bubbles away from target) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "CMP"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "grid[x=300]",
+     "grid[y=200]",
+     "pt[300,200]"
+    ],
+    "sketch_gesture": "lines from y=200 and x=300 meeting at (300,200), small loop at the intersection",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "BuCQ5_R_Uyc5ozKwAykkAiR",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ5": "True"
+    },
+    "chain": "FIND(extremes: top & bottom of y range) → AVG(min,max) \"common ground\" ?wrong:midrange-not-mean → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "AVG"
+    ],
+    "elements_text": [
+     "pt[extremes]"
+    ],
+    "elements_sketch": [
+     "yaxis",
+     "ytick[~300]"
+    ],
+    "sketch_gesture": "downward arrow from ~450 to ~300 and upward line from ~165 to ~285 near the y-axis, meeting near 300",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_3knQAl7GyjqPd14",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ5": "False"
+    },
+    "chain": "FIND(pt[300,200] | xtick[300], ytick[200]) → PROJ(xtick[300] ↑, ytick[200] →) → COUNT({bubble: x<300})=2 → COUNT({bubble: y≤200})=2 → CMP(mean > target) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "COUNT",
+     "COUNT",
+     "CMP"
+    ],
+    "elements_text": [
+     "{bubble: x<300}",
+     "{bubble: y≤200}"
+    ],
+    "elements_sketch": [
+     "grid[x=300]",
+     "grid[y=200]",
+     "pt[300,200]"
+    ],
+    "sketch_gesture": "arrows from (300,200) to the y-axis at 200 and the x-axis at 300",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_O9Xc4cu0X7El0Ep",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ5": "False"
+    },
+    "chain": "FIND(pt[300,200] | xtick[300], ytick[200]) → PROJ(xtick[300] ↑, ytick[200] →) → CMP(no bubble at target) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "CMP"
+    ],
+    "elements_text": [
+     "xaxis",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "grid[x=300]",
+     "grid[y=200]",
+     "pt[300,200]"
+    ],
+    "sketch_gesture": "lines from y=200 and x=300 meeting at (300,200)",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_2ZCWA6Wf2jsOGIb",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ5": "I'm not sure"
+    },
+    "chain": "FIND(pt[300,200] | xtick[300], ytick[200]) → PROJ(xtick[300] ↑, ytick[200] →) → CONFUSED(how to read) → ANSWER(Not sure)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "CONFUSED"
+    ],
+    "elements_text": [
+     "annot[\"300 stations in 200 length\" line]"
+    ],
+    "elements_sketch": [
+     "grid[x=300]",
+     "grid[y=200]",
+     "pt[300,200]"
+    ],
+    "sketch_gesture": "lines from y=200 and x=300 meeting at (300,200)",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_2AQYp4GVL23l9aY",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ5": "False"
+    },
+    "chain": "FIND(pt[300,200] | xtick[300], ytick[200]) → PROJ(xtick[300] ↑, ytick[200] →) → COUNT({bubble: x<300})=1 → CMP(almost all > 300) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "COUNT",
+     "CMP"
+    ],
+    "elements_text": [
+     "{bubble: x>300}"
+    ],
+    "elements_sketch": [
+     "grid[x=300]",
+     "grid[y=200]",
+     "pt[300,200]"
+    ],
+    "sketch_gesture": "wavy line from y=200 to x=300 then down to the x-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_3hokieevT5vHr8Y",
+    "accuracy": 1.0,
+    "answer": {
+     "BuCQ5": "False"
+    },
+    "chain": "FIND(region[x<300, y<200]) → COUNT({bubble in region})=1 (Mexico City) → CMP(mean > target) → ANSWER(False)",
+    "ops": [
+     "FIND",
+     "COUNT",
+     "CMP"
+    ],
+    "elements_text": [
+     "bubble[Mexico City]"
+    ],
+    "elements_sketch": [
+     "bubble[Mexico City]",
+     "region[x<300,y<200]"
+    ],
+    "sketch_gesture": "loop around Mexico City and the area below 300 stations/200 km",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_2SozfrY7GG4R8qB",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ5": "True"
+    },
+    "chain": "FIND(grid[y=300]) → COUNT(above)=6, COUNT(below)=5 → AVG(systems together) ?wrong:split-count-not-mean → ANSWER(True)",
+    "ops": [
+     "FIND",
+     "COUNT",
+     "COUNT",
+     "AVG"
+    ],
+    "elements_text": [
+     "{bubble[*]}"
+    ],
+    "elements_sketch": [
+     "grid[y=300]",
+     "annot[6]",
+     "annot[5]"
+    ],
+    "sketch_gesture": "horizontal line across at y≈300 with \"6\" written above and \"5\" with arrow below",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ5_R_2t5Ki7bfT2GvV0H",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ5": "True"
+    },
+    "chain": "FIND(pt[~470,~330]) → PROJ(→ yaxis)≈330 → PROJ(→ xaxis)≈470 → ANSWER(True) ?wrong:response-contradicts-own-belief(self-reported)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "pt[~470,~330]",
+     "yaxis",
+     "xaxis"
+    ],
+    "sketch_gesture": "arrow from (≈470 stations, ≈330 km) left to y-axis and down to x-axis",
+    "source": "sketch"
+   }
+  ]
+ },
+ "BuCQ6": {
+  "qid": "BuCQ6",
+  "chart": "BuC",
+  "task": "find_extremum",
+  "question": "Which city's metro system has the largest number of stations?",
+  "reference_chain": "MAP(x → stations | xtitle) → SCAN({bubble[*]} along xaxis) → ARGMAX({bubble[*]}, x)=bubble[Shanghai] (≈740, just right of Beijing ≈725) → ANSWER(Shanghai)",
+  "notes": "All 7 trials in this group are wrong, and 6 answered Tokyo: they took the largest bubble (the size channel, ridership) rather than the rightmost one (x = stations). Two participants caught this afterwards and circled Shanghai, explicitly naming the size-versus-numbers confusion. One used the wrong position axis (N.Y.C is highest on y = length). The pivotal elements are the x-axis title and the close pair Shanghai/Beijing at the right edge, which no wrong answer attended to. With only 7 trials, all incorrect, this sample shows error strategies and says nothing about how often the item is answered correctly.",
+  "new_symbols": {},
+  "strategies": [
+   {
+    "chain": "ARGMAX({bubble[*]}, size)=Tokyo ?wrong:size-channel-not-x-position → ANSWER(Tokyo)",
+    "n": 3,
+    "n_correct": 0,
+    "n_incorrect": 3,
+    "quote": "Tokyo has the largest circle.",
+    "trial_ids": [
+     "BuCQ6_R_2tA4SBEuaVuTjvn",
+     "BuCQ6_R_2t5U2hVrti4y8IC",
+     "BuCQ6_R_2SozfrY7GG4R8qB"
+    ]
+   },
+   {
+    "chain": "ARGMAX(size)=Tokyo ?wrong → ANSWER(Tokyo) → FIX(→ ARGMAX(x)=Shanghai)",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "I used my visualization instead of numbers.",
+    "trial_ids": [
+     "BuCQ6_R_Uyc5ozKwAykkAiR",
+     "BuCQ6_R_3hokieevT5vHr8Y"
+    ]
+   },
+   {
+    "chain": "ARGMAX({bubble[*]}, y)=N.Y.C ?wrong:wrong-axis → PROJ(→ yaxis, xaxis) → ANSWER(N.Y.C.)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "drawing the lines to my answers",
+    "trial_ids": [
+     "BuCQ6_R_3G94sLKEDU4CAIr"
+    ]
+   },
+   {
+    "chain": "GUESS → ANSWER(Tokyo) ?wrong",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "I am not sure about this, I was just question",
+    "trial_ids": [
+     "BuCQ6_R_2ZCWA6Wf2jsOGIb"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "BuCQ6_R_2tA4SBEuaVuTjvn",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ6": "Tokyo"
+    },
+    "chain": "ARGMAX({bubble[*]}, size)=bubble[Tokyo] ?wrong:size-channel-not-x-position → ANSWER(Tokyo)",
+    "ops": [
+     "ARGMAX"
+    ],
+    "elements_text": [
+     "size(bubble[max])"
+    ],
+    "elements_sketch": [],
+    "sketch_gesture": "blank (specks inside Tokyo)",
+    "source": "text"
+   },
+   {
+    "trial_id": "BuCQ6_R_2t5U2hVrti4y8IC",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ6": "Tokyo"
+    },
+    "chain": "ARGMAX({bubble[*]}, size)=bubble[Tokyo] ?wrong:size-channel-not-x-position → ANSWER(Tokyo)",
+    "ops": [
+     "ARGMAX"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bubble[Tokyo]"
+    ],
+    "sketch_gesture": "loop around Tokyo",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "BuCQ6_R_3G94sLKEDU4CAIr",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ6": "N.Y.C."
+    },
+    "chain": "ARGMAX({bubble[*]}, y)=bubble[N.Y.C] ?wrong:y-axis(length)-not-x-axis(stations) → PROJ(bubble[N.Y.C] → yaxis) → PROJ(bubble[N.Y.C] → xaxis) → ANSWER(N.Y.C.)",
+    "ops": [
+     "ARGMAX",
+     "PROJ",
+     "PROJ"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bubble[N.Y.C]",
+     "yaxis",
+     "xaxis"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at ~455 to N.Y.C, then vertical line down to x-axis at ~440",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ6_R_Uyc5ozKwAykkAiR",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ6": "Tokyo"
+    },
+    "chain": "ARGMAX({bubble[*]}, size)=bubble[Tokyo] ?wrong:size-channel-not-x-position → ANSWER(Tokyo) → FIX(→ READ x) → ARGMAX({bubble[*]}, x)=bubble[Shanghai]",
+    "ops": [
+     "ARGMAX",
+     "FIX",
+     "ARGMAX"
+    ],
+    "elements_text": [
+     "size(bubble[*])",
+     "xtick[*]"
+    ],
+    "elements_sketch": [
+     "bubble[Shanghai]",
+     "bubble[Beijing]"
+    ],
+    "sketch_gesture": "loop around Shanghai and Beijing (the corrected answer)",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ6_R_2ZCWA6Wf2jsOGIb",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ6": "Tokyo"
+    },
+    "chain": "GUESS → ANSWER(Tokyo) ?wrong:size-channel-not-x-position",
+    "ops": [
+     "GUESS"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "bubble[Tokyo]"
+    ],
+    "sketch_gesture": "tight loop over Tokyo",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ6_R_3hokieevT5vHr8Y",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ6": "Tokyo"
+    },
+    "chain": "ARGMAX({bubble[*]}, size)=bubble[Tokyo] ?wrong:size-channel-not-x-position → ANSWER(Tokyo) → FIX(→ x) → ARGMAX({bubble[*]}, x)=bubble[Shanghai]",
+    "ops": [
+     "ARGMAX",
+     "FIX",
+     "ARGMAX"
+    ],
+    "elements_text": [
+     "annot[numbers]"
+    ],
+    "elements_sketch": [
+     "bubble[Shanghai]"
+    ],
+    "sketch_gesture": "loop around Shanghai (the corrected answer)",
+    "source": "both"
+   },
+   {
+    "trial_id": "BuCQ6_R_2SozfrY7GG4R8qB",
+    "accuracy": 0.0,
+    "answer": {
+     "BuCQ6": "Tokyo"
+    },
+    "chain": "ARGMAX({bubble[*]}, size)=bubble[Tokyo] ?wrong:size-channel-not-x-position → ANSWER(Tokyo)",
+    "ops": [
+     "ARGMAX"
+    ],
+    "elements_text": [
+     "size(bubble[Tokyo])"
+    ],
+    "elements_sketch": [
+     "bubble[Tokyo]",
+     "bubble[Delhi]"
+    ],
+    "sketch_gesture": "loop around Tokyo and Delhi trailing toward Guangzhow",
+    "source": "both"
+   }
+  ]
+ }
+}

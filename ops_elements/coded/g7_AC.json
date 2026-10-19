@@ -1,0 +1,1859 @@
+{
+ "AC2Q1": {
+  "qid": "AC2Q1",
+  "chart": "AC2",
+  "task": "retrieve_value",
+  "question": "What was the price of a pound of coffee beans in May 2019?",
+  "reference_chain": "FIND(xtick[May 2019] | xtick[April 2019], xtick[July 2019]) → PROJ(xtick → top(area)) → PROJ(top(area) → yaxis) → INTERP(v | ticks 0.70,0.75) → READ(y)≈0.72 → ANSWER(0.72)",
+  "notes": "All six trials draw the textbook vertical-then-horizontal projection, so the errors are in choosing the anchor or in writing the answer. Two people anchored on May 2018 rather than May 2019 (the year labels sit only under the January ticks), and one anchored near Aug 2019. Three projected from the right spot (May 2019, ~0.72), but two of them typed '73', dropping the '0.' of the $/lb scale (one said 'a bit confusing about the pound'), and one rounded up to 0.74.",
+  "new_symbols": {},
+  "strategies": [
+   {
+    "chain": "FIND(xtick[May 2019]) → PROJ(xtick → top(area)) → PROJ(top(area) → yaxis) → READ(y)≈0.72-0.73 → ANSWER(v) ?wrong:format-or-rounding(73 / 0.74)",
+    "n": 3,
+    "n_correct": 0,
+    "n_incorrect": 3,
+    "quote": "It was a bit confusing about the pound",
+    "trial_ids": [
+     "AC2Q1_R_1eWE62X6AUScCMc",
+     "AC2Q1_R_2aCSBNJjBanMISN",
+     "AC2Q1_R_qJcU4U0KnWs6Lnz"
+    ]
+   },
+   {
+    "chain": "FIND(xtick[May 2018]) ?wrong:wrong-year → PROJ(xtick → top(area)) → PROJ(top(area) → yaxis) → READ(y)≈0.83 → ANSWER(0.83)",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "Just located may between april and july",
+    "trial_ids": [
+     "AC2Q1_R_bBYquHiBklKfmAF",
+     "AC2Q1_R_1qalWvDa8z4HLfs"
+    ]
+   },
+   {
+    "chain": "FIND(xtick[Aug 2019]) ?wrong:wrong-month → PROJ(xtick → top(area)) → PROJ(top(area) → yaxis) → READ(y)≈0.69 → ANSWER(0.73) ?wrong:answer-mismatches-sketch",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "I started from the month",
+    "trial_ids": [
+     "AC2Q1_R_2Pb3ABApTsqS3Jl"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "AC2Q1_R_2Pb3ABApTsqS3Jl",
+    "accuracy": 0.0,
+    "answer": "0.73",
+    "chain": "FIND(xtick[Aug 2019]) ?wrong:wrong-month → PROJ(xtick → top(area)) → PROJ(top(area) → yaxis) → READ(y)≈0.69 → ANSWER(0.73) ?wrong:answer-mismatches-sketch",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[month]"
+    ],
+    "elements_sketch": [
+     "xtick[~Aug 2019]",
+     "top(area)[Aug 2019]",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from x-axis at ~Aug 2019 up to the area top, horizontal line left to y-axis at ~0.69",
+    "source": "both"
+   },
+   {
+    "trial_id": "AC2Q1_R_1eWE62X6AUScCMc",
+    "accuracy": 0.0,
+    "answer": "73",
+    "chain": "FIND(xtick[May 2019]) → PROJ(xtick → top(area)) → PROJ(top(area) → yaxis) → READ(y)≈0.73 → ANSWER(73) ?wrong:dropped-decimal-scale",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "xtick[May 2019]",
+     "top(area)[May 2019]",
+     "yaxis",
+     "ytick[0.73]"
+    ],
+    "sketch_gesture": "circle on x-axis just right of April 2019, vertical line up to the area top (dot), horizontal line left to y-axis with dot at ~0.73",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "AC2Q1_R_2aCSBNJjBanMISN",
+    "accuracy": 0.0,
+    "answer": "0.74",
+    "chain": "FIND(xtick[May 2019]) → PROJ(xtick → top(area)) → PROJ(top(area) → yaxis) → READ(y)≈0.72 → ANSWER(0.74) ?wrong:overestimated-read",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "xtick[May 2019]",
+     "top(area)[May 2019]",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from May 2019 up to the area top, horizontal line left to y-axis at ~0.725",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "AC2Q1_R_bBYquHiBklKfmAF",
+    "accuracy": 0.0,
+    "answer": "0.83",
+    "chain": "FIND(xtick[May] | xtick[April], xtick[July]) → FIND(xtick[May 2018]) ?wrong:wrong-year → PROJ(xtick → top(area)) → PROJ(top(area) → yaxis) → READ(y)≈0.83 → ANSWER(0.83)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[May]",
+     "xtick[April]",
+     "xtick[July]"
+    ],
+    "elements_sketch": [
+     "xtick[May 2018]",
+     "top(area)[May 2018]",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from May 2018 up to the area top, horizontal line left to y-axis at ~0.825",
+    "source": "both"
+   },
+   {
+    "trial_id": "AC2Q1_R_qJcU4U0KnWs6Lnz",
+    "accuracy": 0.0,
+    "answer": "73",
+    "chain": "FIND(xtick[May 2019]) → PROJ(xtick → top(area)) → PROJ(top(area) → yaxis) → CONFUSED(ytitle unit $/lb) → READ(y)≈0.725 → ANSWER(73) ?wrong:dropped-decimal-scale",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "CONFUSED",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "ytitle[$/lb]"
+    ],
+    "elements_sketch": [
+     "xtick[May 2019]",
+     "top(area)[May 2019]",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from May 2019 to a circle on the area top, horizontal line left to y-axis at ~0.725",
+    "source": "both"
+   },
+   {
+    "trial_id": "AC2Q1_R_1qalWvDa8z4HLfs",
+    "accuracy": 0.0,
+    "answer": "0.825",
+    "chain": "FIND(xtick[May 2018]) ?wrong:wrong-year → PROJ(xtick → top(area)) → PROJ(top(area) → yaxis) → READ(y)≈0.825 → ANSWER(0.825)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xaxis",
+     "yaxis",
+     "pt"
+    ],
+    "elements_sketch": [
+     "xtick[May 2018]",
+     "top(area)[May 2018]",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from May 2018 up to the area top, horizontal line left to y-axis at ~0.825",
+    "source": "both"
+   }
+  ]
+ },
+ "AC2Q2": {
+  "qid": "AC2Q2",
+  "chart": "AC2",
+  "task": "find_extremum",
+  "question": "When was the price of a pound of coffee beans at a minimum?",
+  "reference_chain": "SCAN({top(area)}) → ARGMIN({top(area)}, y)=pt[Aug 2019] → PROJ(pt → xaxis) → INTERP(month | xtick[July 2019], xtick[October 2019]) → READ(x)=Aug 2019 → ANSWER(Aug 2019)",
+  "notes": "All three people found the correct trough (Aug 2019), as their sketches show, and all three went wrong converting its x-position into a month and year. That conversion is the pivotal step here, since only Jan/Apr/Jul/Oct are labelled and the year appears only under January. One person even wrote 'August' on the sketch but typed Sep 2019, then noticed the slip ('they werent labeled'); another got the month right and the year wrong (2018).",
+  "new_symbols": {},
+  "strategies": [
+   {
+    "chain": "ARGMIN({top(area)}, y)=pt[Aug 2019] → PROJ(pt → xaxis) → READ(x)=Sep 2019 ?wrong:off-by-one-month-unlabeled-ticks → ANSWER(Sep 2019)",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "It's Aug 2019. I just didnt look at the data properly because they werent labeled.",
+    "trial_ids": [
+     "AC2Q2_R_t0CD8Sjo20owQE1",
+     "AC2Q2_R_2aCSBNJjBanMISN"
+    ]
+   },
+   {
+    "chain": "ARGMIN({top(area)}, y)=pt[Aug 2019] → READ(x)=Aug 2018 ?wrong:wrong-year → ANSWER(Aug 2018)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "the lowest point on the chart",
+    "trial_ids": [
+     "AC2Q2_R_339oxKJvqasU1as"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "AC2Q2_R_339oxKJvqasU1as",
+    "accuracy": 0.0,
+    "answer": "Aug 2018",
+    "chain": "ARGMIN({top(area)}, y)=pt[Aug 2019] → READ(x)=Aug 2018 ?wrong:wrong-year → ANSWER(Aug 2018)",
+    "ops": [
+     "ARGMIN",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "pt[lowest]",
+     "chart"
+    ],
+    "elements_sketch": [
+     "pt[Aug 2019 trough]"
+    ],
+    "sketch_gesture": "short vertical tick mark on the Aug 2019 trough",
+    "source": "both"
+   },
+   {
+    "trial_id": "AC2Q2_R_t0CD8Sjo20owQE1",
+    "accuracy": 0.0,
+    "answer": "Sep 2019",
+    "chain": "ARGMIN({top(area)}, y)=pt[Aug 2019] → PROJ(pt → yaxis) → PROJ(pt → xaxis) → READ(x)=August (written on sketch) → ANSWER(Sep 2019) ?wrong:entry-error-unlabeled-months → FIX(it's Aug 2019, noticed afterwards)",
+    "ops": [
+     "ARGMIN",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER",
+     "FIX"
+    ],
+    "elements_text": [
+     "xtick[*] (unlabeled months)"
+    ],
+    "elements_sketch": [
+     "pt[Aug 2019 trough]",
+     "yaxis",
+     "xaxis",
+     "annot[August (participant-written)]"
+    ],
+    "sketch_gesture": "circle on the Aug 2019 trough, arrow left to y-axis at ~0.68, arrow down to x-axis with 'August' handwritten",
+    "source": "both"
+   },
+   {
+    "trial_id": "AC2Q2_R_2aCSBNJjBanMISN",
+    "accuracy": 0.0,
+    "answer": "Sep 2019",
+    "chain": "ARGMIN({top(area)}, y)=pt[Aug 2019] → PROJ(pt → xaxis) → READ(x)=Sep 2019 ?wrong:off-by-one-month-unlabeled-ticks → ANSWER(Sep 2019)",
+    "ops": [
+     "ARGMIN",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "pt[Aug 2019 trough]",
+     "xaxis"
+    ],
+    "sketch_gesture": "vertical line from the Aug 2019 trough down to the x-axis",
+    "source": "sketch"
+   }
+  ]
+ },
+ "AC2Q3": {
+  "qid": "AC2Q3",
+  "chart": "AC2",
+  "task": "determine_range",
+  "question": "What was the range of the price of a pound of coffee beans between January 2018 and January 2020?",
+  "reference_chain": "SCAN({top(area) Jan 2018..Jan 2020}) → MAX({top(area)}, y)=peak(area)[Nov 2018] → PROJ(→ yaxis) → READ(y)≈0.89 → MIN({top(area)}, y)=pt[Aug 2019] → PROJ(→ yaxis) → READ(y)≈0.69 → RANGE(0.69, 0.89) → ANSWER(0.69–0.89)",
+  "notes": "As on ACQ3, the dominant error is reading the two January endpoints (≈0.78/0.75) instead of the extrema (4 of 7). The question's 'between January 2018 and January 2020' wording invites this, and one person said they weren't sure whether only the two Januaries were meant. The three who did use max/min (Nov 2018 peak, Aug 2019 trough) still failed, through swapped order, slightly low readings, or a typo (0.79 for 0.89) that they noticed afterwards. The pivotal elements are the peak and trough, not the January ticks.",
+  "new_symbols": {},
+  "strategies": [
+   {
+    "chain": "FIND(top(area)[Jan 2018]) → READ(y)≈0.78 → FIND(top(area)[Jan 2020]) → READ(y)≈0.75 → RANGE(first, last) ?wrong:endpoints-not-extrema → ANSWER(v)",
+    "n": 4,
+    "n_correct": 0,
+    "n_incorrect": 4,
+    "quote": "i found confusing if you only asked for the comparison of only january of both years or the comparison between the full two years",
+    "trial_ids": [
+     "AC2Q3_R_339oxKJvqasU1as",
+     "AC2Q3_R_1eWE62X6AUScCMc",
+     "AC2Q3_R_2qa33uKUNjCuE0q",
+     "AC2Q3_R_qJcU4U0KnWs6Lnz"
+    ]
+   },
+   {
+    "chain": "MAX({top(area)}, y)=peak(area)[Nov 2018] → [PROJ → yaxis] → READ(y)≈0.88-0.89 → MIN({top(area)}, y)=pt[Aug 2019] → [PROJ → yaxis] → READ(y)≈0.67-0.69 → ANSWER(v) ?wrong:entry/precision/order-error",
+    "n": 3,
+    "n_correct": 0,
+    "n_incorrect": 3,
+    "quote": "In general I just looked for the high and low points of the charts and estimated the price",
+    "trial_ids": [
+     "AC2Q3_R_1NlwFmOuUVBaeea",
+     "AC2Q3_R_2Pb3ABApTsqS3Jl",
+     "AC2Q3_R_2YgGlmdIRITklxf"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "AC2Q3_R_1NlwFmOuUVBaeea",
+    "accuracy": 0.0,
+    "answer": [
+     "0.68",
+     "0.88"
+    ],
+    "chain": "MIN({top(area)}, y)=pt[Aug 2019] → READ(y)≈0.68 → MAX({top(area)}, y)=peak(area)[Nov 2018] → READ(y)≈0.88 → ANSWER(0.68/0.88) ?wrong:min-max-order-swapped-or-max-under-read",
+    "ops": [
+     "MIN",
+     "READ",
+     "MAX",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "pt[lowest]",
+     "peak(area)"
+    ],
+    "elements_sketch": [
+     "peak(area)[Nov 2018]",
+     "pt[Aug 2019 trough]"
+    ],
+    "sketch_gesture": "boxes/circles around the Nov 2018 peak and the Aug 2019 trough",
+    "source": "both"
+   },
+   {
+    "trial_id": "AC2Q3_R_2Pb3ABApTsqS3Jl",
+    "accuracy": 0.0,
+    "answer": [
+     "0.88",
+     "0.67"
+    ],
+    "chain": "SCAN({xtick Jan 2018..Jan 2020}) → MAX({top(area)}, y)=peak(area)[Nov 2018] → PROJ(pt → xaxis) → PROJ(pt → yaxis) → READ(y)≈0.88 → MIN({top(area)}, y)=pt[Aug 2019] → PROJ(pt → xaxis) → PROJ(pt → yaxis) → READ(y)≈0.67 → ANSWER(0.88/0.67) ?wrong:imprecise-reads(max 0.892 under-read, min 0.686 under-read)",
+    "ops": [
+     "SCAN",
+     "MAX",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "MIN",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[*]",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "peak(area)[Nov 2018]",
+     "pt[Aug 2019 trough]",
+     "xaxis",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical lines from x-axis to the Nov 2018 peak and the Aug 2019 trough; horizontal lines to y-axis at ~0.89 and ~0.69",
+    "source": "both"
+   },
+   {
+    "trial_id": "AC2Q3_R_339oxKJvqasU1as",
+    "accuracy": 0.0,
+    "answer": [
+     "0.78",
+     "0.76"
+    ],
+    "chain": "FIND(top(area)[Jan 2018]) → READ(y)≈0.78 → FIND(top(area)[Jan 2020]) → READ(y)≈0.76 → RANGE(first, last) ?wrong:endpoints-not-extrema → ANSWER(0.78/0.76)",
+    "ops": [
+     "FIND",
+     "READ",
+     "FIND",
+     "READ",
+     "RANGE",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "pt[Jan 2018]",
+     "pt[Jan 2020]"
+    ],
+    "sketch_gesture": "short strokes along the area top at the left edge (Jan 2018, ~0.79) and right edge (Jan 2020, ~0.75)",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "AC2Q3_R_1eWE62X6AUScCMc",
+    "accuracy": 0.0,
+    "answer": [
+     "0.78",
+     "0.76"
+    ],
+    "chain": "CONFUSED(range = Jan-vs-Jan comparison or full two years) → FIND(xtick[January 2018]) → FIND(xtick[January 2020]) → PROJ(pt[Jan 2018] → yaxis) → READ(y)≈0.78 → PROJ(pt[Jan 2020] → yaxis) → READ(y)≈0.75 → RANGE(first, last) ?wrong:endpoints-not-extrema → ANSWER(0.78/0.76)",
+    "ops": [
+     "CONFUSED",
+     "FIND",
+     "FIND",
+     "PROJ",
+     "READ",
+     "PROJ",
+     "READ",
+     "RANGE",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[January 2018]",
+     "xtick[January 2020]",
+     "question"
+    ],
+    "elements_sketch": [
+     "xtick[January 2018]",
+     "xtick[January 2020]",
+     "pt[Jan 2018]",
+     "pt[Jan 2020]",
+     "yaxis"
+    ],
+    "sketch_gesture": "brackets under the January 2018 and January 2020 x-labels; mark at y≈0.79 by the y-axis; horizontal line at ~0.75 from y-axis to a dot on the Jan 2020 end",
+    "source": "both"
+   },
+   {
+    "trial_id": "AC2Q3_R_2qa33uKUNjCuE0q",
+    "accuracy": 0.0,
+    "answer": [
+     "0.78",
+     "0.75"
+    ],
+    "chain": "FIND(top(area)[Jan/Feb 2019]) ?wrong:wrong-year-start(2019 not 2018) → READ(y)≈0.78 → FIND(top(area)[Jan 2020]) → READ(y)≈0.75 → RANGE(first, last) ?wrong:endpoints-not-extrema → FIX(noticed Jan 2019 used instead of Jan 2018) → ANSWER(0.78/0.75)",
+    "ops": [
+     "FIND",
+     "READ",
+     "FIND",
+     "READ",
+     "RANGE",
+     "FIX",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[January 2018]",
+     "xtick[January 2019]"
+    ],
+    "elements_sketch": [
+     "pt[Feb 2019]",
+     "pt[Jan 2020]"
+    ],
+    "sketch_gesture": "tiny dots on the area top at ~Feb 2019 (~0.78) and Jan 2020 (~0.75)",
+    "source": "both"
+   },
+   {
+    "trial_id": "AC2Q3_R_2YgGlmdIRITklxf",
+    "accuracy": 0.0,
+    "answer": [
+     "0.79",
+     "0.68"
+    ],
+    "chain": "MAX({top(area)}, y)=peak(area)[Nov 2018] → PROJ(pt → yaxis) → READ(y)≈0.89 → MIN({top(area)}, y)=pt[Aug 2019] → PROJ(pt → yaxis) → READ(y)≈0.69 → ANSWER(0.79/0.68) ?wrong:entry-error-max(0.89→0.79) → FIX(upper range is actually ~0.89 in Nov 2018)",
+    "ops": [
+     "MAX",
+     "PROJ",
+     "READ",
+     "MIN",
+     "PROJ",
+     "READ",
+     "ANSWER",
+     "FIX"
+    ],
+    "elements_text": [
+     "peak(area)[Nov 2018]",
+     "pt[low]"
+    ],
+    "elements_sketch": [
+     "peak(area)[Nov 2018]",
+     "pt[Aug 2019 trough]",
+     "yaxis"
+    ],
+    "sketch_gesture": "circle on the Nov 2018 peak with arrow left to y-axis at ~0.89; circle on the Aug 2019 trough with arrow left to y-axis at ~0.69",
+    "source": "both"
+   },
+   {
+    "trial_id": "AC2Q3_R_qJcU4U0KnWs6Lnz",
+    "accuracy": 0.0,
+    "answer": [
+     "78",
+     "75"
+    ],
+    "chain": "FIND(xtick[January 2018]) → PROJ(xtick → top(area)) → READ(y)≈0.78 → FIND(xtick[January 2020]) → PROJ(xtick → top(area)) → READ(y)≈0.75 → RANGE(first, last) ?wrong:endpoints-not-extrema → ANSWER(78/75) ?wrong:dropped-decimal-scale",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "READ",
+     "FIND",
+     "PROJ",
+     "READ",
+     "RANGE",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "xtick[January 2018]",
+     "xtick[January 2020]",
+     "pt[Jan 2018]",
+     "pt[Jan 2020]"
+    ],
+    "sketch_gesture": "vertical lines up the left (Jan 2018) and right (Jan 2020) edges ending in circles on the start (~0.79) and end (~0.75) values",
+    "source": "sketch"
+   }
+  ]
+ },
+ "AC2Q4": {
+  "qid": "AC2Q4",
+  "chart": "AC2",
+  "task": "characterize_trend",
+  "question": "Over the first 6 months of 2019, the price of a pound of coffee beans was roughly ____________.'",
+  "reference_chain": "FIND({xtick Jan..Jun 2019}) → SCAN({top(area) Jan..Jun 2019}) → TREND(area, Jan-Jun 2019)=↓ → ANSWER(Falling)",
+  "notes": "In two of the three trials the participant judged the trend correctly for the stretch they looked at, but that stretch was early 2018, which rises, instead of 2019. Year disambiguation on the x-axis (the year shows only under the January labels) is again the pivotal failure. Both drew an imagined rising trendline over the 2018 region. The third traced the correct falling 2019 segment and wrote 'steady decrease', yet answered 'Rising', which points to a response-entry error rather than a perceptual one.",
+  "new_symbols": {},
+  "strategies": [
+   {
+    "chain": "FIND(interval[2018]) ?wrong:wrong-year → LOOK(top(area)[early 2018]) → trendline → TREND=↑ → ANSWER(Rising)",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "rising figures on the chart indicated the rising trend in prices",
+    "trial_ids": [
+     "AC2Q4_R_1NlwFmOuUVBaeea",
+     "AC2Q4_R_339oxKJvqasU1as"
+    ]
+   },
+   {
+    "chain": "FIND({xtick Jan..Jun 2019}) → PROJ(trace top(area)) → TREND=↓ → ANSWER(Rising) ?wrong:answer-contradicts-reasoning",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "the graph of  the shaded part has shown a steady decrease over the first six months of 2019",
+    "trial_ids": [
+     "AC2Q4_R_2Ed9wQrWEbHKZvv"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "AC2Q4_R_1NlwFmOuUVBaeea",
+    "accuracy": 0.0,
+    "answer": "Rising",
+    "chain": "FIND({xtick Jan..Jun 2018}) ?wrong:wrong-year(2018 not 2019) → FIND(xtick[June 2018]) → LOOK(top(area)[Jan-Jun 2018]) → trendline[Jan-Jun 2018] → TREND(trendline)=↑ → ANSWER(Rising)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "LOOK",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "trendline"
+    ],
+    "elements_sketch": [
+     "trendline[Jan-Jun 2018]",
+     "xtick[June 2018]"
+    ],
+    "sketch_gesture": "rising straight line drawn over the area top from Jan to ~June 2018, plus a vertical line at ~June 2018 marking the interval end",
+    "source": "both"
+   },
+   {
+    "trial_id": "AC2Q4_R_339oxKJvqasU1as",
+    "accuracy": 0.0,
+    "answer": "Rising",
+    "chain": "LOOK(top(area)[Apr-Jul 2018]) ?wrong:wrong-year(2018 not 2019) → trendline[Apr-Jul 2018] → TREND(area)=↑ → ANSWER(Rising)",
+    "ops": [
+     "LOOK",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "top(area)[rising figures]"
+    ],
+    "elements_sketch": [
+     "trendline[Apr-Jul 2018]"
+    ],
+    "sketch_gesture": "rising line drawn over the area top from ~Apr to Jul 2018",
+    "source": "both"
+   },
+   {
+    "trial_id": "AC2Q4_R_2Ed9wQrWEbHKZvv",
+    "accuracy": 0.0,
+    "answer": "Rising",
+    "chain": "FIND({xtick Jan..Jun 2019}) → PROJ(trace along top(area)[Jan-Jul 2019]) → TREND(area, Jan-Jun 2019)=↓ → ANSWER(Rising) ?wrong:selected-option-contradicts-own-reasoning",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "area",
+     "{xtick Jan..Jun 2019}"
+    ],
+    "elements_sketch": [
+     "top(area)[Jan-Jul 2019]"
+    ],
+    "sketch_gesture": "line traced down along the falling area top from Jan to ~July 2019, ending in an arrowhead",
+    "source": "both"
+   }
+  ]
+ },
+ "ACQ1": {
+  "qid": "ACQ1",
+  "chart": "AC",
+  "task": "retrieve_value",
+  "question": "What was the price of a pound of coffee beans in June 2019?",
+  "reference_chain": "FIND(xtick[June 2019] | xtick[April 2019], xtick[July 2019]) → PROJ(xtick[June 2019] → top(area)) → PROJ(top(area) → yaxis) → INTERP(v | ticks 0.70,0.75) → READ(top(area), y)≈0.71 → ANSWER(0.71)",
+  "notes": "All six trials are incorrect, and every sketch shows the projection idea (vertical up from the x-axis, horizontal over to the y-axis) carried out at the wrong place or reported in the wrong format. The main pitfall is the x-axis: June has no label (only Jan/Apr/Jul/Oct ticks), and the chart covers two years, so three people projected from June 2018 (≈0.86–0.89) and others landed on July 2019 or Jan 2019. Two people found the right spot but typed the value as a percentage-like integer (72, 74), dropping the '0.' of the $/lb scale.",
+  "new_symbols": {},
+  "strategies": [
+   {
+    "chain": "FIND(xtick[June 2018]) ?wrong:wrong-year → PROJ(xtick → top(area)) → PROJ(top(area) → yaxis) → READ(top(area), y)≈0.88 → ANSWER(v)",
+    "n": 3,
+    "n_correct": 0,
+    "n_incorrect": 3,
+    "quote": "the peak of the price was clear",
+    "trial_ids": [
+     "ACQ1_R_2dSKNTMDrpOIGb1",
+     "ACQ1_R_2xFzb7lDkJFr8wu",
+     "ACQ1_R_3EiHZeDwJysMONb"
+    ]
+   },
+   {
+    "chain": "FIND(xtick[June 2019]) → PROJ(xtick → top(area)) → PROJ(top(area) → yaxis) → READ(top(area), y)≈0.72 → ANSWER(72) ?wrong:dropped-decimal-scale",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "found june on bottom axis and drew a line across to price axis",
+    "trial_ids": [
+     "ACQ1_R_pH3jYPUuhsiruJr"
+    ]
+   },
+   {
+    "chain": "FIND(xtick[June 2019]) → FIND(top(area)[July 2019]) ?wrong:wrong-month → READ(top(area), y)≈0.74 → ANSWER(74) ?wrong:dropped-decimal-scale",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "Find june and point the price",
+    "trial_ids": [
+     "ACQ1_R_3qlo0gTj7qX5NaV"
+    ]
+   },
+   {
+    "chain": "FIND(xtick[Jan 2019]) ?wrong:wrong-month → PROJ(xtick → top(area)) → PROJ(top(area) → yaxis) → CONFUSED(no ticks between 0.75 and 0.80) → INTERP(v | ticks 0.75,0.80) → READ(y)≈0.76 → ANSWER(0.76)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "it was a little confusing since the were no values between 0.75 and 0.80",
+    "trial_ids": [
+     "ACQ1_R_xsaKUVdTdetngd3"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "ACQ1_R_3qlo0gTj7qX5NaV",
+    "accuracy": 0.0,
+    "answer": "74",
+    "chain": "FIND(xtick[June 2019]) → FIND(top(area)[July 2019]) ?wrong:wrong-month-circled-July-peak → READ(top(area), y)≈0.74 → ANSWER(74) ?wrong:dropped-decimal-scale",
+    "ops": [
+     "FIND",
+     "FIND",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[June]",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "top(area)[July 2019]"
+    ],
+    "sketch_gesture": "filled scribble/circle on the area top at July 2019 (~0.735)",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ1_R_2dSKNTMDrpOIGb1",
+    "accuracy": 0.0,
+    "answer": "97",
+    "chain": "FIND(xtick[June 2018]) ?wrong:wrong-year → PROJ(xtick → top(area)) → READ(y)=97? ?wrong:value-not-on-scale → ANSWER(97)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "xtick[June 2018]",
+     "top(area)[June 2018]"
+    ],
+    "sketch_gesture": "vertical line from x-axis at June 2018 up to the area top (~0.89)",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "ACQ1_R_2xFzb7lDkJFr8wu",
+    "accuracy": 0.0,
+    "answer": "0.86",
+    "chain": "FIND(top(area)[June 2018]) ?wrong:wrong-year → READ(top(area), y)≈0.86 → ANSWER(0.86)",
+    "ops": [
+     "FIND",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "top(area)[June-July 2018]"
+    ],
+    "sketch_gesture": "circle on area top between June and July 2018 (~0.87)",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "ACQ1_R_xsaKUVdTdetngd3",
+    "accuracy": 0.0,
+    "answer": "0.76",
+    "chain": "FIND(xtick[Jan 2019]) ?wrong:wrong-month → PROJ(xtick → top(area)) → PROJ(top(area) → yaxis) → CONFUSED(no ticks between 0.75 and 0.80) → INTERP(v | ticks 0.75,0.80) → READ(y)≈0.76 → ANSWER(0.76)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "CONFUSED",
+     "INTERP",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "ytick[0.75]",
+     "ytick[0.80]"
+    ],
+    "elements_sketch": [
+     "xtick[Jan 2019]",
+     "top(area)[Jan 2019]",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line up at ~Dec 2018/Jan 2019, then horizontal line left to y-axis at ~0.77",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ1_R_pH3jYPUuhsiruJr",
+    "accuracy": 0.0,
+    "answer": "72",
+    "chain": "FIND(xtick[June 2019]) → PROJ(xtick → top(area)) → PROJ(top(area) → yaxis) → READ(top(area), y)≈0.72 → ANSWER(72) ?wrong:dropped-decimal-scale",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xaxis",
+     "xtick[June]",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "xtick[June 2019]",
+     "top(area)[June 2019]",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from June 2019 to area top, small circle there, horizontal line left to y-axis at ~0.72",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ1_R_3EiHZeDwJysMONb",
+    "accuracy": 0.0,
+    "answer": "0.88",
+    "chain": "FIND(xtick[June 2018]) ?wrong:wrong-year → PROJ(xtick → top(area)) → PROJ(top(area) → yaxis) → READ(top(area), y)≈0.88 → ANSWER(0.88)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "peak(area)"
+    ],
+    "elements_sketch": [
+     "xtick[June 2018]",
+     "top(area)[June 2018]",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from June 2018 up to area top, horizontal line left to y-axis, '0.88' written by the axis",
+    "source": "both"
+   }
+  ]
+ },
+ "ACQ2": {
+  "qid": "ACQ2",
+  "chart": "AC",
+  "task": "find_extremum",
+  "question": "When was the price of a pound of coffee beans at a minimum?",
+  "reference_chain": "SCAN({top(area) Jan 2018..Jan 2020}) → ARGMIN({top(area)}, y) = pt[Nov 2019] → PROJ(pt → xaxis) → INTERP(month | xtick[October 2019], xtick[January 2020]) → READ(x)=Nov 2019 → ANSWER(Nov 2019)",
+  "notes": "All eight trials are incorrect, but half of them did find the right dip: they dropped a vertical line from the Nov 2019 trough and then named the wrong month (Oct 2019, or Nov 2018). The failure is at the very end, mapping a position on the x-axis to a month: there are minor ticks but only every third month is labelled, so the dip just right of the 'October' label gets read as October. Other errors were choosing the wrong mark altogether: the last point (Jan 2020, twice) or the maximum (Mar 2018). The horizontal line people drew to the y-axis shows they were checking the minimum's value even though the question asks for a time.",
+  "new_symbols": {},
+  "strategies": [
+   {
+    "chain": "ARGMIN({top(area)}, y) = pt[Nov 2019] → PROJ(pt → xaxis) → PROJ(pt → yaxis) → READ(x)=Oct 2019 ?wrong:off-by-one-month-unlabeled-ticks → ANSWER(Oct 2019)",
+    "n": 4,
+    "n_correct": 0,
+    "n_incorrect": 4,
+    "quote": "When I drew the lines I noticed that I answered the wrong month. So I realized that I was confused by the way the months were organized.",
+    "trial_ids": [
+     "ACQ2_R_241SEsUc9JJZ9ii",
+     "ACQ2_R_xsaKUVdTdetngd3",
+     "ACQ2_R_1DSSJM8uwjonRFh",
+     "ACQ2_R_3EiHZeDwJysMONb"
+    ]
+   },
+   {
+    "chain": "ARGMIN({top(area)}, y) = pt[Jan 2020] ?wrong:picked-last-point-not-min → PROJ(pt → xaxis) → ANSWER(Jan 2020)",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "The lowest recorded price was in January 2020",
+    "trial_ids": [
+     "ACQ2_R_1mIBohkOmIdsgF5",
+     "ACQ2_R_3G94sLKEDU4CAIr"
+    ]
+   },
+   {
+    "chain": "SCAN({top(area)}) → ARGMIN(\"biggest dip\") = pt[Nov 2019] → PROJ(pt → xaxis) → READ(x)=Nov 2018 ?wrong:wrong-year → ANSWER(Nov 2018)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "I just looked for the biggest dip.",
+    "trial_ids": [
+     "ACQ2_R_2dSKNTMDrpOIGb1"
+    ]
+   },
+   {
+    "chain": "FIND(peak(area)[Mar 2018]) ?wrong:picked-maximum-not-minimum → ANSWER(Mar 2018)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "It was easy to analyze the chart",
+    "trial_ids": [
+     "ACQ2_R_2xFzb7lDkJFr8wu"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "ACQ2_R_241SEsUc9JJZ9ii",
+    "accuracy": 0.0,
+    "answer": "Oct 2019",
+    "chain": "ARGMIN({top(area)}, y) = pt[Nov 2019] → PROJ(pt → xaxis) → PROJ(pt → yaxis) → CONFUSED(not all months labelled) → READ(x)=Oct 2019 ?wrong:off-by-one-month-unlabeled-ticks → ANSWER(Oct 2019)",
+    "ops": [
+     "ARGMIN",
+     "PROJ",
+     "PROJ",
+     "CONFUSED",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[*]",
+     "xtick[November]"
+    ],
+    "elements_sketch": [
+     "pt[Nov 2019 trough]",
+     "xaxis",
+     "yaxis"
+    ],
+    "sketch_gesture": "circle on the Nov 2019 trough, vertical line down to x-axis, horizontal line left to y-axis at ~0.69",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ2_R_1mIBohkOmIdsgF5",
+    "accuracy": 0.0,
+    "answer": "Jan 2020",
+    "chain": "ARGMIN({top(area)}, y) = pt[Jan 2020] ?wrong:picked-last-point-not-min → ANSWER(Jan 2020)",
+    "ops": [
+     "ARGMIN",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[January 2020]"
+    ],
+    "elements_sketch": [
+     "pt[Jan 2020]"
+    ],
+    "sketch_gesture": "circle on the area top at Dec 2019/Jan 2020 (~0.73)",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ2_R_2dSKNTMDrpOIGb1",
+    "accuracy": 0.0,
+    "answer": "Nov 2018",
+    "chain": "SCAN({top(area)}) → ARGMIN(\"biggest dip\") = pt[Nov 2019] → PROJ(pt → xaxis) → READ(x)=Nov 2018 ?wrong:wrong-year → ANSWER(Nov 2018)",
+    "ops": [
+     "SCAN",
+     "ARGMIN",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "peak(area)[dip]"
+    ],
+    "elements_sketch": [
+     "pt[Nov 2019 trough]",
+     "xaxis"
+    ],
+    "sketch_gesture": "vertical line from the Nov 2019 trough down to the x-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ2_R_2xFzb7lDkJFr8wu",
+    "accuracy": 0.0,
+    "answer": "Mar 2018",
+    "chain": "FIND(peak(area)[Mar 2018]) ?wrong:picked-maximum-not-minimum → ANSWER(Mar 2018)",
+    "ops": [
+     "FIND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "peak(area)[Mar 2018]"
+    ],
+    "sketch_gesture": "box/circle around the Mar 2018 peak (~0.89)",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "ACQ2_R_xsaKUVdTdetngd3",
+    "accuracy": 0.0,
+    "answer": "Oct 2019",
+    "chain": "ARGMIN({top(area)}, y) = pt[Nov 2019] → PROJ(pt → xaxis) → PROJ(pt → yaxis) → READ(x)=Oct 2019 ?wrong:off-by-one-month-unlabeled-ticks → ANSWER(Oct 2019)",
+    "ops": [
+     "ARGMIN",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "pt[Nov 2019 trough]",
+     "xaxis",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from the Nov 2019 trough to the x-axis and horizontal line left to y-axis at ~0.685",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "ACQ2_R_3G94sLKEDU4CAIr",
+    "accuracy": 0.0,
+    "answer": "Jan 2020",
+    "chain": "ARGMIN({top(area)}, y) = pt[Jan 2020] ?wrong:picked-last-point-not-min → PROJ(pt → xaxis) → PROJ(pt → yaxis) → ANSWER(Jan 2020)",
+    "ops": [
+     "ARGMIN",
+     "PROJ",
+     "PROJ",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "pt[Jan 2020]",
+     "xtick[January 2020]",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from Jan 2020 up to ~0.73, horizontal line across the chart to y-axis at ~0.73",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "ACQ2_R_1DSSJM8uwjonRFh",
+    "accuracy": 0.0,
+    "answer": "Oct 2019",
+    "chain": "ARGMIN({top(area)}, y) = pt[Nov 2019] → PROJ(pt → xaxis) → PROJ(pt → yaxis) → READ(x)=Oct 2019 ?wrong:off-by-one-month-unlabeled-ticks → CONFUSED(month tick organization) → FIX(noticed wrong month while drawing, not applied) → ANSWER(Oct 2019)",
+    "ops": [
+     "ARGMIN",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "CONFUSED",
+     "FIX",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[*]"
+    ],
+    "elements_sketch": [
+     "pt[Nov 2019 trough]",
+     "xaxis",
+     "yaxis"
+    ],
+    "sketch_gesture": "circle on the Nov 2019 trough, vertical line down to x-axis, horizontal line left to y-axis at ~0.69",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ2_R_3EiHZeDwJysMONb",
+    "accuracy": 0.0,
+    "answer": "Oct 2019",
+    "chain": "ARGMIN({top(area)}, y) = pt[Nov 2019] → PROJ(pt → xaxis) → PROJ(pt → yaxis) → DOUBT(exact point) → READ(x)=Oct 2019 ?wrong:off-by-one-month-unlabeled-ticks → ANSWER(Oct 2019)",
+    "ops": [
+     "ARGMIN",
+     "PROJ",
+     "PROJ",
+     "DOUBT",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "pt[min]"
+    ],
+    "elements_sketch": [
+     "pt[Nov 2019 trough]",
+     "xaxis",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical line from the Nov 2019 trough to the x-axis, horizontal line left to y-axis at ~0.69",
+    "source": "both"
+   }
+  ]
+ },
+ "ACQ3": {
+  "qid": "ACQ3",
+  "chart": "AC",
+  "task": "determine_range",
+  "question": "What was the range of the price of a pound of coffee beans between January 2018 and January 2020?",
+  "reference_chain": "SCAN({top(area) Jan 2018..Jan 2020}) → MAX({top(area)}, y)=pt[Mar 2018] → PROJ(pt → yaxis) → READ(y)≈0.89 → MIN({top(area)}, y)=pt[Nov 2019] → PROJ(pt → yaxis) → READ(y)≈0.69 → RANGE(0.69, 0.89) → ANSWER(0.69–0.89)",
+  "notes": "All 13 trials are incorrect, and they fail in three different ways. (1) Endpoint substitution (5 trials): reading the price in Jan 2018 and Jan 2020 (0.89/0.73) instead of the max and min, i.e. treating the range of time as the range of price. (2) Axis-range substitution (3 trials): circling or tracing the y-axis bounds 0.90/0.50, so the y-axis frame stands in for the data. (3) Correct max/min search with an error at the output: a digit transposition (0.98, 0.99), dropping the decimal (88/68), or typing a value that doesn't match the sketch (0.78). The early-2018 plateau also made the maximum ambiguous ('more constant with the surrounding prices').",
+  "new_symbols": {
+   "valley(m)": "mark part: a local/global trough of a line/area top (counterpart of peak(m))"
+  },
+  "strategies": [
+   {
+    "chain": "FIND(top(area)[Jan 2018]) → READ(y)≈0.89 → FIND(top(area)[Jan 2020]) → READ(y)≈0.73 → RANGE(first, last) ?wrong:endpoints-not-extrema → ANSWER(0.89/0.73)",
+    "n": 5,
+    "n_correct": 0,
+    "n_incorrect": 5,
+    "quote": "The range I just looked were the graph started and were it ended",
+    "trial_ids": [
+     "ACQ3_R_3qlo0gTj7qX5NaV",
+     "ACQ3_R_qxg0KknHF5gbXfH",
+     "ACQ3_R_3G94sLKEDU4CAIr",
+     "ACQ3_R_pH3jYPUuhsiruJr",
+     "ACQ3_R_2ZCWA6Wf2jsOGIb"
+    ]
+   },
+   {
+    "chain": "MAX({top(area)}, y) → PROJ(→ yaxis) → READ(y)≈0.89 → MIN({top(area)}, y)=pt[Nov 2019] → PROJ(→ yaxis) → READ(y)≈0.69 → ANSWER(v) ?wrong:entry-error(transposed digits / dropped decimal / mismatched value)",
+    "n": 4,
+    "n_correct": 0,
+    "n_incorrect": 4,
+    "quote": "I looked at the highest point of the graph and the lowest point of the graph.",
+    "trial_ids": [
+     "ACQ3_R_32Q56m6gcri89NR",
+     "ACQ3_R_DSmeZLcUwsRPTe9",
+     "ACQ3_R_2dSKNTMDrpOIGb1",
+     "ACQ3_R_1DSSJM8uwjonRFh"
+    ]
+   },
+   {
+    "chain": "LOOK(yaxis) → READ(ytick[0.90])=0.90 → READ(ytick[0.50])=0.50 → RANGE(axis bounds) ?wrong:axis-range-not-data-range → ANSWER(0.90/0.50)",
+    "n": 2,
+    "n_correct": 0,
+    "n_incorrect": 2,
+    "quote": "A range is a measurement between two numbers",
+    "trial_ids": [
+     "ACQ3_R_1mIBohkOmIdsgF5",
+     "ACQ3_R_xsaKUVdTdetngd3"
+    ]
+   },
+   {
+    "chain": "MAX({top(area)}, y) → READ(y)≈0.89 → MIN({top(area)}, y) → READ(y)≈0.68 → FIX(min → ytick[0.50]) ?wrong:axis-minimum-not-data-minimum → ANSWER(0.89/0.5)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "I put the minimum figure possible instead of the lowest figure that was actually there",
+    "trial_ids": [
+     "ACQ3_R_1j9P5vv5Ufod123"
+    ]
+   },
+   {
+    "chain": "FIND(top(area)[Jan-Feb 2018]) → READ(y)≈0.88 → READ(y)=0.85? ?wrong:only-early-region-inspected → ANSWER(0.88/0.85)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "Clarity of the chart",
+    "trial_ids": [
+     "ACQ3_R_2xFzb7lDkJFr8wu"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "ACQ3_R_32Q56m6gcri89NR",
+    "accuracy": 0.0,
+    "answer": [
+     "0.98",
+     "0.69"
+    ],
+    "chain": "MAX({top(area)}, y) → DOUBT(max: plateau of similar values) → PROJ(top(area)[Jan-Mar 2018] → yaxis) → READ(y)≈0.89 → MIN({top(area)}, y)=pt[Nov 2019] → PROJ(pt → yaxis) → READ(y)≈0.69 → ANSWER(0.98/0.69) ?wrong:transposed-digits-0.89→0.98",
+    "ops": [
+     "MAX",
+     "DOUBT",
+     "PROJ",
+     "READ",
+     "MIN",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "peak(area)",
+     "top(area)"
+    ],
+    "elements_sketch": [
+     "peak(area)[Feb-Mar 2018]",
+     "pt[Nov 2019 trough]",
+     "yaxis"
+    ],
+    "sketch_gesture": "horizontal line from y-axis at ~0.89 to a circled point near Feb-Mar 2018; horizontal line at ~0.69 from y-axis to a scribble on the Nov 2019 trough",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ3_R_3qlo0gTj7qX5NaV",
+    "accuracy": 0.0,
+    "answer": [
+     "0.89",
+     "0.73"
+    ],
+    "chain": "FIND(top(area)[Jan 2018]) → READ(y)≈0.89 → FIND(top(area)[Jan 2020]) → READ(y)≈0.73 → RANGE(first, last) ?wrong:endpoints-not-extrema → ANSWER(0.89/0.73)",
+    "ops": [
+     "FIND",
+     "READ",
+     "FIND",
+     "READ",
+     "RANGE",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "pt[first]",
+     "peak(area)",
+     "pt[last, January]"
+    ],
+    "elements_sketch": [
+     "pt[Jan 2018]",
+     "pt[Jan 2020]"
+    ],
+    "sketch_gesture": "circle on the Jan 2018 start point; tick mark at the Jan 2020 end point",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ3_R_1mIBohkOmIdsgF5",
+    "accuracy": 0.0,
+    "answer": [
+     "0.90",
+     "0.50"
+    ],
+    "chain": "KNOW(range = between two numbers) → LOOK(yaxis) → READ(ytick[0.90])=0.90 → READ(ytick[0.50])=0.50 → RANGE(axis bounds) ?wrong:axis-range-not-data-range → ANSWER(0.90/0.50)",
+    "ops": [
+     "KNOW",
+     "LOOK",
+     "READ",
+     "READ",
+     "RANGE",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "ytick[0.90]",
+     "ytick[0.50]"
+    ],
+    "sketch_gesture": "circles on the top (0.90) and bottom (0.50) y-axis tick labels",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ3_R_2dSKNTMDrpOIGb1",
+    "accuracy": 0.0,
+    "answer": [
+     "88",
+     "68"
+    ],
+    "chain": "MAX(peak(area)) → READ(y)≈0.89 → MIN(valley(area))=pt[Nov 2019] → READ(y)≈0.69 → ANSWER(88/68) ?wrong:dropped-decimal-scale",
+    "ops": [
+     "MAX",
+     "READ",
+     "MIN",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "peak(area)",
+     "valley(area)"
+    ],
+    "elements_sketch": [
+     "peak(area)[Jan-Mar 2018]",
+     "pt[Nov 2019 trough]"
+    ],
+    "sketch_gesture": "horizontal line at ~0.89 from the early-2018 peak across the chart, then a vertical drop down to the Nov 2019 trough",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ3_R_1j9P5vv5Ufod123",
+    "accuracy": 0.0,
+    "answer": [
+     "0.89",
+     "0.5"
+    ],
+    "chain": "MAX({top(area)}, y) → READ(y)≈0.89 → MIN({top(area)}, y)=pt[Nov 2019] → READ(y)≈0.68 → CONFUSED(range) → ANSWER(0.89/0.5) ?wrong:axis-minimum-not-data-minimum",
+    "ops": [
+     "MAX",
+     "READ",
+     "MIN",
+     "READ",
+     "CONFUSED",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "ytick[0.50]"
+    ],
+    "elements_sketch": [
+     "top(area)[Jan-Aug 2018]",
+     "pt[Nov 2019 trough]"
+    ],
+    "sketch_gesture": "line traced along the top of the early-2018 plateau at ~0.89; horizontal line at ~0.68 from y-axis to the Nov 2019 trough; stray diagonal strokes",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ3_R_DSmeZLcUwsRPTe9",
+    "accuracy": 0.0,
+    "answer": [
+     "0.99",
+     "0.69"
+    ],
+    "chain": "MAX({top(area)}, y)=pt[Feb 2018] → PROJ(pt → yaxis) → READ(y)≈0.89 → MIN({top(area)}, y)=pt[Nov 2019] → PROJ(pt → yaxis) → READ(y)≈0.69 → ANSWER(0.99/0.69) ?wrong:entry-error-0.89→0.99",
+    "ops": [
+     "MAX",
+     "PROJ",
+     "READ",
+     "MIN",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "peak(area)",
+     "pt[lowest]"
+    ],
+    "elements_sketch": [
+     "peak(area)[Feb 2018]",
+     "pt[Nov 2019 trough]",
+     "yaxis",
+     "xaxis"
+    ],
+    "sketch_gesture": "vertical lines from x-axis to the Feb 2018 peak and to the Nov 2019 trough; horizontal lines to y-axis at ~0.89 and ~0.68",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ3_R_qxg0KknHF5gbXfH",
+    "accuracy": 0.0,
+    "answer": [
+     "0.89",
+     "0.73"
+    ],
+    "chain": "FIND(xtick[Jan 2018]) → FIND(xtick[Jan 2020]) → READ(top(area)[Jan 2018], y)≈0.89 → READ(top(area)[Jan 2020], y)≈0.73 → RANGE(first, last) ?wrong:endpoints-not-extrema → ANSWER(0.89/0.73)",
+    "ops": [
+     "FIND",
+     "FIND",
+     "READ",
+     "READ",
+     "RANGE",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[*]",
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "xtick[January 2018]",
+     "xtick[January 2020]",
+     "pt[Jan 2018]",
+     "pt[Jan 2020]"
+    ],
+    "sketch_gesture": "marks on the Jan 2018 and Jan 2020 x-axis positions and short dashes at the start (~0.89) and end (~0.73) values",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ3_R_2xFzb7lDkJFr8wu",
+    "accuracy": 0.0,
+    "answer": [
+     "0.88",
+     "0.85"
+    ],
+    "chain": "FIND(top(area)[Jan-Feb 2018]) → READ(y)≈0.88 → READ(y)=0.85? ?wrong:only-early-region-inspected → ANSWER(0.88/0.85)",
+    "ops": [
+     "FIND",
+     "READ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "top(area)[Jan-Feb 2018]"
+    ],
+    "sketch_gesture": "box around the area top at Jan-Feb 2018 (~0.89)",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "ACQ3_R_xsaKUVdTdetngd3",
+    "accuracy": 0.0,
+    "answer": [
+     "0.90",
+     "0.50"
+    ],
+    "chain": "LOOK(yaxis) → READ(ytick[0.90])=0.90 → READ(ytick[0.50])=0.50 → RANGE(axis bounds) ?wrong:axis-range-not-data-range → ANSWER(0.90/0.50)",
+    "ops": [
+     "LOOK",
+     "READ",
+     "READ",
+     "RANGE",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "yaxis"
+    ],
+    "elements_sketch": [
+     "grid[y=0.90]",
+     "grid[y=0.50]"
+    ],
+    "sketch_gesture": "horizontal lines traced along the full width at the 0.90 top gridline and the 0.50 baseline",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ3_R_3G94sLKEDU4CAIr",
+    "accuracy": 0.0,
+    "answer": [
+     "0.89",
+     "0.73"
+    ],
+    "chain": "FIND(xtick[Jan 2018]) → PROJ(xtick → top(area)) → READ(y)≈0.89 → FIND(xtick[Jan 2020]) → PROJ(xtick → top(area)) → PROJ(top(area) → yaxis) → READ(y)≈0.73 → RANGE(first, last) ?wrong:endpoints-not-extrema → ANSWER(0.89/0.73)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "READ",
+     "FIND",
+     "PROJ",
+     "PROJ",
+     "READ",
+     "RANGE",
+     "ANSWER"
+    ],
+    "elements_text": [],
+    "elements_sketch": [
+     "xtick[January 2018]",
+     "xtick[January 2020]",
+     "pt[Jan 2018]",
+     "pt[Jan 2020]",
+     "yaxis"
+    ],
+    "sketch_gesture": "vertical lines up the left (Jan 2018) and right (Jan 2020) edges; horizontal line at ~0.73 across the chart; mark at ~0.89 top-left",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "ACQ3_R_pH3jYPUuhsiruJr",
+    "accuracy": 0.0,
+    "answer": [
+     "0.89",
+     "0.735"
+    ],
+    "chain": "FIND(top(area)[Jan 2018]) → READ(y)≈0.89 → DOUBT(Feb might be higher) → FIND(top(area)[Jan 2020]) → READ(y)≈0.735 → RANGE(high=start, low=end) ?wrong:endpoints-not-extrema → ANSWER(0.89/0.735)",
+    "ops": [
+     "FIND",
+     "READ",
+     "DOUBT",
+     "FIND",
+     "READ",
+     "RANGE",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[Feb]"
+    ],
+    "elements_sketch": [
+     "pt[Jan 2018]",
+     "pt[Jan 2020]"
+    ],
+    "sketch_gesture": "'High' written with a circle at the Jan 2018 start; 'Low' written with a circle at the Jan 2020 end",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ3_R_1DSSJM8uwjonRFh",
+    "accuracy": 0.0,
+    "answer": [
+     "0.89",
+     "0.78"
+    ],
+    "chain": "MAX({top(area)}, y)=pt[Mar 2018] → PROJ(pt → yaxis) → READ(y)≈0.89 → MIN({top(area)}, y)=pt[Nov 2019] → PROJ(pt → yaxis) → READ(y)≈0.69 → ANSWER(0.89/0.78) ?wrong:typed-min-mismatches-sketch",
+    "ops": [
+     "MAX",
+     "PROJ",
+     "READ",
+     "MIN",
+     "PROJ",
+     "READ",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "ytick[*]"
+    ],
+    "elements_sketch": [
+     "peak(area)[Mar 2018]",
+     "pt[Nov 2019 trough]",
+     "yaxis"
+    ],
+    "sketch_gesture": "circle on the Mar 2018 peak with line to y-axis at ~0.89; circle on the Nov 2019 trough with horizontal line to y-axis at ~0.69",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ3_R_2ZCWA6Wf2jsOGIb",
+    "accuracy": 0.0,
+    "answer": [
+     "0.89",
+     "0.73"
+    ],
+    "chain": "FIND(top(area)[Jan 2018]) → PROJ(→ yaxis) → READ(y)≈0.89 → FIND(top(area)[Jan 2020]) → PROJ(→ yaxis) → READ(y)≈0.73 → RANGE(start, end) ?wrong:endpoints-not-extrema → ANSWER(0.89/0.73)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "READ",
+     "FIND",
+     "PROJ",
+     "READ",
+     "RANGE",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "pt[start]",
+     "pt[end]"
+    ],
+    "elements_sketch": [
+     "pt[Jan 2018]",
+     "pt[Jan 2020]",
+     "yaxis"
+    ],
+    "sketch_gesture": "two horizontal lines across the whole chart at ~0.89 (start level) and ~0.73 (end level)",
+    "source": "both"
+   }
+  ]
+ },
+ "ACQ4": {
+  "qid": "ACQ4",
+  "chart": "AC",
+  "task": "characterize_trend",
+  "question": "Over the first 6 months of 2018, the price of a pound of coffee beans was roughly ____________.'",
+  "reference_chain": "FIND({xtick Jan..Jun 2018}) → SCAN({top(area) Jan..Jun 2018}) → RANGE(min, max)≈0.88–0.89 → TREND(area, Jan-Jun 2018)=→ → ANSWER(Constant)",
+  "notes": "Every one of the 14 trials answered 'Constant', which is the study's answer key for this item (shown on other ACQ4 composites as 'correct answer: Constant'), yet all are coded accuracy 0. That looks like a scoring or data artifact, so none of the chains are marked ?wrong. The sketches are strikingly uniform: a line or ellipse along the flat area top over Jan–Jun 2018, usually closed off by a vertical line at about June/July to mark the end of the interval. The pivotal elements are the x-axis interval boundary (July, after which the price drops) and the flatness of top(area). Text explanations add net-change reasoning: rises cancel falls, the average, no peaks or lows, minor difference.",
+  "new_symbols": {
+   "valley(m)": "mark part: a trough on a line/area top (counterpart of peak(m))"
+  },
+  "strategies": [
+   {
+    "chain": "FIND({xtick Jan..Jun 2018}) → [PROJ(→ top(area))] → LOOK(top(area)[Jan-Jun 2018]) → TREND(area, interval)=→ → ANSWER(Constant)",
+    "n": 4,
+    "n_correct": 0,
+    "n_incorrect": 4,
+    "quote": "I marked 6 first months of 2018 and saw that the price wasn't changing much",
+    "trial_ids": [
+     "ACQ4_R_3HjF7OuUrwLsqvT",
+     "ACQ4_R_qxg0KknHF5gbXfH",
+     "ACQ4_R_3iO6HqnDwQk14cZ",
+     "ACQ4_R_3gZSXeLLnjuAoDA"
+    ]
+   },
+   {
+    "chain": "LOOK(top(area)[Jan-Jun 2018]) → [GIST] → TREND(area, interval)=→ → ANSWER(Constant)",
+    "n": 4,
+    "n_correct": 0,
+    "n_incorrect": 4,
+    "quote": "It looks constant throughout that period",
+    "trial_ids": [
+     "ACQ4_R_32Q56m6gcri89NR",
+     "ACQ4_R_241SEsUc9JJZ9ii",
+     "ACQ4_R_2xFzb7lDkJFr8wu",
+     "ACQ4_R_xsaKUVdTdetngd3"
+    ]
+   },
+   {
+    "chain": "LOOK(top(area)[Jan-Jun 2018]) → SCAN(local ↑/↓) → CMP(rise ≈ fall) → TREND(area, interval)=→ → ANSWER(Constant)",
+    "n": 3,
+    "n_correct": 0,
+    "n_incorrect": 3,
+    "quote": "I saw that it was rising but also decreasing at the same rate",
+    "trial_ids": [
+     "ACQ4_R_2E7bKzEVRvQoxPT",
+     "ACQ4_R_DSmeZLcUwsRPTe9",
+     "ACQ4_R_1DSSJM8uwjonRFh"
+    ]
+   },
+   {
+    "chain": "LOOK(top(area)[Jan-Jun 2018]) → DIFF(start,end)≈small → TREND(area, interval)=→ → ANSWER(Constant)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "there was not much difference to the prices over the 6 months the change in the price was minor",
+    "trial_ids": [
+     "ACQ4_R_3EiHZeDwJysMONb"
+    ]
+   },
+   {
+    "chain": "LOOK(top(area)[Jan-Jun 2018]) → TREND=→ → FIND(xtick[July 2018]) → TREND(after July)=↓ → ANSWER(Constant)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "It looked like rather steady line until July, when it obviously starts dropping",
+    "trial_ids": [
+     "ACQ4_R_3KoNCnW4A4ISLZ8"
+    ]
+   },
+   {
+    "chain": "FIND({xtick Jan..Jun 2018}) → LOOK(top(area)[Jan-Jun 2018]) → AVG(top(area)[interval]) → TREND(area, interval)=→ → ANSWER(Constant)",
+    "n": 1,
+    "n_correct": 0,
+    "n_incorrect": 1,
+    "quote": "Tried to find the average within that time period",
+    "trial_ids": [
+     "ACQ4_R_1j9P5vv5Ufod123"
+    ]
+   }
+  ],
+  "trials": [
+   {
+    "trial_id": "ACQ4_R_3HjF7OuUrwLsqvT",
+    "accuracy": 0.0,
+    "answer": "Constant",
+    "chain": "FIND({xtick Jan..Jun 2018}) → LOOK(top(area)[Jan-Jun 2018]) → TREND(area, Jan-Jun 2018)=→ → ANSWER(Constant)",
+    "ops": [
+     "FIND",
+     "LOOK",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[dates provided]"
+    ],
+    "elements_sketch": [
+     "top(area)[Jan-Jun 2018]"
+    ],
+    "sketch_gesture": "closed outline enclosing the flat area top over the first ~6 months",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ4_R_32Q56m6gcri89NR",
+    "accuracy": 0.0,
+    "answer": "Constant",
+    "chain": "LOOK(top(area)[Jan-Jun 2018]) → LOOK({xtick Jan..Jun 2018}) → GIST(top(area)[Jan-Jun 2018]) → TREND(area, Jan-Jun 2018)=→ → ANSWER(Constant)",
+    "ops": [
+     "LOOK",
+     "LOOK",
+     "GIST",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "top(area)[Jan-Jun 2018]",
+     "{xtick Jan..Jun 2018}"
+    ],
+    "sketch_gesture": "horizontal line along the area top over early 2018 plus matching horizontal line along the x-axis over the same span",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ4_R_241SEsUc9JJZ9ii",
+    "accuracy": 0.0,
+    "answer": "Constant",
+    "chain": "LOOK(top(area)[Jan-Jun 2018]) → TREND(area, Jan-Jun 2018)=→ → ANSWER(Constant)",
+    "ops": [
+     "LOOK",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "top(area)[Jan-Jun 2018]"
+    ],
+    "sketch_gesture": "ellipse around the area top over the first ~6 months",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "ACQ4_R_2E7bKzEVRvQoxPT",
+    "accuracy": 0.0,
+    "answer": "Constant",
+    "chain": "LOOK(top(area)[Jan-Jun 2018]) → SCAN({top(area) Jan..Jun 2018}) → TREND(each month)~ (every fall followed by a rise) → TREND(area, Jan-Jun 2018)=→ → ANSWER(Constant)",
+    "ops": [
+     "LOOK",
+     "SCAN",
+     "TREND",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "top(area)[monthly falls/rises]"
+    ],
+    "elements_sketch": [
+     "top(area)[Jan-Jun 2018]"
+    ],
+    "sketch_gesture": "short horizontal line along the area top in early 2018",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ4_R_3KoNCnW4A4ISLZ8",
+    "accuracy": 0.0,
+    "answer": "Constant",
+    "chain": "LOOK(top(area)[Jan-Jun 2018]) → TREND(area, Jan-Jun 2018)=→ → FIND(xtick[July 2018]) → TREND(area, after July)=↓ → ANSWER(Constant)",
+    "ops": [
+     "LOOK",
+     "TREND",
+     "FIND",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "line",
+     "xtick[July]"
+    ],
+    "elements_sketch": [
+     "top(area)[Jan-Jun 2018]",
+     "xtick[July 2018]"
+    ],
+    "sketch_gesture": "horizontal line along the area top to ~July, then short dashed vertical line marking the July boundary",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ4_R_1j9P5vv5Ufod123",
+    "accuracy": 0.0,
+    "answer": "Constant",
+    "chain": "FIND({xtick Jan..Jun 2018}) → LOOK(top(area)[Jan-Jun 2018]) → AVG(top(area)[Jan-Jun 2018]) → TREND(area, Jan-Jun 2018)=→ → ANSWER(Constant)",
+    "ops": [
+     "FIND",
+     "LOOK",
+     "AVG",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "{xtick Jan..Jun 2018}"
+    ],
+    "elements_sketch": [
+     "top(area)[Jan-Jun 2018]",
+     "xtick[June/July 2018]"
+    ],
+    "sketch_gesture": "horizontal line across the area top over the first ~6 months, then vertical line down at ~June/July marking the end of the interval",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ4_R_DSmeZLcUwsRPTe9",
+    "accuracy": 0.0,
+    "answer": "Constant",
+    "chain": "LOOK(top(area)[Jan-Jun 2018]) → TREND(area)=↑ and ↓ → CMP(rise ≈ fall) → TREND(area, Jan-Jun 2018)=→ → ANSWER(Constant)",
+    "ops": [
+     "LOOK",
+     "TREND",
+     "CMP",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "top(area)[rises/falls]"
+    ],
+    "elements_sketch": [
+     "top(area)[Jan-Jun 2018]",
+     "xtick[June/July 2018]"
+    ],
+    "sketch_gesture": "box around the area top over the first ~6 months with vertical line down at the right end (~July)",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ4_R_qxg0KknHF5gbXfH",
+    "accuracy": 0.0,
+    "answer": "Constant",
+    "chain": "FIND({xtick Jan..Jun 2018}) → PROJ({xtick Jan..Jun 2018} → top(area)) → LOOK(top(area)[Jan-Jun 2018]) → TREND(area, Jan-Jun 2018)=→ → ANSWER(Constant)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "LOOK",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[*]",
+     "area"
+    ],
+    "elements_sketch": [
+     "{xtick Jan..Jun 2018}",
+     "top(area)[Jan-Jun 2018]"
+    ],
+    "sketch_gesture": "horizontal line along the area top, dashed vertical line down at ~July to a short horizontal mark on the x-axis",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ4_R_3iO6HqnDwQk14cZ",
+    "accuracy": 0.0,
+    "answer": "Constant",
+    "chain": "FIND({xtick Jan..Jun 2018}) → LOOK(top(area)[Jan-Jun 2018]) → TREND(area, Jan-Jun 2018)=→ → ANSWER(Constant)",
+    "ops": [
+     "FIND",
+     "LOOK",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "{xtick Jan..Jun 2018}"
+    ],
+    "elements_sketch": [
+     "top(area)[Jan-Jun 2018]",
+     "xtick[June/July 2018]"
+    ],
+    "sketch_gesture": "ellipse around the area top over the first ~6 months with vertical line down at its right end",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ4_R_2xFzb7lDkJFr8wu",
+    "accuracy": 0.0,
+    "answer": "Constant",
+    "chain": "LOOK(top(area)[Jan-Jun 2018]) → TREND(area, Jan-Jun 2018)=→ → ANSWER(Constant)",
+    "ops": [
+     "LOOK",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart"
+    ],
+    "elements_sketch": [
+     "top(area)[Jan-Jun 2018]"
+    ],
+    "sketch_gesture": "ellipse around the flat area top in early 2018",
+    "source": "sketch"
+   },
+   {
+    "trial_id": "ACQ4_R_xsaKUVdTdetngd3",
+    "accuracy": 0.0,
+    "answer": "Constant",
+    "chain": "LOOK(top(area)[Jan-Jun 2018]) → CMP(constant ? falling) → TREND(area, Jan-Jun 2018)=→ → ANSWER(Constant)",
+    "ops": [
+     "LOOK",
+     "CMP",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "ytick[*]"
+    ],
+    "elements_sketch": [
+     "top(area)[Jan-Jun 2018]"
+    ],
+    "sketch_gesture": "short horizontal line along the area top in early 2018",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ4_R_3gZSXeLLnjuAoDA",
+    "accuracy": 0.0,
+    "answer": "Constant",
+    "chain": "FIND({xtick Jan..Jun 2018}) → PROJ(xtick[June 2018] → top(area)) → LOOK(top(area)[Jan-Jun 2018]) → COUNT({peak(area), valley(area)} in interval)=0 → TREND(area, Jan-Jun 2018)=→ → ANSWER(Constant)",
+    "ops": [
+     "FIND",
+     "PROJ",
+     "LOOK",
+     "COUNT",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "xtick[June]",
+     "xtick[January]",
+     "peak(area)",
+     "valley(area)"
+    ],
+    "elements_sketch": [
+     "{xtick Jan..Jun 2018}",
+     "xtick[June 2018]",
+     "top(area)[Jan-Jun 2018]"
+    ],
+    "sketch_gesture": "horizontal line along the area top, vertical line down at ~June/July, horizontal line along the x-axis back toward January",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ4_R_1DSSJM8uwjonRFh",
+    "accuracy": 0.0,
+    "answer": "Constant",
+    "chain": "LOOK(top(area)[Jan-Jun 2018]) → TREND(area)=→ with small ↑/↓ → DOUBT(increases and decreases) → TREND(area, Jan-Jun 2018)=→ → ANSWER(Constant)",
+    "ops": [
+     "LOOK",
+     "TREND",
+     "DOUBT",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "chart",
+     "top(area)[rises/falls]"
+    ],
+    "elements_sketch": [
+     "top(area)[Jan-Jun 2018]",
+     "xtick[June/July 2018]"
+    ],
+    "sketch_gesture": "horizontal line along the area top over the first ~6 months, vertical line down at its right end",
+    "source": "both"
+   },
+   {
+    "trial_id": "ACQ4_R_3EiHZeDwJysMONb",
+    "accuracy": 0.0,
+    "answer": "Constant",
+    "chain": "LOOK(top(area)[Jan-Jun 2018]) → DIFF(prices over 6 months)≈small → TREND(area, Jan-Jun 2018)=→ → ANSWER(Constant)",
+    "ops": [
+     "LOOK",
+     "DIFF",
+     "TREND",
+     "ANSWER"
+    ],
+    "elements_text": [
+     "top(area)[Jan-Jun 2018]"
+    ],
+    "elements_sketch": [
+     "top(area)[Jan-Jun 2018]",
+     "xtick[June/July 2018]"
+    ],
+    "sketch_gesture": "horizontal line along the area top over the first ~6 months, vertical line down at its right end",
+    "source": "both"
+   }
+  ]
+ }
+}
