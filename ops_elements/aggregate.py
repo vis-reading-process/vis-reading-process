@@ -99,9 +99,10 @@ def write_items(items, meta):
               f"**Reference:** `{esc(it.get('reference_chain', ''))}`\n",
               f"{it.get('notes', '')}\n",
               "**Strategies people used**\n"]
-        L.append(table([[f"`{esc(st['chain'])}`", st["n"], st.get("n_correct", ""), st.get("n_incorrect", ""),
-                         f"“{esc(st.get('quote', ''))}”"] for st in it["strategies"]],
-                       ["chain", "n", "✓", "✗", "example"]))
+        sts = sorted(it["strategies"], key=lambda st: -st["n"])  # same order/S# as figures/strategies
+        L.append(table([[f"S{i}", f"`{esc(st['chain'])}`", st["n"], st.get("n_correct", ""), st.get("n_incorrect", ""),
+                         f"“{esc(st.get('quote', ''))}”"] for i, st in enumerate(sts, 1)],
+                       ["#", "chain", "n", "✓", "✗", "example"]))
         L.append("\n**Operations** (trials using it): " +
                  ", ".join(f"`{o}` {c}" for o, c in s["ops"].most_common()) + "\n")
         kinds = sorted(set(s["et"]) | set(s["es"]), key=lambda k: -(s["et"][k] + s["es"][k]))

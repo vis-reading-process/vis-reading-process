@@ -1,7 +1,7 @@
 """Altair (Vega-Lite) figures from coded/*.json: per-item strategy histograms and element-reference distributions.
 
 Run from repo root:  python3 ops_elements/figures.py
-Writes ops_elements/figures/{strategies,elements,elements_heatmap}.{html,png,svg}
+Writes ops_elements/figures/{strategies,elements,elements_heatmap,op_distribution,element_distribution}.{html,png,svg}
 """
 import collections
 import glob
@@ -12,7 +12,7 @@ import re
 import altair as alt
 import pandas as pd
 
-from aggregate import OP_ALIAS, kind
+from aggregate import EL_FAMILY, OP_ALIAS, OP_FAMILY, family, kind, ops_of
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "figures")
@@ -21,6 +21,7 @@ INK, INK2, MUTED, GRID = "#0b0b0b", "#52514e", "#8a8984", "#e4e3df"
 ACC_DOMAIN, ACC_RANGE = ["correct", "incorrect", "unscored"], ["#2a78d6", "#eb6834", "#c3c2b7"]
 SRC_DOMAIN, SRC_RANGE = ["text only", "text + sketch", "sketch only"], ["#2a78d6", "#1baf7a", "#eb6834"]
 SEQ = ["#fcfcfb", "#cde2fb", "#86b6ef", "#3987e5", "#1c5cab", "#0d366b"]
+FAM_RANGE = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#008300", "#6250d6", "#e34948"]
 CHART_ORDER = ["SB", "SB100", "SA", "AC", "AC2", "LC", "BC", "HC", "HC2", "PC", "TM", "CC", "SP", "BuC"]
 STEP = 13  # px per bar row
 
@@ -170,6 +171,47 @@ def heatmap_fig(items, meta, order, min_total=10):
     save(configure(chart), "elements_heatmap")
 
 
+def distribution_fig(items, meta, order, what, min_total=3):
+    """x = every operation (or element kind), grouped by family; one facet per item; y = # comments using it."""
+    fams = list(OP_FAMILY if what == "ops" else EL_FAMILY)
+    fam_of = lambda k: family(k, OP_FAMILY if what == "ops" else EL_FAMILY)
+    per_trial = {q: [set(ops_of(t)) if what == "ops" else {kind(e) for e in t["elements_text"] + t["elements_sketch"]}
+                     for t in items[q]["trials"]] for q in order}
+    tot = collections.Counter(k for q in order for ks in per_trial[q] for k in ks)
+    keys = [k for k in tot if tot[k] >= min_total and fam_of(k) != "other"]
+    fams = [f for f in fams if f != "sketch-only"]  # rare drawing gestures fold into "other"; ≤8 colour slots
+    fam_shown = lambda k: fam_of(k) if fam_of(k) in fams else "other"
+    order_fams = [f for f in (OP_FAMILY if what == "ops" else EL_FAMILY) if f in fams] + ["other"]
+    keys = sorted(keys, key=lambda k: (order_fams.index(fam_shown(k)), -tot[k]))
+    rows = []
+    for q in order:
+        n = len(per_trial[q])
+        c = collections.Counter(k for ks in per_trial[q] for k in ks)
+        lab = f"{q} · {meta[q]['chart_type']} · {meta[q]['task'].replace('_', ' ')} (n={n})"
+        for k in keys:
+            rows.append(dict(item=lab, key=k, family=fam_shown(k), comments=c[k], pct=100 * c[k] / n, n=n))
+    df = pd.DataFrame(rows)
+    noun = "operation" if what == "ops" else "element kind"
+    chart = alt.Chart(df).mark_bar(width={"band": 0.8}, cornerRadiusTopLeft=1.5, cornerRadiusTopRight=1.5).encode(
+        x=alt.X("key:N", sort=keys, title=None,
+                axis=alt.Axis(labelAngle=-90, labelFontSize=8, labelPadding=2, ticks=False)),
+        y=alt.Y("comments:Q", title=None, axis=alt.Axis(tickCount=3, labelExpr="datum.value % 1 ? '' : format(datum.value, 'd')")),
+        color=alt.Color("family:N", sort=order_fams, scale=alt.Scale(domain=order_fams, range=FAM_RANGE[:len(order_fams) - 1] + [MUTED]),
+                        legend=alt.Legend(title=f"{noun} family", orient="top", direction="horizontal", columns=9)),
+        tooltip=["item:N", alt.Tooltip("key:N", title=noun), "family:N",
+                 alt.Tooltip("comments:Q", title="comments using it"), alt.Tooltip("pct:Q", format=".0f", title="% of comments")],
+    ).properties(width=alt.Step(7.5), height=70).facet(
+        facet=alt.Facet("item:N", sort=list(dict.fromkeys(df.item)), title=None,
+                        header=alt.Header(labelFontSize=10.5, labelFontWeight="bold", labelAnchor="start", labelColor=INK)),
+        columns=4, spacing={"row": 14, "column": 22},
+    ).resolve_scale(y="independent").resolve_axis(x="independent").properties(
+        title=alt.TitleParams(f"{noun.capitalize()} distribution per item: number of comments (trials) using each {noun}",
+                              subtitle=f"Shared x axis = every {noun} used ≥{min_total} times overall, grouped by family. "
+                                       "A comment counts once per " + noun + "; y scales are per item.",
+                              anchor="start", fontSize=15))
+    save(configure(chart), "op_distribution" if what == "ops" else "element_distribution")
+
+
 def configure(chart):
     return (chart.configure(font="Helvetica, Arial, sans-serif", background="white")
             .configure_view(stroke=None)
@@ -194,6 +236,8 @@ def main():
     strategies_fig(items, meta, order)
     elements_fig(items, meta, order)
     heatmap_fig(items, meta, order)
+    distribution_fig(items, meta, order, "ops")
+    distribution_fig(items, meta, order, "elements")
 
 
 if __name__ == "__main__":

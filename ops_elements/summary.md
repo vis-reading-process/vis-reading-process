@@ -87,31 +87,31 @@
 
 | task \ chart | 100pct_stacked_bar | area | area(variant 2) | bar | bubble | choropleth | histogram | histogram(variant 2) | line | pie | scatter | stacked_area | stacked_bar | treemap |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| characterize_trend |  | n=14: TREND 100%, LOOK 100%, FIND 43% | n=3: TREND 100%, LOOK 67%, FIND 67% |  |  |  |  |  | n=3: TREND 100%, SCAN 67%, DOUBT 33% |  |  | n=40: TREND 98%, TRACE 70%, PROJ 35% |  |  |
-| compute_derived_value |  |  |  |  | n=40: FIND 70%, CMP 55%, PROJ 50% |  | n=8: READ 88%, FIND 88%, SUM 75% | n=6: FIND 100%, READ 67%, SUM 67% | n=9: DIFF 78%, READ 67%, PROJ 44% |  |  |  |  |  |
+| characterize_trend |  | n=14: LOOK 100%, TREND 100%, FIND 43% | n=3: TREND 100%, FIND 67%, LOOK 67% |  |  |  |  |  | n=3: TREND 100%, SCAN 67%, DOUBT 33% |  |  | n=40: TREND 98%, TRACE 70%, PROJ 35% |  |  |
+| compute_derived_value |  |  |  |  | n=40: FIND 70%, CMP 55%, PROJ 50% |  | n=8: FIND 88%, READ 88%, SUM 75% | n=6: FIND 100%, SUM 67%, READ 67% | n=9: DIFF 78%, READ 67%, PROJ 44% |  |  |  |  |  |
 | count |  |  |  | n=2: FIND 100%, COUNT 100%, PROJ 50% |  |  |  |  |  |  |  |  |  |  |
-| determine_range |  | n=13: READ 100%, RANGE 54%, FIND 46% | n=7: READ 100%, PROJ 57%, FIND 57% | n=9: READ 78%, PROJ 33%, FIND 33% | n=22: RANGE 100%, READ 95%, LOOK 50% |  |  |  | n=4: READ 100%, MIN 75%, MAX 75% |  | n=13: READ 100%, RANGE 92%, ARGMIN 62% |  |  |  |
+| determine_range |  | n=13: READ 100%, RANGE 54%, FIND 46% | n=7: READ 100%, PROJ 57%, FIND 57% | n=9: READ 78%, PROJ 33%, FIND 33% | n=22: RANGE 100%, READ 95%, LOOK 50% |  |  |  | n=4: READ 100%, MAX 75%, MIN 75% |  | n=13: READ 100%, RANGE 92%, ARGMAX 62% |  |  |  |
 | find_anomalies |  |  |  |  |  |  |  |  |  |  | n=9: READ 89%, OUTLIER 56%, PROJ 56% |  |  |  |
 | find_clusters |  |  |  |  |  |  |  |  |  |  | n=39: LOOK 90%, PROJ 79%, FIND 77% |  |  |  |
-| find_correlation |  |  |  |  | n=39: CORR 59%, FIND 56%, PROJ 31% |  |  |  |  |  | n=39: CORR 64%, FIT 59%, SCAN 59% |  |  |  |
-| find_extremum | n=40: ARGMAX 48%, LOOK 42%, SCAN 35% | n=8: ARGMIN 88%, PROJ 75%, READ 62% | n=3: READ 100%, ARGMIN 100%, PROJ 67% |  | n=7: ARGMAX 86%, FIX 29%, PROJ 14% |  | n=3: FIND 67%, PROJ 33%, MAP 33% | n=2: FIND 50%, MAP 50%, SCAN 50% |  | n=2: PROJ 100%, FIND 100%, CMPvis 100% | n=4: READ 100%, FIND 100%, PROJ 75% | n=3: ARGMAX 100%, READ 100%, FIND 33% | n=18: FIND 78%, PROJ 50%, LOOK 28% | n=2: MISSING 100%, LOOK 100%, DOUBT 50% |
+| find_correlation |  |  |  |  | n=39: CORR 59%, FIND 56%, PROJ 31% |  |  |  |  |  | n=39: CORR 64%, SCAN 59%, FIT 59% |  |  |  |
+| find_extremum | n=40: ARGMAX 48%, LOOK 42%, SCAN 35% | n=8: ARGMIN 88%, PROJ 75%, READ 62% | n=3: ARGMIN 100%, READ 100%, PROJ 67% |  | n=7: ARGMAX 86%, FIX 29%, PROJ 14% |  | n=3: FIND 67%, PROJ 33%, MAP 33% | n=2: FIND 50%, MAP 50%, SCAN 50% |  | n=2: FIND 100%, PROJ 100%, CMPvis 100% | n=4: FIND 100%, READ 100%, PROJ 75% | n=3: ARGMAX 100%, READ 100%, FIND 33% | n=18: FIND 78%, PROJ 50%, LOOK 28% | n=2: LOOK 100%, MISSING 100%, MAP 50% |
 | make_comparison | n=3: FIND 100%, CMPvis 67%, CMP 33% |  |  |  | n=40: FIND 85%, CMPvis 72%, READ 25% |  | n=20: PROJ 75%, CMPvis 65%, FIND 60% | n=21: CMPvis 86%, PROJ 76%, FIND 67% |  |  |  | n=80: CMP 70%, PROJ 38%, TRACE 36% | n=84: FIND 62%, CMP 48%, PROJ 33% | n=41: FIND 95%, CMPvis 61%, LOOK 17% |
-| retrieve_value | n=8: FIND 100%, PROJ 75%, READ 50% | n=6: READ 100%, FIND 100%, PROJ 67% | n=6: READ 100%, PROJ 100%, FIND 100% |  |  | n=5: MAP 100%, FIND 100%, READ 80% |  |  | n=1: READ 100%, PROJ 100%, FIND 100% | n=6: FIND 83%, MAP 67%, READ 50% | n=1: READ 100%, PROJ 100%, FIND 100% | n=36: READ 100%, PROJ 92%, FIND 89% | n=48: FIND 71%, READ 69%, PROJ 62% |  |
+| retrieve_value | n=8: FIND 100%, PROJ 75%, READ 50% | n=6: FIND 100%, READ 100%, PROJ 67% | n=6: FIND 100%, PROJ 100%, READ 100% |  |  | n=5: FIND 100%, MAP 100%, READ 80% |  |  | n=1: FIND 100%, PROJ 100%, READ 100% | n=6: FIND 83%, MAP 67%, READ 50% | n=1: FIND 100%, FIX 100%, PROJ 100% | n=36: READ 100%, PROJ 92%, FIND 89% | n=48: FIND 71%, READ 69%, PROJ 62% |  |
 
 ## Task × chart: top elements
 
 | task \ chart | 100pct_stacked_bar | area | area(variant 2) | bar | bubble | choropleth | histogram | histogram(variant 2) | line | pie | scatter | stacked_area | stacked_bar | treemap |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | characterize_trend |  | n=14: mark 100%, xtick 71%, chart 29% | n=3: trendline 67%, xtick 67%, mark 67% |  |  |  |  |  | n=3: line 100%, grid 33%, pt 33% |  |  | n=40: band 100%, xtick 50%, color 35% |  |  |
-| compute_derived_value |  |  |  |  | n=40: bubble 50%, pt 42%, grid 42% |  | n=8: bin 88%, yaxis 50%, xtick 25% | n=6: bin 100%, xtick 50%, yaxis 33% | n=9: pt 78%, yaxis 56%, line 33% |  |  |  |  |  |
+| compute_derived_value |  |  |  |  | n=40: bubble 50%, pt 42%, grid 42% |  | n=8: bin 88%, yaxis 50%, ytick 25% | n=6: bin 100%, xtick 50%, yaxis 33% | n=9: pt 78%, yaxis 56%, line 33% |  |  |  |  |  |
 | count |  |  |  | n=2: bar 100%, line 50% |  |  |  |  |  |  |  |  |  |  |
-| determine_range |  | n=13: pt 77%, yaxis 54%, mark 46% | n=7: pt 100%, xtick 57%, mark 43% | n=9: yaxis 67%, ytick 67%, bar 44% | n=22: yaxis 59%, ytick 59%, bubble 23% |  |  |  | n=4: pt 100%, yaxis 25%, ytick 25% |  | n=13: yaxis 69%, pt 62%, ytick 31% |  |  |  |
+| determine_range |  | n=13: pt 77%, yaxis 54%, mark 46% | n=7: pt 100%, xtick 57%, mark 43% | n=9: yaxis 67%, ytick 67%, bar 44% | n=22: yaxis 59%, ytick 59%, bubble 23% |  |  |  | n=4: pt 100%, ytick 25%, yaxis 25% |  | n=13: yaxis 69%, pt 62%, ytick 31% |  |  |  |
 | find_anomalies |  |  |  |  |  |  |  |  |  |  | n=9: pt 89%, yaxis 56%, xaxis 44% |  |  |  |
 | find_clusters |  |  |  |  |  |  |  |  |  |  | n=39: region 92%, xtick 77%, ytick 69% |  |  |  |
 | find_correlation |  |  |  |  | n=39: bubble 90%, xaxis 62%, legend 10% |  |  |  |  |  | n=39: trendline 49%, pt 33%, ytitle 21% |  |  |  |
-| find_extremum | n=40: seg 70%, annot 32%, yaxis 18% | n=8: pt 88%, yaxis 62%, xaxis 62% | n=3: pt 100%, xaxis 67%, chart 33% |  | n=7: bubble 100%, xaxis 14%, yaxis 14% |  | n=3: xtick 67%, bin 67%, color 33% | n=2: xtick 50%, xaxis 50%, bin 50% |  | n=2: slice 100%, area 50% | n=4: pt 100%, xaxis 75%, yaxis 50% | n=3: xtick 100%, band 100%, chart 33% | n=18: seg 94%, color 44%, bar 44% | n=2: tile 100%, annot 100%, legend 50% |
-| make_comparison | n=3: seg 100%, xtick 33%, legend 33% |  |  |  | n=40: bubble 98%, legend 50%, yaxis 5% |  | n=20: bin 100%, yaxis 40%, xtick 30% | n=21: bin 100%, yaxis 52%, xtick 14% |  |  |  | n=80: band 99%, xtick 52%, yaxis 25% | n=84: seg 89%, bar 29%, yaxis 25% | n=41: tile 95%, label 17%, annot 5% |
-| retrieve_value | n=8: seg 100%, yaxis 62%, ytick 25% | n=6: mark 100%, xtick 83%, yaxis 67% | n=6: xtick 100%, yaxis 100%, mark 100% |  |  | n=5: region 100%, colorscale 100%, color 80% |  |  | n=1: pt 100%, xtick 100%, yaxis 100% | n=6: slice 100%, chart 67%, mark 17% | n=1: pt 100%, xtick 100%, xaxis 100% | n=36: band 100%, yaxis 89%, xtick 86% | n=48: seg 96%, yaxis 62%, bar 33% |  |
+| find_extremum | n=40: seg 70%, annot 32%, yaxis 18% | n=8: pt 88%, yaxis 62%, xaxis 62% | n=3: pt 100%, xaxis 67%, chart 33% |  | n=7: bubble 100%, yaxis 14%, xaxis 14% |  | n=3: bin 67%, xtick 67%, yaxis 33% | n=2: xaxis 50%, xtick 50%, bin 50% |  | n=2: slice 100%, area 50% | n=4: pt 100%, xaxis 75%, yaxis 50% | n=3: band 100%, xtick 100%, chart 33% | n=18: seg 94%, color 44%, bar 44% | n=2: tile 100%, annot 100%, legend 50% |
+| make_comparison | n=3: seg 100%, legend 33%, xtick 33% |  |  |  | n=40: bubble 98%, legend 50%, yaxis 5% |  | n=20: bin 100%, yaxis 40%, xtick 30% | n=21: bin 100%, yaxis 52%, xtick 14% |  |  |  | n=80: band 99%, xtick 52%, yaxis 25% | n=84: seg 89%, bar 29%, yaxis 25% | n=41: tile 95%, label 17%, annot 5% |
+| retrieve_value | n=8: seg 100%, yaxis 62%, ytick 25% | n=6: mark 100%, xtick 83%, yaxis 67% | n=6: yaxis 100%, mark 100%, xtick 100% |  |  | n=5: region 100%, colorscale 100%, color 80% |  |  | n=1: yaxis 100%, ytick 100%, pt 100% | n=6: slice 100%, chart 67%, mark 17% | n=1: xaxis 100%, pt 100%, xtick 100% | n=36: band 100%, yaxis 89%, xtick 86% | n=48: seg 96%, yaxis 62%, bar 33% |  |
 
 ## By task type
 
@@ -141,7 +141,7 @@ Common op sequences: `SCAN → FIT → SLOPE → CORR` 6, `FIND → PROJ → CMP
 
 ### determine_range  (n = 68 trials, items: AC2Q3, ACQ3, BCQ3, BuCQ2, LCQ3, SPQ3)
 
-Top operations: `READ` 96%, `RANGE` 68%, `PROJ` 37%, `LOOK` 28%, `MAX` 25%, `FIND` 21%, `MIN` 19%, `ARGMIN` 18%, `ARGMAX` 18%, `CONFUSED` 10%  
+Top operations: `READ` 96%, `RANGE` 68%, `PROJ` 37%, `LOOK` 28%, `MAX` 25%, `FIND` 21%, `MIN` 19%, `ARGMAX` 18%, `ARGMIN` 18%, `CONFUSED` 10%  
 Top elements (any / text / sketch): `yaxis` 57%/26%/46%, `pt` 46%/24%/43%, `ytick` 40%/10%/34%, `mark` 13%/1%/13%, `xtick` 12%/7%/7%, `chart` 12%/12%/0%, `bubble` 7%/0%/7%, `ytitle` 7%/6%/4%, `area` 7%/7%/0%, `bar` 6%/3%/4%  
 Common op sequences: `LOOK → READ → RANGE` 8, `LOOK → MAX → READ → RANGE` 3, `FIND → READ` 3, `FIND → PROJ → READ → FIND → PROJ → READ → RANGE` 3, `GIST → READ → RANGE` 2, `READ → RANGE` 2
 
@@ -165,7 +165,7 @@ Common op sequences: `FIND → PROJ → LOOK → COUNT` 10, `FIND → PROJ → L
 
 ### find_anomalies  (n = 9 trials, items: SPQ6)
 
-Top operations: `READ` 89%, `OUTLIER` 56%, `PROJ` 56%, `FIND` 44%, `SCAN` 22%, `GROUP` 22%, `FIX` 22%, `GUESS` 22%, `ARGMAX` 11%, `LOOK` 11%  
+Top operations: `READ` 89%, `OUTLIER` 56%, `PROJ` 56%, `FIND` 44%, `GROUP` 22%, `SCAN` 22%, `FIX` 22%, `GUESS` 22%, `ARGMAX` 11%, `DOUBT` 11%  
 Top elements (any / text / sketch): `pt` 89%/44%/89%, `yaxis` 56%/0%/56%, `xaxis` 44%/0%/44%, `ytitle` 22%/22%/0%, `xtitle` 22%/22%/0%, `cluster` 11%/11%/11%, `xtick` 11%/0%/11%  
 Common op sequences: `SCAN → GROUP → OUTLIER → READ` 1, `SCAN → GROUP → READ` 1, `OUTLIER → PROJ → READ → FIX` 1, `ARGMAX → FIND → PROJ → READ` 1, `DOUBT → LOOK → GUESS` 1, `OUTLIER → ARGMIN → FIND → PROJ → READ` 1
 
@@ -209,7 +209,7 @@ Common op sequences: `FIND → PROJ → CMPvis` 18, `LOOK → CMPvis` 4, `FIND �
 
 ### area  (n = 60 trials, items: AC2Q1, AC2Q2, AC2Q3, AC2Q4, ACQ1, ACQ2, ACQ3, ACQ4)
 
-Top operations: `READ` 67%, `FIND` 52%, `PROJ` 50%, `LOOK` 30%, `TREND` 28%, `RANGE` 18%, `ARGMIN` 17%, `MIN` 13%, `MAX` 13%, `CONFUSED` 10%  
+Top operations: `READ` 67%, `FIND` 52%, `PROJ` 50%, `LOOK` 30%, `TREND` 28%, `RANGE` 18%, `ARGMIN` 17%, `MAX` 13%, `MIN` 13%, `CONFUSED` 10%  
 Top elements (any / text / sketch): `mark` 65%/12%/62%, `xtick` 58%/33%/42%, `pt` 47%/13%/45%, `yaxis` 43%/10%/38%, `xaxis` 18%/3%/15%, `chart` 15%/15%/0%, `area` 15%/15%/0%, `ytick` 10%/7%/3%, `trendline` 3%/2%/3%, `ytitle` 2%/2%/0%  
 Common op sequences: `FIND → PROJ → READ` 8, `FIND → PROJ → READ → FIND → PROJ → READ → RANGE` 3, `FIND → LOOK → TREND` 3, `LOOK → TREND` 3, `FIND → READ` 3, `ARGMIN → PROJ → READ` 2
 
@@ -227,24 +227,24 @@ Common op sequences: `FIND → CMPvis` 20, `FIND → MISSING` 3, `LOOK → MISSI
 
 ### line  (n = 17 trials, items: LCQ1, LCQ3, LCQ4, LCQ5)
 
-Top operations: `READ` 65%, `DIFF` 41%, `PROJ` 35%, `FIND` 29%, `SCAN` 24%, `MIN` 18%, `MAX` 18%, `TREND` 18%, `LOOK` 12%, `DOUBT` 12%  
-Top elements (any / text / sketch): `pt` 76%/29%/76%, `yaxis` 41%/18%/35%, `line` 35%/18%/35%, `xtick` 12%/6%/12%, `ytick` 12%/6%/6%, `xaxis` 12%/6%/6%, `grid` 6%/0%/6%, `chart` 6%/6%/0%  
+Top operations: `READ` 65%, `DIFF` 41%, `PROJ` 35%, `FIND` 29%, `SCAN` 24%, `MAX` 18%, `MIN` 18%, `TREND` 18%, `LOOK` 12%, `DOUBT` 12%  
+Top elements (any / text / sketch): `pt` 76%/29%/76%, `yaxis` 41%/18%/35%, `line` 35%/18%/35%, `ytick` 12%/6%/6%, `xtick` 12%/6%/12%, `xaxis` 12%/6%/6%, `grid` 6%/0%/6%, `chart` 6%/6%/0%  
 Common op sequences: `MIN → MAX → READ` 2, `PROJ → READ → PROJ → READ → DIFF` 2, `FIND → PROJ → READ` 1, `MAX → MIN → PROJ → READ` 1, `LOOK → CONFUSED → READ` 1, `SCAN → TREND → DOUBT` 1
 
 ### bar  (n = 11 trials, items: BCQ3, BCQ4)
 
-Top operations: `READ` 64%, `FIND` 45%, `PROJ` 36%, `MIN` 18%, `SCAN` 18%, `MAX` 18%, `LOOK` 18%, `COUNT` 18%, `RANGE` 9%, `FIX` 9%  
-Top elements (any / text / sketch): `bar` 55%/27%/45%, `yaxis` 55%/36%/36%, `ytick` 55%/18%/45%, `chart` 18%/18%/0%, `annot` 9%/0%/9%, `color` 9%/9%/0%, `grid` 9%/0%/9%, `line` 9%/9%/0%  
+Top operations: `READ` 64%, `FIND` 45%, `PROJ` 36%, `SCAN` 18%, `MIN` 18%, `MAX` 18%, `LOOK` 18%, `COUNT` 18%, `RANGE` 9%, `FIX` 9%  
+Top elements (any / text / sketch): `yaxis` 55%/36%/36%, `bar` 55%/27%/45%, `ytick` 55%/18%/45%, `chart` 18%/18%/0%, `annot` 9%/0%/9%, `color` 9%/9%/0%, `grid` 9%/0%/9%, `line` 9%/9%/0%  
 Common op sequences: `FIND → READ` 2, `SCAN → MAX → PROJ → MIN → PROJ → RANGE` 1, `LOOK → READ → FIX` 1, `KNOW → FIND → READ` 1, `LOOK → READ` 1, `MAX → PROJ → MIN → PROJ → READ` 1
 
 ### pie  (n = 8 trials, items: PCQ1, PCQ2)
 
-Top operations: `FIND` 88%, `PROJ` 50%, `MAP` 50%, `READ` 38%, `CMPvis` 25%, `LOOK` 12%, `GIST` 12%, `GROUP` 12%, `RATIO` 12%, `DOUBT` 12%  
+Top operations: `FIND` 88%, `MAP` 50%, `PROJ` 50%, `READ` 38%, `CMPvis` 25%, `LOOK` 12%, `GIST` 12%, `GROUP` 12%, `RATIO` 12%, `DOUBT` 12%  
 Top elements (any / text / sketch): `slice` 100%/75%/100%, `chart` 50%/25%/38%, `mark` 12%/12%/0%, `line` 12%/12%/0%, `area` 12%/12%/0%  
 Common op sequences: `FIND → READ → MAP` 2, `FIND → PROJ → READ → MAP` 1, `FIND → LOOK → MAP` 1, `FIND → GIST` 1, `PROJ → GROUP → RATIO` 1, `FIND → PROJ → CMPvis → DOUBT` 1
 
 ### choropleth  (n = 5 trials, items: CCQ2)
 
-Top operations: `MAP` 100%, `FIND` 100%, `READ` 80%, `CONFUSED` 40%, `SCAN` 20%, `CMP` 20%, `PROJ` 20%  
+Top operations: `FIND` 100%, `MAP` 100%, `READ` 80%, `CONFUSED` 40%, `SCAN` 20%, `CMP` 20%, `PROJ` 20%  
 Top elements (any / text / sketch): `region` 100%/20%/100%, `colorscale` 100%/60%/80%, `color` 80%/80%/0%  
 Common op sequences: `SCAN → FIND → READ → FIND → MAP` 1, `FIND → READ → CMP → FIND → MAP` 1, `FIND → READ → MAP → CONFUSED` 1, `FIND → MAP → CONFUSED` 1, `FIND → READ → PROJ → MAP` 1
